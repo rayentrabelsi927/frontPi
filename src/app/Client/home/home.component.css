@@ -1,0 +1,89 @@
+* { 
+    box-sizing: border-box; 
+} 
+
+body { 
+    font-family: 'Poppins', sans-serif; 
+    margin: 0; 
+    padding: 0; 
+    
+    background-repeat: no-repeat; 
+    background-size: cover; 
+    background-color: rgb(224, 50, 88); 
+    background-blend-mode: multiply; 
+    background-position: center; 
+    color: #d44141; 
+} 
+
+h1, 
+h3 { 
+    text-align: center; 
+    text-transform: uppercase; 
+} 
+
+h1 { 
+    position: relative; 
+    max-width: max-content; 
+    margin: 2rem auto 5rem auto; 
+} 
+
+h1::after { 
+    content: ""; 
+    position: absolute; 
+    width: 75%; 
+    height: 5px; 
+    background-color: lightgreen; 
+    bottom: -2rem; 
+    left: 25px; 
+} 
+
+i { 
+    font-size: 3rem; 
+    color: rgb(240, 88, 88); 
+    padding: 1rem; 
+    transition: all 0.3s linear; 
+    transform: rotate(-45deg); 
+} 
+
+.services-container { 
+    max-width: 1200px; 
+    margin: 0 auto; 
+    padding: 20px; 
+    display: flex; 
+    flex-wrap: wrap; 
+    justify-content: space-around; 
+} 
+
+.service-card { 
+    cursor: pointer; 
+    width: 300px; 
+    margin: 20px; 
+    padding: 2rem 20px 20px 20px; 
+    text-align: center; 
+    border-radius: 5px; 
+    transition: all 0.3s ease-in-out; 
+} 
+
+.icon-container { 
+    border: 2px solid rgb(196, 71, 71); 
+    transition: 0.3s linear; 
+    width: max-content; 
+    margin: 0 auto; 
+    transform: rotate(45deg); 
+} 
+
+.service-card:hover { 
+    box-shadow: 0 0 30px 0 rgb(211, 76, 76); 
+    transform: scale(1.1); 
+} 
+
+.service-card a { 
+    color: rgb(231, 67, 55); 
+    text-decoration: none; 
+} 
+
+@media (max-width: 768px) { 
+    .service-card { 
+        width: 100%; 
+    } 
+} 

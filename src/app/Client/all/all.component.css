@@ -1,0 +1,55 @@
+/* Style pour la zone de contenu principal */
+.main-content {
+    padding: 20px; /* Ajoute un espacement autour du contenu */
+}
+
+/* Style pour la carte contenant les tâches */
+.card {
+    border-radius: 5px; /* Coins arrondis */
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Ombre légère */
+    transition: box-shadow 0.3s ease; /* Transition douce pour l'ombre */
+}
+
+.card:hover {
+    box-shadow: 0 8px 16px rgba(0, 0, 0, 0.2); /* Effet d'ombre plus prononcé au survol */
+}
+
+/* Style pour le titre des tâches */
+.card .title {
+    font-size: 18px;
+    font-weight: bold;
+    margin-bottom: 10px;
+}
+
+/* Style pour la catégorie des tâches */
+.card .category {
+    font-size: 14px;
+    color: #777; /* Couleur de texte grise */
+}
+
+/* Style pour les boutons d'action des tâches */
+.card .td-actions .btn {
+    margin-right: 5px; /* Espacement entre les boutons */
+}
+
+/* Style pour la zone de statistiques en bas de la carte */
+.card .footer {
+    padding-top: 10px;
+    text-align: right;
+    color: #777;
+}
+
+/* Style pour l'icône d'historique dans les statistiques */
+.card .footer .fa-history {
+    margin-right: 5px;
+}
+
+
+
+
+
+
+
+
+
+

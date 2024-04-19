@@ -1,0 +1,837 @@
+
+  /*
+   * Header
+   */
+   .uk-nav-default .uk-nav-header {
+    color: #333;
+  }
+  
+  /*
+   * Divider
+   */
+  .uk-nav-default .uk-nav-divider {
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  /*
+   * Sublists
+   */
+  .uk-nav-default .uk-nav-sub a {
+    color: #999;
+  }
+  
+  .uk-nav-default .uk-nav-sub a:hover,
+  .uk-nav-default .uk-nav-sub a:focus {
+    color: #666;
+  }
+  
+  .uk-nav-default .uk-nav-sub li.uk-active > a {
+    color: #333;
+  }
+  
+  /* Primary modifier
+   ========================================================================== */
+  /*
+   * Items
+   */
+  .uk-nav-primary > li > a {
+    font-size: 1.5rem;
+    line-height: 1.5;
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-nav-primary > li > a:hover,
+  .uk-nav-primary > li > a:focus {
+    color: #666;
+  }
+  
+  /* Active */
+  .uk-nav-primary > li.uk-active > a {
+    color: #333;
+  }
+  
+  /*
+   * Header
+   */
+  .uk-nav-primary .uk-nav-header {
+    color: #333;
+  }
+  
+  /*
+   * Divider
+   */
+  .uk-nav-primary .uk-nav-divider {
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  /*
+   * Sublists
+   */
+  .uk-nav-primary .uk-nav-sub a {
+    color: #999;
+  }
+  
+  .uk-nav-primary .uk-nav-sub a:hover,
+  .uk-nav-primary .uk-nav-sub a:focus {
+    color: #666;
+  }
+  
+  .uk-nav-primary .uk-nav-sub li.uk-active > a {
+    color: #333;
+  }
+  
+  /* Alignment modifier
+   ========================================================================== */
+  .uk-nav-center {
+    text-align: center;
+  }
+  
+  /* Sublists */
+  .uk-nav-center .uk-nav-sub,
+  .uk-nav-center .uk-nav-sub ul {
+    padding-left: 0;
+  }
+  
+  /* Parent icon modifier  */
+  .uk-nav-center.uk-nav-parent-icon > .uk-parent > a::after {
+    position: absolute;
+  }
+  
+  /* ========================================================================
+     Component: Navbar
+   ========================================================================== */
+  /*
+   * 1. Create position context to center navbar group
+   */
+  .uk-navbar {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* 1 */
+    position: relative;
+  }
+  
+  /* Container
+   ========================================================================== */
+  .uk-navbar-container:not(.uk-navbar-transparent) {
+    background: #f8f8f8;
+  }
+  
+  /*
+   * Remove pseudo elements created by micro clearfix as precaution (if Container component is used)
+   */
+  .uk-navbar-container > ::before,
+  .uk-navbar-container > ::after {
+    display: none !important;
+  }
+  
+  /* Groups
+   ========================================================================== */
+  /*
+   * 1. Align navs and items vertically if they have a different height
+   * 2. Note: IE 11 requires an extra `div` which affects the center selector
+   */
+  .uk-navbar-left,
+  .uk-navbar-right,
+  .uk-navbar-center,
+  .uk-navbar-center-left > *,
+  .uk-navbar-center-right > * {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* 1 */
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  /*
+   * Horizontal alignment
+   * 1. Create position context for centered navbar with sub groups (left/right)
+   * 2. Fix text wrapping if content is larger than 50% of the container.
+   * 3. Needed for dropdowns because a new position context is created
+   *    `z-index` must be smaller than off-canvas
+   * 4. Align sub groups for centered navbar
+   */
+  .uk-navbar-right {
+    margin-left: auto;
+  }
+  
+  .uk-navbar-center:only-child {
+    margin-left: auto;
+    margin-right: auto;
+    /* 1 */
+    position: relative;
+  }
+  
+  .uk-navbar-center:not(:only-child) {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+            transform: translate(-50%, -50%);
+    /* 2 */
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    /* 3 */
+    z-index: 990;
+  }
+  
+  /* 4 */
+  .uk-navbar-center-left,
+  .uk-navbar-center-right {
+    position: absolute;
+    top: 0;
+  }
+  
+  .uk-navbar-center-left {
+    right: 100%;
+  }
+  
+  .uk-navbar-center-right {
+    left: 100%;
+  }
+  
+  [class*='uk-navbar-center-'] {
+    width: -webkit-max-content;
+    width: -moz-max-content;
+    width: max-content;
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+  }
+  
+  /* Nav
+   ========================================================================== */
+  /*
+   * 1. Reset list
+   */
+  .uk-navbar-nav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* 1 */
+    margin: 0;
+    padding: 0;
+    list-style: none;
+  }
+  
+  /*
+   * Allow items to wrap into the next line
+   * Only not `absolute` positioned groups
+   */
+  .uk-navbar-left,
+  .uk-navbar-right,
+  .uk-navbar-center:only-child {
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+  }
+  
+  /*
+   * Items
+   * 1. Center content vertically and horizontally
+   * 2. Dimensions
+   * 3. Style
+   * 4. Required for `a`
+   */
+  .uk-navbar-nav > li > a,
+  .uk-navbar-item,
+  .uk-navbar-toggle {
+    /* 1 */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+        -ms-flex-pack: center;
+            justify-content: center;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+    /* 2 */
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    min-height: 80px;
+    padding: 0 15px;
+    /* 3 */
+    font-size: 0.875rem;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+    /* 4 */
+    text-decoration: none;
+  }
+  
+  /*
+   * Nav items
+   */
+  .uk-navbar-nav > li > a {
+    color: #999;
+  }
+  
+  /*
+   * Hover
+   * Apply hover style also to focus state and if dropdown is opened
+   */
+  .uk-navbar-nav > li:hover > a,
+  .uk-navbar-nav > li > a:focus,
+  .uk-navbar-nav > li > a.uk-open {
+    color: #666;
+    outline: none;
+  }
+  
+  /* OnClick */
+  .uk-navbar-nav > li > a:active {
+    color: #333;
+  }
+  
+  /* Active */
+  .uk-navbar-nav > li.uk-active > a {
+    color: #333;
+  }
+  
+  /* Item
+   ========================================================================== */
+  .uk-navbar-item {
+    color: #666;
+  }
+  
+  /* Toggle
+   ========================================================================== */
+  .uk-navbar-toggle {
+    color: #999;
+  }
+  
+  .uk-navbar-toggle:hover,
+  .uk-navbar-toggle:focus,
+  .uk-navbar-toggle.uk-open {
+    color: #666;
+    outline: none;
+    text-decoration: none;
+  }
+  
+  /*
+   * Icon
+   * Adopts `uk-icon`
+   */
+  /* Hover + Focus */
+  /* Subtitle
+   ========================================================================== */
+  .uk-navbar-subtitle {
+    font-size: 0.875rem;
+  }
+  
+  /* Style modifiers
+   ========================================================================== */
+  /* Dropdown
+   ========================================================================== */
+  /*
+   * Adopts `uk-dropdown`
+   * 1. Hide by default
+   * 2. Set position
+   * 3. Set a default width
+   * 4. Style
+   */
+  .uk-navbar-dropdown {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: absolute;
+    z-index: 1020;
+    /* 3 */
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 200px;
+    /* 4 */
+    padding: 25px;
+    background: #fff;
+    color: #666;
+  }
+  
+  /* Show */
+  .uk-navbar-dropdown.uk-open {
+    display: block;
+  }
+  
+  /*
+   * Direction / Alignment modifiers
+   */
+  /* Direction */
+  [class*='uk-navbar-dropdown-top'] {
+    margin-top: -15px;
+  }
+  
+  [class*='uk-navbar-dropdown-bottom'] {
+    margin-top: 15px;
+  }
+  
+  [class*='uk-navbar-dropdown-left'] {
+    margin-left: -15px;
+  }
+  
+  [class*='uk-navbar-dropdown-right'] {
+    margin-left: 15px;
+  }
+  
+  /*
+   * Grid
+   * Adopts `uk-grid`
+   */
+  /* Gutter Horizontal */
+  .uk-navbar-dropdown-grid {
+    margin-left: -50px;
+  }
+  
+  .uk-navbar-dropdown-grid > * {
+    padding-left: 50px;
+  }
+  
+  /* Gutter Vertical */
+  .uk-navbar-dropdown-grid > .uk-grid-margin {
+    margin-top: 50px;
+  }
+  
+  /* Stack */
+  .uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
+    width: 100% !important;
+  }
+  
+  /*
+   * Width modifier
+   */
+  .uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) {
+    width: 400px;
+  }
+  
+  .uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) {
+    width: 600px;
+  }
+  
+  .uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) {
+    width: 800px;
+  }
+  
+  .uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) {
+    width: 1000px;
+  }
+  
+  /*
+   * Dropbar modifier
+   */
+  .uk-navbar-dropdown-dropbar {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  /* Dropdown Nav
+   * Adopts `uk-nav`
+   ========================================================================== */
+  /*
+   * Items
+   */
+  .uk-navbar-dropdown-nav > li > a {
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-navbar-dropdown-nav > li > a:hover,
+  .uk-navbar-dropdown-nav > li > a:focus {
+    color: #666;
+  }
+  
+  /* Active */
+  .uk-navbar-dropdown-nav > li.uk-active > a {
+    color: #333;
+  }
+  
+  /*
+   * Header
+   */
+  .uk-navbar-dropdown-nav .uk-nav-header {
+    color: #333;
+  }
+  
+  /*
+   * Divider
+   */
+  .uk-navbar-dropdown-nav .uk-nav-divider {
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  /*
+   * Sublists
+   */
+  .uk-navbar-dropdown-nav .uk-nav-sub a {
+    color: #999;
+  }
+  
+  .uk-navbar-dropdown-nav .uk-nav-sub a:hover,
+  .uk-navbar-dropdown-nav .uk-nav-sub a:focus {
+    color: #666;
+  }
+  
+  .uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
+    color: #333;
+  }
+  
+  /* Dropbar
+   ========================================================================== */
+  .uk-navbar-dropbar {
+    background: #fff;
+  }
+  
+  /*
+   * Slide modifier
+   */
+  .uk-navbar-dropbar-slide {
+    position: absolute;
+    z-index: 980;
+    left: 0;
+    right: 0;
+  }
+  
+  /* ========================================================================
+     Component: Subnav
+   ========================================================================== */
+  /*
+   * 1. Allow items to wrap into the next line
+   * 2. Gutter
+   * 3. Reset list
+   */
+  .uk-subnav {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    /* 2 */
+    margin-left: -20px;
+    /* 3 */
+    padding: 0;
+    list-style: none;
+  }
+  
+  /*
+   * 1. Space is allocated solely based on content dimensions: 0 0 auto
+   * 2. Gutter
+   * 3. Create position context for dropdowns
+   */
+  .uk-subnav > * {
+    /* 1 */
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+    /* 2 */
+    padding-left: 20px;
+    /* 3 */
+    position: relative;
+  }
+  
+  /* Items
+   ========================================================================== */
+  /*
+   * Items must target `a` elements to exclude other elements (e.g. dropdowns)
+   * Using `:first-child` instead of `a` to support `span` elements for text
+   * 1. Prevent gap if child element is `inline-block`, e.g. an icon
+   * 2. Style
+   */
+  .uk-subnav > * > :first-child {
+    /* 1 */
+    display: block;
+    /* 2 */
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-subnav > * > a:hover,
+  .uk-subnav > * > a:focus {
+    color: #666;
+    text-decoration: none;
+    outline: none;
+  }
+  
+  /* Active */
+  .uk-subnav > .uk-active > a {
+    color: #333;
+  }
+  
+  /* Divider modifier
+   ========================================================================== */
+  /*
+   * 1. Align items and divider vertically
+   */
+  .uk-subnav-divider > * {
+    /* 1 */
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+        -ms-flex-align: center;
+            align-items: center;
+  }
+  
+  /*
+   * Divider
+   * `nth-child` makes it also work without JS if it's only one row
+   */
+  .uk-subnav-divider > :nth-child(n+2):not(.uk-first-column)::before {
+    content: "";
+    height: 1.5em;
+    margin-left: 0px;
+    margin-right: 20px;
+    border-left: 1px solid #e5e5e5;
+  }
+  
+  /* Pill modifier
+   ========================================================================== */
+  .uk-subnav-pill > * > :first-child {
+    padding: 5px 10px;
+    background: transparent;
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-subnav-pill > * > a:hover,
+  .uk-subnav-pill > * > a:focus {
+    background-color: #f8f8f8;
+    color: #666;
+  }
+  
+  /* OnClick */
+  .uk-subnav-pill > * > a:active {
+    background-color: #f8f8f8;
+    color: #666;
+  }
+  
+  /* Active */
+  .uk-subnav-pill > .uk-active > a {
+    background-color: #1e87f0;
+    color: #fff;
+  }
+  
+  /* Disabled
+   * The same for all style modifiers
+   ========================================================================== */
+  .uk-subnav > .uk-disabled > a {
+    color: #999;
+  }
+  
+  /* ========================================================================
+     Component: Breadcrumb
+   ========================================================================== */
+  /*
+   * 1. Allow items to wrap into the next line
+   * 2. Reset list
+   */
+  .uk-breadcrumb {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    /* 1 */
+    -ms-flex-wrap: wrap;
+        flex-wrap: wrap;
+    /* 2 */
+    padding: 0;
+    list-style: none;
+  }
+  
+  /*
+   * Space is allocated solely based on content dimensions: 0 0 auto
+   */
+  .uk-breadcrumb > * {
+    -webkit-box-flex: 0;
+        -ms-flex: none;
+            flex: none;
+  }
+  
+  /* Items
+   ========================================================================== */
+  .uk-breadcrumb > * > * {
+    display: inline-block;
+    font-size: 0.875rem;
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-breadcrumb > * > :hover,
+  .uk-breadcrumb > * > :focus {
+    color: #666;
+    text-decoration: none;
+  }
+  
+  /* Disabled */
+  /* Active */
+  .uk-breadcrumb > :last-child > * {
+    color: #666;
+  }
+  
+  /*
+   * Divider
+   * `nth-child` makes it also work without JS if it's only one row
+   */
+  .uk-breadcrumb > :nth-child(n+2):not(.uk-first-column)::before {
+    content: "/";
+    display: inline-block;
+    margin: 0 20px;
+    color: #999;
+  }
+
+
+  .uk-navbar-dropdown {
+    /* 1 */
+    display: none;
+    /* 2 */
+    position: absolute;
+    z-index: 1020;
+    /* 3 */
+    -webkit-box-sizing: border-box;
+            box-sizing: border-box;
+    width: 200px;
+    /* 4 */
+    padding: 25px;
+    background: #fff;
+    color: #666;
+  }
+  
+  /* Show */
+  .uk-navbar-dropdown.uk-open {
+    display: block;
+  }
+  
+  /*
+   * Direction / Alignment modifiers
+   */
+  /* Direction */
+  [class*='uk-navbar-dropdown-top'] {
+    margin-top: -15px;
+  }
+  
+  [class*='uk-navbar-dropdown-bottom'] {
+    margin-top: 15px;
+  }
+  
+  [class*='uk-navbar-dropdown-left'] {
+    margin-left: -15px;
+  }
+  
+  [class*='uk-navbar-dropdown-right'] {
+    margin-left: 15px;
+  }
+  
+  /*
+   * Grid
+   * Adopts `uk-grid`
+   */
+  /* Gutter Horizontal */
+  .uk-navbar-dropdown-grid {
+    margin-left: -50px;
+  }
+  
+  .uk-navbar-dropdown-grid > * {
+    padding-left: 50px;
+  }
+  
+  /* Gutter Vertical */
+  .uk-navbar-dropdown-grid > .uk-grid-margin {
+    margin-top: 50px;
+  }
+  
+  /* Stack */
+  .uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
+    width: 100% !important;
+  }
+  
+  /*
+   * Width modifier
+   */
+  .uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) {
+    width: 400px;
+  }
+  
+  .uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) {
+    width: 600px;
+  }
+  
+  .uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) {
+    width: 800px;
+  }
+  
+  .uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) {
+    width: 1000px;
+  }
+  
+  /*
+   * Dropbar modifier
+   */
+  .uk-navbar-dropdown-dropbar {
+    margin-top: 0;
+    margin-bottom: 0;
+  }
+  
+  /* Dropdown Nav
+   * Adopts `uk-nav`
+   ========================================================================== */
+  /*
+   * Items
+   */
+  .uk-navbar-dropdown-nav > li > a {
+    color: #999;
+  }
+  
+  /* Hover + Focus */
+  .uk-navbar-dropdown-nav > li > a:hover,
+  .uk-navbar-dropdown-nav > li > a:focus {
+    color: #666;
+  }
+  
+  /* Active */
+  .uk-navbar-dropdown-nav > li.uk-active > a {
+    color: #333;
+  }
+  
+  /*
+   * Header
+   */
+  .uk-navbar-dropdown-nav .uk-nav-header {
+    color: #333;
+  }
+  
+  /*
+   * Divider
+   */
+  .uk-navbar-dropdown-nav .uk-nav-divider {
+    border-top: 1px solid #e5e5e5;
+  }
+  
+  /*
+   * Sublists
+   */
+  .uk-navbar-dropdown-nav .uk-nav-sub a {
+    color: #999;
+  }
+  
+  .uk-navbar-dropdown-nav .uk-nav-sub a:hover,
+  .uk-navbar-dropdown-nav .uk-nav-sub a:focus {
+    color: #666;
+  }
+  
+  .uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
+    color: #333;
+  }
+  
+  /* Dropbar
+   ========================================================================== */
+  .uk-navbar-dropbar {
+    background: #fff;
+  }
+  
+  /*
+   * Slide modifier
+   */
+  .uk-navbar-dropbar-slide {
+    position: absolute;
+    z-index: 980;
+    left: 0;
+    right: 0;
+  }
