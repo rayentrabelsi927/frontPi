@@ -1,4 +1,4 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 declare const $: any;
 declare interface RouteInfo {
     path: string;
@@ -21,16 +21,15 @@ export const ROUTES: RouteInfo[] = [
   templateUrl: './contact.component.html',
   styleUrls: ['./contact.component.css']
 })
-export class ContactComponent implements OnInit{
-  
-  profilePanelStatus: boolean = false;
+export class ContactComponent implements AfterViewInit {
+  constructor(private elementRef: ElementRef) {}
 
-  constructor() {}
-  ngOnInit(): void {
-    throw new Error('Method not implemented.');
-  }
+  ngAfterViewInit(): void {
+    const hamBurger = this.elementRef.nativeElement.querySelector('.toggle-btn');
 
-  toggleProfilePanel() {
-    this.profilePanelStatus = !this.profilePanelStatus;
+    hamBurger.addEventListener('click', () => {
+      const sidebar = this.elementRef.nativeElement.querySelector('#sidebar');
+      sidebar.classList.toggle('expand');
+    });
   }
 }

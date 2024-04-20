@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { AuthService } from '../../authService/auth.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-squelette',
@@ -7,7 +7,11 @@ import { AuthService } from '../../authService/auth.service';
   styleUrls: ['./squelette.component.css']
 })
 export class SqueletteComponent {
-  constructor(public authService: AuthService) {}
+  constructor(private router: Router) {}
+  
 
+  isPathAdmin(): boolean {
+    return this.router.url.startsWith('/admin');
+  }
 
 }

@@ -15,16 +15,17 @@ import { StatisticsComponent } from './Client/statistics/statistics.component';
 import { BlogComponent } from './Client/blog/blog.component';
 import { ContactComponent } from './Client/contact/contact.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { LoginComponent } from './Client/login/login.component';
+import { LoginComponent } from './admin/login/login.component';
 import { TableComponent } from './Client/table/table.component';
 import { BuyComponent } from './Client/buy/buy.component';
-import { AddComponent } from './Client/add/add.component';
-import { UpdateComponent } from './Client/update/update.component';
+import { AddComponent } from './admin/add/add.component';
+import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { CommonModule } from '@angular/common';
 import { FormsModule } from '@angular/forms';
-import { AllComponent } from './Client/all/all.component';
+import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
+import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 
 @NgModule({
@@ -50,6 +51,7 @@ import { HeaderComponent } from './shared/header/header.component';
     AccountSeettingComponent,
     AllComponent,
     HeaderComponent,
+    SidebarComponent,
   ],
   imports: [
     BrowserModule,

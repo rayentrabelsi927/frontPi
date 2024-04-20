@@ -1,15 +1,23 @@
-<!-- App Header Component -->
-<app-header ></app-header>
+<ng-container *ngIf="isPathAdmin(); then adminContent else defaultContent"></ng-container>
 
-<!-- App Navbar Component -->
-<app-navbar ></app-navbar>
-<br>
+<ng-template #adminContent>
+  <!-- App Admin Component -->
+  <app-sidebar></app-sidebar>
+</ng-template>
 
 
-<!-- Router Outlet pour charger les composants dynamiquement -->
-<router-outlet></router-outlet>
+<ng-template #defaultContent>
+  <!-- App Header Component -->
+  <app-header></app-header>
 
-<!-- App Footer Component
-<app-footer *ngIf="authService.isLoggedIn"></app-footer>
- -->
-<app-footer></app-footer>
+  <!-- App Navbar Component -->
+  <app-navbar></app-navbar>
+  <br>
+
+  <!-- Router Outlet pour charger les composants dynamiquement -->
+  <router-outlet></router-outlet>
+  <app-footer></app-footer>
+</ng-template>
+
+<!-- App Footer Component -->
+
