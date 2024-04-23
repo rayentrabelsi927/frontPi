@@ -1,0 +1,13 @@
+<div class="card">
+    <div class="card-header">
+      <div class="card-avatar"></div>
+      <div class="card-title">{{ productName }}</div>
+    </div>
+    <div class="card-body">
+      <div class="product-info">
+        <div class="product-price">${{ productPrice }}</div>
+        <button class="btn btn-lg btn-danger clearfix" (click)="pay(productName, productPrice)">Buy Now</button>
+      </div>
+    </div>
+  </div>
+  

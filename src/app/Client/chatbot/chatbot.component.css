@@ -1,0 +1,42 @@
+/* chatbot.component.css */
+
+.chat-container {
+    max-width: 800px;
+    margin: 20px auto;
+    overflow-y: auto; /* Permet de faire défiler les messages */
+}
+  
+.message {
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    clear: both; /* Assure que chaque message est sur une ligne différente */
+}
+  
+.user-message {
+    background-color: #00fff2; /* Couleur de fond bleue pour les messages de l'utilisateur */
+    float: right; /* Alignement à droite */
+    color: white; /* Couleur du texte blanc */
+}
+  
+.bot-message {
+    background-color: #c2d180; /* Couleur de fond grise pour les messages du bot */
+    float: left; /* Alignement à gauche */
+}
+  
+.input-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+  
+input[type="text"] {
+    width: calc(100% - 70px);
+    padding: 8px;
+    margin-right: 10px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+}
+  

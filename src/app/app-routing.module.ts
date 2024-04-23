@@ -17,6 +17,12 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { TransactionComponent } from './Client/transaction/transaction.component';
+import { PaiementComponent } from './Client/paiement/paiement.component';
+import { CancelComponent } from './Client/cancel/cancel.component';
+import { SucessComponent } from './Client/sucess/sucess.component';
+import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
+import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 
 
 
@@ -25,7 +31,11 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
-
+  { path: 'home', component: HomeComponent },
+  { path: 'transaction', component: TransactionComponent },
+  { path: 'paiement', component: PaiementComponent },
+  { path: 'cancel', component: CancelComponent },
+  { path: 'success', component: SucessComponent },
   { path: 'home', component: HomeComponent },
   { path: 'list-topics', component: ListTopicsComponent },
   { path: 'works', component: WorksComponent },
@@ -39,6 +49,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'table', component: TableComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'chatbot', component: ChatbotComponent },
+
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
@@ -46,7 +58,8 @@ const routes: Routes = [
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
 
-  
+  { path: 'admin/transaction', component: TransactionListComponent },
+
   // Ajoutez d'autres routes au besoin
 ];
 

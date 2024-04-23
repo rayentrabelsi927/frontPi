@@ -22,10 +22,17 @@ import { AddComponent } from './admin/add/add.component';
 import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { TransactionComponent } from './Client/transaction/transaction.component';
+import { HttpClientModule } from '@angular/common/http';
+import { PaiementComponent } from './Client/paiement/paiement.component';
+import { SucessComponent } from './Client/sucess/sucess.component';
+import { CancelComponent } from './Client/cancel/cancel.component';
+import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
+import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 
 
 @NgModule({
@@ -52,14 +59,25 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    TransactionComponent,
+    PaiementComponent,
+    SucessComponent,
+    CancelComponent,
+    TransactionListComponent,
+    ChatbotComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule, // Add this line
-    FormsModule // Add this line
-
+    FormsModule ,// Add this line
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
+
+  
   providers: [],
   bootstrap: [AppComponent]
 })
