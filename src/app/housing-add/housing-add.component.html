@@ -1,0 +1,66 @@
+<div class="container light-style flex-grow-1 container-p-y">
+    <div class="card overflow-hidden">
+        <div class="row no-gutters row-bordered row-border-light">
+            <div class="col-md-3 pt-0">
+                <div class="list-group list-group-flush account-settings-links">
+                    <a class="list-group-item list-group-item-action active" data-toggle="list" href="#account-general" style="background-color: rgb(243, 168, 155); color: aliceblue;">General</a>
+                </div>
+            </div>
+            <hr class="border-light m-0">
+            <div class="card-body">
+                <form (ngSubmit)="onSubmit()">
+                    <div class="form-group">
+                        <label>Housing Type</label><br>
+                        <input type="radio" id="shared" [(ngModel)]="housing.typeHousing" name="typeHousing" value="Shared">
+                        <label for="shared">Shared housing</label><br>
+                        <input type="radio" id="single" [(ngModel)]="housing.typeHousing" name="typeHousing" value="SinglePerson">
+                        <label for="single">House rental</label>
+                    </div>
+                    <div class="form-group">
+                        <label>description Housing</label>
+                        <input type="text" class="form-control" id="descriptionHousing"
+                            [(ngModel)]="housing.descriptionHousing" name="descriptionHousing">
+                    </div>
+                    <div class="card-body media align-items-center">
+                        <div class="media-body ml-4">
+                          <label class="btn btn-outline-primary">
+                            Upload new photo
+                            <input type="file" class="account-settings-fileinput">
+                          </label>
+                          <button type="button" class="btn btn-default md-btn-flat">Reset</button>
+                          <div class="text-light small mt-1">Allowed JPG, GIF or PNG. Max size of 800K</div>
+                        </div>
+                      </div>
+                    <div class="form-group">
+                        <label>Location Housing (Adresse)</label>
+                        <input type="text" class="form-control" id="locationHousing"
+                            [(ngModel)]="housing.locationHousing" name="locationHousing">
+                        <small class="form-text text-muted">Veuillez entrer une adresse valide.</small>
+                    </div>
+                    <div class="form-group">
+                        <label>Availability</label><br>
+                        <input type="radio" id="true" [(ngModel)]="housing.availabilityHousing" name="availabilityHousing" value="true">
+                        <label for="true">Available</label><br>
+                        <input type="radio" id="false" [(ngModel)]="housing.availabilityHousing" name="availabilityHousing" value="false">
+                        <label for="false"> Not available </label>
+                    </div>
+                    <div class="form-group">
+                        <label>{{ (housing.typeHousing.toString() === 'shared') ? 'Prix de location par personne' : 'Prix de location' }}</label>
+                        <input type="number" class="form-control" id="priceHousing"
+                            [(ngModel)]="housing.priceHousing" name="priceHousing">
+                    </div>
+                    <div class="form-group" *ngIf="housing.typeHousing.toString() === 'shared'">
+                        <label>Locataires</label>
+                        <input type="text" name="renters" class="form-control">
+                    </div>
+                    <div class="form-group">
+                        <label>Owner</label>
+                        <input type="text" class="form-control" id="owner" [(ngModel)]="currentUser" name="owner" disabled>
+                    </div>
+                    <button type="submit" class="btn btn-success">Add</button>&nbsp;
+                    <button type="button" class="btn btn-default">Cancel</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

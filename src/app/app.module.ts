@@ -26,6 +26,9 @@ import { FormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { HousingListComponent } from './Client/housing-list/housing-list.component';
+import { HttpClientModule } from '@angular/common/http';
+import { HousingAddComponent } from './housing-add/housing-add.component';
 
 
 @NgModule({
@@ -52,12 +55,16 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    HousingListComponent,
+    HousingAddComponent,
+    
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule, // Add this line
-    FormsModule // Add this line
+    FormsModule, // Add this line
+    HttpClientModule,
 
   ],
   providers: [],

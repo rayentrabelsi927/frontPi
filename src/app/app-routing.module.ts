@@ -17,6 +17,8 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { HousingListComponent } from './Client/housing-list/housing-list.component';
+import { HousingAddComponent } from './housing-add/housing-add.component';
 
 
 
@@ -39,6 +41,8 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'table', component: TableComponent },
   { path: 'login', component: LoginComponent },
+  { path: 'housing-list', component: HousingListComponent },
+  { path: 'housing-add', component: HousingAddComponent },
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
