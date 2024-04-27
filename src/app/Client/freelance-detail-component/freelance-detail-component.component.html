@@ -1,0 +1,25 @@
+<div class="centered-content">
+  <div *ngIf="freelance" class="text-center">
+    <h2 style="color: red">{{ freelance.titleJob }}</h2>
+    <p><strong>Client:</strong> <span style="color: black">{{ freelance.clientJob }}</span></p>
+    <p><strong>Description:</strong> <span style="color: black">{{ freelance.descriptionJob }}</span></p>
+    <p><strong>Duration:</strong> <span style="color: black">{{ freelance.durationJob }}</span></p>
+    <p><strong>Location:</strong> <span style="color: black">{{ freelance.locationJob }}</span></p>
+    <p><strong>Skills Required:</strong> <span style="color: black">{{ freelance.skillsRequiredJob }}</span></p>
+    <p><strong>Budget:</strong> <span style="color: black">{{ freelance.budgetJob }}</span></p>
+    <p><strong>Deadline:</strong> <span style="color: black">{{ freelance.deadlineJob }}</span></p>
+  </div>
+  <div class="centered-content">
+    <button (click)="goBack()" class="btn btn-primary">Retour</button>
+    <div *ngIf="freelance" class="text-center">
+      <!-- Contenu des détails du freelance -->
+    </div>
+    <div *ngIf="!freelance">
+      <p>Chargement des détails du freelance...</p>
+    </div>
+  </div>
+  <div *ngIf="!freelance">
+    <p>Chargement des détails du freelance...</p>
+  </div>
+
+</div>

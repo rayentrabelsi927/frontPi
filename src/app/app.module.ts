@@ -1,6 +1,5 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { SqueletteComponent } from './shared/squelette/squelette.component';
@@ -26,6 +25,17 @@ import { FormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { InternshipComponent } from './Client/internship/internship.component';
+import { HttpClientModule } from '@angular/common/http';
+import { InternshipDetailComponentComponent } from './Client/internship-detail-component/internship-detail-component.component';
+import { FreelanceComponent } from './Client/freelance/freelance.component';
+import { FreelanceDetailComponentComponent } from './Client/freelance-detail-component/freelance-detail-component.component';
+import { InternshipAdminComponent } from './admin/internship-admin/internship-admin.component';
+import { NewInternshipComponent } from './admin/new-internship/new-internship.component';
+import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
+import { NewJobComponent } from './admin/new-job/new-job.component';
+import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 
 
 @NgModule({
@@ -52,13 +62,23 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    InternshipComponent,
+    InternshipDetailComponentComponent,
+    FreelanceComponent,
+    FreelanceDetailComponentComponent,
+    InternshipAdminComponent,
+    NewInternshipComponent,
+    FreelanceAdminComponent,
+    NewJobComponent,
+    UpdateInternshipComponent,
+    UpdateFreelanceJobComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule, // Add this line
-    FormsModule // Add this line
-
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

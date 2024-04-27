@@ -1,0 +1,21 @@
+<section id="freelance-jobs" class="works">
+  <div class="container">
+    <div class="section-header">
+      <h2>Freelance</h2>
+    </div>
+    <div class="works-content">
+      <div class="row">
+        <div class="col-md-4 col-sm-6" *ngFor="let freelanceJob of freelanceJobs">
+          <div class="single-how-works">
+            <div class="single-how-works-icon">
+              <i class="lni lni-briefcase"></i>
+            </div>
+            <h2>{{ freelanceJob.titleJob }}</h2>
+            <p>{{ freelanceJob.descriptionJob }}</p>
+            <button class="btn btn-primary" (click)="showDetails(freelanceJob)">Show Details</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

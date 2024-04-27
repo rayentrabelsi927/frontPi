@@ -1,0 +1,35 @@
+<table class="freelance-job-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Title</th>
+      <th>Client</th>
+      <th>Duration</th>
+      <th>Location</th>
+      <th>Skills</th>
+      <th>Description</th>
+      <th>Budget</th>
+      <th>Deadline</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of freelances">
+      <td>{{ job.jobId }}</td>
+      <td>{{ job.titleJob }}</td>
+      <td>{{ job.clientJob }}</td>
+      <td>{{ job.durationJob }}</td>
+      <td>{{ job.locationJob }}</td>
+      <td>{{ job.skillsRequiredJob }}</td>
+      <td>{{ job.descriptionJob }}</td>
+      <td>{{ job.budgetJob }}</td>
+      <td>{{ job.deadlineJob }}</td>
+      <td>
+        <button class="action-button"  routerLink="/admin/updateFreelanceJob" (click)="updateFreelanceJob(job.jobId)">Modifier</button>
+        <button class="action-button" (click)="deleteFreelanceJob(job.jobId)">Supprimer</button>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="create-button" routerLink="/admin/newFreelanceJob">Créer un job</button>

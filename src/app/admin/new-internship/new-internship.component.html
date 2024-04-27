@@ -1,0 +1,18 @@
+<form class="internship-form" (submit)="createInternship(internship)">
+  <input type="text" [(ngModel)]="internship.titleInternship" name="title" placeholder="Titre">
+  <input type="text" [(ngModel)]="internship.companyInternship" name="company" placeholder="Entreprise">
+  <input type="text" [(ngModel)]="internship.durationInternship" name="duration" placeholder="Durée">
+  <input type="text" [(ngModel)]="internship.descriptionInternship" name="description" placeholder="Description">
+  <input type="text" [(ngModel)]="internship.locationInternship" name="location" placeholder="Emplacement">
+  <input type="text" [(ngModel)]="internship.skillsRequiredInternship" name="skillsRequired" placeholder="Compétences requises">
+  <input type="text" [(ngModel)]="internship.responsibilitiesInternship" name="responsibilities" placeholder="Responsabilités">
+  <input type="date" [(ngModel)]="internship.deadlineInternship" name="deadline" placeholder="Date limite">
+
+  <!-- Other form fields -->
+
+  <button type="submit" class="create-button">Créer</button>
+</form>
+<button (click)="goBack()" class="return-button">Retour</button>
+<div *ngIf="internship" class="text-center">
+  <!-- Content of the internship details -->
+</div>

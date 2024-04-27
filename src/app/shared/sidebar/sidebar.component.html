@@ -1,8 +1,8 @@
 
-  
 
-      
-  
+
+
+
 
       <div class="wrapper">
           <aside id="sidebar" [class.expand]="isSidebarExpanded">
@@ -15,6 +15,21 @@
                   </div>
               </div>
               <ul class="sidebar-nav">
+                <li class="sidebar-item">
+                  <a routerLink="/admin/internship" class="sidebar-link">
+                      <i class="lni lni-joomla-original"></i>                        <span>Internships</span>
+                  </a>
+              </li>
+              <li class="sidebar-item">
+                <a routerLink="/admin/freelance" class="sidebar-link">
+                    <i class="lni lni-joomla-original"></i>                        <span>Freelance</span>
+                </a>
+            </li>
+            <li class="sidebar-item">
+              <a routerLink="/admin/files" class="sidebar-link">
+                  <i class="lni lni-joomla-original"></i>                        <span>Files</span>
+              </a>
+          </li>
                   <li class="sidebar-item">
                       <a routerLink="/admin/all" class="sidebar-link">
                           <i class="lni lni-user"></i>
@@ -111,7 +126,7 @@
                           <span>Setting</span>
                       </a>
                   </li>
-                  
+
               </ul>
               <div class="sidebar-footer">
                   <a href="#" class="sidebar-link">
@@ -126,8 +141,8 @@
 
         <router-outlet></router-outlet> <!-- Contenu principal change ici -->
 
-           
-             
+
+
           </div>
       </div>
-      
+

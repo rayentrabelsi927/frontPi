@@ -1,0 +1,18 @@
+<form class="job-form" (submit)="createFreelance(job)">
+  <input type="text" [(ngModel)]="job.titleJob" name="title" placeholder="Titre">
+  <input type="text" [(ngModel)]="job.clientJob" name="client" placeholder="Client">
+  <input type="text" [(ngModel)]="job.durationJob" name="duration" placeholder="Durée">
+  <input type="text" [(ngModel)]="job.descriptionJob" name="description" placeholder="Description">
+  <input type="text" [(ngModel)]="job.locationJob" name="location" placeholder="Emplacement">
+  <input type="text" [(ngModel)]="job.skillsRequiredJob" name="skillsRequired" placeholder="Compétences requises">
+  <input type="text" [(ngModel)]="job.budgetJob" name="budget" placeholder="Budget">
+  <input type="date" [(ngModel)]="job.deadlineJob" name="deadline" placeholder="Date limite">
+
+  <!-- Autres champs du formulaire -->
+
+  <button type="submit" class="create-button">Créer</button>
+</form>
+<button (click)="goBack()" class="return-button">Retour</button>
+<div *ngIf="job" class="text-center">
+  <!-- Contenu des détails du job -->
+</div>

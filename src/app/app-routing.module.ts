@@ -17,15 +17,19 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-
-
-
-
-
+import { InternshipComponent } from './Client/internship/internship.component';
+import { InternshipDetailComponentComponent } from './Client/internship-detail-component/internship-detail-component.component';
+import { FreelanceComponent } from './Client/freelance/freelance.component';
+import { FreelanceDetailComponentComponent } from './Client/freelance-detail-component/freelance-detail-component.component';
+import { InternshipAdminComponent } from './admin/internship-admin/internship-admin.component';
+import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
+import { NewInternshipComponent } from './admin/new-internship/new-internship.component';
+import { NewJobComponent } from './admin/new-job/new-job.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
+import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
-
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'list-topics', component: ListTopicsComponent },
   { path: 'works', component: WorksComponent },
@@ -39,19 +43,23 @@ const routes: Routes = [
   { path: 'contact', component: ContactComponent },
   { path: 'table', component: TableComponent },
   { path: 'login', component: LoginComponent },
-
-  /* admin lezm el path yabda b kelmet admin */
+  { path: 'internships', component: InternshipComponent },
+  { path: 'freelances', component: FreelanceComponent },
+  { path: 'internships/:id', component: InternshipDetailComponentComponent },
+  { path: 'freelance/:id', component: FreelanceDetailComponentComponent },
   { path: 'admin/all', component: AllComponent },
+  { path: 'admin/internship', component: InternshipAdminComponent },
+  { path: 'admin/freelance', component: FreelanceAdminComponent },
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/newInternship', component: NewInternshipComponent },
+  { path: 'admin/newFreelanceJob', component: NewJobComponent },
+  { path: 'admin/updateFreelanceJob/:id', component:UpdateFreelanceJobComponent },
+  { path: 'admin/updateInternship/:id', component: UpdateInternshipComponent },
 
-  
-  // Ajoutez d'autres routes au besoin
+
 ];
-
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

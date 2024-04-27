@@ -1,0 +1,29 @@
+<div class="centered-content">
+  <div *ngIf="internship" class="text-center">
+    <h2 style="color: red">{{ internship.titleInternship }}</h2>
+    <p><strong>companyInternship:</strong> <span style="color: black">{{ internship.companyInternship }}</span></p>
+    <p><strong>descriptionInternship:</strong> <span style="color: black">{{ internship.descriptionInternship }}</span></p>
+    <p><strong>durationInternship:</strong> <span style="color: black">{{ internship.durationInternship }}</span></p>
+    <p><strong>locationInternship:</strong> <span style="color: black">{{ internship.locationInternship }}</span></p>
+    <p><strong>skillsRequiredInternship:</strong> <span style="color: black">{{ internship.skillsRequiredInternship }}</span></p>
+    <p><strong>responsibilitiesInternship:</strong> <span style="color: black">{{ internship.responsibilitiesInternship }}</span></p>
+    <p><strong>deadlineInternship:</strong> <span style="color: black">{{ internship.deadlineInternship }}</span></p>
+
+    <!-- ... autres détails du stage ... -->
+
+    <div class="d-flex justify-content-center">
+      <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
+
+      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none" accept=".pdf, .doc, .docx">
+      <button class="btn btn-primary" (click)="fileInput.click()">Sélectionner un fichier</button>
+      <button class="btn btn-primary" (click)="uploadFile()" [disabled]="!selectedFile">Postuler</button>    </div>
+  </div>
+  <button (click)="goBack()" class="btn btn-primary">Retour</button>
+  <div *ngIf="internship" class="text-center">
+    <!-- Contenu des détails du freelance -->
+  </div>
+
+  <div *ngIf="!internship">
+    <p>Chargement des détails du stage...</p>
+  </div>
+</div>
