@@ -22,29 +22,44 @@
 </div>
     <p>Discover all your transactions.</p>
 
+
     <div class="search-container">
-        <label for="userId">Search by User ID:</label>
-        <input type="text" [(ngModel)]="searchQuery" (input)="searchTransactionsByUser(searchQuery)">
-        <button class="btn btn-primary" (click)="searchTransactionsByUser(searchQuery)">Search</button>
+      <div class="input-group">
+        <input type="text" [(ngModel)]="searchQuery" (input)="searchTransactionsByUser(searchQuery)" placeholder="Search..." class="form-control" id="search" name="search">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="lni lni-search"></i></span>
+        </div>
       </div>
+    </div>
+    
+    
   </div>
+
+  <br>  <br>  <br>
+
+  <div class="card">
+    <div class="card-header">
+        <h4>Assign Project List</h4>
+    </div>
+    <div class="card-body">
   <table class="table">
     <thead>
       <tr>
 
-        <th>amountTransaction</th>
-        <th>user</th>
+        <th>amount</th>
+        <th>user </th>
 
         <th>Housing ID</th>
         <th>Article </th>
-        
+        <th>Feedback</th>
+
         <th>Feedback</th>
       
       </tr>
     </thead>
     <tbody>
-        <tr *ngFor="let transaction of transactions">
-          <td>{{ transaction.amountTransaction }}</td>
+        <tr *ngFor="let transaction of filteredTransactions">
+          <td>{{ transaction.payementDateTransaction }}</td>
           <td>{{ transaction.users.userId }}</td>
 
           <td *ngIf="transaction.housing != null">{{ transaction.housing.housingID }}
@@ -59,6 +74,7 @@
             <button type="button" class="btn btn-link"(click)="updateMapUrl( transaction.housing.locationHousing )" data-bs-toggle="modal" data-bs-target="#exampleModal">
               show location
             </button>
+            
             
           
           <td *ngIf="transaction.housing == null">-</td>
@@ -88,8 +104,50 @@
               </div>
             </div>
           </td>
+          <td><span class="badge badge-soft-success mb-0">Full Stack Developer</span></td>
+
         </tr>
       </tbody>
       
   </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   
+  
+

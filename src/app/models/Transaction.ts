@@ -12,5 +12,20 @@ export class Transaction {
     housing!: Housing;
     users!: User;
 
-   
+    constructor(
+      transactionId: number,
+      amountTransaction: number,
+      payementDateTransaction: Date,
+      feedbacks: Feedback[],
+      articles: Article[],
+      housing:Housing
+    ) {
+      this.housing =housing;
+      this.transactionId = transactionId;
+      this.amountTransaction = amountTransaction;
+      this.payementDateTransaction = payementDateTransaction;
+      this.feedbacks = feedbacks;
+      this.articles = articles;
+      this.housing=housing;
+    }
   }

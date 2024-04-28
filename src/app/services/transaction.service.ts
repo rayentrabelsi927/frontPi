@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaction } from '../models/Transaction';
+import { statistics } from '../models/statistics';
 
 @Injectable({
   providedIn: 'root'
@@ -46,4 +47,9 @@ export class TransactionService {
   
 }
   
+
+
+stat(): Observable<statistics> {
+  return this.httpClient.get<statistics>(this.baseURL + 'statistique');
+}
 }

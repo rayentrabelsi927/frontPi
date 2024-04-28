@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -33,6 +34,7 @@ import { SucessComponent } from './Client/sucess/sucess.component';
 import { CancelComponent } from './Client/cancel/cancel.component';
 import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
 import { ChatbotComponent } from './Client/chatbot/chatbot.component';
+import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
 
 
 @NgModule({
@@ -65,6 +67,7 @@ import { ChatbotComponent } from './Client/chatbot/chatbot.component';
     CancelComponent,
     TransactionListComponent,
     ChatbotComponent,
+    StatisticFeedbackComponent,
   ],
   imports: [
     BrowserModule,
@@ -75,6 +78,7 @@ import { ChatbotComponent } from './Client/chatbot/chatbot.component';
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    QRCodeModule,
   ],
 
   

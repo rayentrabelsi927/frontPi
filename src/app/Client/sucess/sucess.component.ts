@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { Chart, registerables } from 'chart.js';
 import { TransactionService } from 'src/app/services/transaction.service';
+import { CookieService } from 'ngx-cookie-service';
 
 @Component({
   selector: 'app-sucess',
@@ -14,7 +15,7 @@ export class SucessComponent implements OnInit {
 
 
 
-  constructor(private transactionservice: TransactionService , private route: ActivatedRoute) { 
+  constructor(private transactionservice: TransactionService , private route: ActivatedRoute,private cookieService: CookieService) { 
     Chart.register(...registerables);
   }
 
@@ -36,8 +37,32 @@ export class SucessComponent implements OnInit {
         payementDateTransaction: "2024-04-15T19:53:42",
         feedbacks: [],
         articles: [],
-        housing:null,
-        username: "rayen"
+        housing: {
+          "housingID": 1,
+          "typeHousing": "SinglePerson",
+          "descriptionHousing": "21",
+          "locationHousing": "Foyer Espoir ",
+          "availabilityHousing": true,
+          "imgHousing": "121",
+          "priceHousing": 12.0
+      },
+          "users": {
+          "userId": 1,
+          "username": "rayen",
+          "firstName": "rayen",
+          "lastName": "test",
+          "email": "test@test.com",
+          "password": "test",
+          "phone": 0,
+          "role": "admin",
+          "imgUser": "test",
+          "lastLogin": "test",
+          "complaints": [],
+          "internships": null,
+          "participants": [],
+          "sportTeams": null,
+          "jobs": []
+      }
     };
 
 
@@ -52,6 +77,9 @@ export class SucessComponent implements OnInit {
           // Traitez l'erreur ici, par exemple affichez un message à l'utilisateur
         }
       );
+      
+      this.cookieService.set("1",a.housing.typeHousing);
+
      /* this.transactionservice.addTransaction(t).subscribe(
         data => {
          

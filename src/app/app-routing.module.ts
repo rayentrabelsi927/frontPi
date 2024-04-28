@@ -23,6 +23,7 @@ import { CancelComponent } from './Client/cancel/cancel.component';
 import { SucessComponent } from './Client/sucess/sucess.component';
 import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
 import { ChatbotComponent } from './Client/chatbot/chatbot.component';
+import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
 
 
 
@@ -51,6 +52,7 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'chatbot', component: ChatbotComponent },
 
+  { path: 'admin/statistics', component: StatisticFeedbackComponent },
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
