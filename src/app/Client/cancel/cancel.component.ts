@@ -6,5 +6,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./cancel.component.css']
 })
 export class CancelComponent {
+  ngOnInit(): void {
+    sessionStorage.removeItem("transaction");
+
+  }
+
+
 
 }
+

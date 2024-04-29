@@ -25,6 +25,7 @@ export class SucessComponent implements OnInit {
   }
  
   savetransaction(){
+    
     const objetStocke = sessionStorage.getItem('transaction');
 
     if (objetStocke !== null) {
@@ -36,16 +37,162 @@ export class SucessComponent implements OnInit {
         amountTransaction: 1000.0,
         payementDateTransaction: "2024-04-15T19:53:42",
         feedbacks: [],
-        articles: [],
-        housing: {
-          "housingID": 1,
-          "typeHousing": "SinglePerson",
-          "descriptionHousing": "21",
-          "locationHousing": "Foyer Espoir ",
-          "availabilityHousing": true,
-          "imgHousing": "121",
-          "priceHousing": 12.0
-      },
+        articles: [
+      
+          {
+              "articleId": 4,
+              "categoryArticle": "Educational",
+              "conditionArticle": "Damaged",
+              "imgArticle": "img",
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": {
+                  "userId": 1,
+                  "username": "rayen",
+                  "firstName": "rayen",
+                  "lastName": "test",
+                  "email": "test@test.com",
+                  "password": "test",
+                  "phone": 0,
+                  "role": "admin",
+                  "imgUser": "test",
+                  "lastLogin": "test",
+                  "complaints": [],
+                  "internships": null,
+                  "participants": [],
+                  "sportTeams": null,
+                  "jobs": []
+              }
+          },
+          {
+              "articleId": 6,
+              "categoryArticle": "Educational",
+              "conditionArticle": null,
+              "imgArticle": null,
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": null
+          },
+          {
+              "articleId": 8,
+              "categoryArticle": "Technology",
+              "conditionArticle": null,
+              "imgArticle": null,
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": null
+          },
+          {
+              "articleId": 9,
+              "categoryArticle": "Technology",
+              "conditionArticle": null,
+              "imgArticle": null,
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": null
+          },
+          {
+              "articleId": 10,
+              "categoryArticle": "Home",
+              "conditionArticle": "Good",
+              "imgArticle": "img",
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": {
+                  "userId": 1,
+                  "username": "rayen",
+                  "firstName": "rayen",
+                  "lastName": "test",
+                  "email": "test@test.com",
+                  "password": "test",
+                  "phone": 0,
+                  "role": "admin",
+                  "imgUser": "test",
+                  "lastLogin": "test",
+                  "complaints": [],
+                  "internships": null,
+                  "participants": [],
+                  "sportTeams": null,
+                  "jobs": []
+              }
+          },
+          {
+              "articleId": 11,
+              "categoryArticle": "Home",
+              "conditionArticle": "Good",
+              "imgArticle": "img",
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": {
+                  "userId": 1,
+                  "username": "rayen",
+                  "firstName": "rayen",
+                  "lastName": "test",
+                  "email": "test@test.com",
+                  "password": "test",
+                  "phone": 0,
+                  "role": "admin",
+                  "imgUser": "test",
+                  "lastLogin": "test",
+                  "complaints": [],
+                  "internships": null,
+                  "participants": [],
+                  "sportTeams": null,
+                  "jobs": []
+              }
+          },
+          {
+              "articleId": 12,
+              "categoryArticle": "Home",
+              "conditionArticle": "Good",
+              "imgArticle": "img",
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": {
+                  "userId": 1,
+                  "username": "rayen",
+                  "firstName": "rayen",
+                  "lastName": "test",
+                  "email": "test@test.com",
+                  "password": "test",
+                  "phone": 0,
+                  "role": "admin",
+                  "imgUser": "test",
+                  "lastLogin": "test",
+                  "complaints": [],
+                  "internships": null,
+                  "participants": [],
+                  "sportTeams": null,
+                  "jobs": []
+              }
+          },
+          {
+              "articleId": 13,
+              "categoryArticle": "Home",
+              "conditionArticle": "Good",
+              "imgArticle": "img",
+              "descriptionArticle": "Description de l'article",
+              "priceArticle": 500.0,
+              "users": {
+                  "userId": 1,
+                  "username": "rayen",
+                  "firstName": "rayen",
+                  "lastName": "test",
+                  "email": "test@test.com",
+                  "password": "test",
+                  "phone": 0,
+                  "role": "admin",
+                  "imgUser": "test",
+                  "lastLogin": "test",
+                  "complaints": [],
+                  "internships": null,
+                  "participants": [],
+                  "sportTeams": null,
+                  "jobs": []
+              }
+          }
+      ],
+        housing: null,
           "users": {
           "userId": 1,
           "username": "rayen",
@@ -70,7 +217,9 @@ export class SucessComponent implements OnInit {
       .subscribe(
         (response) => {
           console.log('Transaction ajoutée avec succès :', response);
-          // Traitez la réponse ici si nécessaire, par exemple affichez un message à l'utilisateur
+          sessionStorage.removeItem("transaction");
+
+
         },
         (error) => {
           console.error('Erreur lors de l\'ajout de la transaction :', error);
@@ -78,7 +227,6 @@ export class SucessComponent implements OnInit {
         }
       );
       
-      this.cookieService.set("1",a.housing.typeHousing);
 
      /* this.transactionservice.addTransaction(t).subscribe(
         data => {

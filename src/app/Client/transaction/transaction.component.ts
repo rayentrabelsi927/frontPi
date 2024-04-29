@@ -18,7 +18,7 @@ export class TransactionComponent {
   mapUrl: SafeResourceUrl = '';
   feedbackposts: { [key: number]: { commentaire: string, rating: number } } = {}; // Map pour stocker les commentaires et les notations par transaction
   transactions: Transaction[] = [];
-
+ 
   constructor(private transactionService: TransactionService, private sanitizer: DomSanitizer,private feedbackService: FeedbackService, private router: Router) { }
   
   transform(value: any, ...args: any[]) {
@@ -27,13 +27,9 @@ export class TransactionComponent {
 
   ngOnInit(): void {
     this.getAllTransactions();
-    var Filter = require('bad-words'),
-    filter = new Filter();
-    filter.addWords('some', 'bad', 'word');
-    console.log(filter)
+   
 
  
-console.log(filter.isProfane("Don't be an bad "));
   }
 
   updateMapUrl(location: any): void {
@@ -69,6 +65,9 @@ console.log(filter.isProfane("Don't be an bad "));
     const feedbackData = this.feedbackposts[transactionId];
     const comment = feedbackData.commentaire;
     const rating = feedbackData.rating;
+    var Filter = require('bad-words'),
+    filter = new Filter();
+    filter.addWords('some', 'bad', 'word');
 
     // Vérifier si le commentaire ou le rating est vide
     if (!comment || !rating) {
@@ -79,13 +78,17 @@ console.log(filter.isProfane("Don't be an bad "));
     console.log('Feedback Data:', feedbackData);
     console.log('Rating:', rating);
 
-    // Appel de la méthode pour ajouter le feedback
-    this.transactionService.addFeedbackToTransaction(transactionId, feedbackData).subscribe(response => {
+    if (filter.isProfane(comment)){
+      feedbackData.commentaire=filter.clean(comment);
+     }
+     this.transactionService.addFeedbackToTransaction(transactionId, feedbackData).subscribe(response => {
       console.log('Feedback added to transaction:', response);
       this.getAllTransactions();
     }, error => {
       console.error('Error adding feedback to transaction:', error);
     });
+    // Appel de la méthode pour ajouter le feedback
+    
   }
 
   setRating(transactionId: number, rating: number): void {

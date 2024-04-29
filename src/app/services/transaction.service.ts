@@ -2,7 +2,9 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Transaction } from '../models/Transaction';
-import { statistics } from '../models/statistics';
+import { statisticsFeedback } from '../models/statisticsFeedback';
+import { transaction_ban } from '../models/transaction_ban';
+import { statisticstransaction } from '../models/statisticsTransaction';
 
 @Injectable({
   providedIn: 'root'
@@ -13,6 +15,12 @@ export class TransactionService {
 
   constructor(private httpClient: HttpClient) { }
   
+
+ 
+  getByIdIfBnned(id: number): Observable<transaction_ban> {
+    return this.httpClient.get<transaction_ban>(`${this.baseURL}byId/${id}`);
+  }
+
   getAll(): Observable<Transaction[]> {
     return this.httpClient.get<Transaction[]>(this.baseURL + 'all');
   }
@@ -49,7 +57,12 @@ export class TransactionService {
   
 
 
-stat(): Observable<statistics> {
-  return this.httpClient.get<statistics>(this.baseURL + 'statistique');
+stat(): Observable<statisticsFeedback> {
+  return this.httpClient.get<statisticsFeedback>(this.baseURL + 'statistique');
+}
+
+
+stattransaction(): Observable<statisticstransaction> {
+  return this.httpClient.get<statisticstransaction>(this.baseURL + 'statistiquetransaction');
 }
 }

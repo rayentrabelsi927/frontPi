@@ -3,6 +3,8 @@ import { loadStripe } from '@stripe/stripe-js';
 import { Article } from 'src/app/models/Article';
 import { PaiementService } from 'src/app/services/paiement.service';
 import { Router } from '@angular/router';
+import { TransactionService } from 'src/app/services/transaction.service';
+import { transaction_ban } from 'src/app/models/transaction_ban';
 
 const environment = {
   production: false,
@@ -16,22 +18,21 @@ const environment = {
   styleUrls: ['./paiement.component.css']
 })
 export class PaiementComponent implements OnInit {
- 
+  possible: transaction_ban | undefined ;
+
   stripePromise = loadStripe(environment.stripe);
   productName: string = 'Iphone X';
   productPrice: number = 10;
   articleList: Article[] = [
     
+
 ]; 
 
-constructor(private paiementService: PaiementService, private router: Router) { }
+
+constructor(private paiementService: PaiementService,private transactionservice : TransactionService,private router: Router) { }
 
   ngOnInit(): void {
     this.articleList.push({
-
-    
-     
-
 
       articleId: 2,
       categoryArticle: "Home",
@@ -44,7 +45,15 @@ constructor(private paiementService: PaiementService, private router: Router) { 
         role: "admin"
       }
     }); 
-  
+
+    this.transactionservice.getByIdIfBnned(1).subscribe(data => {
+      this.possible = data as transaction_ban;
+      console.log(this.possible.banned); 
+    });
+
+    
+
+
   }
   async pay(productName: string, productPrice: number): Promise<void> {
 

@@ -1,5 +1,5 @@
 
-export class statistics {
+export class statisticsFeedback {
     note1!: number;
     note2!: number;
     note3!: number;

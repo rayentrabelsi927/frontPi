@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { statistics } from 'src/app/models/statistics';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { Chart, registerables } from 'chart.js';
+import { statisticstransaction } from 'src/app/models/statisticsTransaction';
+import { statisticsFeedback } from 'src/app/models/statisticsFeedback';
 
 @Component({
   selector: 'app-statistic-feedback',
@@ -12,7 +13,7 @@ import { Chart, registerables } from 'chart.js';
 export class StatisticFeedbackComponent implements OnInit {
   public myAngularxQrCode: string = "";
   stat: any; // Initialisation du tableau de feedback
-
+  statTransaction: any;
   constructor(private transactionService: TransactionService,  private router: Router) {
     this.myAngularxQrCode = 'Your QR code data string';
 
@@ -21,12 +22,12 @@ export class StatisticFeedbackComponent implements OnInit {
    }
 
   ngOnInit(): void {
-
-    this.statistics();
+this.statisticstransaction();
+    this.statisticsfeedback();
   }
 
 
-  statistics(){
+  statisticsfeedback(){
     this.transactionService.stat().subscribe(data => {
       this.stat = data;
       console.log(this.stat)
@@ -39,7 +40,20 @@ export class StatisticFeedbackComponent implements OnInit {
   }
 
 
-  tt(stat:statistics) {
+  statisticstransaction(){
+    this.transactionService.stattransaction().subscribe(data => {
+      this.statTransaction = data;
+      console.log(this.statTransaction)
+
+      this.tt2(this.statTransaction);
+
+ // Affiche data complet dans la console
+    });
+
+  }
+
+
+  tt(stat:statisticsFeedback) {
     const canvas = document.getElementById('myChart') as HTMLCanvasElement | null;
     if (!canvas) {
       console.error('Canvas element not found.');
@@ -75,6 +89,59 @@ export class StatisticFeedbackComponent implements OnInit {
   options: {}
 });
 
+  }
+
+
+
+  tt2(stattransaction :statisticstransaction ) {
+    const canvas = document.getElementById('myChart2') as HTMLCanvasElement | null;
+    if (!canvas) {
+      console.error('Canvas element not found.');
+      return;
+    }
+  
+    const ctx = canvas.getContext('2d');
+    if (!ctx) {
+      console.error('Canvas context not available.');
+      return;
+    }
+  
+    const myChart = new Chart(ctx, {
+      type: 'line',
+      data: {
+        labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],  
+              datasets: [{
+          label: 'My First Dataset',
+          data: [
+            stattransaction.janvier,
+            stattransaction.fevrier,
+            stattransaction.mars,
+            stattransaction.avril,
+            stattransaction.mai,
+            stattransaction.juin,
+            stattransaction.juillet,
+            stattransaction.aout,
+            stattransaction.septembre,
+            stattransaction.octobre,
+            stattransaction.novembre,
+            stattransaction.decembre
+          ]
+          ,
+          fill: false,
+          borderColor: 'rgb(75, 192, 192)',
+          tension: 1
+        }]
+      },
+      options: {
+        scales: {
+          y: {
+            ticks: {
+              stepSize: 1, // Définit l'intervalle entre chaque valeur de l'échelle y
+            }
+          }
+        }
+      } // Ajoutez vos options de graphique ici si nécessaire
+    });
   }
  /* tt() {
     const canvas = document.getElementById('myChart') as HTMLCanvasElement | null;
