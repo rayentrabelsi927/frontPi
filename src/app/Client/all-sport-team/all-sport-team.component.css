@@ -1,0 +1,15 @@
+.single-explore-item {
+    margin-bottom: 20px;
+  }
+  
+  .image-container {
+    width: 100%; /* Adjust this value as needed */
+    height: 200px; /* Adjust this value as needed */
+    overflow: hidden;
+  }
+  
+  .image-container img {
+    width: 100%;
+    height: auto;
+  }
+  

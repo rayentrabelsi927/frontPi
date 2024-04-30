@@ -22,10 +22,29 @@ import { AddComponent } from './admin/add/add.component';
 import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AllSportTeamComponent } from './Client/all-sport-team/all-sport-team.component';
+import { AddTeamComponent } from './Client/add-team/add-team.component';
+import { UpdateTeamComponent } from './Client/update-team/update-team.component';
+import { DetailsTeamComponent } from './Client/details-team/details-team.component';
+import { AllFieldsComponent } from './admin/all-fields/all-fields.component';
+import { AddFieldComponent } from './admin/add-field/add-field.component';
+import { UpdateFieldComponent } from './admin/update-field/update-field.component';
+import { AllReservationsComponent } from './Client/all-reservations/all-reservations.component';
+import { AddReservationComponent } from './Client/add-reservation/add-reservation.component';
+import { UpdateReservationComponent } from './Client/update-reservation/update-reservation.component';
+import { AdminAllReservationsComponent } from './admin/admin-all-reservations/admin-all-reservations.component';
+import { AdminUpdateReservationComponent } from './admin/admin-update-reservation/admin-update-reservation.component';
+import { AdminAddReservationComponent } from './admin/admin-add-reservation/admin-add-reservation.component';
+import { AdminAllsportTeamComponent } from './admin/admin-allsport-team/admin-allsport-team.component';
+import { AdminAddsportTeamComponent } from './admin/admin-addsport-team/admin-addsport-team.component';
+import { AdminUpdatesportTeamComponent } from './admin/admin-updatesport-team/admin-updatesport-team.component';
+import { AdminDetailssportTeamComponent } from './admin/admin-detailssport-team/admin-detailssport-team.component';
+import { DetailsTeamClientComponent } from './Client/details-team-client/details-team-client.component';
 
 
 @NgModule({
@@ -52,12 +71,35 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    AllSportTeamComponent,
+    AddTeamComponent,
+    UpdateTeamComponent,
+    DetailsTeamComponent,
+    AllFieldsComponent,
+    AddFieldComponent,
+    UpdateFieldComponent,
+    AllReservationsComponent,
+    AddReservationComponent,
+    UpdateReservationComponent,
+    AdminAllReservationsComponent,
+    AdminUpdateReservationComponent,
+    AdminAddReservationComponent,
+    AdminAllsportTeamComponent,
+    AdminAddsportTeamComponent,
+    AdminUpdatesportTeamComponent,
+    AdminDetailssportTeamComponent,
+    DetailsTeamClientComponent,
+
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule, // Add this line
-    FormsModule // Add this line
+    FormsModule, // Add this line
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    
 
   ],
   providers: [],

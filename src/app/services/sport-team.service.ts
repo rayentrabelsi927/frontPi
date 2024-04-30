@@ -1,0 +1,98 @@
+import { Injectable } from '@angular/core';
+import { SportTeam } from '../models/SportTeam';
+import { Observable } from 'rxjs';
+import { HttpClient } from '@angular/common/http';
+
+@Injectable({
+  providedIn: 'root'
+})
+export class SportTeamService {
+  private baseURL = "http://localhost:8089/projectARCTIC3/SportTeam/";
+
+  constructor(private httpClient: HttpClient) { }
+
+  
+
+
+  getAll(): Observable<SportTeam[]> {
+    return this.httpClient.get<SportTeam[]>(this.baseURL + 'all');
+  }
+
+  
+  
+  getSportTeamById(id: String): Observable<any> {
+    return this.httpClient.get<any>(`${this.baseURL}get/${id}`);
+  }
+
+ 
+  
+
+  addSportTeam(sportTeamName: string, captainId: number, logo: File): Observable<any> {  
+    const formData: FormData = new FormData();
+    formData.append('nameTeam', sportTeamName);
+    formData.append('logo', logo, logo.name);
+    return this.httpClient.post<any>(this.baseURL + 'add-with-photo/' + captainId, formData);
+  }
+
+
+  updateSportTeamCap(sportTeamId: number, captainId: number, nameTeam: string, updatedTeam: SportTeam): Observable<SportTeam> {
+    return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}?nameTeam=${nameTeam}`, updatedTeam);
+  }
+
+
+
+  addUserToSportTeam(sportTeamId: number, userId: number): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseURL}addUser/${sportTeamId}/${userId}`, {});
+  }
+
+
+  addUserByEmail(sportTeamId: number, userEmail: string): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseURL}addUserByEmail/${sportTeamId}/${userEmail}`, {});
+  }
+  
+  
+  addUserByEmailToSportTeam(sportTeamId: number, userEmail: string): Observable<any> {
+    const url = `${this.baseURL}${sportTeamId}/add-user?userEmail=${userEmail}`;
+    return this.httpClient.post<any>(url, {});
+  }
+  
+removeUserFromSportTeam(sportTeamId: number, userId: number): Observable<any> {
+  const url = `${this.baseURL}removeUser/${sportTeamId}/${userId}`;
+  return this.httpClient.post<any>(url, {});
+}
+  
+  
+  getUsersForSportTeam(teamId: number): Observable<any[]> {
+    return this.httpClient.get<any[]>(`${this.baseURL}${teamId}/users`);
+  }
+
+
+
+  deleteSportTeam(sportTeamId: number): Observable<any> {
+    return this.httpClient.delete<any>(`${this.baseURL}delete/${sportTeamId}`);
+  }
+  
+
+
+  participateSportTeam(sportTeamId: number, userId: number): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseURL}participateSportTeam/${sportTeamId}`, null, {
+      headers: {
+        userId: userId.toString()
+      }
+    });
+  }
+
+  cancelParticipationSportTeam(sportTeamId: number, userId: number): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseURL}/cancelParticipateSportTeam/${sportTeamId}`, null, {
+      headers: {
+        userId: userId.toString()
+      }
+    });
+  }
+
+  countUsersJoinedInSportTeam(sportTeamId: number): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL}${sportTeamId}/user-count`);
+  }
+  
+}
+

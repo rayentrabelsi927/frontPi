@@ -1,0 +1,28 @@
+<table class="table">
+  <thead>
+    <tr>
+      <th>Team ID</th>
+      <th>Team Name</th>
+      <th>Logo</th>
+      <th>Actions</th> 
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let team of sportTeam">
+      <td>{{ team.teamId }}</td>
+      <td>{{ team.nameTeam }}</td>
+      <td>
+        <img class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + team.logoTeam" alt="Team Logo" style="width: 100px; height: auto;">
+      </td>
+      <td>
+        <button class="btn btn-primary" (click)="navigateToUpdateTeamPage(team.teamId)">Update Team</button>
+        <button (click)="navigateToDetailsTeamPage(team.teamId)">Details</button>
+        <button class="btn btn-danger" (click)="deleteSportTeam(team.teamId)">Delete</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<button class="btn btn-primary" (click)="navigateToAddTeam()">Add Team</button>
+

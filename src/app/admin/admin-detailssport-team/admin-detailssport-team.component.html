@@ -1,0 +1,53 @@
+<div class="container">
+    <!-- <h2>Team Details</h2> -->
+    <div *ngIf="sportTeam">
+      <div class="form-group">
+        <!-- <label for="teamName">Team Name:</label> -->
+        <h2>{{ sportTeam.nameTeam }}</h2>
+      </div>
+      <div class="form-group">
+        <img *ngIf="sportTeam.logoTeam" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + sportTeam.logoTeam" alt="Team Logo">
+      </div>
+    </div>
+  </div>
+  
+  <table class="table">
+    <thead>
+      <tr>
+        <th>First Name</th>
+        <th>Last Name</th>
+        <th>Email</th>
+        <th>Phone</th>
+        <th>Role</th>
+        <th>Badge</th>
+        <th>Action</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of users">
+        <td>{{ user.firstName }}</td>
+        <td>{{ user.lastName }}</td>
+        <td>{{ user.email }}</td>
+        <td>{{ user.phone }}</td>
+        <td>{{ user.role }}</td>
+        <td>
+          <img *ngIf="user.badge === 'SILVER'" src="assets/img/Silver3.png" alt="Silver Badge" width="150" height="150">
+          <img *ngIf="user.badge === 'GOLD'" src="assets/img/gold3.png" alt="Gold Badge" width="150" height="150">
+          <img *ngIf="user.badge === 'DIAMOND'" src="assets/img/Diamond3.png" alt="Diamond Badge" width="150" height="150">
+        </td>
+        <td>  
+          <button class="btn btn-primary" (click)="RemoveUserfromTeam(user.userId)">Remove User</button>
+        </td>
+      </tr>
+    </tbody>
+  </table>
+  <div class="container">
+    <h2>Add User to Team</h2>
+    <div class="form-group">
+      <label for="userEmail">User Email:</label>
+      <input type="email" class="form-control" id="userEmail" [(ngModel)]="userEmail">
+    </div>
+    <button class="btn btn-primary" (click)="addUserToTeam()">Add User</button>
+  </div>
+  
+  
