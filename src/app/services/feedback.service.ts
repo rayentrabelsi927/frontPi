@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
+import { bannedUser } from '../models/bannedUser';
 
 
   const httpOptions = {
@@ -24,12 +25,24 @@ export class FeedbackService {
     return this.httpClient.get<any>(`${this.baseURL}get/${id}`);
   }
 
+  removeban(id: number): Observable<any> {  
+    return this.httpClient.delete(`${this.baseURL}delete/${id}`);  
+  }
+
   addfeddback(feedBack:any): Observable<object> {  
     return this.httpClient.post(`${this.baseURL}`+'add', {
       
         "commentFeedback": feedBack.commentFeedback,
         "gradeFeedback": feedBack.gradeFeedback       
     });  
-  }  
+  } 
   
+  getbanneduserList(): Observable<bannedUser>{
+    return this.httpClient.get<bannedUser>(this.baseURL + 'badfeedback', { responseType: 'json' });
+  }
+
+  
+
+
+
 }

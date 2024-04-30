@@ -35,6 +35,7 @@ import { CancelComponent } from './Client/cancel/cancel.component';
 import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
 import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
+import { BannedUserComponent } from './admin/banned-user/banned-user.component';
 
 
 @NgModule({
@@ -68,6 +69,7 @@ import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic
     TransactionListComponent,
     ChatbotComponent,
     StatisticFeedbackComponent,
+    BannedUserComponent,
   ],
   imports: [
     BrowserModule,

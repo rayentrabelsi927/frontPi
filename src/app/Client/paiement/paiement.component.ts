@@ -22,31 +22,30 @@ export class PaiementComponent implements OnInit {
 
   stripePromise = loadStripe(environment.stripe);
   productName: string = 'Iphone X';
+  userconnnecté:any={
+    "userId": 1,
+    "username": "rayen"};
   productPrice: number = 10;
-  articleList: Article[] = [
-    
-
-]; 
+  articleList: any[] =  [{
+    "articleId": 3,
+    "categoryArticle": "Technology",
+    "conditionArticle": "Fair",
+    "imgArticle": "img",
+    "descriptionArticle": "Description de l'article",
+    "priceArticle": 500.0,
+    "users": {
+      "userId": 1,
+      "username": "rayen"}
+}]; 
+  id = 2;
 
 
 constructor(private paiementService: PaiementService,private transactionservice : TransactionService,private router: Router) { }
 
   ngOnInit(): void {
-    this.articleList.push({
+    
 
-      articleId: 2,
-      categoryArticle: "Home",
-      conditionArticle: "Good",
-      imgArticle: "img",
-      descriptionArticle: "Description de l'article",
-      priceArticle: 500.0,
-      users: {
-        userId: 1,
-        role: "admin"
-      }
-    }); 
-
-    this.transactionservice.getByIdIfBnned(1).subscribe(data => {
+    this.transactionservice.getByIdIfBnned(this.id).subscribe(data => {
       this.possible = data as transaction_ban;
       console.log(this.possible.banned); 
     });
@@ -60,7 +59,9 @@ constructor(private paiementService: PaiementService,private transactionservice 
     const transaction = {
       amountTransaction: productPrice * 100,
       "feedbacks": [],
-      "articles": this.articleList
+      "articles": this.articleList,
+      "users":this.userconnnecté 
+            
     };
     const transactionString = JSON.stringify(transaction);
 

@@ -25,8 +25,8 @@ export class TransactionService {
     return this.httpClient.get<Transaction[]>(this.baseURL + 'all');
   }
   
-  getTransactionById(id: String): Observable<any> {
-    return this.httpClient.get<any>(`${this.baseURL}get/${id}`);
+  getTransactionById(id: String): Observable<Transaction[]> {
+    return this.httpClient.get<Transaction[]>(`${this.baseURL}transactionbyIdUser/${id}`);
   }
 
   addTransaction(transaction:any): Observable<Transaction> {  

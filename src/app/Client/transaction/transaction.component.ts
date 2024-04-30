@@ -13,7 +13,9 @@ declare var require: any;
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent {
-
+  userconnnecté:any={
+    "userId": 2,
+    "username": "rayen"};
   errorMessage = '';
   mapUrl: SafeResourceUrl = '';
   feedbackposts: { [key: number]: { commentaire: string, rating: number } } = {}; // Map pour stocker les commentaires et les notations par transaction
@@ -45,7 +47,7 @@ export class TransactionComponent {
 
 
   getAllTransactions(): void {
-    this.transactionService.getAll().subscribe(
+    this.transactionService.getTransactionById(this.userconnnecté.userId).subscribe(
       (data: Transaction[]) => {
         this.transactions = data;
 

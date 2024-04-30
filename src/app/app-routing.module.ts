@@ -24,6 +24,7 @@ import { SucessComponent } from './Client/sucess/sucess.component';
 import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
 import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
+import { BannedUserComponent } from './admin/banned-user/banned-user.component';
 
 
 
@@ -35,6 +36,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'paiement', component: PaiementComponent },
+
   { path: 'cancel', component: CancelComponent },
   { path: 'success', component: SucessComponent },
   { path: 'home', component: HomeComponent },
@@ -59,6 +61,7 @@ const routes: Routes = [
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/banned', component: BannedUserComponent },
 
   { path: 'admin/transaction', component: TransactionListComponent },
 

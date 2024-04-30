@@ -1,0 +1,10 @@
+.badge-soft-success {
+    color: #63ad6f !important;
+    background-color: rgba(99,173,111,.1);
+  }
+  .blue {
+    background-color: rgb(33, 33, 100);
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+}
