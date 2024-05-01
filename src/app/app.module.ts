@@ -15,7 +15,7 @@ import { StatisticsComponent } from './Client/statistics/statistics.component';
 import { BlogComponent } from './Client/blog/blog.component';
 import { ContactComponent } from './Client/contact/contact.component';
 import { FooterComponent } from './shared/footer/footer.component';
-import { LoginComponent } from './admin/login/login.component';
+//import { LoginComponent } from './admin/login/login.component';
 import { TableComponent } from './Client/table/table.component';
 import { BuyComponent } from './Client/buy/buy.component';
 import { AddComponent } from './admin/add/add.component';
@@ -26,8 +26,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { HttpClientModule } from '@angular/common/http';
-import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { HttpClient, HttpClientModule } from '@angular/common/http';
+import { LoginComponent } from './Client/login/login.component';
+import { RegisterComponent } from './Client/register/register.component';
+import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
+import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
+//import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 @NgModule({
@@ -54,7 +58,9 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
-    AllUsersComponent,
+    RegisterComponent,
+    ActivateAccountComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -62,11 +68,13 @@ import { AllUsersComponent } from './admin/all-users/all-users.component';
     CommonModule, // Add this line
     FormsModule ,// Add this line
     HttpClientModule,
-    FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
+    CodeInputModule,
   ],
-  providers: [],
+  providers: [
+    HttpClient
+  ],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

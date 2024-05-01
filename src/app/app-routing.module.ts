@@ -9,7 +9,7 @@ import { ReviewsComponent } from './Client/reviews/reviews.component';
 import { StatisticsComponent } from './Client/statistics/statistics.component';
 import { BlogComponent } from './Client/blog/blog.component';
 import { ContactComponent } from './Client/contact/contact.component';
-import { LoginComponent } from './admin/login/login.component';
+//import { LoginComponent } from './admin/login/login.component';
 import { TableComponent } from './Client/table/table.component';
 import { BuyComponent } from './Client/buy/buy.component';
 import { AddComponent } from './admin/add/add.component';
@@ -17,7 +17,10 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { LoginComponent } from './Client/login/login.component';
+import { RegisterComponent } from './Client/register/register.component';
+import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
+//import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 
@@ -39,13 +42,16 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'table', component: TableComponent },
-  { path: 'user/all', component: AllUsersComponent },
+  { path: 'login', component: LoginComponent},
+  { path: 'register', component: RegisterComponent},
+  { path: 'activate-account', component: ActivateAccountComponent},
+  //{ path: 'user/all', component: AllUsersComponent },
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
-  { path: 'admin/login', component: LoginComponent },
+  //{ path: 'admin/login', component: LoginComponent },
 
   
   // Ajoutez d'autres routes au besoin
