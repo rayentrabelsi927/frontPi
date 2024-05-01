@@ -71,7 +71,8 @@ this.statisticstransaction();
     const myChart = new Chart(ctx, {
   type: 'pie',
   data: {
-    labels: ['note 1', 'note 2', 'note 3', 'note 4', 'note 5'],
+  
+    labels: ['Très insatisfait', 'Insatisfait', ' Moyennement satisfait', 'Satisfait', 'Très satisfait'],
     datasets: [{
       label: 'feedback ',
       backgroundColor: [
@@ -111,7 +112,7 @@ this.statisticstransaction();
       data: {
         labels: ['January', 'February', 'March', 'April', 'May', 'June', 'July', 'August', 'September', 'October', 'November', 'December'],  
               datasets: [{
-          label: 'My First Dataset',
+          label: 'Courbe de transaction',
           data: [
             stattransaction.janvier,
             stattransaction.fevrier,

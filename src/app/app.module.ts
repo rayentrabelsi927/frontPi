@@ -36,6 +36,7 @@ import { TransactionListComponent } from './admin/transaction-list/transaction-l
 import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
 import { BannedUserComponent } from './admin/banned-user/banned-user.component';
+import { PagehomeComponent } from './Client/pagehome/pagehome.component';
 
 
 @NgModule({
@@ -70,6 +71,7 @@ import { BannedUserComponent } from './admin/banned-user/banned-user.component';
     ChatbotComponent,
     StatisticFeedbackComponent,
     BannedUserComponent,
+    PagehomeComponent,
   ],
   imports: [
     BrowserModule,

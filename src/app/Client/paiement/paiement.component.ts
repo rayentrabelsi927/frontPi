@@ -22,22 +22,29 @@ export class PaiementComponent implements OnInit {
 
   stripePromise = loadStripe(environment.stripe);
   productName: string = 'Iphone X';
-  userconnnecté:any={
+  /*userconnnecté:any={
     "userId": 1,
-    "username": "rayen"};
-  productPrice: number = 10;
+    "username": "rayen"};*/
+
+    userconnnecté:any={
+      "userId": 1,
+      "username": "rayen"};
+
+  productPrice: number = 50;
   articleList: any[] =  [{
     "articleId": 3,
+    "nameArticle": "bureau",
+
     "categoryArticle": "Technology",
     "conditionArticle": "Fair",
     "imgArticle": "img",
     "descriptionArticle": "Description de l'article",
-    "priceArticle": 500.0,
+    "priceArticle": 50.0,
     "users": {
       "userId": 1,
       "username": "rayen"}
 }]; 
-  id = 2;
+  
 
 
 constructor(private paiementService: PaiementService,private transactionservice : TransactionService,private router: Router) { }
@@ -45,7 +52,7 @@ constructor(private paiementService: PaiementService,private transactionservice 
   ngOnInit(): void {
     
 
-    this.transactionservice.getByIdIfBnned(this.id).subscribe(data => {
+      this.transactionservice.getByIdIfBnned(this.userconnnecté.userId).subscribe(data => {
       this.possible = data as transaction_ban;
       console.log(this.possible.banned); 
     });
@@ -70,7 +77,7 @@ constructor(private paiementService: PaiementService,private transactionservice 
 
     // Création de l'objet payment
     const payment = {
-      name: productName,
+      name: "bureau",
       currency: 'usd',
       amount: productPrice * 100, // convertir dollars en cents
       quantity: '1',

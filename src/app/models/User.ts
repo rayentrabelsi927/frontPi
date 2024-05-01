@@ -1,11 +1,10 @@
 // user.model.ts
 
 export class User {
-  userId: number;
-  role: string;
+  userId!: number;
+  username!: string;
 
-  constructor(userId: number, role: string) {
-    this.userId = userId;
-    this.role = role;
-  }
+  role!: string;
+
+ 
 }

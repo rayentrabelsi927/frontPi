@@ -5,6 +5,8 @@ import { Transaction } from 'src/app/models/Transaction';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import { Article } from 'src/app/models/Article';
+import { Housing } from 'src/app/models/Housing';
 declare var require: any;
 
 @Component({
@@ -39,11 +41,45 @@ export class TransactionComponent {
     const url = `https://maps.google.com/maps?q=${encodedValue}&output=embed`;
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
+  stringifyArticles(articles: Article[]): string {
+    let result = '';
+    let total = 0;
 
-  stringifyArticles(articles: any): string {
-    return JSON.stringify(articles);
+    articles.forEach(article => {
+      result += `${article.nameArticle}: ${article.priceArticle} euros\n`;
+      total += article.priceArticle;
+    });
+
+    result += `Somme totale: ${total} euros`;
+
+    return result;
   }
 
+  stringifyhousing(housing: Housing): string {
+    let result = '';
+    let total = 0;
+
+    
+      result += `localisation :${housing.locationHousing}\n description: ${housing.descriptionHousing} \n`;
+      total += housing.priceHousing;
+   
+
+    result += ` ${total} euros`;;
+
+    return result;
+  }
+
+
+  qrcode(transaction:Transaction):string{
+    let resultat='';
+    if (transaction.housing==null){
+      resultat=  this.stringifyArticles(transaction.articles);
+    }
+    else{
+      resultat=  this.stringifyhousing(transaction.housing);
+    }
+    return resultat;
+  }
 
 
   getAllTransactions(): void {

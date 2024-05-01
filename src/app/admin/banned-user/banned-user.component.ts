@@ -1,5 +1,6 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
+import { bannedUser } from 'src/app/models/bannedUser';
 import { FeedbackService } from 'src/app/services/feedback.service';
 
 @Component({
@@ -9,11 +10,13 @@ import { FeedbackService } from 'src/app/services/feedback.service';
 })
 export class BannedUserComponent   {
 banned:any;
+searchQuery: string = '';
+  filteredBannedUsers: any;
 
   constructor( private feedbackService: FeedbackService, private router: Router) { }
 
   ngOnInit(): void {
-this.bannedusers();
+this.searchTransactionsByUser(this.searchQuery);
   }
 
   bannedusers(){
@@ -33,9 +36,31 @@ this.bannedusers();
       console.log(this.banned)
 
 this. ngOnInit();
- // Affiche data complet dans la console
     });
 
   }
 
+
+
+  searchTransactionsByUser(searchQuery: any) {
+    this.feedbackService.getbanneduserList().subscribe(data => {
+        this.banned = data;
+        console.log(this.banned);
+        
+        if (!searchQuery || searchQuery.trim() === '') {
+            this.filteredBannedUsers = this.banned;
+        } else {
+            const trimmedQuery = searchQuery.trim().toLowerCase();
+            this.filteredBannedUsers = this.banned.filter((user: bannedUser) =>
+                user.username.toLowerCase().includes(trimmedQuery) ||
+                user.idtransaction.toString().includes(trimmedQuery)
+            );
+        }
+        
+        console.log(this.filteredBannedUsers);
+    });
+}
+
+
+  
 }

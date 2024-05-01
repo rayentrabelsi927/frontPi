@@ -22,7 +22,7 @@
 </div>
     <p>Discover all your transactions.</p>
 
-
+    <br>  <br>  <br>
     <div class="search-container">
       <div class="input-group">
         <input type="text" [(ngModel)]="searchQuery" (input)="searchTransactionsByUser(searchQuery)" placeholder="Search..." class="form-control" id="search" name="search">
@@ -35,11 +35,11 @@
     
   </div>
 
-  <br>  <br>  <br>
+  <br>  <br>
 
   <div class="card">
     <div class="card-header blue">
-      <h4>Assign Project List</h4>
+      <h4> Transaction List</h4>
   </div>
     <div class="card-body">
   <table class="table">
@@ -47,22 +47,24 @@
       <tr>
 
         <th>amount</th>
-        <th>user </th>
+        <th>date </th>
+        <th>user</th>
 
-        <th>Housing ID</th>
+        <th>Housing </th>
         <th>Article </th>
         <th>Feedback</th>
 
-        <th>Feedback</th>
       
       </tr>
     </thead>
     <tbody>
         <tr *ngFor="let transaction of filteredTransactions">
-          <td>{{ transaction.payementDateTransaction }}</td>
-          <td>{{ transaction.users.userId }}</td>
+          <td>{{ transaction.amountTransaction }}</td>
+          <td><span class="badge badge-soft-success mb-0">{{ transaction.payementDateTransaction }}</span></td>
 
-          <td *ngIf="transaction.housing != null">{{ transaction.housing.housingID }}
+          <td>{{ transaction.users.username }}</td>
+
+          <td *ngIf="transaction.housing != null">
 
 
            
@@ -81,7 +83,7 @@
 
           <td>
             <div *ngFor="let article of transaction.articles">
-              Article ID: {{ article.articleId }}<br>
+              Article : {{ article.nameArticle }}<br>
               Category: {{ article.categoryArticle }}<br>
               Description: {{ article.descriptionArticle }}<br>
               Price: {{ article.priceArticle }}<br>
@@ -104,7 +106,6 @@
               </div>
             </div>
           </td>
-          <td><span class="badge badge-soft-success mb-0">Full Stack Developer</span></td>
 
         </tr>
       </tbody>

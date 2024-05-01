@@ -1,20 +1,24 @@
-<div class="card">
+<div class="card" *ngFor="let article of articleList">
   <div class="card-header">
     <div class="card-avatar"></div>
-    <div class="card-title">{{ productName }}</div>
+
+    <div>
+      
+  </div>
+    <div class="card-title">{{ article.nameArticle}}</div>
   </div>
   <div class="card-body">
     <div class="product-info">
-      <div class="product-price">${{ productPrice }}</div>
+      <div class="product-price">${{ article.priceArticle }}</div>
 
       <!-- Affichage conditionnel du bouton Buy Now ou du modal -->
       <ng-container *ngIf="possible">
-        <button *ngIf="possible.banned === 0" class="btn btn-lg btn-danger clearfix" (click)="pay(productName, productPrice)">Buy Now</button>
+        <button *ngIf="possible.banned === 0" class="btn btn-dark" (click)="pay(productName, productPrice)">Buy Now</button>
 
         <div *ngIf="possible.banned !== 0">
           <!-- Button trigger modal -->
-          <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
-            Launch demo modal
+          <button type="button custom-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+            buy now
           </button>
         </div>
       </ng-container>

@@ -3,6 +3,7 @@ import { User } from "./User";
 
 export class Article {
     articleId: number;
+    nameArticle: string;
     categoryArticle: string;
     conditionArticle: string;
     imgArticle: string;
@@ -13,6 +14,7 @@ export class Article {
 
     constructor(
       articleId: number,
+      nameArticle:string,
       categoryArticle: string,
       conditionArticle: string,
       imgArticle: string,
@@ -22,6 +24,8 @@ export class Article {
       transactions?: Transaction // Paramètre optionnel
     ) {
       this.articleId = articleId;
+      this.nameArticle = nameArticle;
+
       this.categoryArticle = categoryArticle;
       this.conditionArticle = conditionArticle;
       this.imgArticle = imgArticle;

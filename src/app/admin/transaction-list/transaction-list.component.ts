@@ -79,9 +79,10 @@ console.log(this.transactions)
               transaction.amountTransaction === montant
             );
           } else {
-            // Recherche par type d'utilisateur (role)
+            // Recherche par nom d'utilisateur (username) ou rôle (role)
             const searchRole = trimmedQuery.toLowerCase();
             this.filteredTransactions = this.transactions.filter(transaction =>
+              transaction.users.username.toLowerCase().includes(searchRole) ||
               transaction.users.role.toLowerCase().includes(searchRole)
             );
           }
@@ -96,6 +97,7 @@ console.log(this.transactions)
       }
     );
   }
+  
   
   
 
