@@ -22,10 +22,12 @@ import { AddComponent } from './admin/add/add.component';
 import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { CommonModule } from '@angular/common';
-import { FormsModule } from '@angular/forms';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { HttpClientModule } from '@angular/common/http';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 @NgModule({
@@ -52,13 +54,17 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    AllUsersComponent,
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
     CommonModule, // Add this line
-    FormsModule // Add this line
-
+    FormsModule ,// Add this line
+    HttpClientModule,
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
   ],
   providers: [],
   bootstrap: [AppComponent]

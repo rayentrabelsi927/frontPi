@@ -17,6 +17,7 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 
 
@@ -38,7 +39,7 @@ const routes: Routes = [
   { path: 'blog', component: BlogComponent },
   { path: 'contact', component: ContactComponent },
   { path: 'table', component: TableComponent },
-  { path: 'login', component: LoginComponent },
+  { path: 'user/all', component: AllUsersComponent },
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
