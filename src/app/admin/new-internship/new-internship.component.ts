@@ -17,13 +17,18 @@ export class NewInternshipComponent {
   createInternship(internship: Internship): void {
     this.internshipService.createInternship(internship).subscribe(
       (response: Internship) => {
-        // Gérer la réponse de la création du stage si nécessaire
+        // Handle the successful response here
+        console.log('Internship created successfully:', response);
+        alert('Internship created successfully');
+        // Optionally, redirect the user to a different page
+        this.router.navigate(['/admin/internships']);
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        alert('An error occurred while creating the internship: ' + error.message);
       }
     );
   }
+
 
   goBack() {
     this.router.navigate(['/admin/internship']);

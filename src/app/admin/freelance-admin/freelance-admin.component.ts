@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { FreelanceJob } from 'src/app/models/freelance';
 import { FreelanceService } from 'src/app/services/freelance.service';
+import { FreelanceJob } from './../../models/freelance';
 
 @Component({
   selector: 'app-freelance-admin',
@@ -9,6 +9,7 @@ import { FreelanceService } from 'src/app/services/freelance.service';
 })
 export class FreelanceAdminComponent implements OnInit {
   freelances: FreelanceJob[] = [];
+  displayedColumns: string[] = ['jobId', 'titleJob', 'clientJob', 'durationJob', 'locationJob', 'skillsRequiredJob', 'descriptionJob', 'budgetJob', 'deadlineJob', 'actions'];
 
   constructor(private freelanceService: FreelanceService) {}
 
@@ -22,7 +23,7 @@ export class FreelanceAdminComponent implements OnInit {
         this.freelances = response;
       },
       (error) => {
-        // Gérer l'erreur ici
+        // Handle error here
       }
     );
   }
@@ -30,10 +31,12 @@ export class FreelanceAdminComponent implements OnInit {
   deleteFreelanceJob(jobId: number): void {
     this.freelanceService.deleteFreelanceJob(jobId).subscribe(
       () => {
-        // Gérer la suppression du freelance job si nécessaire
+        // Remove the freelance job from the list
+        this.freelances = this.freelances.filter(job => job.jobId !== jobId);
       },
       (error) => {
-        // Gérer l'erreur ici
+        // Handle error here
+        console.error("Error deleting freelance job:", error);
       }
     );
   }
@@ -42,18 +45,16 @@ export class FreelanceAdminComponent implements OnInit {
     const freelanceJob = this.freelances.find(job => job.jobId === jobId);
 
     if (freelanceJob) {
-      // Mettez à jour les propriétés du freelance job ici
+      // Update properties of the freelance job here
 
       this.freelanceService.updateFreelanceJob(freelanceJob).subscribe(
         (response: FreelanceJob) => {
-          // Gérer la mise à jour du freelance job si nécessaire
+          // Handle freelance job update if necessary
         },
         (error) => {
-          // Gérer l'erreur ici
+          // Handle error here
         }
       );
     }
   }
 }
-
-

@@ -10,15 +10,17 @@
     <p><strong>deadlineInternship:</strong> <span style="color: black">{{ internship.deadlineInternship }}</span></p>
 
     <!-- ... autres détails du stage ... -->
+    <div class="internship-details">
+      <!-- Afficher les détails du stage ici -->
+    </div>
 
+    <!-- Ajoutez le reste du contenu de votre template ici -->
     <div class="d-flex justify-content-center">
       <span *ngIf="selectedFile">{{ selectedFile.name }}</span>
 
-      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none" accept=".pdf, .doc, .docx">
+      <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none" accept=".pdf, .doc, .docx, ">
       <button class="btn btn-primary" (click)="fileInput.click()">Sélectionner un fichier</button>
-      <button class="btn btn-primary" (click)="uploadFile()" [disabled]="!selectedFile">Postuler</button>    </div>
-  </div>
-  <button (click)="goBack()" class="btn btn-primary">Retour</button>
+      <button class="btn btn-primary" (click)="addFile(); showAlert('Demande envoyée !'); redirectToInternships()" [disabled]="!selectedFile">Postuler</button>  <button (click)="goBack()" class="btn btn-primary">Retour</button>
   <div *ngIf="internship" class="text-center">
     <!-- Contenu des détails du freelance -->
   </div>

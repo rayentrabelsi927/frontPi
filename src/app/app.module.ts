@@ -36,6 +36,12 @@ import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin
 import { NewJobComponent } from './admin/new-job/new-job.component';
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
+import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FileComponent } from './admin/file/file.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -72,6 +78,8 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
     NewJobComponent,
     UpdateInternshipComponent,
     UpdateFreelanceJobComponent,
+    InternshipRoomComponent,
+    FileComponent,
   ],
   imports: [
     BrowserModule,
@@ -79,6 +87,11 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
     CommonModule,
     FormsModule,
     HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
+
   ],
   providers: [],
   bootstrap: [AppComponent]

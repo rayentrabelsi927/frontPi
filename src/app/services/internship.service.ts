@@ -33,15 +33,11 @@ export class InternshipService {
     return this.httpClient.delete<void>(`${this.baseUrl}/deleteInternship/${internshipId}`);
   }
 
-
-
-////////////////FILEEE//////////////////////
-
-  addFile(file: File): Observable<any> {
+  addFile(internshipId: number, file: File): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    return this.httpClient.post<any>(`${this.baseUrl}/addfile`, formData)
+    return this.httpClient.post<any>(`${this.baseUrl}/addFile/${internshipId}`, formData)
       .pipe(
         catchError(this.handleError)
       );
@@ -53,6 +49,19 @@ export class InternshipService {
 
   deleteFile(fileID: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/deleteFile/${fileID}`);
+  }
+
+  sendEmail(toEmail: string, subject: string, body: string): Observable<any> {
+    const params = {
+      toEmail: toEmail,
+      subject: subject,
+      body: body
+    };
+
+    return this.httpClient.post<any>(`${this.baseUrl}/sendEmail`, params)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   private handleError(error: any): Observable<never> {

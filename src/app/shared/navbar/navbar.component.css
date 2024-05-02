@@ -5,30 +5,30 @@
    .uk-nav-default .uk-nav-header {
     color: #333;
   }
-  
+
   /*
    * Divider
    */
   .uk-nav-default .uk-nav-divider {
     border-top: 1px solid #e5e5e5;
   }
-  
+
   /*
    * Sublists
    */
   .uk-nav-default .uk-nav-sub a {
     color: #999;
   }
-  
+
   .uk-nav-default .uk-nav-sub a:hover,
   .uk-nav-default .uk-nav-sub a:focus {
     color: #666;
   }
-  
+
   .uk-nav-default .uk-nav-sub li.uk-active > a {
     color: #333;
   }
-  
+
   /* Primary modifier
    ========================================================================== */
   /*
@@ -39,65 +39,65 @@
     line-height: 1.5;
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-nav-primary > li > a:hover,
   .uk-nav-primary > li > a:focus {
     color: #666;
   }
-  
+
   /* Active */
   .uk-nav-primary > li.uk-active > a {
     color: #333;
   }
-  
+
   /*
    * Header
    */
   .uk-nav-primary .uk-nav-header {
     color: #333;
   }
-  
+
   /*
    * Divider
    */
   .uk-nav-primary .uk-nav-divider {
     border-top: 1px solid #e5e5e5;
   }
-  
+
   /*
    * Sublists
    */
   .uk-nav-primary .uk-nav-sub a {
     color: #999;
   }
-  
+
   .uk-nav-primary .uk-nav-sub a:hover,
   .uk-nav-primary .uk-nav-sub a:focus {
     color: #666;
   }
-  
+
   .uk-nav-primary .uk-nav-sub li.uk-active > a {
     color: #333;
   }
-  
+
   /* Alignment modifier
    ========================================================================== */
   .uk-nav-center {
     text-align: center;
   }
-  
+
   /* Sublists */
   .uk-nav-center .uk-nav-sub,
   .uk-nav-center .uk-nav-sub ul {
     padding-left: 0;
   }
-  
+
   /* Parent icon modifier  */
   .uk-nav-center.uk-nav-parent-icon > .uk-parent > a::after {
     position: absolute;
   }
-  
+
   /* ========================================================================
      Component: Navbar
    ========================================================================== */
@@ -111,13 +111,13 @@
     /* 1 */
     position: relative;
   }
-  
+
   /* Container
    ========================================================================== */
   .uk-navbar-container:not(.uk-navbar-transparent) {
     background: #f8f8f8;
   }
-  
+
   /*
    * Remove pseudo elements created by micro clearfix as precaution (if Container component is used)
    */
@@ -125,7 +125,7 @@
   .uk-navbar-container > ::after {
     display: none !important;
   }
-  
+
   /* Groups
    ========================================================================== */
   /*
@@ -145,7 +145,7 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  
+
   /*
    * Horizontal alignment
    * 1. Create position context for centered navbar with sub groups (left/right)
@@ -157,14 +157,14 @@
   .uk-navbar-right {
     margin-left: auto;
   }
-  
+
   .uk-navbar-center:only-child {
     margin-left: auto;
     margin-right: auto;
     /* 1 */
     position: relative;
   }
-  
+
   .uk-navbar-center:not(:only-child) {
     position: absolute;
     top: 50%;
@@ -180,22 +180,22 @@
     /* 3 */
     z-index: 990;
   }
-  
+
   /* 4 */
   .uk-navbar-center-left,
   .uk-navbar-center-right {
     position: absolute;
     top: 0;
   }
-  
+
   .uk-navbar-center-left {
     right: 100%;
   }
-  
+
   .uk-navbar-center-right {
     left: 100%;
   }
-  
+
   [class*='uk-navbar-center-'] {
     width: -webkit-max-content;
     width: -moz-max-content;
@@ -203,7 +203,7 @@
     -webkit-box-sizing: border-box;
             box-sizing: border-box;
   }
-  
+
   /* Nav
    ========================================================================== */
   /*
@@ -218,7 +218,7 @@
     padding: 0;
     list-style: none;
   }
-  
+
   /*
    * Allow items to wrap into the next line
    * Only not `absolute` positioned groups
@@ -229,7 +229,7 @@
     -ms-flex-wrap: wrap;
         flex-wrap: wrap;
   }
-  
+
   /*
    * Items
    * 1. Center content vertically and horizontally
@@ -261,14 +261,14 @@
     /* 4 */
     text-decoration: none;
   }
-  
+
   /*
    * Nav items
    */
   .uk-navbar-nav > li > a {
     color: #999;
   }
-  
+
   /*
    * Hover
    * Apply hover style also to focus state and if dropdown is opened
@@ -279,29 +279,29 @@
     color: #666;
     outline: none;
   }
-  
+
   /* OnClick */
   .uk-navbar-nav > li > a:active {
     color: #333;
   }
-  
+
   /* Active */
   .uk-navbar-nav > li.uk-active > a {
     color: #333;
   }
-  
+
   /* Item
    ========================================================================== */
   .uk-navbar-item {
     color: #666;
   }
-  
+
   /* Toggle
    ========================================================================== */
   .uk-navbar-toggle {
     color: #999;
   }
-  
+
   .uk-navbar-toggle:hover,
   .uk-navbar-toggle:focus,
   .uk-navbar-toggle.uk-open {
@@ -309,7 +309,7 @@
     outline: none;
     text-decoration: none;
   }
-  
+
   /*
    * Icon
    * Adopts `uk-icon`
@@ -320,7 +320,7 @@
   .uk-navbar-subtitle {
     font-size: 0.875rem;
   }
-  
+
   /* Style modifiers
    ========================================================================== */
   /* Dropdown
@@ -347,12 +347,12 @@
     background: #fff;
     color: #666;
   }
-  
+
   /* Show */
   .uk-navbar-dropdown.uk-open {
     display: block;
   }
-  
+
   /*
    * Direction / Alignment modifiers
    */
@@ -360,19 +360,19 @@
   [class*='uk-navbar-dropdown-top'] {
     margin-top: -15px;
   }
-  
+
   [class*='uk-navbar-dropdown-bottom'] {
     margin-top: 15px;
   }
-  
+
   [class*='uk-navbar-dropdown-left'] {
     margin-left: -15px;
   }
-  
+
   [class*='uk-navbar-dropdown-right'] {
     margin-left: 15px;
   }
-  
+
   /*
    * Grid
    * Adopts `uk-grid`
@@ -381,40 +381,40 @@
   .uk-navbar-dropdown-grid {
     margin-left: -50px;
   }
-  
+
   .uk-navbar-dropdown-grid > * {
     padding-left: 50px;
   }
-  
+
   /* Gutter Vertical */
   .uk-navbar-dropdown-grid > .uk-grid-margin {
     margin-top: 50px;
   }
-  
+
   /* Stack */
   .uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
     width: 100% !important;
   }
-  
+
   /*
    * Width modifier
    */
   .uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) {
     width: 400px;
   }
-  
+
   .uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) {
     width: 600px;
   }
-  
+
   .uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) {
     width: 800px;
   }
-  
+
   .uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) {
     width: 1000px;
   }
-  
+
   /*
    * Dropbar modifier
    */
@@ -422,7 +422,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-  
+
   /* Dropdown Nav
    * Adopts `uk-nav`
    ========================================================================== */
@@ -432,54 +432,54 @@
   .uk-navbar-dropdown-nav > li > a {
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-navbar-dropdown-nav > li > a:hover,
   .uk-navbar-dropdown-nav > li > a:focus {
     color: #666;
   }
-  
+
   /* Active */
   .uk-navbar-dropdown-nav > li.uk-active > a {
     color: #333;
   }
-  
+
   /*
    * Header
    */
   .uk-navbar-dropdown-nav .uk-nav-header {
     color: #333;
   }
-  
+
   /*
    * Divider
    */
   .uk-navbar-dropdown-nav .uk-nav-divider {
     border-top: 1px solid #e5e5e5;
   }
-  
+
   /*
    * Sublists
    */
   .uk-navbar-dropdown-nav .uk-nav-sub a {
     color: #999;
   }
-  
+
   .uk-navbar-dropdown-nav .uk-nav-sub a:hover,
   .uk-navbar-dropdown-nav .uk-nav-sub a:focus {
     color: #666;
   }
-  
+
   .uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
     color: #333;
   }
-  
+
   /* Dropbar
    ========================================================================== */
   .uk-navbar-dropbar {
     background: #fff;
   }
-  
+
   /*
    * Slide modifier
    */
@@ -489,7 +489,7 @@
     left: 0;
     right: 0;
   }
-  
+
   /* ========================================================================
      Component: Subnav
    ========================================================================== */
@@ -511,7 +511,7 @@
     padding: 0;
     list-style: none;
   }
-  
+
   /*
    * 1. Space is allocated solely based on content dimensions: 0 0 auto
    * 2. Gutter
@@ -527,7 +527,7 @@
     /* 3 */
     position: relative;
   }
-  
+
   /* Items
    ========================================================================== */
   /*
@@ -542,7 +542,7 @@
     /* 2 */
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-subnav > * > a:hover,
   .uk-subnav > * > a:focus {
@@ -550,12 +550,12 @@
     text-decoration: none;
     outline: none;
   }
-  
+
   /* Active */
   .uk-subnav > .uk-active > a {
     color: #333;
   }
-  
+
   /* Divider modifier
    ========================================================================== */
   /*
@@ -570,7 +570,7 @@
         -ms-flex-align: center;
             align-items: center;
   }
-  
+
   /*
    * Divider
    * `nth-child` makes it also work without JS if it's only one row
@@ -582,7 +582,7 @@
     margin-right: 20px;
     border-left: 1px solid #e5e5e5;
   }
-  
+
   /* Pill modifier
    ========================================================================== */
   .uk-subnav-pill > * > :first-child {
@@ -590,33 +590,33 @@
     background: transparent;
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-subnav-pill > * > a:hover,
   .uk-subnav-pill > * > a:focus {
     background-color: #f8f8f8;
     color: #666;
   }
-  
+
   /* OnClick */
   .uk-subnav-pill > * > a:active {
     background-color: #f8f8f8;
     color: #666;
   }
-  
+
   /* Active */
   .uk-subnav-pill > .uk-active > a {
     background-color: #1e87f0;
     color: #fff;
   }
-  
+
   /* Disabled
    * The same for all style modifiers
    ========================================================================== */
   .uk-subnav > .uk-disabled > a {
     color: #999;
   }
-  
+
   /* ========================================================================
      Component: Breadcrumb
    ========================================================================== */
@@ -635,7 +635,7 @@
     padding: 0;
     list-style: none;
   }
-  
+
   /*
    * Space is allocated solely based on content dimensions: 0 0 auto
    */
@@ -644,7 +644,7 @@
         -ms-flex: none;
             flex: none;
   }
-  
+
   /* Items
    ========================================================================== */
   .uk-breadcrumb > * > * {
@@ -652,20 +652,20 @@
     font-size: 0.875rem;
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-breadcrumb > * > :hover,
   .uk-breadcrumb > * > :focus {
     color: #666;
     text-decoration: none;
   }
-  
+
   /* Disabled */
   /* Active */
   .uk-breadcrumb > :last-child > * {
     color: #666;
   }
-  
+
   /*
    * Divider
    * `nth-child` makes it also work without JS if it's only one row
@@ -693,12 +693,12 @@
     background: #fff;
     color: #666;
   }
-  
+
   /* Show */
   .uk-navbar-dropdown.uk-open {
     display: block;
   }
-  
+
   /*
    * Direction / Alignment modifiers
    */
@@ -706,19 +706,19 @@
   [class*='uk-navbar-dropdown-top'] {
     margin-top: -15px;
   }
-  
+
   [class*='uk-navbar-dropdown-bottom'] {
     margin-top: 15px;
   }
-  
+
   [class*='uk-navbar-dropdown-left'] {
     margin-left: -15px;
   }
-  
+
   [class*='uk-navbar-dropdown-right'] {
     margin-left: 15px;
   }
-  
+
   /*
    * Grid
    * Adopts `uk-grid`
@@ -727,40 +727,40 @@
   .uk-navbar-dropdown-grid {
     margin-left: -50px;
   }
-  
+
   .uk-navbar-dropdown-grid > * {
     padding-left: 50px;
   }
-  
+
   /* Gutter Vertical */
   .uk-navbar-dropdown-grid > .uk-grid-margin {
     margin-top: 50px;
   }
-  
+
   /* Stack */
   .uk-navbar-dropdown-stack .uk-navbar-dropdown-grid > * {
     width: 100% !important;
   }
-  
+
   /*
    * Width modifier
    */
   .uk-navbar-dropdown-width-2:not(.uk-navbar-dropdown-stack) {
     width: 400px;
   }
-  
+
   .uk-navbar-dropdown-width-3:not(.uk-navbar-dropdown-stack) {
     width: 600px;
   }
-  
+
   .uk-navbar-dropdown-width-4:not(.uk-navbar-dropdown-stack) {
     width: 800px;
   }
-  
+
   .uk-navbar-dropdown-width-5:not(.uk-navbar-dropdown-stack) {
     width: 1000px;
   }
-  
+
   /*
    * Dropbar modifier
    */
@@ -768,7 +768,7 @@
     margin-top: 0;
     margin-bottom: 0;
   }
-  
+
   /* Dropdown Nav
    * Adopts `uk-nav`
    ========================================================================== */
@@ -778,54 +778,54 @@
   .uk-navbar-dropdown-nav > li > a {
     color: #999;
   }
-  
+
   /* Hover + Focus */
   .uk-navbar-dropdown-nav > li > a:hover,
   .uk-navbar-dropdown-nav > li > a:focus {
     color: #666;
   }
-  
+
   /* Active */
   .uk-navbar-dropdown-nav > li.uk-active > a {
     color: #333;
   }
-  
+
   /*
    * Header
    */
   .uk-navbar-dropdown-nav .uk-nav-header {
     color: #333;
   }
-  
+
   /*
    * Divider
    */
   .uk-navbar-dropdown-nav .uk-nav-divider {
     border-top: 1px solid #e5e5e5;
   }
-  
+
   /*
    * Sublists
    */
   .uk-navbar-dropdown-nav .uk-nav-sub a {
     color: #999;
   }
-  
+
   .uk-navbar-dropdown-nav .uk-nav-sub a:hover,
   .uk-navbar-dropdown-nav .uk-nav-sub a:focus {
     color: #666;
   }
-  
+
   .uk-navbar-dropdown-nav .uk-nav-sub li.uk-active > a {
     color: #333;
   }
-  
+
   /* Dropbar
    ========================================================================== */
   .uk-navbar-dropbar {
     background: #fff;
   }
-  
+
   /*
    * Slide modifier
    */

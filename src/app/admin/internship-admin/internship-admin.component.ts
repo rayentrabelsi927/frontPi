@@ -62,15 +62,17 @@ export class InternshipAdminComponent implements OnInit {
   }
 
   deleteInternship(internshipId: number): void {
-  this.internshipService.deleteInternship(internshipId).subscribe(
-  () => {
-  // Gérer la suppression du stage si nécessaire
-  },
-  (error: HttpErrorResponse) => {
-  alert(error.message);
+    this.internshipService.deleteInternship(internshipId).subscribe(
+      () => {
+        // Supprimer le stage de la liste internships
+        this.internships = this.internships.filter(internship => internship.internshipId !== internshipId);
+      },
+      error => {
+        console.error("Erreur lors de la suppression du stage :", error);
+      }
+    );
   }
-  );
   }
 
 
-  }
+

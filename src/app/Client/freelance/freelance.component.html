@@ -5,7 +5,7 @@
     </div>
     <div class="works-content">
       <div class="row">
-        <div class="col-md-4 col-sm-6" *ngFor="let freelanceJob of freelanceJobs">
+        <div class="col-md-4 col-sm-6" *ngFor="let freelanceJob of items">
           <div class="single-how-works">
             <div class="single-how-works-icon">
               <i class="lni lni-briefcase"></i>
@@ -19,3 +19,19 @@
     </div>
   </div>
 </section>
+
+<ul class="pagination">
+  <li [class.disabled]="currentPage == 1">
+    <a (click)="changePage(currentPage - 1)" aria-label="Previous">
+      <span aria-hidden="true">&laquo;</span>
+    </a>
+  </li>
+  <li *ngFor="let page of pagesArray" [class.active]="currentPage === page">
+    <a (click)="changePage(page)">{{ page }}</a>
+  </li>
+  <li [class.disabled]="currentPage == totalPages">
+    <a (click)="changePage(currentPage + 1)" aria-label="Next">
+      <span aria-hidden="true">&raquo;</span>
+    </a>
+  </li>
+</ul>

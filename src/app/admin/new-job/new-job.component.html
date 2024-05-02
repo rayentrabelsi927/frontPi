@@ -1,18 +1,57 @@
-<form class="job-form" (submit)="createFreelance(job)">
-  <input type="text" [(ngModel)]="job.titleJob" name="title" placeholder="Titre">
-  <input type="text" [(ngModel)]="job.clientJob" name="client" placeholder="Client">
-  <input type="text" [(ngModel)]="job.durationJob" name="duration" placeholder="Durée">
-  <input type="text" [(ngModel)]="job.descriptionJob" name="description" placeholder="Description">
-  <input type="text" [(ngModel)]="job.locationJob" name="location" placeholder="Emplacement">
-  <input type="text" [(ngModel)]="job.skillsRequiredJob" name="skillsRequired" placeholder="Compétences requises">
-  <input type="text" [(ngModel)]="job.budgetJob" name="budget" placeholder="Budget">
-  <input type="date" [(ngModel)]="job.deadlineJob" name="deadline" placeholder="Date limite">
-
-  <!-- Autres champs du formulaire -->
-
-  <button type="submit" class="create-button">Créer</button>
-</form>
-<button (click)="goBack()" class="return-button">Retour</button>
-<div *ngIf="job" class="text-center">
-  <!-- Contenu des détails du job -->
+<div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+  <form>
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.titleJob" id="title" name="title" placeholder="Titre">
+          <label for="title">Titre</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.clientJob" id="client" name="client" placeholder="Client">
+          <label for="client">Client</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.durationJob" id="duration" name="duration" placeholder="Durée">
+          <label for="duration">Durée</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.descriptionJob" id="description" name="description" placeholder="Description">
+          <label for="description">Description</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.locationJob" id="location" name="location" placeholder="Emplacement">
+          <label for="location">Emplacement</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.skillsRequiredJob" id="skillsRequired" name="skillsRequired" placeholder="Compétences requises">
+          <label for="skillsRequired">Compétences requises</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="job.budgetJob" id="budget" name="budget" placeholder="Budget">
+          <label for="budget">Budget</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="date" class="form-control" [(ngModel)]="job.deadlineJob" id="deadline" name="deadline" placeholder="Date limite">
+          <label for="deadline">Date limite</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary w-100 py-3" type="submit">Créer</button>
+      </div>
+    </div>
+  </form>
 </div>

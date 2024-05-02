@@ -27,6 +27,8 @@ import { NewInternshipComponent } from './admin/new-internship/new-internship.co
 import { NewJobComponent } from './admin/new-job/new-job.component';
 import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
+import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
+import { FileComponent } from './admin/file/file.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' },
@@ -57,8 +59,9 @@ const routes: Routes = [
   { path: 'admin/newFreelanceJob', component: NewJobComponent },
   { path: 'admin/updateFreelanceJob/:id', component:UpdateFreelanceJobComponent },
   { path: 'admin/updateInternship/:id', component: UpdateInternshipComponent },
-
-
+  { path: 'internshipRoom/:id', component: InternshipRoomComponent },
+  { path: 'admin/files', component: FileComponent },
+  { path: 'addFile/:id', component: InternshipDetailComponentComponent } // Remplacez InternshipDetailComponent par le composant correspondant
 ];
 
 @NgModule({

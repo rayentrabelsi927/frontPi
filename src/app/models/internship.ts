@@ -1,4 +1,3 @@
-
 export class Internship {
   internshipId!: number;
   titleInternship!: string;
@@ -8,8 +7,11 @@ export class Internship {
   locationInternship!: string;
   skillsRequiredInternship!: string;
   responsibilitiesInternship!: string;
-  deadlineInternship!: Date;
-  showDetails: boolean = false; // Nouvelle propriété showDetails
+  deadlineInternship: Date | null = null; // Corrected syntax
 
-  
+  showDetails: boolean = false;
+
+  constructor() {
+    // Optionally initialize other properties if needed
+  }
 }

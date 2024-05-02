@@ -1,0 +1,31 @@
+<div *ngIf="files.length > 0; else noFiles">
+  <h2>Liste des fichiers :</h2>
+  <table class="file-list-table">
+    <thead>
+      <tr>
+        <th>File ID</th>
+        <th>Nom du fichier</th>
+        <th>Type de contenu</th>
+        <th>ID de stage</th>
+        <th>Actions</th> <!-- Nouvelle colonne pour les boutons -->
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let file of files">
+        <td>{{ file.fileID }}</td>
+        <td>{{ file.filename }}</td>
+        <td>{{ file.contentType }}</td>
+        <td>{{ file.internshipId }}</td>
+        <!-- <td>
+          <button class="action-button" (click)="viewFile(file.fileID)">Voir</button>
+          <button class="action-button" (click)="downloadFile(file.fileID)">Télécharger</button>
+          <button class="action-button" (click)="deleteFile(file.fileID)">Supprimer</button>
+        </td> -->
+      </tr>
+    </tbody>
+  </table>
+</div>
+
+<ng-template #noFiles>
+  <p>Aucun fichier trouvé.</p>
+</ng-template>

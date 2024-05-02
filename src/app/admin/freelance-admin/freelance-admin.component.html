@@ -25,11 +25,11 @@
       <td>{{ job.budgetJob }}</td>
       <td>{{ job.deadlineJob }}</td>
       <td>
-        <button class="action-button"  routerLink="/admin/updateFreelanceJob" (click)="updateFreelanceJob(job.jobId)">Modifier</button>
+        <button class="action-button" routerLink="/admin/updateFreelanceJob" [queryParams]="{ id: job.jobId }">Modifier</button>
         <button class="action-button" (click)="deleteFreelanceJob(job.jobId)">Supprimer</button>
+        <button class="create-button" routerLink="/admin/newFreelanceJob">Créer un job</button>
       </td>
     </tr>
   </tbody>
 </table>
 
-<button class="create-button" routerLink="/admin/newFreelanceJob">Créer un job</button>
