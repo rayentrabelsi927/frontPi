@@ -9,13 +9,13 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class HeaderTopComponent {
   
-  constructor(private router: Router) {}
+  /*constructor(private router: Router) {}
 
   logout(): void {
-    
+
     localStorage.clear();
 
     this.router.navigate(['/login']);
-  }
+  }*/
 
 }
