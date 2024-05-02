@@ -1,0 +1,9 @@
+.border {
+    border: 1px solid #dee2e6;
+  }
+  
+  .table-responsive {
+    max-height: 400px; /* Adjust the maximum height as needed */
+    overflow-y: auto;
+  }
+  

@@ -1,26 +1,66 @@
-<form [formGroup]="addReservationForm" (ngSubmit)="onSubmit()">
-    <div class="form-group">
-      <label for="startDate">Start Date and Time</label>
-      <input type="datetime-local" class="form-control" formControlName="startDate" id="startDate">
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-4">
+      <form [formGroup]="addReservationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="selectedDate">Select Date</label>
+          <input type="date" class="form-control" formControlName="selectedDate" id="selectedDate">
+        </div>
+
+        <div class="form-group">
+          <label for="startTime">Start Time</label>
+          <input type="time" class="form-control" formControlName="startTime" id="startTime">
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">End Time</label>
+          <input type="time" class="form-control" formControlName="endTime" id="endTime">
+        </div>
+
+        <div class="form-group">
+          <label for="field">Select Field</label>
+          <select class="form-control" formControlName="field" id="field">
+            <option value="" disabled selected>Select Field</option>
+            <option *ngFor="let field of fields" [ngValue]="field">{{ field.typeField }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="resType">Reservation Type</label>
+          <select class="form-control" formControlName="resType" id="resType">
+            <option value="" disabled selected>Select Reservation Type</option>
+            <option *ngFor="let type of reservationTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        
+        <div class="form-group">
+          <label>Join Type:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="joinType" id="joinAlone" value="alone" formControlName="joinType">
+            <label class="form-check-label" for="joinAlone">Join Alone</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="joinType" id="joinWithTeam" value="team" formControlName="joinType">
+            <label class="form-check-label" for="joinWithTeam">Join with Team</label>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit Reservation</button>
+      </form>
     </div>
-    <div class="form-group">
-      <label for="endDate">End Date and Time</label>
-      <input type="datetime-local" class="form-control" formControlName="endDate" id="endDate">
+    <div class="col-md-1"></div>
+    <div class="col-md-7">
+      <div class="image-container">
+        <img src="assets/img/allsport2.jpg" alt="All Sports" class="reservation-img" *ngIf="!addReservationForm.get('field')?.value || !addReservationForm.get('field')?.value?.typeField">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Football'" src="assets/img/football.jpg" alt="FootBall" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Basketball'" src="assets/img/basketball.jpg" alt="Basketball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Handball'" src="assets/img/handball.jpg" alt="Handball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Volleyball'" src="assets/img/volleyball.jpg" alt="Volleyball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Tennis'" src="assets/img/tennis.jpg" alt="Tennis" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'PingPong'" src="assets/img/pingpong.jpg" alt="PingPong" class="reservation-img">
+      </div>
     </div>
-    
-    <select class="form-control" formControlName="field" id="field">
-        <option value="" disabled selected>Select Field</option>
-        <option *ngFor="let field of fields" [ngValue]="field">{{ field.nameField }}</option>
-      </select>
-      
-      
-    <div class="form-group">
-      <label for="resType">Reservation Type</label>
-      <select class="form-control" formControlName="resType" id="resType">
-        <option value="" disabled selected>Select Reservation Type</option>
-        <option *ngFor="let type of reservationTypes" [value]="type">{{ type }}</option>
-      </select>
-    </div>
-    <button type="submit" class="btn btn-primary">Submit</button>
-  </form>
-  
+  </div>
+</div>

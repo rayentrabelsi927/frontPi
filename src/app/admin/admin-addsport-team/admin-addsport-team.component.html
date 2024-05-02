@@ -1,4 +1,4 @@
-<div class="container">
+<!-- <div class="container">
     <h2>Add Team</h2>
     <form (ngSubmit)="addSportTeamCap()">
       <div class="form-group">
@@ -14,4 +14,28 @@
   </div>
 
   
+   -->
+   <div class="container">
+    <div class="card">
+      <div class="card-header">
+        <h2 class="card-title">Add Team</h2>
+      </div>
+      <div class="card-body">
+        <form (ngSubmit)="addSportTeamCap()">
+          <div class="form-group">
+            <label for="teamName">Team Name:</label>
+            <input type="text" class="form-control" id="teamName" [(ngModel)]="teamName" name="teamName" required>
+          </div>
+          <div class="form-group">
+            <label for="logo">Logo:</label>
+            <input type="file" class="form-control" id="logo" (change)="onFileChange($event)">
+          </div>
+          <br>
+          <div class="text-center">
+            <button type="submit" class="btn btn-primary">Add Team</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
   

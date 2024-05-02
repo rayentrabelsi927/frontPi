@@ -10,7 +10,7 @@ import { SportTeamService } from 'src/app/services/sport-team.service';
 })
 export class AdminDetailssportTeamComponent implements OnInit{
 
-  userEmail: string = ''; // Initialize user email variable
+  userEmail: string = '';
   sportTeamId: number =0;
   sportTeam: any = { nameTeam: '', logoTeam: '' };
   users: any[] = [];
@@ -34,7 +34,7 @@ export class AdminDetailssportTeamComponent implements OnInit{
       );
     }
     
-    // Helper method to create a User object from the API response
+    
     private createUserFromApiResponse(userData: any): User {
       return new User(
         userData.userId,
@@ -58,11 +58,11 @@ export class AdminDetailssportTeamComponent implements OnInit{
         console.log('Sport Team ID:', this.sportTeamId);
         this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
           (data: any) => {
-            console.log('API Response:', data); // Check API response
-            this.sportTeam.nameTeam = data.nameTeam; // Verify property assignment
+            console.log('API Response:', data);
+            this.sportTeam.nameTeam = data.nameTeam; 
             this.sportTeam.logoTeam = data.logoTeam;
             this.fetchUsersForSportTeam(this.sportTeamId);
-            console.log('Sport Team:', this.sportTeam); // Check sport team object
+            console.log('Sport Team:', this.sportTeam); 
           },
           error => {
             console.error('Error fetching sport team:', error);
@@ -76,7 +76,6 @@ export class AdminDetailssportTeamComponent implements OnInit{
         this.sportTeamService.addUserByEmailToSportTeam(this.sportTeamId, this.userEmail).subscribe({
           next: (response: any) => {
             console.log('User added successfully:', response);
-            // Refresh the users list after adding the user
             this.fetchUsersForSportTeam(this.sportTeamId);
           },
           error: (error: any) => {
@@ -96,7 +95,6 @@ export class AdminDetailssportTeamComponent implements OnInit{
         this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
           next: (response: any) => {
             console.log('User removed successfully:', response);
-            // Refresh the users list after removing the user
             this.fetchUsersForSportTeam(this.sportTeamId);
           },
           error: (error: any) => {
@@ -109,6 +107,10 @@ export class AdminDetailssportTeamComponent implements OnInit{
       }
     }
 
-
+    getCaptainName(captainId: number): string {
+      const captain = this.users.find(user => user.userId === captainId);
+      return captain ? captain.NameUser : '';
+    }
+    
   
 }

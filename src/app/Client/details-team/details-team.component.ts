@@ -109,4 +109,21 @@ export class DetailsTeamComponent implements OnInit {
       }
     }
 
+    RemoveUserfromTeam(userId: number): void {
+      if (userId) {
+        this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
+          next: (response: any) => {
+            console.log('User removed successfully:', response);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+          },
+          error: (error: any) => {
+            console.error('Error removing user:', error);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+          }
+        });
+      } else {
+        console.error('User ID is required.');
+      }
+    }
+
 }

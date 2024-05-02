@@ -1,37 +1,35 @@
 <div class="container">
-    <h2>All Field</h2>
-    <table class="table">
-      <thead>
-        <tr>
-          <th>Field ID</th>
-          <th>Name</th>
-          <th>Description</th>
-          <th>Location</th>
-          <th>Capacity</th>
-          <th>Type</th>
-          <th>Action</th>
-        </tr>
-      </thead>
-      <tbody>
-        <tr *ngFor="let field of fields">
-          <td>{{ field.fieldId }}</td>
-          <td>{{ field.nameField }}</td>
-          <td>{{ field.descriptionField }}</td>
-          <td>{{ field.locationField }}</td>
-          <td>{{ field.capacityField }}</td>
-          <td>{{ field.typeField }}</td>
-          <td>
-            <button class="btn btn-primary" [routerLink]="['/admin/update-field', field.fieldId]">Update</button>
-          </td>
-          <button class="btn btn-danger" (click)="deleteField(field.fieldId)">Delete</button>
-
-        </tr>
-      </tbody>
-    </table>
+  <h2 class="text-center mb-4">All Fields</h2>
+  <div class="table-responsive">
+      <table class="table table-striped">
+          <thead class="thead-dark">
+              <tr>
+                  <th>Field ID</th>
+                  <th>Name</th>
+                  <th>Description</th>
+                  <th>Location</th>
+                  <th>Capacity</th>
+                  <th>Type</th>
+                  <th class="text-center">Action</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let field of fields">
+                  <td>{{ field.fieldId }}</td>
+                  <td>{{ field.nameField }}</td>
+                  <td>{{ field.descriptionField }}</td>
+                  <td>{{ field.locationField }}</td>
+                  <td>{{ field.capacityField }}</td>
+                  <td>{{ field.typeField }}</td>
+                  <td class="text-center">
+                      <button class="btn btn-primary update-button" [routerLink]="['/admin/update-field', field.fieldId]">Update Field</button>
+                      <button class="btn btn-danger" (click)="deleteField(field.fieldId)">Delete Field</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
   </div>
-  <div class="container">
-    <br>
-    <button class="btn btn-primary" (click)="navigateToAddField()">Add Field</button>
+  <div class="text-center">
+      <button class="btn btn-success" (click)="navigateToAddField()">Add Field</button>
   </div>
-  
-  
+</div>

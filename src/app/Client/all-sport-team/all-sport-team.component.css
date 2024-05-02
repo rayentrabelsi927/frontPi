@@ -1,15 +1,31 @@
 .single-explore-item {
-    margin-bottom: 20px;
-  }
-  
-  .image-container {
-    width: 100%; /* Adjust this value as needed */
-    height: 200px; /* Adjust this value as needed */
-    overflow: hidden;
-  }
-  
-  .image-container img {
-    width: 100%;
-    height: auto;
-  }
-  
+  height: 590px; /* Adjust the height as needed */
+  display: flex;
+  flex-direction: column;
+}
+
+.single-explore-img {
+  height: 90%; /* Adjust the height as needed */
+  overflow: hidden;
+}
+
+.team-logo {
+  height: 100%;
+  width: auto;
+  object-fit: cover;
+}
+
+.single-explore-txt {
+  padding: 10px;
+  flex-grow: 1;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.explore-open-close-part {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-top: auto;
+}

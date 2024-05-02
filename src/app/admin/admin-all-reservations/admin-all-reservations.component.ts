@@ -32,9 +32,18 @@ export class AdminAllReservationsComponent implements OnInit{
     this.router.navigateByUrl('admin/add-reservation');
   }
   
-  navigateToUpdate(reservationId: number) {
-    this.router.navigate(['admin/update-reservation', reservationId]);
+  navigateToUpdate(reservation: any) {
+    const reservationId = reservation[0].reservationId; // Assuming reservationId is nested within the first object of the reservation array
+    if (reservationId) {
+      this.router.navigateByUrl(`admin/update-team/${reservationId}`);
+    } else {
+      console.error('Invalid reservation ID:', reservationId);
+    }
   }
+  
+  
+  
+  
 
   cancelReservation(reservationId: number) {
     // Call service method to cancel the reservation

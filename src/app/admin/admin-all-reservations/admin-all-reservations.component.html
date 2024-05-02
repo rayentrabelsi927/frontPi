@@ -1,40 +1,39 @@
-<table class="table">
-    <thead>
-      <tr>
-        <th>Start Date</th>
-        <th>End Date</th>
-        <th>Number of Players</th>
-        <th>Status</th>
-        <th>Reservation Type</th>
-        <th>Field ID</th>
-        <th>Field Name</th>
-        <th>Field Description</th>
-        <th>Field Location</th>
-        <th>Field Capacity</th>
-        <th>Field Type</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let reservation of reservations">
-        <td>{{ reservation[0].startDate | date:'medium' }}</td>
-        <td>{{ reservation[0].endDate | date:'medium' }}</td>
-        <td>{{ reservation[0].nbPlayers }}</td>
-        <td>{{ reservation[0].resStatus }}</td>
-        <td>{{ reservation[0].resType }}</td>
-        <td>{{ reservation[1].fieldId }}</td>
-        <td>{{ reservation[1].nameField }}</td>
-        <td>{{ reservation[1].descriptionField }}</td>
-        <td>{{ reservation[1].locationField }}</td>
-        <td>{{ reservation[1].capacityField }}</td>
-        <td>{{ reservation[1].typeField }}</td>
-        <td> <button  class="btn btn-primary" (click)="navigateToUpdate(reservation.reservationId)">Update</button>
-                <button class="btn btn-primary" (click)="cancelReservation(reservation.reservationId)">Cancel</button>
-        </td>
-  
-      </tr>
-    </tbody>
-  </table>
-  <button class="btn btn-primary" (click)="navigateToAddReservation()">Add Reservation</button>
-  
-  
+<div class="container">
+  <h2 class="text-center mb-4">Reservations</h2>
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col">Number of Players</th>
+                  <th scope="col">Status</th>
+     
+
+                  <th scope="col">Field Type</th>
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let reservation of reservations">
+                  <td>{{ reservation[0].startDate | date:'medium' }}</td>
+                  <td>{{ reservation[0].endDate | date:'medium' }}</td>
+                  <td>{{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</td>
+                  <td>{{ reservation[0].resStatus }}</td>
+
+               
+                  <td>{{ reservation[1].typeField }}</td>
+                  <td>
+                      <!-- <button class="btn btn-primary mr-2" (click)="navigateToUpdate(reservation.reservationId)">Update</button> -->
+                      <button class="btn btn-primary" (click)="navigateToUpdate(reservation)">Update</button>
+
+                      <button class="btn btn-danger" (click)="cancelReservation(reservation.reservationId)">Cancel</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+  </div>
+  <div class="text-center">
+      <button class="btn btn-primary" (click)="navigateToAddReservation()">Add Reservation</button>
+  </div>
+</div>

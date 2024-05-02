@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 
@@ -13,7 +14,7 @@ export class AdminAddsportTeamComponent implements OnInit {
   teamName: string = '';
   selectedFile: File | undefined;
   userEmail: string = '';
-  constructor(private sportTeamService: SportTeamService) {}
+  constructor(private sportTeamService: SportTeamService, private router: Router) {}
 
   ngOnInit(): void {}
 
@@ -26,10 +27,11 @@ export class AdminAddsportTeamComponent implements OnInit {
     console.log('Team Name:', this.teamName);
     console.log('Selected File:', this.selectedFile);
 
-    const captainId = 13;
+    const captainId = 3;
     this.sportTeamService.addSportTeam(this.teamName, captainId, this.selectedFile).subscribe(
       data => {
         console.log('Response:', data);
+        this.navigateToDetailsTeamPage(data.teamId);
       },
       err => {
         console.error('Error:', err);
@@ -46,11 +48,16 @@ export class AdminAddsportTeamComponent implements OnInit {
     this.sportTeamService.addUserToSportTeam(sportTeamId, userId).subscribe(
       data => {
         console.log('User added successfully:', data);
+        this.navigateToDetailsTeamPage(data.teamId);
         
       },
       error => {
         console.error('Error adding user:', error);
       }
     );
+  }
+
+  navigateToDetailsTeamPage(teamId: number): void {
+    this.router.navigate(['admin/details-team', teamId]);
   }
 }

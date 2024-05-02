@@ -4,6 +4,7 @@ export enum TypeF {
     Basketball = 'Basketball',
     Handball = 'Handball',
     Tennis = 'Tennis',
-    Volleyball = 'Volleyball'
+    Volleyball = 'Volleyball',
+    PingPong = 'PingPong'
   }
   

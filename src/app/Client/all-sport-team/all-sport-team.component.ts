@@ -65,5 +65,24 @@ export class AllSportTeamComponent {
   }
   
 
+  navigateToDetails(teamId: number): void {
+    const userId = 13; // Hardcoded user ID (replace with actual user ID)
+    this.sportTeamService.isUserCaptainTeam(teamId, userId).subscribe(
+      isCaptain => {
+        console.log("Is captain:", isCaptain); // Check the value received
+        if (isCaptain) {
+          this.router.navigate(['/details-team', teamId]);
+        } else {
+          this.router.navigate(['/details-team-client', teamId]);
+        }
+      },
+      error => {
+        console.error('Error checking captain status:', error);
+      }
+    );
+  }
+  
+
+
   
 }

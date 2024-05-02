@@ -1,6 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import { Observable, catchError, throwError } from 'rxjs';
 import { Reservation } from '../models/Field';
 
 @Injectable({
@@ -62,7 +62,33 @@ export class ReservationService {
     return this.httpClient.get<any[]>(`${this.baseURL}/users/${userId}/reservations`);
   }
 
+
   cancelReservation(reservationId: number): Observable<void> {
     return this.httpClient.put<void>(`${this.baseURL}/cancel/${reservationId}`, {});
   }
+
+
+  
+  joinReservation(reservationId: number, userId: number): Observable<string> {
+    const url = `${this.baseURL}/join/${reservationId}/${userId}`;
+    return this.httpClient.post<string>(url, {}).pipe(
+      catchError(error => throwError(error))
+    );
+  }
+
+  hasUserJoinedReservation(reservationId: number, userId: number): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.baseURL}/joined/${reservationId}/${userId}`);
+  }
+
+  cancelUserReservation(userId: number, reservationId: number): Observable<void> {
+    const url = `${this.baseURL}/cancel/${reservationId}/${userId}`;
+    return this.httpClient.put<void>(url, {}).pipe(
+      catchError(error => {
+        console.error('Error canceling user reservation:', error);
+        return throwError('An error occurred while canceling the reservation.');
+      })
+    );
+  }
+
+
 }

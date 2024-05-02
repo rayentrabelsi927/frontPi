@@ -18,11 +18,11 @@ export class UpdateFieldComponent implements OnInit {
     descriptionField: '',
     locationField: '',
     capacityField: 0,
-    typeField: TypeF.Football // Set default value
+    typeField: TypeF.Football 
   };
 
-  // Define the types array
-  types: TypeF[] = [TypeF.Football, TypeF.Basketball, TypeF.Handball, TypeF.Tennis, TypeF.Volleyball];
+ 
+  types: TypeF[] = [TypeF.Football, TypeF.Basketball, TypeF.Handball, TypeF.Tennis, TypeF.Volleyball, TypeF.PingPong];
 
 
   constructor(
@@ -32,12 +32,11 @@ export class UpdateFieldComponent implements OnInit {
   ) { }
 
   ngOnInit(): void {
-    // Retrieve the field ID from the route parameters
+   
     this.route.paramMap.subscribe(params => {
       const idParam = params.get('id');
       if (idParam !== null) {
-        this.fieldId = +idParam; // Convert the parameter to a number
-        // Fetch the field details based on the ID
+        this.fieldId = +idParam; 
         this.fetchFieldDetails();
       } else {
         console.error('Field ID parameter is null.');

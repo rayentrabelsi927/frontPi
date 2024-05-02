@@ -1,8 +1,8 @@
-<div class="container">
-    <!-- <h2>Team Details</h2> -->
+<!-- <div class="container">
+  
     <div *ngIf="sportTeam">
       <div class="form-group">
-        <!-- <label for="teamName">Team Name:</label> -->
+     
         <h2>{{ sportTeam.nameTeam }}</h2>
       </div>
       <div class="form-group">
@@ -50,4 +50,69 @@
     <button class="btn btn-primary" (click)="addUserToTeam()">Add User</button>
   </div>
   
+   -->
+   <div class="container">
+    <div class="row">
+      <div class="col-md-12 text-center">
+        <h2>{{ sportTeam.nameTeam }}</h2>
+      
+      </div>
+    </div>
+    <div class="row mt-4">
+      <div class="col-md-4">
+        <div class="container">
+          <br>
+          <br>
+          <h4>Add Player to Team</h4>
+          <div class="form-group">
+            <label for="userEmail">User Email:</label>
+            <input type="email" class="form-control" id="userEmail" [(ngModel)]="userEmail">
+          </div>
+          <br>
+          <button class="btn btn-primary btn-block" (click)="addUserToTeam()">Add Player</button>
+        </div>
+      </div>
+      <div class="col-md-1"></div>
+      <div class="col-md-6">
+        <div *ngIf="sportTeam.logoTeam" class="text-center">
+          <img class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + sportTeam.logoTeam" alt="Team Logo" style="width: 300px; height: auto;">
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="container mt-5">
+    <h3>Team Members</h3>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Badge</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of users">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <img *ngIf="user.badge === 'SILVER'" src="assets/img/Silver3.png" alt="Silver Badge" class="img-thumbnail" width="100" height="100">
+              <img *ngIf="user.badge === 'GOLD'" src="assets/img/gold3.png" alt="Gold Badge" class="img-thumbnail" width="100" height="100">
+              <img *ngIf="user.badge === 'DIAMOND'" src="assets/img/Diamond3.png" alt="Diamond Badge" class="img-thumbnail" width="100" height="100">
+            </td>
+            <td>  
+              <button class="btn btn-danger btn-sm" (click)="RemoveUserfromTeam(user.userId)">Remove User</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
   

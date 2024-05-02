@@ -26,7 +26,7 @@ export class AddTeamComponent implements OnInit {
     console.log('Team Name:', this.teamName);
     console.log('Selected File:', this.selectedFile);
 
-    const captainId = 10;
+    const captainId = 6;
     this.sportTeamService.addSportTeam(this.teamName, captainId, this.selectedFile).subscribe(
       data => {
         console.log('Response:', data);

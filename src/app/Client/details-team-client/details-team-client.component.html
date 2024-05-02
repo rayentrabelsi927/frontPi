@@ -1,41 +1,44 @@
 <div class="container">
-    <div class="team-details">
+  <div class="row">
+    <div class="col-md-6">
       <h2>{{ sportTeam.nameTeam }}</h2>
-      <div class="logo-container">
-        <img *ngIf="sportTeam.logoTeam" class="team-logo" [src]="'http://localhost:8089/projectARCTIC3/photos/' + sportTeam.logoTeam" alt="Team Logo">
+      <div class="table-responsive border">
+        <table class="table table-striped">
+          <thead>
+            <tr>
+              <th>First Name</th>
+              <th>Last Name</th>
+              <th>Email</th>
+              <th>Phone</th>
+              <th>Role</th>
+              <th>Badge</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let user of users">
+              <td>{{ user.firstName }}</td>
+              <td>{{ user.lastName }}</td>
+              <td>{{ user.email }}</td>
+              <td>{{ user.phone }}</td>
+              <td>{{ user.role }}</td>
+              <td>
+                <img *ngIf="user.badge === 'SILVER'" src="assets/img/Silver3.png" alt="Silver Badge" class="img-thumbnail" width="100" height="100">
+                <img *ngIf="user.badge === 'GOLD'" src="assets/img/gold3.png" alt="Gold Badge" class="img-thumbnail" width="100" height="100">
+                <img *ngIf="user.badge === 'DIAMOND'" src="assets/img/Diamond3.png" alt="Diamond Badge" class="img-thumbnail" width="100" height="100">
+              </td>
+            </tr>
+          </tbody>
+        </table>
       </div>
-    </div>
-  
-    <div class="user-list">
-      <h2>Players List</h2>
-      <table class="table">
-        <thead>
-          <tr>
-            <th>First Name</th>
-            <th>Last Name</th>
-            <th>Email</th>
-            <th>Phone</th>
-            <th>Role</th>
-            <th>Badge</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr *ngFor="let user of users">
-            <td>{{ user.firstName }}</td>
-            <td>{{ user.lastName }}</td>
-            <td>{{ user.email }}</td>
-            <td>{{ user.phone }}</td>
-            <td>{{ user.role }}</td>
-            <td>
-              <img *ngIf="user.badge === 'SILVER'" src="assets/img/Silver3.png" alt="Silver Badge" width="50" height="50">
-              <img *ngIf="user.badge === 'GOLD'" src="assets/img/gold3.png" alt="Gold Badge" width="50" height="50">
-              <img *ngIf="user.badge === 'DIAMOND'" src="assets/img/Diamond3.png" alt="Diamond Badge" width="50" height="50">
-            </td>
-          </tr>
-        </tbody>
-      </table>
-  
-      <div class="join-team">
+      <br>
+      <div class="join-team text-center">
         <button class="btn btn-primary" (click)="participateSportTeam()">Join Team</button>
       </div>
     </div>
+    <div class="col-md-6">
+      <div *ngIf="sportTeam.logoTeam" class="text-center">
+        <img class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + sportTeam.logoTeam" alt="Team Logo" style="width: 600px; height: auto;">
+      </div>
+    </div>
+  </div>
+</div>

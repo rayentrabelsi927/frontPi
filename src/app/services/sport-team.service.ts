@@ -35,11 +35,25 @@ export class SportTeamService {
   }
 
 
-  updateSportTeamCap(sportTeamId: number, captainId: number, nameTeam: string, updatedTeam: SportTeam): Observable<SportTeam> {
-    return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}?nameTeam=${nameTeam}`, updatedTeam);
+  // updateSportTeamCap(sportTeamId: number, captainId: number, nameTeam: string, updatedTeam: SportTeam): Observable<SportTeam> {
+  //   return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}?nameTeam=${nameTeam}`, updatedTeam);
+  // }
+
+  // updateSportTeamCap(sportTeamId: number, updatedTeam: SportTeam): Observable<SportTeam> {
+  //   return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}`, updatedTeam);
+  // }
+
+  updateSportTeamCap(sportTeamId: number, nameTeam: string, updatedTeam: SportTeam, selectedFile: File): Observable<SportTeam> {
+    const formData: FormData = new FormData();
+    formData.append('nameTeam', nameTeam);
+    formData.append('updatedTeam', JSON.stringify(updatedTeam));
+    if (selectedFile) {
+      formData.append('logo', selectedFile, selectedFile.name);
+    }
+    return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}`, formData);
   }
-
-
+  
+  
 
   addUserToSportTeam(sportTeamId: number, userId: number): Observable<any> {
     return this.httpClient.post<any>(`${this.baseURL}addUser/${sportTeamId}/${userId}`, {});
@@ -94,5 +108,21 @@ removeUserFromSportTeam(sportTeamId: number, userId: number): Observable<any> {
     return this.httpClient.get<number>(`${this.baseURL}${sportTeamId}/user-count`);
   }
   
+
+  isUserCaptain(userId: number): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.baseURL}user/${userId}/is-captain`);
+  }
+
+  isUserCaptainTeam(teamId: number, userId: number): Observable<boolean> {
+    return this.httpClient.get<boolean>(`${this.baseURL}teams/${teamId}/captain/${userId}`);
+  }
+
+  makeTeamReservation(sportTeamId: number, captainId: number, fieldId: number, reservation: any): Observable<any> {
+    return this.httpClient.post<any>(`${this.baseURL}${sportTeamId}/reservations?captainId=${captainId}&fieldId=${fieldId}`, reservation);
+  }
+
+  getSportTeamIdByCaptainId(captainId: number): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL}captain/${captainId}`);
+  }
 }
 
