@@ -1,5 +1,5 @@
 import { ChangeDetectorRef, Component, OnInit } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
@@ -10,15 +10,15 @@ import { SportTeamService } from 'src/app/services/sport-team.service';
   styleUrls: ['./details-team.component.css']
 })
 export class DetailsTeamComponent implements OnInit {
-  userEmail: string = ''; // Initialize user email variable
+  userEmail: string = ''; 
   sportTeamId: number =0;
   sportTeam: any = { nameTeam: '', logoTeam: '' };
   users: any[] = [];
   
     constructor(
       private sportTeamService: SportTeamService,
-      private route: ActivatedRoute
-    
+      private route: ActivatedRoute,
+      private router: Router
     ) {}
 
    
@@ -34,7 +34,7 @@ export class DetailsTeamComponent implements OnInit {
       );
     }
     
-    // Helper method to create a User object from the API response
+    
     private createUserFromApiResponse(userData: any): User {
       return new User(
         userData.userId,
@@ -58,11 +58,11 @@ export class DetailsTeamComponent implements OnInit {
         console.log('Sport Team ID:', this.sportTeamId);
         this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
           (data: any) => {
-            console.log('API Response:', data); // Check API response
-            this.sportTeam.nameTeam = data.nameTeam; // Verify property assignment
+            console.log('API Response:', data); 
+            this.sportTeam.nameTeam = data.nameTeam; 
             this.sportTeam.logoTeam = data.logoTeam;
             this.fetchUsersForSportTeam(this.sportTeamId);
-            console.log('Sport Team:', this.sportTeam); // Check sport team object
+            console.log('Sport Team:', this.sportTeam); 
           },
           error => {
             console.error('Error fetching sport team:', error);
@@ -126,4 +126,9 @@ export class DetailsTeamComponent implements OnInit {
       }
     }
 
+    navigateToUpdateTeamPage(teamId: number): void {
+      this.router.navigate(['/update-team', teamId]);
+    }
+    
+    
 }

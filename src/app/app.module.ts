@@ -45,6 +45,8 @@ import { AdminAddsportTeamComponent } from './admin/admin-addsport-team/admin-ad
 import { AdminUpdatesportTeamComponent } from './admin/admin-updatesport-team/admin-updatesport-team.component';
 import { AdminDetailssportTeamComponent } from './admin/admin-detailssport-team/admin-detailssport-team.component';
 import { DetailsTeamClientComponent } from './Client/details-team-client/details-team-client.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -99,6 +101,7 @@ import { DetailsTeamClientComponent } from './Client/details-team-client/details
     ReactiveFormsModule,
     AppRoutingModule,
     HttpClientModule,
+    NgxPaginationModule,
     
 
   ],

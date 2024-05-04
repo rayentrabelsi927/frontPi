@@ -1,30 +1,25 @@
 <div class="container">
+  <div class="col-md-5 offset-md-3">
   <h2>Update Team {{ updatedTeam.nameTeam }}</h2>
   <form (ngSubmit)="updateTeam()">
     <div class="form-group">
-      <label for="sportTeamId">Sport Team ID:</label>
-      <!-- Display sportTeamId in a label -->
-      <label>{{ sportTeamId }}</label>
+      
     </div>
     <div class="form-group">
       <label for="teamName">Team Name:</label>
-      <!-- Use ngModel for two-way data binding to update the team name -->
+      
       <input type="text" class="form-control" id="teamName" [(ngModel)]="updatedTeam.nameTeam" name="teamName" required>
     </div>
     <div class="form-group">
       <label for="logo">Logo:</label>
-      <!-- Display the selected file name if available -->
+     
       <input type="text" class="form-control" [value]="selectedFile?.name" disabled>
-      <!-- Allow user to choose a new file -->
+     
       <input type="file" class="form-control" id="logo" (change)="onFileChange($event)">
-      <!-- Display the current logo if available -->
+    
       <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="width: 500px; height: auto;">
     </div>
     <button type="submit" class="btn btn-primary">Update Team</button>
   </form>
-  <!-- <div class="form-group">
-    <label for="userEmail">User Email:</label>
-  
-    <input type="text" id="userEmail" [(ngModel)]="userEmail" placeholder="Enter user email">
-  </div> -->
+</div>
 </div>

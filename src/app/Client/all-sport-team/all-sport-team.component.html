@@ -6,6 +6,7 @@
       <p>Explore different sport teams</p>
     </div>
     <div class="row">
+      
       <div class="col-md-4" *ngFor="let team of sportTeam; let i = index">
         <div class="single-explore-item">
           <div class="single-explore-img">
@@ -28,10 +29,12 @@
               </div>
             </div>
           </div>
+          
         </div>
         
         </div>
       </div>
+      <button class="btn btn-primary text-center" (click)="navigateToAddTeam()">Add New Team</button>
     </div>
  
 </section>
