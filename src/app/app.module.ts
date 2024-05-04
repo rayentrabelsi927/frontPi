@@ -37,7 +37,7 @@ import { AdminChartsComponent } from './admin/admin-charts/admin-charts.componen
 import { ArticlesManagementComponent } from './admin/articles-management/articles-management.component';
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
-import { MatPaginatorModule } from '@angular/material/paginator';
+//import { MatPaginatorModule } from '@angular/material/paginator';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
@@ -98,7 +98,7 @@ import { LogoutComponent } from './Client/logout/logout.component';
     AppRoutingModule,
     CodeInputModule,
     BrowserAnimationsModule,
-    MatPaginatorModule,
+   // MatPaginatorModule,
   ],
   providers: [
     HttpClient,
