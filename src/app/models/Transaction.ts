@@ -1,5 +1,4 @@
 import { Feedback } from "./Feedback";
-import { User } from "./User";
 
 export class Transaction {
     transactionId!: number;
@@ -8,7 +7,7 @@ export class Transaction {
     feedbacks!: Feedback[]; // Supposons que Feedback est un autre modèle
     articles!: any[]; // Supposons que Article est un autre modèle
     housing!: any;
-    users!: User;
+    users!: any;
 
     constructor(
       transactionId: number,
