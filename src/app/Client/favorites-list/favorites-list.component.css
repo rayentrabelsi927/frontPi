@@ -1,0 +1,87 @@
+/* Style CSS */
+h1 {
+  text-align: center;
+  color: #bd1708;
+}
+
+#print-section {
+  text-align: center;
+  margin-top: 20px;
+}
+
+.print-icons {
+  display: flex;
+  justify-content: center;
+}
+
+.print-icons > div {
+  display: flex;
+  align-items: center;
+  margin-right: 10px;
+}
+
+.print-icons > div > div {
+  cursor: pointer;
+  font-size: 24px;
+  color: gray;
+}
+
+.print-icons > div > div:last-child {
+  margin-right: 0;
+}
+
+.table {
+  width: 80%;
+  margin: 0 auto;
+  border-collapse: collapse;
+}
+
+.table img {
+  max-width: 150px;
+  height: auto;
+  display: block;
+  margin: 0 auto;
+  border: none;
+}
+
+.bi-heartbreak-fill {
+  color: #bd1708;
+}
+
+/* Augmenter la taille du texte en gras */
+p strong {
+  font-size: 20px;
+}
+
+/* Réduire la longueur de la note et augmenter sa largeur */
+.table textarea {
+  width: 200px;
+  height: 50px;
+}
+
+@media print {
+  .no-print {
+    display: none !important;
+  }
+
+  .print-only {
+    display: block !important;
+  }
+
+  /* Masquer les icônes d'impression */
+  .print-icons {
+    display: none;
+  }
+}
+
+td {
+  text-align: center; /* Centrer le contenu horizontal */
+  vertical-align: middle; /* Centrer le contenu vertical */
+}
+
+.description-cell {
+  max-width: 300px; /* Ajustez la valeur en fonction de vos besoins */
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}

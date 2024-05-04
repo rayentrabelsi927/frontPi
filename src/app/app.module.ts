@@ -26,6 +26,19 @@ import { FormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { SectionsmanagementComponent } from './Client/sectionsmanagement/sectionsmanagement.component';
+import { FavoritesListComponent } from './Client/favorites-list/favorites-list.component';
+import { ListArticlesComponent } from './Client/list-articles/list-articles.component';
+import { AddUpadateArticleComponent } from './Client/add-upadate-article/add-upadate-article.component';
+import { HttpClientModule } from '@angular/common/http';
+import { CartArticleComponent } from './Client/cart-article/cart-article.component';
+import { ArticleDetailsComponent } from './Client/article-details/article-details.component';
+import { AdminChartsComponent } from './admin/admin-charts/admin-charts.component';
+import { ArticlesManagementComponent } from './admin/articles-management/articles-management.component';
+import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatPaginatorModule } from '@angular/material/paginator';
+
 
 
 @NgModule({
@@ -52,12 +65,27 @@ import { SidebarComponent } from './shared/sidebar/sidebar.component';
     AllComponent,
     HeaderComponent,
     SidebarComponent,
+    SectionsmanagementComponent,
+    FavoritesListComponent,
+    ListArticlesComponent,
+    AddUpadateArticleComponent,
+    CartArticleComponent,
+   ArticleDetailsComponent,
+   AdminChartsComponent,
+   ArticlesManagementComponent,
+   AdminActionsComponent
+    
+   
   ],
   imports: [
     BrowserModule,
     AppRoutingModule,
-    CommonModule, // Add this line
-    FormsModule // Add this line
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatPaginatorModule,
+    
 
   ],
   providers: [],

@@ -1,0 +1,115 @@
+<div class="filter-container">
+  <h2 class="refine">Refine your search!</h2>
+  <div class="test text-center">
+    <div class="mb-3 d-inline-block">
+      <label class="fw-bold">Category </label>
+      <select [(ngModel)]="selectedCategory" (change)="filterArticles()" class="form-select me-3">
+        <option value="" disabled selected>-----Category-----</option>
+        <option *ngFor="let category of categories" [value]="category">{{ category }}</option>
+      </select>
+    </div>
+
+    <div class="mb-3 d-inline-block">
+      <label class="fw-bold">Condition </label>
+      <select [(ngModel)]="selectedCondition" (change)="filterArticles()" class="form-select me-3">
+        <option value="" disabled selected>----Condition-----</option>
+        <option *ngFor="let condition of conditions" [value]="condition">{{ condition }}</option>
+      </select>
+    </div>
+    <div class="mb-3 d-inline-block">
+      <label class="fw-bold">Price Range </label>
+      <div>
+        <input type="range" class="form-range" [(ngModel)]="selectedPrice" [min]="minPrice" [max]="maxPrice" [step]="priceStep" (input)="filterArticles()" id="customRange3">
+      </div>
+      <div class="price-display">{{ selectedPrice }}</div>
+    </div>
+    <div class="mb-3 d-inline-block me-4">
+      <div class="bi bi-arrow-clockwise" (click)="clear()">
+        <svg xmlns="http://www.w3.org/2000/svg" width="25" height="25" fill="currentColor" class="bi bi-arrow-clockwise" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M8 3a5 5 0 1 0 4.546 2.914.5.5 0 0 1 .908-.417A6 6 0 1 1 8 2z"/>
+          <path d="M8 4.466V.534a.25.25 0 0 1 .41-.192l2.36 1.966c.12.1.12.284 0 .384L8.41 4.658A.25.25 0 0 1 8 4.466"/>
+        </svg>
+      </div>
+    </div>
+  </div>
+</div>
+<br><br>
+<br>
+<div class="article-container">
+  <div class="available-articles">
+    <div *ngFor="let article of paginatedArticles" class="article-card"></div>
+    <div *ngFor="let article of filteredArticles" class="article-card">
+      <div class="image-container">
+        <img class="small-thumbnail" [src]="'data:image/jpeg;base64,' + article.imgArticle" alt="Article Image">
+        <div class="hover-icons">
+          <i class="lni lni-search" (click)="showPopup(article)"></i>
+          <i class="lni lni-shopping-basket" (click)="addToCart(article)"></i>
+          <i class="lni lni-heart" (click)="addToFavoritesList(article)"></i>
+        </div>
+      </div>
+      <div class="article-details">
+        <p class="label">{{ article.nameArticle }}</p>
+        <p class="price">{{ article.priceArticle }} TND</p>
+      </div>
+    </div>
+    
+
+  </div>
+
+  <div class="recommended-container">
+    <div *ngIf="recommendedArticles && recommendedArticles.length > 0" class="mb-3">
+      <h5>
+        <span class="icon"><svg xmlns="http://www.w3.org/2000/svg" width="35" height="35" fill="currentColor" class="bi bi-bell" viewBox="0 0 16 16">
+          <path d="M8 16a2 2 0 0 0 2-2H6a2 2 0 0 0 2 2M8 1.918l-.797.161A4 4 0 0 0 4 6c0 .628-.134 2.197-.459 3.742-.16.767-.376 1.566-.663 2.258h10.244c-.287-.692-.502-1.49-.663-2.258C12.134 8.197 12 6.628 12 6a4 4 0 0 0-3.203-3.92zM14.22 12c.223.447.481.801.78 1H1c.299-.199.557-.553.78-1C2.68 10.2 3 6.88 3 6c0-2.42 1.72-4.44 4.005-4.901a1 1 0 1 1 1.99 0A5 5 0 0 1 13 6c0 .88.32 4.2 1.22 6"/>
+        </svg></span>
+        Recommended Items
+      </h5>
+      <div class="recommended-articles">
+        <div *ngFor="let r of recommendedArticles" class="article-card">
+          <div class="image-container">
+            <img class="small-thumbnail" [src]="'data:image/jpeg;base64,' + r.imgArticle" alt="Article Image" (click)="viewArticleDetails(r)">
+            <div class="hover-icons">
+              <i class="lni lni-search"></i>
+              <a routerLink="/cart" class="cart-link">
+                <i class="lni lni-shopping-basket"></i>
+              </a>
+              <i class="lni lni-heart" (click)="addToFavoritesList(r)"></i>
+            </div>
+          </div>
+          <div class="article-details">
+            <p class="label">{{ r.nameArticle }}</p>
+            <p class="price">{{ r.priceArticle }} TND</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+<div class="popup" *ngIf="showPopupFlag" (click)="closePopup()">
+  <div class="popup-content">
+    <div class="item-details" *ngIf="popupArticle">
+      <div class="imageContainer">
+        <img class="img-thumbnail" [src]="'data:image/jpeg;base64,' + popupArticle.imgArticle" style="width: 300px; height: 300px;">
+      </div>
+      <div class="details-container">
+        <div>
+          <h1 classe="titre"> {{ popupArticle.nameArticle }}</h1>
+        </div>
+        <div>
+          <strong class="autre">Price {{ popupArticle.priceArticle }} TND</strong> 
+        </div>
+        <div class="autre">
+          <strong class="categoryArticle"> Category:</strong> {{ popupArticle.categoryArticle }}
+        </div>
+        <div class="autre">
+          <strong class="conditionArticle"> Condition:</strong> {{ popupArticle.conditionArticle }}
+        </div>
+        <div class="autre">
+          <strong class="descriptionArticle">Description:</strong> {{ popupArticle.descriptionArticle }}
+        </div>
+        <i class="lni lni-heart" (click)="addToFavoritesList(popupArticle)"></i>
+    
+        <i class="lni lni-shopping-basket" (click)="addToCart(popupArticle)"></i>
+      </div>
+    </div>
+  </div>
+</div>

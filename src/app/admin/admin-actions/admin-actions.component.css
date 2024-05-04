@@ -1,0 +1,23 @@
+.card.h-100 {
+    max-width: 100%; /* Réduit la largeur de moitié */
+    margin: 0 auto; /* Centre la carte horizontalement */
+}
+h2{
+    text-align: center;
+    color: #1a63b3;
+}
+/* Couleur personnalisée pour le bouton Save */
+.btn-custom {
+    color: #fff; /* Couleur du texte */
+    background-color: #1a63b3; /* Couleur de fond */
+    border-color: #007bff; /* Couleur de la bordure */
+  }
+  label {
+    font-weight: bold; /* Met en gras le texte du label */
+    color: #1a63b3; /* Couleur du texte */
+    
+    
+  }
+  
+  
+  

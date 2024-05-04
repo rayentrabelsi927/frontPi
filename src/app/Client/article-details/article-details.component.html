@@ -1,0 +1,23 @@
+<div class="item-details">
+  <div class="image-container">
+    <img class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + article.imgArticle" alt="Article Image">
+  </div>
+  <div class="details-container">
+    <h1>Item details</h1>
+    <div>
+      <strong>Label:</strong> {{ article!.nameArticle }}
+    </div>
+    <div>
+      <strong>Description:</strong> {{ article!.descriptionArticle }}
+    </div>
+    <div>
+      <strong>Catégorie:</strong> {{ article!.categoryArticle }}
+    </div>
+    <div>
+      <strong>Condition:</strong> {{ article!.conditionArticle }}
+    </div>
+    <div>
+      <strong>Prix:</strong> {{ article!.priceArticle }}
+    </div>
+  </div>
+</div>

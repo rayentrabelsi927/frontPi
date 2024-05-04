@@ -1,0 +1,84 @@
+
+  
+
+  
+  .img-thumbnail {
+    max-width: 100px; /* Augmenter la taille maximale des images */
+    height: auto;
+    border: none; /* Enlever le cadre des images */
+    }
+ 
+.container {
+  display: flex;
+  flex-direction: column;
+  height: 100vh; }
+
+.table-container {
+  max-width: 550px;
+  width: 55%;
+  overflow-x: auto; 
+ 
+}
+
+.cart-summary {
+  position: absolute;
+  top: 75%;
+  right: 25%;
+  transform: translate(50%, -50%);
+  width: 80%;
+  max-width: 400px;
+  padding: 20px;
+  background-color: #e5e7e7;
+
+}
+
+
+.custom-table {
+  background-color: #e5e7e7; /* Couleur de fond pour le deuxième tableau */
+  border-collapse: collapse; /* Fusionne les bordures de cellule */
+  margin: 0 auto;
+  
+}
+
+.custom-table tr {
+  border-bottom: 1px solid #050505; /* Bordure basse de chaque ligne */
+  margin: 0 auto;
+}
+
+.custom-table th,
+.custom-table td {
+  padding: 8px; /* Ajouter un peu d'espace pour l'effet visuel */
+  margin: 0 auto;
+}
+
+
+
+
+
+.btn-pay {
+  font-size: 30px; 
+  color: #bd1708; 
+  background-color: transparent; 
+  padding: 10px 20px; 
+  cursor: pointer;
+}
+
+.btn-pay:hover {
+  background-color: #bd1708; 
+  color: #fff; 
+}
+
+h1{
+  text-align: center;
+  color: #bd1708;
+}
+.black-text {
+  color: black; /* Couleur du texte en noir */
+}
+.no-underline {
+  text-decoration: none; /* Enlève le soulignement du lien */
+}
+.cart-summary p strong {
+  font-size: 18px; /* Adjust the font size as needed */
+  color: #bd1708;
+}

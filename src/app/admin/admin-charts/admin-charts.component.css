@@ -1,0 +1,12 @@
+
+#pieChart,
+#stackedBarChart,
+#barChart {
+  max-width: 100%; 
+  height: auto; 
+  display: block; 
+  margin: 0 auto; 
+}
+h2{
+  text-align: center;
+}

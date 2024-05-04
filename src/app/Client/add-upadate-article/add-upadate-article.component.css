@@ -1,0 +1,24 @@
+.card-body {
+  padding: 20px;
+}
+
+.form-group {
+  margin-bottom: 20px;
+}
+
+label {
+  font-weight: bold;
+}
+
+textarea {
+  min-height: 100px;
+}
+
+.img-thumbnail {
+  max-width: 100px;
+  max-height: 100px;
+}
+
+.btn {
+  margin-top: 10px;
+}

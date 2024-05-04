@@ -1,0 +1,24 @@
+img {
+    max-width: 80px; 
+    height: auto;
+  }
+  .description-column {
+    word-wrap: break-word;
+    max-width: 8ch; /* Limite la longueur de la ligne à 12 caractères */
+  }
+  .user-list th,
+  .user-list td {
+    padding: 5px; /* Ajuste l'espacement interne des cellules */
+    font-size: 12px; /* Réduit la taille de la police */
+  }
+
+  .user-list th {
+    width: 10%; /* Définit une largeur fixe pour les en-têtes de colonnes */
+  }
+
+  .user-list td {
+    max-width: 100px; /* Limite la largeur maximale des cellules */
+    white-space: nowrap; /* Empêche le texte de se retourner à la ligne */
+    overflow: hidden; /* Masque le texte qui dépasse de la cellule */
+    text-overflow: ellipsis; /* Ajoute des points de suspension (...) pour indiquer du texte coupé */
+  }
