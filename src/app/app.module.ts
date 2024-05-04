@@ -42,10 +42,10 @@ import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common
 import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
-import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 import { LogoutComponent } from './Client/logout/logout.component';
 //import { AllUsersComponent } from './admin/all-users/all-users.component';
 
+import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 
 
 @NgModule({
