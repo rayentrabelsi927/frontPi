@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
-import { Article } from 'src/app/models/Article';
 import { PaiementService } from 'src/app/services/paiement.service';
 import { Router } from '@angular/router';
 import { TransactionService } from 'src/app/services/transaction.service';
@@ -32,17 +31,14 @@ export class PaiementComponent implements OnInit {
 
   productPrice: number = 50;
   articleList: any[] =  [{
-    "articleId": 3,
-    "nameArticle": "bureau",
-
-    "categoryArticle": "Technology",
-    "conditionArticle": "Fair",
-    "imgArticle": "img",
-    "descriptionArticle": "Description de l'article",
-    "priceArticle": 50.0,
-    "users": {
-      "userId": 1,
-      "username": "rayen"}
+    "articleId": 1,
+    "nameArticle": "test",
+    "categoryArticle": "Home",
+    "conditionArticle": "Good",
+    "imgArticle": "chap2-1.jpg",
+    "descriptionArticle": "beau",
+    "priceArticle": 15.0,
+    
 }]; 
   
 
@@ -66,8 +62,18 @@ constructor(private paiementService: PaiementService,private transactionservice 
     const transaction = {
       amountTransaction: productPrice * 100,
       "feedbacks": [],
-      "articles": this.articleList,
-      "users":this.userconnnecté 
+      "articles": [],
+      "users":this.userconnnecté ,
+      
+    "housing":{
+      "housingID": 1,
+      "typeHousing": "Shared",
+      "descriptionHousing": "ssdd",
+      "locationHousing": "xccds",
+      "availabilityHousing": true,
+      "imgHousing": "sdds",
+      "priceHousing": null
+  }
             
     };
     const transactionString = JSON.stringify(transaction);

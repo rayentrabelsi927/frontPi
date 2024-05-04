@@ -5,7 +5,6 @@ import { Transaction } from 'src/app/models/Transaction';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Article } from 'src/app/models/Article';
 import { Housing } from 'src/app/models/Housing';
 declare var require: any;
 
@@ -16,7 +15,7 @@ declare var require: any;
 })
 export class TransactionComponent {
   userconnnecté:any={
-    "userId": 2,
+    "userId": 8,
     "username": "rayen"};
   errorMessage = '';
   mapUrl: SafeResourceUrl = '';
@@ -41,7 +40,7 @@ export class TransactionComponent {
     const url = `https://maps.google.com/maps?q=${encodedValue}&output=embed`;
     this.mapUrl = this.sanitizer.bypassSecurityTrustResourceUrl(url);
   }
-  stringifyArticles(articles: Article[]): string {
+  stringifyArticles(articles: any[]): string {
     let result = '';
     let total = 0;
 
