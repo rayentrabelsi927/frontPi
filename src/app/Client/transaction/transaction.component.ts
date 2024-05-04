@@ -5,7 +5,6 @@ import { Transaction } from 'src/app/models/Transaction';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
-import { Housing } from 'src/app/models/Housing';
 declare var require: any;
 
 @Component({
@@ -54,7 +53,7 @@ export class TransactionComponent {
     return result;
   }
 
-  stringifyhousing(housing: Housing): string {
+  stringifyhousing(housing: any): string {
     let result = '';
     let total = 0;
 

@@ -1,5 +1,4 @@
 import { Feedback } from "./Feedback";
-import { Housing } from "./Housing";
 import { User } from "./User";
 
 export class Transaction {
@@ -8,7 +7,7 @@ export class Transaction {
     payementDateTransaction!: Date;
     feedbacks!: Feedback[]; // Supposons que Feedback est un autre modèle
     articles!: any[]; // Supposons que Article est un autre modèle
-    housing!: Housing;
+    housing!: any;
     users!: User;
 
     constructor(
@@ -17,7 +16,7 @@ export class Transaction {
       payementDateTransaction: Date,
       feedbacks: Feedback[],
       articles: any[],
-      housing:Housing
+      housing:any
     ) {
       this.housing =housing;
       this.transactionId = transactionId;

@@ -1,5 +1,4 @@
 import { Feedback } from "./Feedback";
-import { Housing } from "./Housing";
 import { Transaction } from "./Transaction";
 import { User } from "./User";
 
