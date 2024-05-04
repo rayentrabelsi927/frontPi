@@ -1,0 +1,285 @@
+.article-card {
+  width: calc(25% - 10px); 
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.image-container {
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  height: 240px;
+}
+
+.hover-icons {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background-color: rgba(255, 255, 255, 0.8);
+  display: flex;
+  justify-content: space-around;
+  padding: 5px 0;
+}
+
+.hover-icons i {
+  cursor: pointer;
+}
+
+.article-container {
+  display: flex;
+  margin-left: 100px;
+}
+
+
+.small-thumbnail {
+  width: 100%; 
+  height: auto; 
+  max-height: 330px; 
+}
+
+.available-articles {
+  flex: 3;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between; 
+}
+
+.available-articles .article-card {
+  width: calc(33.33% - 10px); 
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-right: 10px; 
+  margin-bottom: 20px; 
+  box-sizing: border-box; 
+  position: relative; 
+  border-radius: 10px; 
+}
+
+.available-articles .article-card:last-child {
+  margin-right: 0; 
+}
+.available-articles .article-card {
+  border: none; 
+}
+
+
+
+
+
+
+
+
+
+
+
+.larger-thumbnail {
+  width: 200px; 
+  height: auto; 
+}
+
+
+.recommended-container .article-card {
+  border: none; 
+}
+
+.recommended-container .image-container {
+  overflow: visible; 
+}
+
+
+
+
+
+
+
+
+.recommended-container {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  border-left: 1px solid black;
+  padding: 20px; 
+}
+
+.article-card {
+  width: 100%;
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin-bottom: 20px; 
+}
+
+.form-range::-webkit-slider-thumb {
+  background-color: rgb(126, 125, 125);
+}
+
+
+
+
+.filter-container {
+  background-color: #f9f9f9;
+  padding: 8px;
+  border-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.refine {
+  font-size: 28px;
+  margin-bottom: 20px;
+  text-align: left;
+  color: #bd1708;
+}
+
+.test {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+}
+
+.mb-3 {
+  margin-bottom: 20px; 
+}
+
+.d-inline-block {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 50px; }
+
+.form-select,
+.form-range,
+.bi-arrow-clockwise {
+  margin-right: 20px; 
+  margin-bottom: 20px; 
+}
+
+.price-display {
+  margin-top: 10px;
+}
+
+@media (max-width: 768px) {
+  .form-select,
+  .form-range,
+  .bi-arrow-clockwise {
+    margin-right: 0;
+    margin-bottom: 20px; 
+  }
+}
+
+
+.form-range {
+  width: 100%;
+  color: #bd1708;
+}
+
+.price-display {
+  position: absolute;
+  right: 430px; 
+  top: 330px; 
+}
+
+
+
+.hover-icons {
+  display: none;
+}
+
+
+.image-container:hover .hover-icons {
+  display: flex;
+}
+
+.article-details {
+  text-align: center;
+}
+
+.article-details p.label {
+  font-weight: bold;
+  color: black;
+}
+
+
+.hover-icons i:hover {
+  font-size: 24px;
+}
+
+.recommended-container h5 {
+  color: #800020; 
+}
+
+.recommended-container h5 .icon svg {
+  fill: #800020;
+}
+
+
+.popup {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 9999;
+}
+
+.popup-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 5px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.popup-content .item-details {
+  display: flex;
+}
+
+.popup-content .item-details .imageContainer {
+  margin-right: 20px;
+}
+
+.popup-content .item-details .details-container {
+  flex: 1;
+}
+
+.popup-content .item-details h1.titre {
+  font-weight: bold;
+  color: #000000; 
+  margin-bottom: 10px; 
+}
+
+.popup-content .item-details strong {
+  color: rgb(8, 8, 8); 
+  margin-bottom: 5px; 
+  
+}
+
+.popup-content .item-details div {
+  margin-bottom: 5px; 
+}
+
+.popup-content .item-details h1{
+  color: #800020;
+  margin-top: 15px;
+}
+
+.popup-content .item-details .autre {
+  margin-bottom: 5px; 
+  text-align: left; 
+}
+
+.popup-content .item-details .autre strong {
+  color: rgb(12, 12, 12); 
+}
+
+.popup-content .item-details .autre:first-child {
+  margin-top: 10px; 
+}
+
+.popup-content .item-details .categoryArticle strong,
+.popup-content .item-details .conditionArticle strong,
+.popup-content .item-details .descriptionArticle strong {
+  color: #ff00ff; /* Couleur rose */
+}

@@ -1,0 +1,25 @@
+h1 {
+    text-align: center;
+    color: #bd1708;
+    
+  }
+  .item-details {
+    display: flex;
+    align-items: flex-start;
+  }
+  
+  .image-container {
+    flex: 0 0 auto;
+    margin-right: 20px; /* Espacement entre l'image et les détails */
+  }
+  
+  .details-container {
+    flex: 1 1 auto;
+  }
+  
+  /* Ajustement de la taille de l'image */
+  .img-thumbnail {
+    max-width: 150px; /* Taille maximale de l'image */
+    height: auto;
+  }
+  
