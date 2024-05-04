@@ -7,7 +7,7 @@ import { RecommendationService } from 'src/app/services/recommendation.service';
 import { CartArticleComponent } from '../cart-article/cart-article.component';
 import { CartArticleService } from 'src/app/services/cart-article.service';
 import { HttpClient } from '@angular/common/http';
-import { MatPaginator } from '@angular/material/paginator';
+//import { MatPaginator } from '@angular/material/paginator';
 
 @Component({
   selector: 'app-list-articles',
@@ -15,7 +15,7 @@ import { MatPaginator } from '@angular/material/paginator';
   styleUrls: ['./list-articles.component.css']
 })
 export class ListArticlesComponent implements OnInit {
-  @ViewChild(MatPaginator) paginator!: MatPaginator;
+  //@ViewChild(MatPaginator) paginator!: MatPaginator;
   articles: any[] = [];
   categories: string[] = [];
   conditions: string[] = [];
@@ -69,9 +69,9 @@ export class ListArticlesComponent implements OnInit {
     });
     this.getRecommendedArticles();
   
-    this.paginator.page.subscribe((event) => {
+   /* this.paginator.page.subscribe((event) => {
       this.paginateArticles(event);
-    });
+    });*/
   }    
   loadArticles() {
     this.articleService.getArticles().subscribe((data: any[]) => {
