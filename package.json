@@ -25,6 +25,7 @@
     "@popperjs/core": "^2.11.8",
     "angular-code-input": "^1.6.0",
     "angular2-chartjs": "^0.5.1",
+    "angular2-qrcode": "^2.0.3",
     "bootstrap": "^5.3.3",
     "chart.js": "^4.4.2",
     "jquery": "^3.7.1",

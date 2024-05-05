@@ -44,6 +44,7 @@ import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
 import { LogoutComponent } from './Client/logout/logout.component';
 //import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 
@@ -98,7 +99,7 @@ import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
     AppRoutingModule,
     CodeInputModule,
     BrowserAnimationsModule,
-   // MatPaginatorModule,
+    QRCodeModule,
   ],
   providers: [
     HttpClient,
