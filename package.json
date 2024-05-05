@@ -24,6 +24,7 @@
     "@auth0/angular-jwt": "^5.2.0",
     "@popperjs/core": "^2.11.8",
     "@stripe/stripe-js": "^3.3.0",
+    "@zegocloud/zego-uikit-prebuilt": "^2.0.1",
     "angular-code-input": "^1.6.0",
     "angular2-chartjs": "^0.5.1",
     "angular2-qrcode": "^2.0.3",
