@@ -1,0 +1,58 @@
+<div class="col-lg-6 col-md-12 mx-auto"> <!-- Utilisation de la classe mx-auto pour centrer horizontalement -->
+  <form class="card p-5">
+    <div class="row g-3">
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.titleInternship" id="title" name="title" placeholder="Titre">
+          <label for="title">Titre</label>
+        </div>
+      </div>
+      <div class="col-md-6">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.companyInternship" id="company" name="company" placeholder="Entreprise">
+          <label for="company">Entreprise</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.durationInternship" id="duration" name="duration" placeholder="Durée">
+          <label for="duration">Durée</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.descriptionInternship" id="description" name="description" placeholder="Description">
+          <label for="description">Description</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.locationInternship" id="location" name="location" placeholder="Emplacement">
+          <label for="location">Emplacement</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.skillsRequiredInternship" id="skillsRequired" name="skillsRequired" placeholder="Compétences requises">
+          <label for="skillsRequired">Compétences requises</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="text" class="form-control" [(ngModel)]="internship.responsibilitiesInternship" id="responsibilities" name="responsibilities" placeholder="Responsabilités">
+          <label for="responsibilities">Responsabilités</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <div class="form-floating">
+          <input type="date" class="form-control" [(ngModel)]="internship.deadlineInternship" id="deadline" name="deadline" placeholder="Date limite">
+          <label for="deadline">Date limite</label>
+        </div>
+      </div>
+      <div class="col-12">
+        <button class="btn btn-primary w-100 py-3" type="submit">Créer</button>
+        <button (click)="goBack()" class="btn btn-secondary">Retour</button>
+      </div>
+    </div>
+  </form>
+</div>

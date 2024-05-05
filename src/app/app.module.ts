@@ -37,7 +37,6 @@ import { ArticleDetailsComponent } from './Client/article-details/article-detail
 import { AdminChartsComponent } from './admin/admin-charts/admin-charts.component';
 import { ArticlesManagementComponent } from './admin/articles-management/articles-management.component';
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
-import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 //import { MatPaginatorModule } from '@angular/material/paginator';
 import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
 import { LoginComponent } from './Client/login/login.component';
@@ -74,8 +73,23 @@ import { AdminAddsportTeamComponent } from './admin/admin-addsport-team/admin-ad
 import { AdminUpdatesportTeamComponent } from './admin/admin-updatesport-team/admin-updatesport-team.component';
 import { AdminDetailssportTeamComponent } from './admin/admin-detailssport-team/admin-detailssport-team.component';
 import { DetailsTeamClientComponent } from './Client/details-team-client/details-team-client.component';
-import { NgxPaginationModule } from 'ngx-pagination';
 
+import { InternshipComponent } from './Client/internship/internship.component';
+import { InternshipDetailComponentComponent } from './Client/internship-detail-component/internship-detail-component.component';
+import { FreelanceComponent } from './Client/freelance/freelance.component';
+import { FreelanceDetailComponentComponent } from './Client/freelance-detail-component/freelance-detail-component.component';
+import { InternshipAdminComponent } from './admin/internship-admin/internship-admin.component';
+import { NewInternshipComponent } from './admin/new-internship/new-internship.component';
+import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
+import { NewJobComponent } from './admin/new-job/new-job.component';
+import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
+import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatTableModule } from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
+import { FileComponent } from './admin/file/file.component';
+import { NgxPaginationModule } from 'ngx-pagination';
 
 
 @NgModule({
@@ -145,6 +159,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AdminDetailssportTeamComponent,
     DetailsTeamClientComponent,
 
+    InternshipComponent,
+    InternshipDetailComponentComponent,
+    FreelanceComponent,
+    FreelanceDetailComponentComponent,
+    InternshipAdminComponent,
+    NewInternshipComponent,
+    FreelanceAdminComponent,
+    NewJobComponent,
+    UpdateInternshipComponent,
+    UpdateFreelanceJobComponent,
+    InternshipRoomComponent,
+    FileComponent,
   ],
   imports: [
     BrowserModule,
@@ -163,6 +189,13 @@ import { NgxPaginationModule } from 'ngx-pagination';
     HttpClientModule,
     NgxPaginationModule,
     
+    CommonModule,
+    FormsModule,
+    HttpClientModule,
+    BrowserAnimationsModule,
+    MatTableModule,
+    MatPaginatorModule,
+    NgxPaginationModule,
 
   ],
   providers: [

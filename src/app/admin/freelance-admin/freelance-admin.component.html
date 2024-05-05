@@ -1,0 +1,44 @@
+<table class="table user-list">
+  <thead>
+    <tr>
+      <th></th>
+      <th><span>ID</span></th>
+      <th><span>Title</span></th>
+      <th><span>Client</span></th>
+      <th><span>Duration</span></th>
+      <th><span>Location</span></th>
+      <th><span>Skills</span></th>
+      <th><span>Description</span></th>
+      <th><span>Budget</span></th>
+      <th><span>Deadline</span></th>
+      <th><span>Actions</span></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let job of freelances">
+      <td>
+        <!-- Ajouter une image ici si nécessaire -->
+      </td>
+      <td>{{ job.jobId }}</td>
+      <td>{{ job.titleJob }}</td>
+      <td>{{ job.clientJob }}</td>
+      <td>{{ job.durationJob }}</td>
+      <td>{{ job.locationJob }}</td>
+      <td>{{ job.skillsRequiredJob }}</td>
+      <td class="description-column">{{ job.descriptionJob }}</td>
+      <td>{{ job.budgetJob }}</td>
+      <td>{{ job.deadlineJob }}</td>
+      <td>
+        <button class="action-button text-info" (click)="deleteFreelanceJob(job.jobId)">
+          <span class="fa-stack">
+            <i class="fa fa-square fa-stack-2x"></i>
+            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
+          </span>
+          Supprimer <!-- Ajout du texte "Supprimer" ici -->
+        </button>
+        <button class="create-button" routerLink="/admin/updateFreelanceJob"></button>
+        <button class="create-button" routerLink="/admin/newFreelanceJob">Créer un job</button>
+      </td>
+    </tr>
+  </tbody>
+</table>

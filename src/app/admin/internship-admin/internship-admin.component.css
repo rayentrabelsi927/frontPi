@@ -1,0 +1,17 @@
+/* Appliquer le même style que les boutons de internship-table */
+.action-button,
+.create-button {
+  background-color: #0056b3; /* Couleur de fond pour les boutons */
+  color: #fff; /* Couleur du texte pour les boutons */
+  border: none;
+  padding: 8px 16px; /* Ajuste le rembourrage des boutons */
+  cursor: pointer;
+  margin: 5px auto; /* Centre les boutons horizontalement et ajoute une marge autour d'eux */
+  display: block; /* Change l'affichage en bloc pour occuper toute la largeur de la cellule */
+}
+
+/* Style au survol des boutons */
+.action-button:hover,
+.create-button:hover {
+  background-color: #004080; /* Couleur de fond au survol pour les boutons */
+}

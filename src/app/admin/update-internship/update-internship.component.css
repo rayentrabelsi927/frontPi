@@ -1,0 +1,31 @@
+.internship-form {
+  max-width: 500px;
+  margin: 0 auto;
+}
+
+.internship-form .form-group {
+  margin-bottom: 20px;
+}
+
+.internship-form label {
+  font-weight: bold;
+}
+
+.internship-form input[type="date"] {
+  height: 38px;
+}
+
+.btn-block {
+  display: block;
+  width: 100%;
+}
+
+.btn-secondary {
+  background-color: #6c757d;
+  border-color: #6c757d;
+}
+
+.btn-secondary:hover {
+  background-color: #5a6268;
+  border-color: #545b62;
+}

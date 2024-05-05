@@ -1,0 +1,21 @@
+.action-button,
+.create-button {
+  background-color: #0056b3;
+  color: #ffffff;
+  border: none;
+  padding: 8px 16px;
+  cursor: pointer;
+  margin: 5px auto;
+  display: block;
+}
+
+.action-button:hover,
+.create-button:hover {
+  background-color: #004080;
+}
+
+/* Si nécessaire, ajustez la couleur du texte */
+.user-list .action-button,
+.user-list .create-button {
+  color: #ffffff; /* Couleur du texte en noir */
+}

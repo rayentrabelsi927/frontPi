@@ -1,0 +1,34 @@
+<table class="table user-list internship-table">
+  <thead>
+    <tr>
+      <th>ID</th>
+      <th>Nom</th>
+      <th>Location</th>
+      <th>Deadline</th>
+      <th>Duration</th>
+      <th>Skills Required</th>
+      <th>Responsibilities</th>
+      <th>Description</th>
+      <th>Actions</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr *ngFor="let internship of internships">
+      <td>{{ internship.internshipId }}</td>
+      <td>{{ internship.titleInternship }}</td>
+      <td>{{ internship.locationInternship }}</td>
+      <td>{{ internship.deadlineInternship }}</td>
+      <td>{{ internship.durationInternship }}</td>
+      <td>{{ internship.skillsRequiredInternship }}</td>
+      <td>{{ internship.responsibilitiesInternship }}</td>
+      <td>{{ internship.descriptionInternship }}</td>
+      <td>
+        <button class="action-button" routerLink="/admin/updateInternship/{{internship.internshipId}}" (click)="updateInternship(internship.internshipId, internship)">Modifier</button>
+        <button class="action-button" (click)="deleteInternship(internship.internshipId)">Supprimer</button>
+        <button class="create-button" routerLink="/admin/newInternship">Créer un stage</button>
+
+      </td>
+    </tr>
+  </tbody>
+</table>
+

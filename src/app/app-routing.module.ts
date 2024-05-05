@@ -58,6 +58,18 @@ import { AdminAddsportTeamComponent } from './admin/admin-addsport-team/admin-ad
 import { AdminUpdatesportTeamComponent } from './admin/admin-updatesport-team/admin-updatesport-team.component';
 import { AdminDetailssportTeamComponent } from './admin/admin-detailssport-team/admin-detailssport-team.component';
 import { DetailsTeamClientComponent } from './Client/details-team-client/details-team-client.component';
+import { InternshipComponent } from './Client/internship/internship.component';
+import { InternshipDetailComponentComponent } from './Client/internship-detail-component/internship-detail-component.component';
+import { FreelanceComponent } from './Client/freelance/freelance.component';
+import { FreelanceDetailComponentComponent } from './Client/freelance-detail-component/freelance-detail-component.component';
+import { InternshipAdminComponent } from './admin/internship-admin/internship-admin.component';
+import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
+import { NewInternshipComponent } from './admin/new-internship/new-internship.component';
+import { NewJobComponent } from './admin/new-job/new-job.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
+import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
+import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
+import { FileComponent } from './admin/file/file.component';
 
 
 
@@ -109,7 +121,13 @@ const routes: Routes = [
 
 
   /* admin lezm el path yabda b kelmet admin */
+  { path: 'internships', component: InternshipComponent },
+  { path: 'freelances', component: FreelanceComponent },
+  { path: 'internships/:id', component: InternshipDetailComponentComponent },
+  { path: 'freelance/:id', component: FreelanceDetailComponentComponent },
   { path: 'admin/all', component: AllComponent },
+  { path: 'admin/internship', component: InternshipAdminComponent },
+  { path: 'admin/freelance', component: FreelanceAdminComponent },
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
@@ -134,10 +152,14 @@ const routes: Routes = [
   { path: 'admin/details-team/:id', component: AdminDetailssportTeamComponent },
 
   // Ajoutez d'autres routes au besoin
+  { path: 'admin/newInternship', component: NewInternshipComponent },
+  { path: 'admin/newFreelanceJob', component: NewJobComponent },
+  { path: 'admin/updateFreelanceJob/:id', component:UpdateFreelanceJobComponent },
+  { path: 'admin/updateInternship/:id', component: UpdateInternshipComponent },
+  { path: 'internshipRoom/:id', component: InternshipRoomComponent },
+  { path: 'admin/files', component: FileComponent },
+  { path: 'addFile/:id', component: InternshipDetailComponentComponent } // Remplacez InternshipDetailComponent par le composant correspondant
 ];
-
-
-
 
 @NgModule({
   imports: [RouterModule.forRoot(routes)],

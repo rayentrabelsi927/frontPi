@@ -1,0 +1,40 @@
+<form class="internship-form" (submit)="updateInternship(internship)">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input type="text" [(ngModel)]="internship.titleInternship" name="title" id="title" class="form-control" placeholder="Titre">
+  </div>
+  <div class="form-group">
+    <label for="company">Entreprise</label>
+    <input type="text" [(ngModel)]="internship.companyInternship" name="company" id="company" class="form-control" placeholder="Entreprise">
+  </div>
+  <div class="form-group">
+    <label for="duration">Durée</label>
+    <input type="text" [(ngModel)]="internship.durationInternship" name="duration" id="duration" class="form-control" placeholder="Durée">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" [(ngModel)]="internship.descriptionInternship" name="description" id="description" class="form-control" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="location">Emplacement</label>
+    <input type="text" [(ngModel)]="internship.locationInternship" name="location" id="location" class="form-control" placeholder="Emplacement">
+  </div>
+  <div class="form-group">
+    <label for="skillsRequired">Compétences requises</label>
+    <input type="text" [(ngModel)]="internship.skillsRequiredInternship" name="skillsRequired" id="skillsRequired" class="form-control" placeholder="Compétences requises">
+  </div>
+  <div class="form-group">
+    <label for="responsibilities">Responsabilités</label>
+    <input type="text" [(ngModel)]="internship.responsibilitiesInternship" name="responsibilities" id="responsibilities" class="form-control" placeholder="Responsabilités">
+  </div>
+  <div class="form-group">
+    <label for="deadline">Date limite</label>
+    <input type="date" [(ngModel)]="internship.deadlineInternship" name="deadline" id="deadline" class="form-control" placeholder="Date limite">
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+</form>
+<button (click)="goBack()" class="btn btn-secondary">Retour</button>
+<div *ngIf="internship" class="text-center">
+  <!-- Contenu des détails du stage -->
+</div>

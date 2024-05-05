@@ -1,0 +1,30 @@
+<div class="container py-5">
+  <div class="row">
+    <div class="col text-center">
+      <h2 class="display-4" style="color: red;">Détails du Freelance</h2>
+      <hr class="my-4">
+    </div>
+  </div>
+  <div class="row justify-content-center">
+    <div class="col-lg-8">
+      <div *ngIf="freelance" class="card mb-4">
+        <div class="card-body">
+          <h2 class="card-title text-danger">{{ freelance.titleJob }}</h2>
+          <p class="card-text"><strong>Client:</strong> <span class="text-dark">{{ freelance.clientJob }}</span></p>
+          <p class="card-text"><strong>Description:</strong> <span class="text-dark">{{ freelance.descriptionJob }}</span></p>
+          <p class="card-text"><strong>Duration:</strong> <span class="text-dark">{{ freelance.durationJob }}</span></p>
+          <p class="card-text"><strong>Location:</strong> <span class="text-dark">{{ freelance.locationJob }}</span></p>
+          <p class="card-text"><strong>Skills Required:</strong> <span class="text-dark">{{ freelance.skillsRequiredJob }}</span></p>
+          <p class="card-text"><strong>Budget:</strong> <span class="text-dark">{{ freelance.budgetJob }}</span></p>
+          <p class="card-text"><strong>Deadline:</strong> <span class="text-dark">{{ freelance.deadlineJob }}</span></p>
+        </div>
+        <div class="card-footer text-center">
+          <button (click)="goBack()" class="btn btn-primary">Retour</button>
+        </div>
+      </div>
+      <div *ngIf="!freelance" class="text-center">
+        <p>Chargement des détails du freelance...</p>
+      </div>
+    </div>
+  </div>
+</div>
