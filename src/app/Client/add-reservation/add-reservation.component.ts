@@ -8,6 +8,7 @@ import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 import { WeatherService } from 'src/app/services/weather.service';
 
 
@@ -21,9 +22,10 @@ export class AddReservationComponent implements OnInit {
 constructor(private formBuilder: FormBuilder, private router: Router, private reservationService: ReservationService,
   private fieldService: FieldService,
   private sportTeamService: SportTeamService,
-  private weatherService: WeatherService
+  private weatherService: WeatherService,
+  private userTok: TokenService
 ) { }
-userId!: number;
+userId!: any;
 addReservationForm!: FormGroup;
 reservationTypes: string[] = Object.values(TypeR);
 startDate!: Date;
@@ -47,7 +49,7 @@ selectedFieldImageUrl: string = '';
 
 ngOnInit() {
   this.weatherForecast$ = this.weatherService.getWeatherForecast();
-  this.userId = 13;
+  this.userId = this.userTok.currentUser();
   this.addReservationForm = this.formBuilder.group({
     selectedDate: ['', Validators.required],
     startTime: ['', Validators.required],
