@@ -38,7 +38,7 @@ import { ArticlesManagementComponent } from './admin/articles-management/article
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatPaginatorModule } from '@angular/material/paginator';
-
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 @NgModule({
@@ -85,6 +85,7 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     HttpClientModule,
     BrowserAnimationsModule,
     MatPaginatorModule,
+    ReactiveFormsModule,
     
 
   ],

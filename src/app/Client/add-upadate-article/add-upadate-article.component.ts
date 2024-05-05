@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
+import { FormControl, FormGroup, Validators } from '@angular/forms';
 
 @Component({
   selector: 'app-add-upadate-article',
@@ -17,7 +18,7 @@ export class AddUpadateArticleComponent {
   selectedCondition: string = '';
   description: string = '';
   label: string='';
-price: number = 0; 
+ price: number = 0; 
 fileURL: string | ArrayBuffer | null = null;
 
   file: File | null = null;
@@ -36,6 +37,16 @@ fileURL: string | ArrayBuffer | null = null;
   };
   id!:number;
   constructor(private articleService: ArticleService, private route:ActivatedRoute) { }
+
+  myForm = new FormGroup({
+    label: new FormControl('', [Validators.required, Validators.maxLength(10)]),
+    description: new FormControl('', Validators.required),
+    price: new FormControl('', [Validators.required, Validators.pattern('[0-9]{1,8}(\.[0-9]{1,2})?')]),
+    category: new FormControl('', Validators.required),
+    image: new FormControl('', Validators.required),
+    condition: new FormControl('', Validators.required)
+  });
+  
 
   ngOnInit(): void {
     this.id = this.route.snapshot.params['articleId'];
@@ -86,8 +97,13 @@ loadArticle(): void {
         }
       };
       reader.readAsDataURL(file);
+      this.myForm.controls['image'].setErrors(null); // Réinitialiser les erreurs lorsque le fichier est sélectionné
+    } else {
+      this.file = null;
+      this.fileURL = null;
+      this.myForm.controls['image'].setErrors({ 'required': true }); // Définir l'erreur si aucun fichier n'est sélectionné
     }
-  }
+    }
   
   
 
@@ -176,6 +192,10 @@ loadArticle(): void {
     this.price = 0;
     this.file = null;
     this.fileURL = null; 
+    if (!this.fileURL) {
+      this.myForm.controls['image'].markAsTouched();
+      this.myForm.controls['image'].setErrors({ 'required': true });
+    }
   }
   
  
