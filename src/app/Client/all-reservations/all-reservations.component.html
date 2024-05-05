@@ -1,0 +1,144 @@
+<section id="explore" class="explore">
+  <div class="container">
+    <div class="section-header">
+      <h2>List of Reservations</h2>
+      <p>Explore different reservations</p>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="startDateInput" class="form-label">Start Date</label>
+        <input type="date" id="startDateInput" class="form-control" [(ngModel)]="startDate" (change)="applyFilters()">
+      </div>
+      <div class="col-md-4">
+        <label for="statusInput" class="form-label">Status</label>
+        <select id="statusInput" class="form-select" [(ngModel)]="status" (change)="applyFilters()">
+          <option value="">All</option>
+          <option value="Pending">Pending</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Finished">Finished</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="fieldTypeInput" class="form-label">Field Type</label>
+        <input type="text" id="fieldTypeInput" class="form-control" [(ngModel)]="fieldType" (input)="applyFilters()">
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary mt-3" (click)="navigateToAddReservation()">Add Reservation</button>
+    </div>
+    <br>
+ <div class="row">
+  <div class="col-md-4" *ngFor="let reservation of reservationsFiltered; let i = index">
+    <div class="single-explore-item">
+      <div class="single-explore-img">
+        <div class="image-container">
+          <img *ngIf="reservation[1].typeField === 'Football'" src="assets/img/football.jpg" alt="FootBall" class="reservation-img">
+          <img *ngIf="reservation[1].typeField === 'Basketball'" src="assets/img/basketball.jpg" alt="Basketball" class="reservation-img">
+          <img *ngIf="reservation[1].typeField === 'Handball'" src="assets/img/handball.jpg" alt="Handball" class="reservation-img">
+          <img *ngIf="reservation[1].typeField === 'Volleyball'" src="assets/img/volleyball.jpg" alt="Volleyball" class="reservation-img">
+          <img *ngIf="reservation[1].typeField === 'Tennis'" src="assets/img/tennis.jpg" alt="Tennis" class="reservation-img">
+          <img *ngIf="reservation[1].typeField === 'PingPong'" src="assets/img/pingpong.jpg" alt="PingPong" class="reservation-img">
+        </div>
+      </div>
+      <div class="single-explore-txt">
+        <p class="reservation-details">Start Date: {{ reservation[0].startDate | date:'medium' }}</p>
+        <p class="reservation-details">End Date: {{ reservation[0].endDate | date:'medium' }}</p>
+        <p class="reservation-details">Number of Players: {{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</p>
+       
+        <div class="image-container">
+          <img *ngIf="reservation[0].resStatus === 'confirmed'" src="assets/img/Confirmed.png" alt="Confirmed" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'pending'" src="assets/img/pending.png" alt="Pending" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'finished'" src="assets/img/Completed.png" alt="Finished" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'cancelled'" src="assets/img/Cancelled.png" alt="Cancelled" class="status-img">
+        </div>
+        <div class="single-explore-txt">
+          <div class="button-container">
+            <button class="btn" [ngClass]="hasJoinedReservations[i] ? 'btn-danger' : 'btn-primary'"
+            (click)="joinOrCancelReservation(reservation[0].reservationId, i)"
+            [disabled]="reservation[0].resStatus === 'finished' || reservation[0].resStatus === 'cancelled'">
+            
+      {{ hasJoinedReservations[i] ? 'Cancel Reservation' : 'Join Reservation' }}
+    </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+</div>
+</section>
+
+
+
+
+
+<!-- 
+<section id="explore" class="explore">
+  <div class="container">
+    <div class="section-header">
+      <h2>List of Reservations</h2>
+      <p>Explore different reservations</p>
+    </div>
+
+    <div class="row mb-3">
+      <div class="col-md-4">
+        <label for="startDateInput" class="form-label">Start Date</label>
+        <input type="date" id="startDateInput" class="form-control" [(ngModel)]="startDate" (change)="applyFilters()">
+      </div>
+      <div class="col-md-4">
+        <label for="statusInput" class="form-label">Status</label>
+        <select id="statusInput" class="form-select" [(ngModel)]="status" (change)="applyFilters()">
+          <option value="">All</option>
+          <option value="Pending">Pending</option>
+          <option value="Confirmed">Confirmed</option>
+          <option value="Finished">Finished</option>
+        </select>
+      </div>
+      <div class="col-md-4">
+        <label for="fieldTypeInput" class="form-label">Field Type</label>
+        <input type="text" id="fieldTypeInput" class="form-control" [(ngModel)]="fieldType" (input)="applyFilters()">
+      </div>
+    </div>
+    <div>
+      <button class="btn btn-primary mt-3" (click)="navigateToAddReservation()">Add Reservation</button>
+    </div>
+    <br>
+    <div class="col-md-4" *ngFor="let reservation of pagedReservations; let i = index">
+      <div class="single-explore-item">
+  
+        <p>Start Date: {{ reservation[0].startDate | date:'medium' }}</p>
+        <p>End Date: {{ reservation[0].endDate | date:'medium' }}</p>
+        <p>Number of Players: {{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</p>
+   
+        <div class="image-container">
+          <img *ngIf="reservation[0].resStatus === 'confirmed'" src="assets/img/Confirmed.png" alt="Confirmed" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'pending'" src="assets/img/pending.png" alt="Pending" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'finished'" src="assets/img/Completed.png" alt="Finished" class="status-img">
+          <img *ngIf="reservation[0].resStatus === 'cancelled'" src="assets/img/Cancelled.png" alt="Cancelled" class="status-img">
+        </div>
+
+        <div class="button-container">
+          <button class="btn" [ngClass]="hasJoinedReservations[i] ? 'btn-danger' : 'btn-primary'"
+                  (click)="joinOrCancelReservation(reservation[0].reservationId, i)"
+                  [disabled]="reservation[0].resStatus === 'finished' || reservation[0].resStatus === 'cancelled'">
+            {{ hasJoinedReservations[i] ? 'Cancel Reservation' : 'Join Reservation' }}
+          </button>
+        </div>
+      </div>
+    </div>
+    
+
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage === 1">
+        <button class="page-link" (click)="pageChanged(currentPage - 1)" [disabled]="currentPage === 1">Previous</button>
+      </li>
+      <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+        <button class="page-link" (click)="pageChanged(page)">{{ page }}</button>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage === totalPages">
+        <button class="page-link" (click)="pageChanged(currentPage + 1)" [disabled]="currentPage === totalPages">Next</button>
+      </li>
+    </ul>
+  </div>
+</section> -->

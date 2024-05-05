@@ -1,0 +1,25 @@
+<div class="container">
+  <div class="col-md-5 offset-md-3">
+  <h2>Update Team {{ updatedTeam.nameTeam }}</h2>
+  <form (ngSubmit)="updateTeam()">
+    <div class="form-group">
+      
+    </div>
+    <div class="form-group">
+      <label for="teamName">Team Name:</label>
+      
+      <input type="text" class="form-control" id="teamName" [(ngModel)]="updatedTeam.nameTeam" name="teamName" required>
+    </div>
+    <div class="form-group">
+      <label for="logo">Logo:</label>
+     
+      <input type="text" class="form-control" [value]="selectedFile?.name" disabled>
+     
+      <input type="file" class="form-control" id="logo" (change)="onFileChange($event)">
+    
+      <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="width: 500px; height: auto;">
+    </div>
+    <button type="submit" class="btn btn-primary">Update Team</button>
+  </form>
+</div>
+</div>

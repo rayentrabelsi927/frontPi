@@ -1,0 +1,33 @@
+<form [formGroup]="addReservationForm" (ngSubmit)="onSubmit()">
+  <div class="container">
+    <div class="form-group">
+      <label for="startDate">Start Date and Time:</label>
+      <input type="datetime-local" class="form-control" formControlName="startDate" id="startDate">
+    </div>
+
+    <div class="form-group">
+      <label for="endDate">End Date and Time:</label>
+      <input type="datetime-local" class="form-control" formControlName="endDate" id="endDate">
+    </div>
+    
+    <div class="form-group">
+      <label for="field">Select Field:</label>
+      <select class="form-control" formControlName="field" id="field">
+        <option value="" disabled selected>Select Field</option>
+        <option *ngFor="let field of fields" [ngValue]="field">{{ field.nameField }}</option>
+      </select>
+    </div>
+
+    <div class="form-group">
+      <label for="resType">Reservation Type:</label>
+      <select class="form-control" formControlName="resType" id="resType">
+        <option value="" disabled selected>Select Reservation Type</option>
+        <option *ngFor="let type of reservationTypes" [value]="type">{{ type }}</option>
+      </select>
+    </div>
+
+    <div class="text-center">
+      <button type="submit" class="btn btn-primary">Submit</button>
+    </div>
+  </div>
+</form>

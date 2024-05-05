@@ -1,0 +1,21 @@
+/* Custom CSS */
+.logo-and-form {
+  flex-wrap: wrap;
+}
+
+.logo-container {
+  margin-bottom: 1rem;
+}
+
+.team-logo {
+  max-width: 150px; /* Adjust the max-width to your desired size */
+  height: auto;
+}
+
+.add-user-form {
+  flex-grow: 1;
+  max-width: 300px; /* Adjust this value as needed */
+}
+.table td {
+  vertical-align: middle;
+}

@@ -1,0 +1,53 @@
+.status-img {
+    width: auto; /* Set a fixed width for the status images */
+    height: 100px; /* Maintain aspect ratio */
+  }
+  
+  .reservation-details {
+    font-size: 17px; /* Adjust the font size as needed */
+  }
+  
+
+  .single-explore-item {
+    height: 530px; /* Set the fixed height for each reservation item */
+    width: 100%; /* Ensure each reservation item spans the entire width */
+    border: 1px solid #ccc; /* Add border for better visualization */
+    margin-bottom: 20px; /* Add margin to create space between reservation items */
+  }
+
+  .reservation-img {
+    width: 100%; /* Set the width of each image to 100% of its container */
+    height: 200px; /* Set the fixed height for each image */
+    object-fit: cover; /* Ensure images maintain aspect ratio and cover the entire container */
+  }
+
+  .single-explore-txt {
+    height: 500px; /* Set the height of the text container */
+    overflow: hidden; /* Hide overflow text */
+    padding: 10px; /* Add padding for better visualization */
+  }
+
+  .reservation-details {
+    font-size: 16px; /* Increase font size for reservation details */
+  }
+
+  .row {
+    display: flex; /* Use flexbox for the row layout */
+    flex-wrap: wrap; /* Allow items to wrap to the next line */
+    margin: 0 -15px; /* Negative margin to counteract padding of columns */
+  }
+
+  .col-md-4 {
+    flex: 0 0 33.333%; /* Each column occupies 1/3 of the row width */
+    max-width: 33.333%; /* Set maximum width for responsiveness */
+    padding: 0 15px; /* Add padding to create space between columns */
+  }
+
+  
+.button-container {
+   /* Position button container absolutely */
+    bottom: 10px; /* Set bottom spacing */
+    left: 0; /* Align button to the left */
+    width: 100%; /* Ensure button spans the entire width */
+    text-align: center; /* Center button horizontally */
+  }

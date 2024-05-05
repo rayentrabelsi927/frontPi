@@ -1,0 +1,36 @@
+<div class="container">
+  <h2 class="text-center mb-4">Update Field: {{field.nameField}}</h2>
+  <div class="row justify-content-center">
+      <div class="col-md-5">
+          <form (ngSubmit)="onSubmit()">
+              <div class="form-group">
+                  <label for="nameField">Name:</label>
+                  <input type="text" class="form-control" id="nameField" name="nameField" [(ngModel)]="field.nameField" required>
+              </div>
+              <div class="form-group">
+                  <label for="descriptionField">Description:</label>
+                  <input type="text" class="form-control" id="descriptionField" name="descriptionField" [(ngModel)]="field.descriptionField" required>
+              </div>
+              <div class="form-group">
+                  <label for="locationField">Location:</label>
+                  <input type="text" class="form-control" id="locationField" name="locationField" [(ngModel)]="field.locationField" required>
+              </div>
+              <div class="form-group">
+                  <label for="capacityField">Capacity:</label>
+                  <input type="number" class="form-control" id="capacityField" name="capacityField" [(ngModel)]="field.capacityField" required>
+              </div>
+              <div class="form-group">
+                  <label for="typeField">Field Type:</label>
+                  <select class="form-control" id="typeField" [(ngModel)]="field.typeField" name="typeField">
+                      <option *ngFor="let type of types" [value]="type">{{ type }}</option>
+                  </select>
+              </div>
+              <br>
+              <br>
+              <div class="text-center">
+                  <button type="submit" class="btn btn-primary">Update Field</button>
+              </div>
+          </form>
+      </div>
+  </div>
+</div>

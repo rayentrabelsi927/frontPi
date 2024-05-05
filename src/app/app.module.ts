@@ -56,6 +56,26 @@ import { ChatbotComponent } from './Client/chatbot/chatbot.component';
 import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
 import { BannedUserComponent } from './admin/banned-user/banned-user.component';
 import { PagehomeComponent } from './Client/pagehome/pagehome.component';
+import { AllSportTeamComponent } from './Client/all-sport-team/all-sport-team.component';
+import { AddTeamComponent } from './Client/add-team/add-team.component';
+import { UpdateTeamComponent } from './Client/update-team/update-team.component';
+import { DetailsTeamComponent } from './Client/details-team/details-team.component';
+import { AllFieldsComponent } from './admin/all-fields/all-fields.component';
+import { AddFieldComponent } from './admin/add-field/add-field.component';
+import { UpdateFieldComponent } from './admin/update-field/update-field.component';
+import { AllReservationsComponent } from './Client/all-reservations/all-reservations.component';
+import { AddReservationComponent } from './Client/add-reservation/add-reservation.component';
+import { UpdateReservationComponent } from './Client/update-reservation/update-reservation.component';
+import { AdminAllReservationsComponent } from './admin/admin-all-reservations/admin-all-reservations.component';
+import { AdminUpdateReservationComponent } from './admin/admin-update-reservation/admin-update-reservation.component';
+import { AdminAddReservationComponent } from './admin/admin-add-reservation/admin-add-reservation.component';
+import { AdminAllsportTeamComponent } from './admin/admin-allsport-team/admin-allsport-team.component';
+import { AdminAddsportTeamComponent } from './admin/admin-addsport-team/admin-addsport-team.component';
+import { AdminUpdatesportTeamComponent } from './admin/admin-updatesport-team/admin-updatesport-team.component';
+import { AdminDetailssportTeamComponent } from './admin/admin-detailssport-team/admin-detailssport-team.component';
+import { DetailsTeamClientComponent } from './Client/details-team-client/details-team-client.component';
+import { NgxPaginationModule } from 'ngx-pagination';
+
 
 
 @NgModule({
@@ -106,6 +126,25 @@ import { PagehomeComponent } from './Client/pagehome/pagehome.component';
     StatisticFeedbackComponent,
     BannedUserComponent,
     PagehomeComponent,
+    AllSportTeamComponent,
+    AddTeamComponent,
+    UpdateTeamComponent,
+    DetailsTeamComponent,
+    AllFieldsComponent,
+    AddFieldComponent,
+    UpdateFieldComponent,
+    AllReservationsComponent,
+    AddReservationComponent,
+    UpdateReservationComponent,
+    AdminAllReservationsComponent,
+    AdminUpdateReservationComponent,
+    AdminAddReservationComponent,
+    AdminAllsportTeamComponent,
+    AdminAddsportTeamComponent,
+    AdminUpdatesportTeamComponent,
+    AdminDetailssportTeamComponent,
+    DetailsTeamClientComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -118,6 +157,13 @@ import { PagehomeComponent } from './Client/pagehome/pagehome.component';
     CodeInputModule,
     BrowserAnimationsModule,
     QRCodeModule,
+    FormsModule, // Add this line
+    ReactiveFormsModule,
+    AppRoutingModule,
+    HttpClientModule,
+    NgxPaginationModule,
+    
+
   ],
   providers: [
     HttpClient,

@@ -1,0 +1,118 @@
+
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-md-3">
+      <br>
+      <form [formGroup]="addReservationForm" (ngSubmit)="onSubmit()">
+        <div class="form-group">
+          <label for="selectedDate">Select Date</label>
+          <input type="date" class="form-control" formControlName="selectedDate" id="selectedDate">
+
+
+          
+
+        </div>
+
+       
+
+        
+
+        <div class="form-group">
+          <label for="startTime">Start Time</label>
+          <input type="time" class="form-control" formControlName="startTime" id="startTime">
+        </div>
+
+        <div class="form-group">
+          <label for="endTime">End Time</label>
+          <input type="time" class="form-control" formControlName="endTime" id="endTime">
+        </div>
+
+        <div class="form-group">
+          <label for="field">Select Field</label>
+          <select class="form-control" formControlName="field" id="field">
+            <option value="" disabled selected>Select Field</option>
+            <option *ngFor="let field of fields" [ngValue]="field">{{ field.typeField }}</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label for="resType">Reservation Type</label>
+          <select class="form-control" formControlName="resType" id="resType">
+            <option value="" disabled selected>Select Reservation Type</option>
+            <option *ngFor="let type of reservationTypes" [value]="type">{{ type }}</option>
+          </select>
+        </div>
+
+        
+        <div class="form-group">
+          <label>Join Type:</label>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="joinType" id="joinAlone" value="alone" formControlName="joinType">
+            <label class="form-check-label" for="joinAlone">Join Alone</label>
+          </div>
+          <div class="form-check">
+            <input class="form-check-input" type="radio" name="joinType" id="joinWithTeam" value="team" formControlName="joinType">
+            <label class="form-check-label" for="joinWithTeam">Join with Team</label>
+          </div>
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Submit Reservation</button>
+      </form>
+    </div>
+    <div class="col-md-3">
+       
+      <!-- <div class="row d-flex justify-content-center py-5" *ngIf="weatherForecast"> -->
+        <!-- <div class="col-md-8 col-lg-6 col-xl-5"> -->
+          
+          
+           <div class="row d-flex justify-content-center py-5" *ngIf="weatherForecast && addReservationForm.get('selectedDate')?.value">
+            <div class="card text-body custom-card" style="border-radius: 35px;">
+              <div class="card-body p-4">
+                <h2 class="text-center" style="color: white;">Weather Forecast</h2>
+                <ng-container *ngIf="hasForecastForSelectedDate(); else noForecast">
+                  <ng-container *ngFor="let forecast of weatherForecast.list">
+                    <ng-container *ngIf="isNoonForecast(forecast)">
+                      <div class="d-flex flex-column text-center mt-5 mb-4">
+                        <h6 class="display-4 mb-0 font-weight-bold" style="color: white;">{{ convertKelvinToCelsius(forecast.main.temp) | number: '1.0-1' }}°C</h6>
+                        <span class="small" style="color: white;">{{ forecast.weather[0].description }}</span>
+                      </div>
+                      <div class="d-flex align-items-center">
+                        <div class="flex-grow-1" style="font-size: 1rem;">
+                          <div><i class="fas fa-wind fa-fw" style="color: white;"></i> <span class="ms-1" style="color: white;">{{ forecast.wind.speed }} km/h</span></div>
+                          <div><i class="fas fa-tint fa-fw" style="color: white;"></i> <span class="ms-1" style="color: white;">{{ forecast.main.humidity }}% Humidity</span></div>
+                        </div>
+                        <div>
+                          <img [src]="getWeatherIconUrl(forecast.weather[0].description)" width="100px">
+                        </div>
+                      </div>
+                    </ng-container>
+                  </ng-container>
+                </ng-container>
+                <ng-template #noForecast>
+                  <div class="text-center" style="color: white;">Unavailable for this date</div>
+                </ng-template>
+              </div>
+            </div>
+          </div>
+          
+
+        <!-- </div> -->
+      <!-- </div> -->
+      
+    </div>
+    <div class="col-md-6">
+      <div class="image-container">
+        <img src="assets/img/allsport2.jpg" alt="All Sports" class="reservation-img" *ngIf="!addReservationForm.get('field')?.value || !addReservationForm.get('field')?.value?.typeField">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Football'" src="assets/img/football.jpg" alt="FootBall" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Basketball'" src="assets/img/basketball.jpg" alt="Basketball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Handball'" src="assets/img/handball.jpg" alt="Handball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Volleyball'" src="assets/img/volleyball.jpg" alt="Volleyball" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'Tennis'" src="assets/img/tennis.jpg" alt="Tennis" class="reservation-img">
+        <img *ngIf="addReservationForm.get('field')?.value?.typeField === 'PingPong'" src="assets/img/pingpong.jpg" alt="PingPong" class="reservation-img">
+      </div>
+    </div>
+  </div>
+</div>
+
+
+

@@ -1,0 +1,19 @@
+<div class="container">
+  <div class="col-md-5 offset-md-3">
+    <h2>Add Team</h2>
+    <form (ngSubmit)="addSportTeamCap()">
+      <div class="form-group">
+        <label for="teamName">Team Name:</label>
+        <input type="text" class="form-control" id="teamName" [(ngModel)]="teamName" name="teamName" required>
+      </div>
+      <div class="form-group">
+        <label for="logo">Logo:</label>
+        <input type="file" class="form-control" id="logo" (change)="onFileChange($event)">
+      </div>
+      <button type="submit" class="btn btn-primary">Add Team</button>
+    </form>
+  </div>
+  </div>
+
+  
+  

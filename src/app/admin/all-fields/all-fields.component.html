@@ -1,0 +1,47 @@
+<div class="container">
+  <h2 class="text-center mb-4">All Fields</h2>
+  <div class="table-responsive">
+    <table class="table table-striped">
+      <thead class="thead-dark">
+        <tr>
+          <th>Field ID</th>
+          <th>Name</th>
+          <th>Description</th>
+          <th>Location</th>
+          <th>Capacity</th>
+          <th>Type</th>
+          <th class="text-center">Action</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let field of pagedFields">
+          <td>{{ field.fieldId }}</td>
+          <td>{{ field.nameField }}</td>
+          <td>{{ field.descriptionField }}</td>
+          <td>{{ field.locationField }}</td>
+          <td>{{ field.capacityField }}</td>
+          <td>{{ field.typeField }}</td>
+          <td class="text-center">
+            <button class="btn btn-primary update-button" [routerLink]="['/admin/update-field', field.fieldId]">Update Field</button>
+            <button class="btn btn-danger" (click)="deleteField(field.fieldId)">Delete Field</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+  <!-- Pagination -->
+  <ul class="pagination justify-content-center">
+    <li class="page-item" [class.disabled]="currentPage === 1">
+      <button class="page-link" (click)="pageChanged(currentPage - 1)">Previous</button>
+    </li>
+    <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+      <button class="page-link" (click)="pageChanged(page)">{{ page }}</button>
+    </li>
+    <li class="page-item" [class.disabled]="currentPage === pages.length">
+      <button class="page-link" (click)="pageChanged(currentPage + 1)">Next</button>
+    </li>
+  </ul>
+  <div class="text-center">
+    <button class="btn btn-success" (click)="navigateToAddField()">Add Field</button>
+  </div>
+</div>
