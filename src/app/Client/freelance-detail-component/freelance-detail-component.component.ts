@@ -37,4 +37,5 @@ export class FreelanceDetailComponentComponent implements OnInit {
   goBack() {
     this.router.navigate(['/freelances']);
   }
+
 }

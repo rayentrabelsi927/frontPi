@@ -1,34 +1,21 @@
-/* Tableau de la liste des fichiers */
-.file-list-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.file-list-table th,
-.file-list-table td {
-  padding: 10px;
-  text-align: left;
-  vertical-align: top;
-  border: 1px solid #ccc;
-}
-
-.file-list-table th {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-
-/* Boutons */
-.action-button {
-  padding: 5px 10px;
+.action-button,
+.create-button {
+  background-color: #0056b3;
+  color: #ffffff;
   border: none;
-  background-color: #4caf50;
-  color: #fff;
+  padding: 8px 16px;
   cursor: pointer;
-  font-weight: bold;
-  margin-right: 5px;
+  margin: 5px auto;
+  display: block;
 }
 
-.action-button:hover {
-  background-color: #45a049;
+.action-button:hover,
+.create-button:hover {
+  background-color: #004080;
+}
+
+/* Si nécessaire, ajustez la couleur du texte */
+.user-list .action-button,
+.user-list .create-button {
+  color: #ffffff; /* Couleur du texte en noir */
 }

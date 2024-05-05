@@ -1,39 +1,21 @@
-/* Tableau */
-.freelance-job-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.freelance-job-table th,
-.freelance-job-table td {
-  padding: 10px;
-  text-align: left;
-  vertical-align: top;
-  border: 1px solid #ccc;
-}
-
-.freelance-job-table th {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-
-/* Boutons */
 .action-button,
 .create-button {
-  padding: 5px 10px;
+  background-color: #0056b3;
+  color: #ffffff;
   border: none;
-  background-color: #4caf50;
-  color: #fff;
+  padding: 8px 16px;
   cursor: pointer;
-  font-weight: bold;
+  margin: 5px auto;
+  display: block;
 }
 
 .action-button:hover,
 .create-button:hover {
-  background-color: #45a049;
+  background-color: #004080;
 }
 
-.create-button {
-  margin-bottom: 20px;
+/* Si nécessaire, ajustez la couleur du texte */
+.user-list .action-button,
+.user-list .create-button {
+  color: #ffffff; /* Couleur du texte en noir */
 }

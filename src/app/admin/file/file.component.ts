@@ -25,4 +25,14 @@ export class FileComponent implements OnInit {
       }
     );
   }
+  deleteFile(fileID: number): void {
+    this.internshipService.deleteFile(fileID).subscribe(() => {
+      // Si la suppression réussit, mettez à jour la liste des fichiers pour refléter les changements
+      this.getFiles();
+    });
+  }
+
+  
+
+
 }

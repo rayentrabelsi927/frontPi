@@ -1,4 +1,4 @@
-<table class="internship-table">
+<table class="table user-list internship-table">
   <thead>
     <tr>
       <th>ID</th>
@@ -25,9 +25,10 @@
       <td>
         <button class="action-button" routerLink="/admin/updateInternship/{{internship.internshipId}}" (click)="updateInternship(internship.internshipId, internship)">Modifier</button>
         <button class="action-button" (click)="deleteInternship(internship.internshipId)">Supprimer</button>
+        <button class="create-button" routerLink="/admin/newInternship">Créer un stage</button>
+
       </td>
     </tr>
   </tbody>
 </table>
 
-<button class="create-button" routerLink="/admin/newInternship">Créer un stage</button>

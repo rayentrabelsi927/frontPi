@@ -1,5 +1,5 @@
-<div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
-  <form>
+<div class="col-lg-6 col-md-12 mx-auto"> <!-- Utilisation de la classe mx-auto pour centrer horizontalement -->
+  <form class="card p-5">
     <div class="row g-3">
       <div class="col-md-6">
         <div class="form-floating">
@@ -51,6 +51,7 @@
       </div>
       <div class="col-12">
         <button class="btn btn-primary w-100 py-3" type="submit">Créer</button>
+        <button (click)="goBack()" class="btn btn-secondary">Retour</button>
       </div>
     </div>
   </form>

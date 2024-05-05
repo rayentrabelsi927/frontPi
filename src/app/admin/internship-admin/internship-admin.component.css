@@ -1,39 +1,17 @@
-/* Tableau des stages */
-.internship-table {
-  width: 100%;
-  border-collapse: collapse;
-  margin-bottom: 20px;
-}
-
-.internship-table th,
-.internship-table td {
-  padding: 10px;
-  text-align: left;
-  vertical-align: top;
-  border: 1px solid #ccc;
-}
-
-.internship-table th {
-  background-color: #f0f0f0;
-  font-weight: bold;
-}
-
-/* Boutons */
+/* Appliquer le même style que les boutons de internship-table */
 .action-button,
 .create-button {
-  padding: 5px 10px;
+  background-color: #0056b3; /* Couleur de fond pour les boutons */
+  color: #fff; /* Couleur du texte pour les boutons */
   border: none;
-  background-color: #4caf50;
-  color: #fff;
+  padding: 8px 16px; /* Ajuste le rembourrage des boutons */
   cursor: pointer;
-  font-weight: bold;
+  margin: 5px auto; /* Centre les boutons horizontalement et ajoute une marge autour d'eux */
+  display: block; /* Change l'affichage en bloc pour occuper toute la largeur de la cellule */
 }
 
+/* Style au survol des boutons */
 .action-button:hover,
 .create-button:hover {
-  background-color: #45a049;
-}
-
-.create-button {
-  margin-bottom: 20px;
+  background-color: #004080; /* Couleur de fond au survol pour les boutons */
 }

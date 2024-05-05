@@ -1,9 +1,8 @@
-<div *ngIf="files.length > 0; else noFiles">
-  <h2>Liste des fichiers :</h2>
-  <table class="file-list-table">
+<div class="file-list-container" *ngIf="files.length > 0; else noFiles">
+  <table class="table file-list-table user-list">
     <thead>
       <tr>
-        <th>File ID</th>
+        <th>ID du fichier</th>
         <th>Nom du fichier</th>
         <th>Type de contenu</th>
         <th>ID de stage</th>
@@ -16,11 +15,10 @@
         <td>{{ file.filename }}</td>
         <td>{{ file.contentType }}</td>
         <td>{{ file.internshipId }}</td>
-        <!-- <td>
-          <button class="action-button" (click)="viewFile(file.fileID)">Voir</button>
-          <button class="action-button" (click)="downloadFile(file.fileID)">Télécharger</button>
+         <td>
           <button class="action-button" (click)="deleteFile(file.fileID)">Supprimer</button>
-        </td> -->
+          <!-- <button class="action-button" (click)="uploadFile()">Upload File</button> -->
+        </td>
       </tr>
     </tbody>
   </table>
