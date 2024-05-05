@@ -32,6 +32,14 @@ import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
 //import { AllUsersComponent } from './admin/all-users/all-users.component';
 
+import { TransactionComponent } from './Client/transaction/transaction.component';
+import { PaiementComponent } from './Client/paiement/paiement.component';
+import { CancelComponent } from './Client/cancel/cancel.component';
+import { SucessComponent } from './Client/sucess/sucess.component';
+import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
+import { ChatbotComponent } from './Client/chatbot/chatbot.component';
+import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
+import { BannedUserComponent } from './admin/banned-user/banned-user.component';
 
 
 
@@ -40,7 +48,12 @@ import { ActivateAccountComponent } from './Client/activate-account/activate-acc
 
 const routes: Routes = [
   { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: 'home', component: HomeComponent },
+  { path: 'transaction', component: TransactionComponent },
+  { path: 'paiement', component: PaiementComponent },
 
+  { path: 'cancel', component: CancelComponent },
+  { path: 'success', component: SucessComponent },
   { path: 'home', component: HomeComponent },
   { path: 'list-topics', component: ListTopicsComponent },
   { path: 'works', component: WorksComponent },
@@ -64,6 +77,9 @@ const routes: Routes = [
   { path: 'activate-account', component: ActivateAccountComponent},
 
 
+  { path: 'chatbot', component: ChatbotComponent },
+
+  { path: 'admin/statistics', component: StatisticFeedbackComponent },
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
@@ -75,8 +91,10 @@ const routes: Routes = [
   {path: 'admin/adminActions', component:AdminActionsComponent},
   
 
+  { path: 'admin/banned', component: BannedUserComponent },
 
-  
+  { path: 'admin/transaction', component: TransactionListComponent },
+
   // Ajoutez d'autres routes au besoin
 ];
 

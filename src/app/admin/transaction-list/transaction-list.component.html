@@ -1,0 +1,154 @@
+<div class="section-header ">
+    <h2>Transactions</h2><i class="bi bi-0-circle"></i>
+<!-- Button trigger modal -->
+
+
+<!-- Modal -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">localisation</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <iframe [src]=mapUrl width="100%" height="500" frameborder="0"></iframe>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+      </div>
+    </div>
+  </div>
+</div>
+    <p>Discover all your transactions.</p>
+
+    <br>  <br>  <br>
+    <div class="search-container">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="searchQuery" (input)="searchTransactionsByUser(searchQuery)" placeholder="Search..." class="form-control" id="search" name="search">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="lni lni-search"></i></span>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <br>  <br>
+
+  <div class="card">
+    <div class="card-header blue">
+      <h4> Transaction List</h4>
+  </div>
+    <div class="card-body">
+  <table class="table">
+    <thead>
+      <tr>
+
+        <th>amount</th>
+        <th>date </th>
+        <th>user</th>
+
+        <th>Housing </th>
+        <th>Article </th>
+        <th>Feedback</th>
+
+      
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let transaction of filteredTransactions">
+          <td>{{ transaction.amountTransaction }}</td>
+          <td><span class="badge badge-soft-success mb-0">{{ transaction.payementDateTransaction }}</span></td>
+
+          <td>{{ transaction.users.username }}</td>
+
+          <td *ngIf="transaction.housing != null">
+
+
+           
+
+   
+            typeHousing: {{ transaction.housing.typeHousing }}<br>
+            descriptionHousing: {{ transaction.housing.descriptionHousing }}<br>
+            locationHousing: {{ transaction.housing.locationHousing }}<br>
+            <button type="button" class="btn btn-link"(click)="updateMapUrl( transaction.housing.locationHousing )" data-bs-toggle="modal" data-bs-target="#exampleModal">
+              show location
+            </button>
+            
+            
+          
+          <td *ngIf="transaction.housing == null">-</td>
+
+          <td>
+            <div *ngFor="let article of transaction.articles">
+              Article : {{ article.nameArticle }}<br>
+              Category: {{ article.categoryArticle }}<br>
+              Description: {{ article.descriptionArticle }}<br>
+              Price: {{ article.priceArticle }}<br>
+            </div>
+          </td>
+          <td>
+            <div *ngFor="let feedback of transaction.feedbacks">
+              {{ feedback.commentFeedback }}<br>
+              <div class="explore-rating-box">
+                <span class="explore-rating" [ngClass]="{
+                  'bg-theme-1': feedback.gradeFeedback >= 0 && feedback.gradeFeedback < 2,
+                  'bg-theme-2': feedback.gradeFeedback >= 2 && feedback.gradeFeedback < 3,
+                  'bg-theme-3': feedback.gradeFeedback >= 3 && feedback.gradeFeedback < 4,
+                  'bg-theme-4': feedback.gradeFeedback >= 4 && feedback.gradeFeedback < 5,
+                  'bg-theme-5': feedback.gradeFeedback === 5
+                }" style="display: flex; justify-content: center; align-items: center;">
+                  {{ feedback.gradeFeedback }}
+                </span>
+                <span class="lni lni-star-fill" [ngClass]="{'checked': i <= feedback.gradeFeedback}" *ngFor="let i of [1, 2, 3, 4, 5]"></span>
+              </div>
+            </div>
+          </td>
+
+        </tr>
+      </tbody>
+      
+  </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+

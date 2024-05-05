@@ -8,15 +8,15 @@ export class AdminchartsService {
 
   constructor(private http: HttpClient) { }
   getCategoriesCount() {
-    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/categoriesCount');
+    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/Articles/categoriesCount');
   }
 
   getCountByCondition() {
-    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/countByCondition');
+    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/Articles/countByCondition');
   }
 
   getCountByCategoryAndCondition() {
-    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/countByCategoryAndCondition');
+    return this.http.get<any[]>('http://localhost:8089/projectARCTIC3/Articles/countByCategoryAndCondition');
   }
 }
 

@@ -1,0 +1,38 @@
+<div class="card mini-chat-card">
+  <h4 class="card-title">Mini Chat</h4>
+  
+  <div class="chat-container">
+    <div *ngFor="let message of chatMessages" [ngClass]="message.role === 'user' ? 'user-message' : 'bot-message'" class="message">
+      <div *ngIf="message.role === 'response'" class="avatar-container">
+        <img class="media-object img-circle img-chat" src="https://bootdey.com/img/Content/avatar/avatar1.png" alt="">
+      </div>
+      <div class="message-content">{{ message.content }}
+        <div class="message-time">{{ message.timestamp | date: 'mediumTime' }}</div>
+      </div>
+    </div>
+  </div>
+
+  <div class="input-container">
+    <input [(ngModel)]="userMessage" placeholder="Enter your message" type="text" />
+    <button class="btn btn-outline-success" (click)="sendMessage()">Send</button>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

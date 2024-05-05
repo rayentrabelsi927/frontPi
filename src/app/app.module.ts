@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
+import { QRCodeModule } from 'angular2-qrcode';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
@@ -44,9 +45,17 @@ import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
 import { LogoutComponent } from './Client/logout/logout.component';
 //import { AllUsersComponent } from './admin/all-users/all-users.component';
-import { QRCodeModule } from 'angular2-qrcode';
 
 import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
+import { TransactionComponent } from './Client/transaction/transaction.component';
+import { PaiementComponent } from './Client/paiement/paiement.component';
+import { SucessComponent } from './Client/sucess/sucess.component';
+import { CancelComponent } from './Client/cancel/cancel.component';
+import { TransactionListComponent } from './admin/transaction-list/transaction-list.component';
+import { ChatbotComponent } from './Client/chatbot/chatbot.component';
+import { StatisticFeedbackComponent } from './admin/statistic-feedback/statistic-feedback.component';
+import { BannedUserComponent } from './admin/banned-user/banned-user.component';
+import { PagehomeComponent } from './Client/pagehome/pagehome.component';
 
 
 @NgModule({
@@ -85,9 +94,18 @@ import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
    ArticleDetailsComponent,
    AdminChartsComponent,
    ArticlesManagementComponent,
-   AdminActionsComponent
+   AdminActionsComponent,
     
    
+    TransactionComponent,
+    PaiementComponent,
+    SucessComponent,
+    CancelComponent,
+    TransactionListComponent,
+    ChatbotComponent,
+    StatisticFeedbackComponent,
+    BannedUserComponent,
+    PagehomeComponent,
   ],
   imports: [
     BrowserModule,
@@ -103,7 +121,14 @@ import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
   ],
   providers: [
     HttpClient,
+  
+    FormsModule,
+    ReactiveFormsModule,
+    AppRoutingModule,
+    QRCodeModule,
   ],
+
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

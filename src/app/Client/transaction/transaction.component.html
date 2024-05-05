@@ -1,0 +1,231 @@
+<section >
+  <div class="section-header">
+    <h2>Transactions</h2>
+    <p>Discover all your transactions.</p>
+  </div>
+
+
+
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h1 class="modal-title fs-5" id="exampleModalLabel">localisation</h1>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+        </div>
+        <div class="modal-body">
+          <iframe *ngIf="mapUrl" [src]="mapUrl" width="400" height="350" frameborder="0" style="border:0" allowfullscreen></iframe>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+        </div>
+      </div>
+    </div>
+  </div>
+ 
+
+
+
+
+
+
+
+
+
+
+    <div class="container">
+     <!--/.section-header-->
+      <div class="explore-content">
+
+
+<div *ngFor="let transaction of transactions">
+  
+        <div class="card ">
+          <div class="card-header blue " >
+            Featured
+          </div>
+          <div class="card-body">
+            <div class="row">
+
+              
+              <div class="col-sm-12 col-lg-4">
+                <div>
+                  <qr-code [value]="qrcode(transaction)" [size]="150"></qr-code>                </div>
+                    
+            </div>
+
+            <div class="col-sm-12 col-lg-8">
+             
+              <ul class="list-style-none">
+                <li class="mt-4">
+                    <div class="d-flex align-items-center">
+                        <div class="ml-2">
+                            <h5 class="mb-0">transaction </h5>
+
+                            <div *ngIf="transaction.housing != null">
+                              <h5>housing</h5>
+                              <p>{{ transaction.housing.typeHousing }}</p><br> <button type="button" class="btn btn-link"(click)="updateMapUrl( transaction.housing.locationHousing )" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                              show location
+                            </button>
+                          </div>
+
+                          <div *ngIf="transaction.articles != []">
+                          <div *ngFor="let article of transaction.articles" class="article-item">
+                            <h5>Article</h5>
+                            <p>Category: {{ article.categoryArticle }}</p>
+                            <p>Price: {{ article.priceArticle }}</p>
+                          </div>
+                        </div>
+
+
+
+
+                          <div *ngFor="let feedback of transaction.feedbacks" class="feedback-item">
+                            <div class="feedback-content">
+                              <p>{{ feedback.commentFeedback }}</p>
+                              
+                              <!-- Utiliser ngClass pour définir la classe de couleur en fonction du gradeFeedback -->
+                              <div class="explore-rating-box">
+                                
+                                <span class="explore-rating" [ngClass]="{
+                                  'bg-theme-1': feedback.gradeFeedback >= 0 && feedback.gradeFeedback < 2,
+                                  'bg-theme-2': feedback.gradeFeedback >= 2 && feedback.gradeFeedback < 3,
+                                  'bg-theme-3': feedback.gradeFeedback >= 3 && feedback.gradeFeedback < 4,
+                                  'bg-theme-4': feedback.gradeFeedback >= 4 && feedback.gradeFeedback < 5,
+                                  'bg-theme-5': feedback.gradeFeedback === 5
+                                }" style="display: flex; justify-content: center; align-items: center;">
+                                
+                                  {{ feedback.gradeFeedback }}
+                                </span>
+                                
+                                <span class="lni lni-star-fill" [ngClass]="{'checked': i <= feedback.gradeFeedback}" *ngFor="let i of [1, 2, 3, 4, 5]"></span>
+                              </div>
+                            </div>
+                            <p class="feedback-date">{{ feedback.dateFeedback }}</p>
+                          </div>
+
+
+
+
+                            </div>
+                    </div>
+                    
+                </li>
+              
+            </ul>
+          </div>
+
+            </div>
+            
+         
+        
+        
+        </div>
+        
+
+
+          <div class="card-footer text-body-secondary">
+            <div class="rating-comment-container">
+              <div class="rating-stars">
+                <p>notez votre experience  içi :</p>
+
+                <span class="star" (click)="setRating(transaction.transactionId, 1)" [class.selected]="feedbackposts[transaction.transactionId].rating >= 1">★</span>
+                <span class="star" (click)="setRating(transaction.transactionId, 2)" [class.selected]="feedbackposts[transaction.transactionId].rating >= 2">★</span>
+                <span class="star" (click)="setRating(transaction.transactionId, 3)" [class.selected]="feedbackposts[transaction.transactionId].rating >= 3">★</span>
+                <span class="star" (click)="setRating(transaction.transactionId, 4)" [class.selected]="feedbackposts[transaction.transactionId].rating >= 4">★</span>
+                <span class="star" (click)="setRating(transaction.transactionId, 5)" [class.selected]="feedbackposts[transaction.transactionId].rating >= 5">★</span>
+            </div>
+
+              <div class="comment-box">
+
+
+                <div class="d-flex justify-content-center pt-3 pb-2">
+                  <input type="text" name="text" [(ngModel)]="feedbackposts[transaction.transactionId].commentaire" cols="30" rows="5" placeholder="+ Add a note" class="form-control addtxt"> 
+                  <button class="btn btn-warning" (click)="addFeedbackToTransaction(transaction.transactionId)">Post</button>
+
+                </div>
+              </div>
+            </div>
+
+            <!-- Affichage de la notation actuelle de la transaction -->
+            <p>Current Rating: {{ feedbackposts[transaction.transactionId].rating }}</p>
+          </div>
+
+
+        </div>
+
+        <br> </div>
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+       
+      </div><!--/.explore-content-->
+    </div><!--/.container-->
+  </section>
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

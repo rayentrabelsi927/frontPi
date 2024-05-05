@@ -37,7 +37,7 @@ export class CartArticleComponent implements OnInit {
 
   }
   calculateTotalPerUser() {
-    this.http.get<any[]>(`${this.baseUrl}/all-with-userids-and-usernames`).subscribe(response => {
+    this.http.get<any[]>(`${this.baseUrl}/Articles/all-with-userids-and-usernames`).subscribe(response => {
       const articlesWithUserIdsAndUsernames = response;
   
       this.totalsPerUser = {};

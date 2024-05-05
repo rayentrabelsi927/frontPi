@@ -1,0 +1,147 @@
+.card.mini-chat-card {
+    width: 400px;
+    margin: 20px auto;
+    padding: 10px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    background-color: #f9f9f9; /* Couleur de fond */
+  }
+  
+  .card-title {
+    font-size: 1.2rem;
+    margin-bottom: 10px;
+  }
+  
+  .chat-container {
+    max-height: auto; /* Réduire la hauteur pour une apparence plus compacte */
+  }
+  
+.message-time {
+    font-size: 12px; /* Taille de police plus petite */
+    color: grey; /* Couleur gris */
+}
+
+.message {
+    display: flex;
+    align-items: center;
+    margin: 10px;
+    padding: 10px;
+    border-radius: 8px;
+    clear: both;
+}
+
+.message-content {
+    margin-bottom: 5px;
+    max-width: 85%; /* Limiter la largeur du message à 70% de son conteneur */
+    word-wrap: break-word; /* Assurer que le texte se divise sur plusieurs lignes si nécessaire */
+}
+
+.avatar-container {
+    width: 40px; /* Largeur fixe de l'avatar-container */
+    height: 40px; /* Hauteur fixe de l'avatar-container */
+    border-radius: 50%; /* Forme arrondie pour l'avatar */
+    overflow: visible; /* Permettre à l'image de l'avatar de dépasser légèrement le conteneur */
+    padding-right: 10px; /* Ajouter un padding à droite de l'avatar-container */
+    margin-top: 10px; /* Espacement en haut pour séparer l'avatar du message */
+}
+
+.avatar {
+    width: 100%; /* Utiliser toute la largeur disponible dans l'avatar-container */
+    height: 100%; /* Utiliser toute la hauteur disponible dans l'avatar-container */
+    object-fit: cover; /* Assurer que l'image de l'avatar couvre tout l'espace sans déformation */
+}
+  
+.user-message {
+    background-color: #a8adf1; /* Couleur de fond bleue pour les messages de l'utilisateur */
+    float: right; /* Alignement à droite */
+    color: white; /* Couleur du texte blanc */
+    
+}
+  
+.bot-message {
+    background-color: #d1dba4; /* Couleur de fond grise pour les messages du bot */
+    display: flex; /* Utiliser Flexbox pour aligner les éléments */
+    align-items: flex-start; /* Aligner les éléments sur le côté supérieur */
+    clear: both;
+    word-wrap: break-word; /* Assurer que le message est affiché en dessous des précédents */
+}
+
+
+
+  
+.input-container {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 10px;
+    background-color: #f0f0f0;
+    border-radius: 8px;
+}
+  
+.input-container {
+    display: flex;
+    align-items: center;
+    margin-top: 20px;
+  }
+  
+  .input-container input[type="text"] {
+    flex-grow: 1;
+    padding: 8px;
+    margin-right: 11px;
+    border-radius: 5px;
+    border: 1px solid #ccc;
+    font-size: 17px;
+  }
+  
+  .input-container button {
+    padding: 8px 15px;
+    border-radius: 5px;
+    background-color: #4CAF50; /* Couleur de fond du bouton */
+    color: white;
+    border: none;
+    cursor: pointer;
+    font-size: 14px;
+  }
+  
+  .input-container button:hover {
+    background-color: #45a049; /* Couleur de fond du bouton au survol */
+  }
+  
+  .input-container button:focus {
+    outline: none; /* Supprimer la bordure de focus */
+  }
+  
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+
+
+  
+
+

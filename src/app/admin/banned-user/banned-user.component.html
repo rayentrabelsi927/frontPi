@@ -1,0 +1,104 @@
+<div class="section-header">
+    <h2>banned users</h2><i class="bi bi-0-circle"></i>
+<!-- Button trigger modal -->
+
+
+
+    <p>Discover all banned users.</p>
+
+    <br>  <br>  <br>
+    <div class="search-container">
+      <div class="input-group">
+        <input type="text" [(ngModel)]="searchQuery" (input)="searchTransactionsByUser(searchQuery)" placeholder="Search..." class="form-control" id="search" name="search">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="lni lni-search"></i></span>
+        </div>
+      </div>
+    </div>
+    <div class="search-container">
+      <div class="input-group">
+        <div class="input-group-append">
+          <span class="input-group-text"><i class="lni lni-search"></i></span>
+        </div>
+      </div>
+    </div>
+    
+    
+  </div>
+
+  <br>  <br>  <br>
+
+  <div class="card">
+    <div class="card-header blue">
+        <h4> banned user List</h4>
+    </div>
+    <div class="card-body">
+  <table class="table">
+    <thead>
+      <tr>
+
+        <th>user </th>
+
+        
+        <th>Feedback</th>
+        <th>date</th>
+        <th></th>
+
+
+      
+      </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let ban of filteredBannedUsers">
+          <td>{{ ban.username }}</td>
+          <td>{{ ban.feedback.commentFeedback }}</td>
+          <td><span class="badge badge-soft-success mb-0">{{ban.feedback.dateFeedback}}</span></td>
+
+          <td><button type="button" class="btn btn-outline-danger" (click)="removeban(ban.feedback.feecbackId)">remove ban</button>
+          </td>
+
+        </tr>
+      </tbody>
+      
+  </table>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+  
+
