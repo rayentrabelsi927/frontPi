@@ -1,5 +1,5 @@
 .icon-count {
-  background-color: #f8f8f8;
+  background-color: #c9c8c8;
   color: white;
   border-radius: 50%;
   padding: 0 5px;
@@ -8,7 +8,7 @@
 }
 
 nav {
-  background-color: #F2F3F4;
+  background-color: #f8f8f8;
   height: 85px;
   display: flex;
   justify-content: space-between;
