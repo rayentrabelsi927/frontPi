@@ -10,15 +10,15 @@
 }
 
 .pagination li a {
-  color: #004080;
+  color: #0056b3;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #004080;
+  border: 1px solid #0056b3;
   border-radius: 3px;
 }
 
 .pagination li.active a {
-  background-color: #004080;
+  background-color: #0056b3;
   color: #fff;
 }
 

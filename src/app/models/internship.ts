@@ -2,7 +2,7 @@ export class Internship {
   internshipId!: number;
   titleInternship!: string;
   companyInternship!: string;
-  durationInternship!: string;
+  durationInternship!: Date;
   descriptionInternship!: string;
   locationInternship!: string;
   skillsRequiredInternship!: string;
