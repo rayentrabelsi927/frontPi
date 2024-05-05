@@ -1,6 +1,5 @@
 import { Component, OnInit } from '@angular/core';
 import { loadStripe } from '@stripe/stripe-js';
-import { Article } from 'src/app/models/Article';
 import { PaiementService } from 'src/app/services/paiement.service';
 import { Router } from '@angular/router';
 import { TransactionService } from 'src/app/services/transaction.service';
