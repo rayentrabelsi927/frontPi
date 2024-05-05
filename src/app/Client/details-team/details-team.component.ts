@@ -14,6 +14,14 @@ export class DetailsTeamComponent implements OnInit {
   sportTeamId: number =0;
   sportTeam: any = { nameTeam: '', logoTeam: '' };
   users: any[] = [];
+  usersWithParticipation: any[] = [];
+  usersWithoutParticipation: any[] = [];
+
+
+  currentPage1: number = 1;
+  itemsPerPage1: number = 3;
+  currentPage2: number = 1;
+  itemsPerPage2: number = 3;
   
     constructor(
       private sportTeamService: SportTeamService,
@@ -21,19 +29,49 @@ export class DetailsTeamComponent implements OnInit {
       private router: Router
     ) {}
 
-   
+     // Pagination for users with participation
+  get pagedUsersWithParticipation(): any[] {
+    const startIndex = (this.currentPage1 - 1) * this.itemsPerPage1;
+    return this.usersWithParticipation.slice(startIndex, startIndex + this.itemsPerPage1);
+  }
+
+  get pagesWithParticipation(): number[] {
+    const totalPages = Math.ceil(this.usersWithParticipation.length / this.itemsPerPage1);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  pageChangedWithParticipation(page: number): void {
+    this.currentPage1 = page;
+  }
+
+  // Pagination for users without participation
+  get pagedUsersWithoutParticipation(): any[] {
+    const startIndex = (this.currentPage2 - 1) * this.itemsPerPage2;
+    return this.usersWithoutParticipation.slice(startIndex, startIndex + this.itemsPerPage2);
+  }
+
+  get pagesWithoutParticipation(): number[] {
+    const totalPages = Math.ceil(this.usersWithoutParticipation.length / this.itemsPerPage2);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  pageChangedWithoutParticipation(page: number): void {
+    this.currentPage2 = page;
+  }
 
     fetchUsersForSportTeam(teamId: number): void {
       this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
         (data: any[]) => {
-          this.users = data.map(user => this.createUserFromApiResponse(user));
+          this.usersWithParticipation = data.filter(user => user.participationTeam === true);
+          console.log('Users with participation:', this.usersWithParticipation);
+          this.usersWithoutParticipation = data.filter(user => user.participationTeam === false);
+          console.log('Users without participation:', this.usersWithoutParticipation);
         },
         (error: any) => {
           console.error('Error fetching users for sport team:', error);
         }
       );
     }
-    
     
     private createUserFromApiResponse(userData: any): User {
       return new User(
@@ -96,7 +134,6 @@ export class DetailsTeamComponent implements OnInit {
         this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
           next: (response: any) => {
             console.log('User removed successfully:', response);
-            // Refresh the users list after removing the user
             this.fetchUsersForSportTeam(this.sportTeamId);
           },
           error: (error: any) => {
@@ -125,6 +162,21 @@ export class DetailsTeamComponent implements OnInit {
         console.error('User ID is required.');
       }
     }
+
+
+    acceptUser(userId: number): void {
+      this.sportTeamService.acceptUserToSportTeam(this.sportTeamId, userId).subscribe(
+        (response: any) => {
+          console.log('User accepted successfully:', response);
+          this.fetchUsersForSportTeam(this.sportTeamId);
+        },
+        (error: any) => {
+          console.error('Error accepting user:', error);
+          this.fetchUsersForSportTeam(this.sportTeamId);
+        }
+      );
+    }
+    
 
     navigateToUpdateTeamPage(teamId: number): void {
       this.router.navigate(['/update-team', teamId]);

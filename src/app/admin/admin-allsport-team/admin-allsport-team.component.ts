@@ -12,6 +12,10 @@ export class AdminAllsportTeamComponent implements OnInit{
  errorMessage: any;
  valeurInput: string = '';
  sportTeam:any[]=[];
+
+ currentPage: number = 1;
+  itemsPerPage: number = 3;
+
  constructor(private sportTeamService: SportTeamService,private router: Router) { }
 
  ngOnInit(): void {
@@ -20,6 +24,10 @@ export class AdminAllsportTeamComponent implements OnInit{
 
  }
 
+ get pages(): number[] {
+  const totalPages = Math.ceil(this.sportTeam.length / this.itemsPerPage);
+  return Array(totalPages).fill(0).map((_, index) => index + 1);
+}
 
 
  getAllSportTeam(): void {

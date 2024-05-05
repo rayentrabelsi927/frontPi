@@ -8,94 +8,71 @@ import { Router } from '@angular/router';
   styleUrls: ['./all-fields.component.css']
 })
 export class AllFieldsComponent implements OnInit {
-  // fields: Field[] = [];
-  // items: any[] = [];
-  // pageSize: number = 5; // Change this value based on your requirement
-  // currentPage: number = 1;
-  // totalItems: number = 0;
-  // totalPages: number = 0;
-  // pagesArray: number[] = [];
-
-  // constructor(private fieldService: FieldService,private router: Router) { }
-
-  // ngOnInit(): void {
-  //   this.loadAllFields();
-  // }
-
-  // loadAllFields(): void {
-  //   this.fieldService.getAllFields().subscribe(
-  //     (fields: Field[]) => {
-  //       this.fields = fields;
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching fields:', error);
-  //     }
-  //   );
-  // }
-
-  // fetchAllFields(): void {
-  //   this.fieldService.getAllFields().subscribe(
-  //     (data: Field[]) => {
-  //       this.fields = data;
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching fields:', error);
-  //     }
-  //   );
-  // }
-
- 
-  // deleteField(fieldId: number): void {
-  //   this.fieldService.deleteField(fieldId).subscribe(
-  //     () => {
-  //       console.log('Field deleted successfully.');
-  //       // Update the list of fields after deletion
-  //       this.fetchAllFields();
-  //     },
-  //     (error: any) => {
-  //       console.error('Error deleting field:', error);
-  //     }
-  //   );
-  // }
-
-  // navigateToAddField(): void {
-  //   this.router.navigate(['/admin/add-field']);
-  // }
-  fields: any[] = [];
-  items: any[] = [];
-  pageSize: number = 5; // Change this value based on your requirement
+  fields: Field[] = [];
+  
+  
   currentPage: number = 1;
-  totalItems: number = 0;
-  totalPages: number = 0;
-  pagesArray: number[] = [];
+  itemsPerPage: number = 5;
 
-  constructor(private fieldService: FieldService) {}
-
-  ngOnInit(): void {
-    this.fetchAllFields();
+  get pagedFields(): Field[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.fields.slice(startIndex, startIndex + this.itemsPerPage);
   }
 
-  fetchAllFields(): void {
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.fields.length / this.itemsPerPage);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  pageChanged(page: number): void {
+    this.currentPage = page;
+  }
+
+
+  constructor(private fieldService: FieldService,private router: Router) { }
+
+  ngOnInit(): void {
+    this.loadAllFields();
+  }
+
+  loadAllFields(): void {
     this.fieldService.getAllFields().subscribe(
-      (data: any[]) => {
-        this.fields = data;
-        this.totalItems = this.fields.length;
-        this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-        this.pagesArray = Array(this.totalPages).fill(0).map((x, i) => i + 1);
-        this.changePage(this.currentPage);
+      (fields: Field[]) => {
+        this.fields = fields;
       },
-      error => {
+      (error: any) => {
         console.error('Error fetching fields:', error);
       }
     );
   }
 
-  paginate(array: any[], pageSize: number, pageNumber: number): any[] {
-    return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
+  fetchAllFields(): void {
+    this.fieldService.getAllFields().subscribe(
+      (data: Field[]) => {
+        this.fields = data;
+      },
+      (error: any) => {
+        console.error('Error fetching fields:', error);
+      }
+    );
   }
 
-  changePage(pageNumber: number) {
-    this.currentPage = pageNumber;
-    this.items = this.paginate(this.fields, this.pageSize, this.currentPage);
+ 
+  deleteField(fieldId: number): void {
+    this.fieldService.deleteField(fieldId).subscribe(
+      () => {
+        console.log('Field deleted successfully.');
+        // Update the list of fields after deletion
+        this.fetchAllFields();
+      },
+      (error: any) => {
+        console.error('Error deleting field:', error);
+      }
+    );
   }
+
+  navigateToAddField(): void {
+    this.router.navigate(['/admin/add-field']);
+  }
+
 }

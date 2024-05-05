@@ -21,7 +21,17 @@ export class AdminDetailssportTeamComponent implements OnInit{
     
     ) {}
 
-   
+    currentPage: number = 1;
+    itemsPerPage: number = 3;
+
+    get pages(): number[] {
+      const totalPages = Math.ceil(this.users.length / this.itemsPerPage);
+      return Array(totalPages).fill(0).map((_, index) => index + 1);
+    }
+  
+    pageChanged(page: number): void {
+      this.currentPage = page;
+    }
 
     fetchUsersForSportTeam(teamId: number): void {
       this.sportTeamService.getUsersForSportTeam(teamId).subscribe(

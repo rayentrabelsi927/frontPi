@@ -15,23 +15,31 @@ export class AllSportTeamComponent {
   errorMessage: any;
   valeurInput: string = '';
   sportTeam:any[]=[];
+
+  currentPage: number = 1;
+  itemsPerPage: number = 3
+
   constructor(private sportTeamService: SportTeamService,private router: Router) { }
+
+  get pagedSportTeams(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.sportTeam.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  get pages(): number[] {
+    const totalPages = Math.ceil(this.sportTeam.length / this.itemsPerPage);
+    return Array(totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  pageChanged(page: number): void {
+    this.currentPage = page;
+  }
 
   ngOnInit(): void {
     this.getAllSportTeam();
 
 
   }
-
-
- 
-  // getAllSportTeam(): void {
-  //   this.sportTeamService.getAll().subscribe(
-  //     (data:any[])=>{
-  //       this.sportTeam=data;
-  //     }
-  //   )
-  // }
 
   getAllSportTeam(): void {
     this.sportTeamService.getAll().subscribe(
@@ -50,8 +58,6 @@ export class AllSportTeamComponent {
     );
   }
 
-
-
   navigateToAddTeam(): void {
     this.router.navigate(['/add-team']);
   }
@@ -66,10 +72,10 @@ export class AllSportTeamComponent {
   
 
   navigateToDetails(teamId: number): void {
-    const userId = 13; // Hardcoded user ID (replace with actual user ID)
+    const userId = 10; // Hardcoded user ID (replace with actual user ID)
     this.sportTeamService.isUserCaptainTeam(teamId, userId).subscribe(
       isCaptain => {
-        console.log("Is captain:", isCaptain); // Check the value received
+        console.log("Is captain:", isCaptain); 
         if (isCaptain) {
           this.router.navigate(['/details-team', teamId]);
         } else {

@@ -35,14 +35,6 @@ export class SportTeamService {
   }
 
 
-  // updateSportTeamCap(sportTeamId: number, captainId: number, nameTeam: string, updatedTeam: SportTeam): Observable<SportTeam> {
-  //   return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}?nameTeam=${nameTeam}`, updatedTeam);
-  // }
-
-  // updateSportTeamCap(sportTeamId: number, updatedTeam: SportTeam): Observable<SportTeam> {
-  //   return this.httpClient.put<SportTeam>(`${this.baseURL}update-with-photo/${sportTeamId}`, updatedTeam);
-  // }
-
   updateSportTeamCap(sportTeamId: number, nameTeam: string, updatedTeam: SportTeam, selectedFile: File): Observable<SportTeam> {
     const formData: FormData = new FormData();
     formData.append('nameTeam', nameTeam);
@@ -97,7 +89,7 @@ removeUserFromSportTeam(sportTeamId: number, userId: number): Observable<any> {
   }
 
   cancelParticipationSportTeam(sportTeamId: number, userId: number): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseURL}/cancelParticipateSportTeam/${sportTeamId}`, null, {
+    return this.httpClient.post<any>(`${this.baseURL}cancelParticipateSportTeam/${sportTeamId}`, null, {
       headers: {
         userId: userId.toString()
       }
@@ -124,5 +116,10 @@ removeUserFromSportTeam(sportTeamId: number, userId: number): Observable<any> {
   getSportTeamIdByCaptainId(captainId: number): Observable<number> {
     return this.httpClient.get<number>(`${this.baseURL}captain/${captainId}`);
   }
+
+  acceptUserToSportTeam(sportTeamId: number, userId: number): Observable<string> {
+    return this.httpClient.post<string>(`${this.baseURL}${sportTeamId}/accept-user/${userId}`, {});
+  }
+
 }
 

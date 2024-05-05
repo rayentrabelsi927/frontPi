@@ -7,7 +7,7 @@
     </div>
     <div class="row">
       
-      <div class="col-md-4" *ngFor="let team of sportTeam; let i = index">
+      <div class="col-md-4"*ngFor="let team of pagedSportTeams">
         <div class="single-explore-item">
           <div class="single-explore-img">
             <div class="image-container">
@@ -34,6 +34,17 @@
         
         </div>
       </div>
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage === 1">
+          <button class="page-link" (click)="pageChanged(currentPage - 1)">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let page of pages" [class.active]="page === currentPage">
+          <button class="page-link" (click)="pageChanged(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage === pages.length">
+          <button class="page-link" (click)="pageChanged(currentPage + 1)">Next</button>
+        </li>
+      </ul>
       <button class="btn btn-primary text-center" (click)="navigateToAddTeam()">Add New Team</button>
     </div>
  

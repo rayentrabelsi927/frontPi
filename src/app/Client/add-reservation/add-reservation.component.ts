@@ -8,6 +8,7 @@ import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { WeatherService } from 'src/app/services/weather.service';
 
 
 @Component({
@@ -19,7 +20,8 @@ export class AddReservationComponent implements OnInit {
 
 constructor(private formBuilder: FormBuilder, private router: Router, private reservationService: ReservationService,
   private fieldService: FieldService,
-  private sportTeamService: SportTeamService
+  private sportTeamService: SportTeamService,
+  private weatherService: WeatherService
 ) { }
 userId!: number;
 addReservationForm!: FormGroup;
@@ -30,6 +32,9 @@ fieldTypes: string[] = Object.values(TypeF);
 fields: Field[] = [];
 isUserCaptain: boolean = false;
 sportTeamId: number | null = null; 
+weatherForecast$: Observable<any> | undefined; 
+weatherForecast: any;
+maxDate!: Date;
 
 fieldImages: { [key: string]: string } = {
   'Football': 'assets/img/football.jpg',
@@ -41,10 +46,9 @@ fieldImages: { [key: string]: string } = {
 selectedFieldImageUrl: string = ''; 
 
 ngOnInit() {
+  this.weatherForecast$ = this.weatherService.getWeatherForecast();
   this.userId = 13;
   this.addReservationForm = this.formBuilder.group({
-    // startDate: ['', Validators.required],
-    // endDate: ['', Validators.required],
     selectedDate: ['', Validators.required],
     startTime: ['', Validators.required],
     endTime: ['', Validators.required],
@@ -58,21 +62,38 @@ ngOnInit() {
     
   });
 
-  
+  this.weatherService.getWeatherForecast().subscribe(
+    (data) => {
+      this.weatherForecast = data;
+    },
+    (error) => {
+      console.error('Error fetching weather forecast:', error);
+    }
+  );
+
+  this.maxDate = new Date();
+  this.maxDate.setDate(this.maxDate.getDate() + 5);
   
   this.checkIfUserIsCaptain();
 }
 
+// timeRangeValidator(group: FormGroup) {
+//   const start = group.controls['startTime'].value;
+//   const end = group.controls['endTime'].value;
+//   const startHour = parseInt(start.split(':')[0], 10);
+//   const endHour = parseInt(end.split(':')[0], 10);
+//   const startMinute = parseInt(start.split(':')[1], 10);
+//   const endMinute = parseInt(end.split(':')[1], 10);
+//   const startMinutes = startHour * 60 + startMinute;
+//   const endMinutes = endHour * 60 + endMinute;
+//   const duration = endMinutes - startMinutes;
+//   return duration <= 120 ? null : { timeRangeExceeded: true };
+// }
+
 timeRangeValidator(group: FormGroup) {
-  const start = group.controls['startTime'].value;
-  const end = group.controls['endTime'].value;
-  const startHour = parseInt(start.split(':')[0], 10);
-  const endHour = parseInt(end.split(':')[0], 10);
-  const startMinute = parseInt(start.split(':')[1], 10);
-  const endMinute = parseInt(end.split(':')[1], 10);
-  const startMinutes = startHour * 60 + startMinute;
-  const endMinutes = endHour * 60 + endMinute;
-  const duration = endMinutes - startMinutes;
+  const start = new Date(group.controls['startTime'].value);
+  const end = new Date(group.controls['endTime'].value);
+  const duration = (end.getTime() - start.getTime()) / (1000 * 60); // Convert milliseconds to minutes
   return duration <= 120 ? null : { timeRangeExceeded: true };
 }
 
@@ -113,13 +134,9 @@ onSubmit() {
     return;
   }
 
-  // const { startDate, endDate, resStatus, resType, field, joinType } = this.addReservationForm.value;
-  // const fieldId = field.fieldId;
-
   const { selectedDate, startTime, endTime, resStatus, resType, field, joinType } = this.addReservationForm.value;
   const fieldId = field.fieldId;
 
-  // Combine date and time values
   const startDate = new Date(selectedDate + 'T' + startTime);
   const endDate = new Date(selectedDate + 'T' + endTime);
 
@@ -166,5 +183,84 @@ makeReservationForUser(startDate: Date, endDate: Date, resStatus: string, resTyp
     }
   );
 }
+
+
+onDateSelectionChange(): void {
+  const selectedDate = this.addReservationForm.get('selectedDate')?.value;
+  if (selectedDate) {
+    this.filterWeatherForecast(selectedDate);
+  }
+}
+
+// filterWeatherForecast(selectedDate: string): void {
+//   this.weatherForecast.list = this.weatherForecast.list.filter((forecast: any) => {
+//     return forecast.dt_txt.includes(selectedDate);
+//   });
+// }
+filterWeatherForecast(selectedDate: string): void {
+ 
+  const filteredForecasts = this.weatherForecast.list.filter((forecast: any) => {
+    return forecast.dt_txt.includes(selectedDate);
+  });
+  if (filteredForecasts.length > 0) {
+    this.weatherForecast.list = filteredForecasts;
+  } else {
+    this.weatherForecast.list = [];
+  }
+}
+
+
+isNoonForecast(forecast: any): boolean {
+  return forecast.dt_txt.includes(this.addReservationForm.get('selectedDate')?.value) &&
+         forecast.dt_txt.includes('12:00:00');
+}
+
+convertKelvinToCelsius(tempKelvin: number): number {
+  return tempKelvin - 273.15;
+}
+
+hasForecastForSelectedDate(): boolean {
+  const selectedDate = this.addReservationForm.get('selectedDate')?.value;
+  console.log('selected date:', selectedDate);
+  if (!selectedDate || !this.weatherForecast || !this.weatherForecast.list) {
+    return false;
+    
+  }
+  return this.weatherForecast.list.some((forecast: any) => forecast.dt_txt.includes(selectedDate));
+}
+
+
+getWeatherIconUrl(description: string): string {
+  console.log('Weather description:', description);
+  switch (description.toLowerCase()) {
+    case 'clear sky':
+      return 'assets/img/clear sky.png';
+
+    case 'overcast clouds':
+      return 'assets/img/overcast clouds.png';
+
+    case 'scattered clouds':
+      return 'assets/img/scattered clouds.png';
+
+    case 'rain':
+      return 'assets/img/rain.png';
+
+    case 'thunderstorm':
+      return 'assets/img/thunderstorm.png';
+
+    case 'broken clouds':
+      return 'assets/img/shower rain.png';
+
+    case 'light rain':
+      return 'assets/img/light-rain.png';
+
+    default:
+      return ''; 
+  }
+}
+
+
+
+
 
 }

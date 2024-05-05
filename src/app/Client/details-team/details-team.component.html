@@ -1,5 +1,4 @@
-
-   <div class="container">
+  <div class="container">
     <div class="row">
       <div class="col-md-12 text-center">
         <h2>{{ sportTeam.nameTeam }}</h2>
@@ -17,8 +16,6 @@
           </div>
           <br>
           <button class="btn btn-primary btn-block" (click)="addUserToTeam()">Add Player</button>
-         
-          
         </div>
         <br>
         <div>
@@ -33,6 +30,7 @@
       </div>
     </div>
   </div>
+  
   <div class="container mt-5">
     <h3>Team Members</h3>
     <div class="table-responsive">
@@ -49,7 +47,7 @@
           </tr>
         </thead>
         <tbody>
-          <tr *ngFor="let user of users">
+          <tr *ngFor="let user of pagedUsersWithParticipation">
             <td>{{ user.firstName }}</td>
             <td>{{ user.lastName }}</td>
             <td>{{ user.email }}</td>
@@ -66,6 +64,67 @@
           </tr>
         </tbody>
       </table>
+
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage1 === 1">
+          <button class="page-link" (click)="pageChangedWithParticipation(currentPage1 - 1)" [disabled]="currentPage1 === 1">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let page of pagesWithParticipation" [class.active]="page === currentPage1">
+          <button class="page-link" (click)="pageChangedWithParticipation(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage1 === pagesWithParticipation.length">
+          <button class="page-link" (click)="pageChangedWithParticipation(currentPage1 + 1)" [disabled]="currentPage1 === pagesWithParticipation.length">Next</button>
+        </li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container mt-5">
+    <h3>Applicants List</h3>
+    <div class="table-responsive">
+      <table class="table table-striped">
+        <thead>
+          <tr>
+            <th>First Name</th>
+            <th>Last Name</th>
+            <th>Email</th>
+            <th>Phone</th>
+            <th>Role</th>
+            <th>Badge</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr *ngFor="let user of pagedUsersWithoutParticipation">
+            <td>{{ user.firstName }}</td>
+            <td>{{ user.lastName }}</td>
+            <td>{{ user.email }}</td>
+            <td>{{ user.phone }}</td>
+            <td>{{ user.role }}</td>
+            <td>
+              <img *ngIf="user.badge === 'SILVER'" src="assets/img/Silver3.png" alt="Silver Badge" class="img-thumbnail" width="100" height="100">
+              <img *ngIf="user.badge === 'GOLD'" src="assets/img/gold3.png" alt="Gold Badge" class="img-thumbnail" width="100" height="100">
+              <img *ngIf="user.badge === 'DIAMOND'" src="assets/img/Diamond3.png" alt="Diamond Badge" class="img-thumbnail" width="100" height="100">
+            </td>
+            <td>
+              <button class="btn btn-success btn-sm" (click)="acceptUser(user.userId)">Accept Application</button>
+              <button class="btn btn-danger btn-sm" (click)="RemoveUserfromTeam(user.userId)">Refuse Application</button>
+            </td>
+          </tr>
+        </tbody>
+      </table>
+
+      <ul class="pagination justify-content-center">
+        <li class="page-item" [class.disabled]="currentPage2 === 1">
+          <button class="page-link" (click)="pageChangedWithoutParticipation(currentPage2 - 1)" [disabled]="currentPage2 === 1">Previous</button>
+        </li>
+        <li class="page-item" *ngFor="let page of pagesWithoutParticipation" [class.active]="page === currentPage2">
+          <button class="page-link" (click)="pageChangedWithoutParticipation(page)">{{ page }}</button>
+        </li>
+        <li class="page-item" [class.disabled]="currentPage2 === pagesWithoutParticipation.length">
+          <button class="page-link" (click)="pageChangedWithoutParticipation(currentPage2 + 1)" [disabled]="currentPage2 === pagesWithoutParticipation.length">Next</button>
+        </li>
+      </ul>
     </div>
   </div>
   

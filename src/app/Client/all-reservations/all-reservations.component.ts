@@ -19,7 +19,32 @@ export class AllReservationsComponent implements OnInit {
   status: string = '';
   fieldType: string = '';
 
+  currentPage: number = 1;
+  itemsPerPage: number = 3
+
+
+
   constructor(private reservationService: ReservationService, private sportTeamService: SportTeamService, private router: Router) {}
+
+
+ 
+
+  get pagedReservations(): any[] {
+    const startIndex = (this.currentPage - 1) * this.itemsPerPage;
+    return this.reservations.slice(startIndex, startIndex + this.itemsPerPage);
+  }
+
+  get totalPages(): number {
+    return Math.ceil(this.reservations.length / this.itemsPerPage);
+  }
+
+  get pages(): number[] {
+    return Array(this.totalPages).fill(0).map((_, index) => index + 1);
+  }
+
+  pageChanged(page: number): void {
+    this.currentPage = page;
+  }
 
 
   ngOnInit(): void {
