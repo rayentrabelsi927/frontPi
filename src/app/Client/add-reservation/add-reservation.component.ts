@@ -77,25 +77,25 @@ ngOnInit() {
   this.checkIfUserIsCaptain();
 }
 
-// timeRangeValidator(group: FormGroup) {
-//   const start = group.controls['startTime'].value;
-//   const end = group.controls['endTime'].value;
-//   const startHour = parseInt(start.split(':')[0], 10);
-//   const endHour = parseInt(end.split(':')[0], 10);
-//   const startMinute = parseInt(start.split(':')[1], 10);
-//   const endMinute = parseInt(end.split(':')[1], 10);
-//   const startMinutes = startHour * 60 + startMinute;
-//   const endMinutes = endHour * 60 + endMinute;
-//   const duration = endMinutes - startMinutes;
-//   return duration <= 120 ? null : { timeRangeExceeded: true };
-// }
-
 timeRangeValidator(group: FormGroup) {
-  const start = new Date(group.controls['startTime'].value);
-  const end = new Date(group.controls['endTime'].value);
-  const duration = (end.getTime() - start.getTime()) / (1000 * 60); // Convert milliseconds to minutes
+  const start = group.controls['startTime'].value;
+  const end = group.controls['endTime'].value;
+  const startHour = parseInt(start.split(':')[0], 10);
+  const endHour = parseInt(end.split(':')[0], 10);
+  const startMinute = parseInt(start.split(':')[1], 10);
+  const endMinute = parseInt(end.split(':')[1], 10);
+  const startMinutes = startHour * 60 + startMinute;
+  const endMinutes = endHour * 60 + endMinute;
+  const duration = endMinutes - startMinutes;
   return duration <= 120 ? null : { timeRangeExceeded: true };
 }
+
+// timeRangeValidator(group: FormGroup) {
+//   const start = new Date(group.controls['startTime'].value);
+//   const end = new Date(group.controls['endTime'].value);
+//   const duration = (end.getTime() - start.getTime()) / (1000 * 60); // Convert milliseconds to minutes
+//   return duration <= 120 ? null : { timeRangeExceeded: true };
+// }
 
 
 
@@ -129,8 +129,36 @@ getSportTeamIdByCaptainId(captainId: number): void {
   );
 }
 
+// onSubmit() {
+//   if (this.addReservationForm.invalid) {
+//     return;
+//   }
+
+//   const { selectedDate, startTime, endTime, resStatus, resType, field, joinType } = this.addReservationForm.value;
+//   const fieldId = field.fieldId;
+
+//   const startDate = new Date(selectedDate + 'T' + startTime);
+//   const endDate = new Date(selectedDate + 'T' + endTime);
+
+//   if (joinType === 'alone') {
+//     this.makeReservationForUser(startDate, endDate, resStatus, resType, fieldId);
+//   } else if (joinType === 'team') {
+//     if (this.sportTeamId !== null) {
+//       this.makeTeamReservation(startDate, endDate, resStatus, resType, fieldId, this.sportTeamId);
+//     } else {
+//       console.error('Sport team ID is null');
+      
+//     }
+//   }
+// }
+
 onSubmit() {
+  console.log('Form value:', this.addReservationForm.value);
+
   if (this.addReservationForm.invalid) {
+    console.log('Form is invalid');
+    console.log('Form errors:', this.addReservationForm.errors);
+    console.log('Form controls validity:', this.addReservationForm.controls);
     return;
   }
 
@@ -140,6 +168,8 @@ onSubmit() {
   const startDate = new Date(selectedDate + 'T' + startTime);
   const endDate = new Date(selectedDate + 'T' + endTime);
 
+  console.log('Making reservation with:', startDate, endDate, resStatus, resType, fieldId);
+
   if (joinType === 'alone') {
     this.makeReservationForUser(startDate, endDate, resStatus, resType, fieldId);
   } else if (joinType === 'team') {
@@ -147,7 +177,6 @@ onSubmit() {
       this.makeTeamReservation(startDate, endDate, resStatus, resType, fieldId, this.sportTeamId);
     } else {
       console.error('Sport team ID is null');
-      
     }
   }
 }
