@@ -39,6 +39,15 @@ export class PaiementComponent implements OnInit {
     "descriptionArticle": "beau",
     "priceArticle": 15.0,
     
+} ,{
+  "articleId": 1,
+  "nameArticle": "test",
+  "categoryArticle": "Home",
+  "conditionArticle": "Good",
+  "imgArticle": "chap2-1.jpg",
+  "descriptionArticle": "beau",
+  "priceArticle": 15.0,
+  
 }]; 
   
 

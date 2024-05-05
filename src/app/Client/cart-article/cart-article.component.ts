@@ -12,6 +12,7 @@ import { CartArticleService } from 'src/app/services/cart-article.service';
   styleUrls: ['./cart-article.component.css']
 })
 export class CartArticleComponent implements OnInit {
+  articleList: any[] = [];
 
   cart: Article[] = [];
   totalCartPrice: number = 0; 
@@ -46,7 +47,18 @@ export class CartArticleComponent implements OnInit {
       this.cart.forEach(cartItem => {
         const articleId = cartItem.articleId;
         const article = articlesWithUserIdsAndUsernames.find(a => a[0] === articleId);
+  console.log(article)
+
   
+
+  const data = [1, "Technology", "Good", "chap2-1.jpg", "beau", 15, 3, null, "trabelsi rayen 3"];
+
+
+
+
+
+
+
         if (article) {
           const userName = article[8].replace(' null', '');
           const price = article[5];
@@ -82,7 +94,33 @@ export class CartArticleComponent implements OnInit {
     console.log('User Name:', `${parts[0]} ${parts[1]}`); 
     console.log('Total Amount:', totalAmount);
     console.log('Articles associés à', user, ':', userArticles);
+    const articlesForUser = this.getArticlesByUserId(`${parts[0]} ${parts[1]}`);
+
+    this.convertToArticle(userArticles);
+for(const article of userArticles){
+  console.log("1:"+article)
+
+console.log ( this.convertToArticle(article))
+
+}
+
+console.log(this.articleList)
+
+}
+
+ getArticlesByUserId(userId: string): Article[] {
+  const userArticles: Article[] = [];
+  for (const article of this.cart) {
+      if (article.userName === userId) {
+          userArticles.push(article);
+      }
   }
+  return userArticles;
+}
+
+
+
+
   
 
 
@@ -116,6 +154,42 @@ export class CartArticleComponent implements OnInit {
     this.router.navigate(['articleDetails', article.articleId]);
   }
   
+
+  convertToArticle(data: any): void {
+    if (data && data.length === 9) { // Vérifie si les données sont présentes et complètes
+        const articleId = data[0];
+        const categoryArticle = data[1];
+        const conditionArticle = data[2];
+        const imgArticle = data[3];
+        const descriptionArticle = data[4];
+        const priceArticle = data[5];
+        const userId = data[6];
+
+        const articleObject = {
+            "articleId": articleId,
+            "categoryArticle": categoryArticle,
+            "conditionArticle": conditionArticle,
+            "imgArticle": imgArticle,
+            "descriptionArticle": descriptionArticle,
+            "priceArticle": priceArticle,
+            "users": {
+                "userId": userId
+            }
+        };
+
+        this.articleList.push(articleObject);
+    } else {
+        console.log("Données invalides pour convertir en article :", data);
+    }
+}
+
+
+    }
+
+
   
   
-}  
+  
+  
+  
+  
