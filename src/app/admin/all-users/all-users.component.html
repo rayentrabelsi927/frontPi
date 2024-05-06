@@ -1,0 +1,30 @@
+<table class="table user-list internship-table">
+    <thead>
+      <tr>
+        <th>ID</th>
+        <th>Nom</th>
+        <th>Location</th>
+        <th>Deadline</th>
+        <th>Duration</th>
+        <th>Skills Required</th>
+        <th>Responsibilities</th>
+        <th>Description</th>
+        <th>Actions</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let user of user">
+        <td>{{ user.internshipId }}</td>
+        <td>{{ user.titleInternship }}</td>
+        <td>{{ user.locationInternship }}</td>
+        <td>{{ user.deadlineInternship }}</td>
+        <td>{{ user.durationInternship }}</td>
+        <td>{{ user.skillsRequiredInternship }}</td>
+        <td>{{ user.responsibilitiesInternship }}</td>
+        <td>{{ user.descriptionInternship }}</td>
+        <td>
+  
+        </td>
+      </tr>
+    </tbody>
+  </table>
