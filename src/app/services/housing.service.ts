@@ -4,23 +4,23 @@ import { Observable, tap } from 'rxjs';
 
 import { AvailabilityTimeSlot } from '../models/availability-time-slot';
 import { Visit } from '../models/visit';
-import { Housing } from '../models/housing';
+import { Housing } from '../models/Housing';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HousingService {
-  private addURL="http://localhost:8080/Housing/add";
-  private getALLURL="http://localhost:8080/Housing/all";
-  private getByIdURL="http://localhost:8080/Housing/get";
-  private deleteURL="http://localhost:8080/Housing/delete";
-  private updateURL="http://localhost:8080/Housing/updateHousing";
-   private recURL="http://localhost:8080/Housing/recommend-houses?userAddress=Esprit el ghazela tunis";
-   private addTimeSlot ="http://localhost:8080/Housing/housing/addTimeSlot";
- private getALLATSURL="http://localhost:8080/Housing/availableTimeSlots";
- private getALLVisitsURL="http://localhost:8080/Housing/visits";
- private getHousingOwner="http://localhost:8080/Housing/housingsByOwner";
- private getATSdispoURL="http://localhost:8080/Visit/getAvailableTimeSlotsWithoutVisitOverlap";
+  private addURL="http://localhost:8089/projectARCTIC3/Housing/add";
+  private getALLURL="http://localhost:8089/projectARCTIC3/Housing/all";
+  private getByIdURL="http://localhost:8089/projectARCTIC3/Housing/get";
+  private deleteURL="http://localhost:8089/projectARCTIC3/Housing/delete";
+  private updateURL="http://localhost:8089/projectARCTIC3/Housing/updateHousing";
+   private recURL="http://localhost:8089/projectARCTIC3/Housing/recommend-houses?userAddress=Esprit el ghazela tunis";
+   private addTimeSlot ="http://localhost:8089/projectARCTIC3/Housing/housing/addTimeSlot";
+ private getALLATSURL="http://localhost:8089/projectARCTIC3/Housing/availableTimeSlots";
+ private getALLVisitsURL="http://localhost:8089/projectARCTIC3/Housing/visits";
+ private getHousingOwner="http://localhost:8089/projectARCTIC3/Housing/housingsByOwner";
+ private getATSdispoURL="http://localhost:8089/projectARCTIC3/Visit/getAvailableTimeSlotsWithoutVisitOverlap";
   
 
   constructor(private httpClient: HttpClient) { }

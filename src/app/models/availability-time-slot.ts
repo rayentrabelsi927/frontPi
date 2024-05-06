@@ -1,4 +1,4 @@
-import { Housing } from "./housing";
+import { Housing } from "./Housing";
 
 export class AvailabilityTimeSlot {
     id: number;

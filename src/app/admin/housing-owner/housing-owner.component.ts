@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Housing } from 'src/app/models/housing';
+import { Housing } from 'src/app/models/Housing';
 import { HousingService } from 'src/app/services/housing.service';
 
 @Component({

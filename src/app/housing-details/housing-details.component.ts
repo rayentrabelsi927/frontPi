@@ -59,18 +59,5 @@ export class HousingDetailsComponent implements OnInit {
     }
   }
 
-  // loadAvailabilityTimeSlots() {
-  //   const housingId: number = this.Act.snapshot.params['id'];
-
-  //   // Envoyez une requête HTTP GET pour récupérer les créneaux horaires disponibles
-  //   this.http.get<any[]>(`http://localhost:8080/Housing/availableTimeSlots/${housingId}`)
-  //     .subscribe(
-  //       (data) => {
-  //         this.availabilityTimeSlots = data; // Assignez les données récupérées à la propriété availabilityTimeSlots
-  //       },
-  //       (error) => {
-  //         console.error('Error fetching availability time slots:', error);
-  //       }
-  //     );
-  // }
+ 
 }

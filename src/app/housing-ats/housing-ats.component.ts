@@ -1,7 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { HousingService } from '../services/housing.service';
 import { AvailabilityTimeSlot } from '../models/availability-time-slot';
-import { Housing } from '../models/housing';
+import { Housing } from '../models/Housing';
 import { ActivatedRoute } from '@angular/router';
 
 @Component({

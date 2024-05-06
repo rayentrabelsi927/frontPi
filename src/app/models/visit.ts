@@ -1,5 +1,5 @@
-import { Housing } from "./housing";
-import { User } from "./user";
+import { Housing } from "./Housing";
+import { User } from "./User";
 
 export class Visit {
   visiteID: number;

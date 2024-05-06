@@ -1,6 +1,6 @@
 import { Component, OnInit } from '@angular/core';
-import { Housing } from '../models/housing';
-import { User } from '../models/user';
+import { Housing } from '../models/Housing';
+import { User } from '../models/User';
 import { HousingService } from '../services/housing.service';
 import { Router } from '@angular/router';
 import { TypeH } from '../models/TypeH';

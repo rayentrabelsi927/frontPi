@@ -1,6 +1,6 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
-import { Housing } from '../models/housing';
+import { Housing } from '../models/Housing';
 
 @Component({
   selector: 'app-housing-list',

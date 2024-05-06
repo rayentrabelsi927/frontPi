@@ -1,8 +1,8 @@
 
 
-import { Transaction } from './transaction'
-import { User } from './user'
+import { Transaction } from './Transaction'
 import { TypeH } from './TypeH'
+import { User } from './User'
 
 
 export class Housing {
