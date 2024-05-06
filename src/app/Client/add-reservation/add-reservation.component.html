@@ -79,7 +79,7 @@
                       <div class="d-flex align-items-center">
                         <div class="flex-grow-1" style="font-size: 1rem;">
                           <div><i class="fas fa-wind fa-fw" style="color: white;"></i> <span class="ms-1" style="color: white;">{{ forecast.wind.speed }} km/h</span></div>
-                          <div><i class="fas fa-tint fa-fw" style="color: white;"></i> <span class="ms-1" style="color: white;">{{ forecast.main.humidity }}% Humidity</span></div>
+                          <div><span class="ms-1" style="color: white;">{{ forecast.main.humidity }}% Humidity</span></div>
                         </div>
                         <div>
                           <img [src]="getWeatherIconUrl(forecast.weather[0].description)" width="100px">

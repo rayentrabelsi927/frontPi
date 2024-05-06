@@ -3,8 +3,8 @@ import { Field } from './Field';
 
 export interface Reservation {
   reservationId: number;
-  startDate: string; 
-  endDate: string; 
+  startDate: Date; 
+  endDate: Date; 
   nbPlayers: number;
   resStatus: Rstatus; // Use enum Rstatus from './Rstatus';
   resType: TypeR; // Use enum TypeR from './TypeR';
