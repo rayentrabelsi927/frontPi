@@ -67,8 +67,8 @@
         </thead>
         <tbody>
           <tr *ngFor="let reservation of items">
-            <td>{{ reservation[0].startDate | date:'medium' }}</td>
-            <td>{{ reservation[0].endDate | date:'medium' }}</td>
+            <td>{{ reservation[0].startDate }}</td>
+            <td>{{ reservation[0].endDate  }}</td>
             <td>{{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</td>
             <td>{{ reservation[0].resStatus }}</td>
             <td>{{ reservation[1].typeField }}</td>

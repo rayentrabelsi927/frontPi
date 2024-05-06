@@ -102,6 +102,7 @@ timeRangeValidator(group: FormGroup) {
 
 
 checkIfUserIsCaptain(): void {
+  
   this.sportTeamService.isUserCaptain(this.userId).subscribe(
     (isCaptain: boolean) => {
       this.isUserCaptain = isCaptain;
@@ -167,6 +168,7 @@ onSubmit() {
   const { selectedDate, startTime, endTime, resStatus, resType, field, joinType } = this.addReservationForm.value;
   const fieldId = field.fieldId;
 
+  console.log(new Date(selectedDate + 'T' + startTime))
   const startDate = new Date(selectedDate + 'T' + startTime);
   const endDate = new Date(selectedDate + 'T' + endTime);
 
