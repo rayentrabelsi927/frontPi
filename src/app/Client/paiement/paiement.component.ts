@@ -26,31 +26,53 @@ export class PaiementComponent implements OnInit {
     "username": "rayen"};*/
 
     userconnnecté:any={
-      "userId": 8,
-      "username": "rayen"};
+      "userId": 12,
+      "username": null,
+      "firstName": "nouha",
+      "lastName": "bouallegue",
+      "email": "ines.yeddes@esprit.tn",
+      "password": "$2a$10$78JbGyOjhIu1ss2uRd6fi.XSaH8YS/FAzxap.nyJTL55vRaw1RE1u",
+      "phone": 0,
+      "imgUser": null,
+      "role": "student",
+      "lastLogin": null,
+      "accountLocked": false,
+      "enabled": true,
+      "createdDate": [
+          2024,
+          5,
+          6,
+          17,
+          6,
+          34
+      ],
+      "lastModifiedDate": [
+          2024,
+          5,
+          6,
+          17,
+          8,
+          12
+      ],
+      "badge": null,
+      "participationTeam": false,
+      "complaints": [],
+      "internships": null,
+      "participants": [],
+      "jobs": [],
+      "name": "ines.yeddes@esprit.tn",
+      "authorities": [
+          {
+              "authority": "ROLE_STUDENT"
+          }
+      ],
+      "credentialsNonExpired": true,
+      "accountNonExpired": true,
+      "accountNonLocked": true
+  };
 
   productPrice: number = 50;
-  articleList: any[] =  [{
-    "articleId": 1,
-    "nameArticle": "test",
-    "categoryArticle": "Home",
-    "conditionArticle": "Good",
-    "imgArticle": "chap2-1.jpg",
-    "descriptionArticle": "beau",
-    "priceArticle": 15.0,
-    
-} ,{
-  "articleId": 1,
-  "nameArticle": "test",
-  "categoryArticle": "Home",
-  "conditionArticle": "Good",
-  "imgArticle": "chap2-1.jpg",
-  "descriptionArticle": "beau",
-  "priceArticle": 15.0,
-  
-}]; 
-  
-
+  articleList: any[] =  [{"articleId":7,"categoryArticle":"Technology","conditionArticle":"Fair","descriptionArticle":"123"}];
 
 constructor(private paiementService: PaiementService,private transactionservice : TransactionService,private router: Router) { }
 
@@ -71,18 +93,10 @@ constructor(private paiementService: PaiementService,private transactionservice 
     const transaction = {
       amountTransaction: productPrice * 100,
       "feedbacks": [],
-      "articles": [],
-      "users":this.userconnnecté ,
+      "articles":this.articleList,
+      "users":null ,
       
-    "housing":{
-      "housingID": 1,
-      "typeHousing": "Shared",
-      "descriptionHousing": "ssdd",
-      "locationHousing": "xccds",
-      "availabilityHousing": true,
-      "imgHousing": "sdds",
-      "priceHousing": null
-  }
+    "housing":null
             
     };
     const transactionString = JSON.stringify(transaction);

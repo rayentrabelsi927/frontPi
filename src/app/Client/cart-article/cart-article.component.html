@@ -47,12 +47,47 @@
             <tr *ngFor="let user of getObjectKeys(totalsPerUser)">
               <td>{{ user }}</td>
               <td>{{ totalsPerUser[user] }}</td>
-              <td><button (click)="displayUserItems(user)" class="lni lni-amazon-pay btn-pay"></button></td>
+              <td>
+           
+           
+           
+           
+              <ng-container *ngIf="possible">
+                <button *ngIf="possible.banned === 0" class="btn btn-dark" (click)=" getArticlesUsedByUserAsJson(user)">Buy Now</button>
+        
+                <div *ngIf="possible.banned !== 0">
+                  <!-- Button trigger modal -->
+                  <button type="button custom-button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                    buy now
+                  </button>
+                </div>
+              </ng-container>
+        
+              <!-- Modal -->
+             
+              </td>
+           
             </tr>
           </tbody>
         </table>
       </div>
   
-  
+      <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h1 class="modal-title fs-5" id="exampleModalLabel">Ban Information</h1>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <!-- Affiche le nombre de jours dans le modal -->
+              <div *ngIf="possible && possible.days">"You are banned for 30 days because you have written inappropriate content. It's remaining {{ possible.days }} days."</div>
+            </div>
+            <div class="modal-footer">
+              <!-- Ajoutez les boutons de la modal si nécessaire -->
+            </div>
+          </div>
+        </div>
+      </div>
   
   

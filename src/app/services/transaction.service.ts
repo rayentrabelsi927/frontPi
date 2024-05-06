@@ -21,6 +21,11 @@ export class TransactionService {
     return this.httpClient.get<transaction_ban>(`${this.baseURL}byId/${id}`);
   }
 
+  findbyID(id: number): Observable<any> {
+    console.log(id)
+    return this.httpClient.get<any>(`http://localhost:8089/projectARCTIC3/User/${id}`);
+  }
+
   getAll(): Observable<Transaction[]> {
     return this.httpClient.get<Transaction[]>(this.baseURL + 'all');
   }

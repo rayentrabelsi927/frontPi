@@ -1,10 +1,21 @@
 import { HttpClient } from '@angular/common/http';
-import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { Article } from 'src/app/models/article';
 import { ArticleService } from 'src/app/services/article.service';
 import { CartArticleService } from 'src/app/services/cart-article.service';
+import { TokenService } from 'src/app/services/token.service';
+import { Component, OnInit } from '@angular/core';
+import { loadStripe } from '@stripe/stripe-js';
+import { PaiementService } from 'src/app/services/paiement.service';
+import { Router } from '@angular/router';
+import { TransactionService } from 'src/app/services/transaction.service';
+import { transaction_ban } from 'src/app/models/transaction_ban';
+import { User } from 'src/app/models/User';
 
+const environment = {
+  production: false,
+  stripe: 'pk_test_51Oz6fDRqZpxfJakaVhNnthrrrLDDvwGzM9ob8vPtIknT9zSQZCKAVxwAmlsKAKtKpgjlvNvy69DYhnKmIRwEYqAG004YSQ4ePE', // Remplacez par votre clé publique Stripe
+  serverUrl: '/api',
+};
 
 @Component({
   selector: 'app-cart-article',
@@ -12,26 +23,35 @@ import { CartArticleService } from 'src/app/services/cart-article.service';
   styleUrls: ['./cart-article.component.css']
 })
 export class CartArticleComponent implements OnInit {
-  articleList: any[] = [];
+  stripePromise = loadStripe(environment.stripe);
 
   cart: Article[] = [];
   totalCartPrice: number = 0; 
   totalsPerUser: { [key: string]: number } = {};
  articlesPerUser: { [key: string]: Article[] } = {};
-
+ cartItemsFormatted: any[] = [];
+ userId!:any;
   private baseUrl = 'http://localhost:8089/projectARCTIC3';
- 
+  possible: transaction_ban | undefined ;
+  userget: any;
 
 
 
 
-  constructor(private cartService: CartArticleService, private http: HttpClient, private router: Router, private articleService: ArticleService) {
+
+  constructor(private cartService: CartArticleService, private usertoken :TokenService,private http: HttpClient, private router: Router,private paiementService: PaiementService,private transactionservice : TransactionService, private articleService: ArticleService) {
     this.cart = this.cartService.getCart();
-    
+
+   
   }
   
 
   ngOnInit(): void {
+    this.userId=this.usertoken.currentUser();
+    this.transactionservice.getByIdIfBnned(this.userId).subscribe(data => {
+      this.possible = data as transaction_ban;
+      console.log(this.possible.banned); 
+    });
     this.cart = this.cartService.getCart();
     this.calculateTotalPerUser();
     
@@ -47,18 +67,7 @@ export class CartArticleComponent implements OnInit {
       this.cart.forEach(cartItem => {
         const articleId = cartItem.articleId;
         const article = articlesWithUserIdsAndUsernames.find(a => a[0] === articleId);
-  console.log(article)
-
   
-
-  const data = [1, "Technology", "Good", "chap2-1.jpg", "beau", 15, 3, null, "trabelsi rayen 3"];
-
-
-
-
-
-
-
         if (article) {
           const userName = article[8].replace(' null', '');
           const price = article[5];
@@ -79,50 +88,92 @@ export class CartArticleComponent implements OnInit {
   
   
   
-  getFormattedUserName(fullName: string): string {
-    const parts = fullName.split(' ');
-    return parts.slice(0, parts.length - 1).join(' ');
-  }
+ 
+  getArticlesUsedByUser(user: string): any[] {
+    const articles = this.articlesPerUser[user] || [];
+    console.log("Articles used by", user, ":", articles);
+    return articles;
+}
 
-  displayUserItems(user: string): void {
+  async getArticlesUsedByUserAsJson(user: string) {
+  const articles = this.getArticlesUsedByUser(user);
+  const articlesJson = articles.map(article => ({
+      "articleId": article[0], 
+      "categoryArticle": article[1], 
+      "conditionArticle": article[2], 
+      "descriptionArticle": article[4]
+  }));
+
+  let abc: Number;
+abc = this.totalsPerUser[user] as Number;
+let result = abc.valueOf() * 100;
+  const transaction =  {
+    "amountTransaction": result,
+    "feedbacks": [],
+    "articles":articlesJson,
+    "users":{"userId":this.userId} ,
     
-    const parts = user.split(' ');
-    const userId = parts.length > 2 ? parts[2] : ''; 
-    const totalAmount = this.totalsPerUser[user];
-    const userArticles = this.articlesPerUser[user];
-    console.log('User ID:', userId);
-    console.log('User Name:', `${parts[0]} ${parts[1]}`); 
-    console.log('Total Amount:', totalAmount);
-    console.log('Articles associés à', user, ':', userArticles);
-    const articlesForUser = this.getArticlesByUserId(`${parts[0]} ${parts[1]}`);
+  "housing":null
+          
+  };
+  const transactionString = JSON.stringify(transaction);
 
-    this.convertToArticle(userArticles);
-for(const article of userArticles){
-  console.log("1:"+article)
+  sessionStorage.setItem("transaction", transactionString);
 
-console.log ( this.convertToArticle(article))
 
-}
+  // Création de l'objet payment
+  const payment = {
+    name: "bureau",
+    currency: 'usd',
+    amount: result, // convertir dollars en cents
+    quantity: '1',
+    cancelUrl: 'http://localhost:4200/cancel',
+    successUrl: 'http://localhost:4200/success',
+  };
 
-console.log(this.articleList)
+  const stripe = await this.stripePromise;
+this.transactionservice.findbyID(this.userId).subscribe((user: User) => {
+  this.userget = user;
+  
+  });
 
-}
 
- getArticlesByUserId(userId: string): Article[] {
-  const userArticles: Article[] = [];
-  for (const article of this.cart) {
-      if (article.userName === userId) {
-          userArticles.push(article);
+
+
+
+
+
+  // Appel de l'API backend pour démarrer le processus de paiement
+  this.paiementService.processPayment(payment).subscribe((data: any) => {
+    stripe?.redirectToCheckout({
+      
+      sessionId: data.id,
+    }).then((result: any) => {
+      // Vérifier si la redirection est un succès ou non
+      if (result.error) {
+        alert('Erreur lors de la redirection :'+ result.error.message);
+        
+      } else {
+    sessionStorage.setItem("transaction","true" );
       }
-  }
-  return userArticles;
-}
+    });
+  });
 
+
+
+
+
+
+
+
+
+
+
+}
 
 
 
   
-
 
   getObjectKeys(obj: any) {
     const keys = Object.keys(obj);
@@ -154,42 +205,6 @@ console.log(this.articleList)
     this.router.navigate(['articleDetails', article.articleId]);
   }
   
-
-  convertToArticle(data: any): void {
-    if (data && data.length === 9) { // Vérifie si les données sont présentes et complètes
-        const articleId = data[0];
-        const categoryArticle = data[1];
-        const conditionArticle = data[2];
-        const imgArticle = data[3];
-        const descriptionArticle = data[4];
-        const priceArticle = data[5];
-        const userId = data[6];
-
-        const articleObject = {
-            "articleId": articleId,
-            "categoryArticle": categoryArticle,
-            "conditionArticle": conditionArticle,
-            "imgArticle": imgArticle,
-            "descriptionArticle": descriptionArticle,
-            "priceArticle": priceArticle,
-            "users": {
-                "userId": userId
-            }
-        };
-
-        this.articleList.push(articleObject);
-    } else {
-        console.log("Données invalides pour convertir en article :", data);
-    }
-}
-
-
-    }
-
-
   
   
-  
-  
-  
-  
+}  
