@@ -1,5 +1,3 @@
-import { Housing } from "./Housing";
-
 export class User {
   userId: number;
   username: string;
@@ -12,12 +10,9 @@ export class User {
   imgUser: string;
   lastLogin: string;
   badge: string;
-  ownedHousing: Housing[]; // Liste des logements possédés
-  rentedHousing: Housing[]; // Liste des logements loués
 
   constructor(userId: number, username: string, firstName: string, lastName: string, email: string,
-              password: string, phone: number, role: string, imgUser: string, lastLogin: string, badge: string,ownedHousing: Housing[],
-              rentedHousing: Housing[]) {
+              password: string, phone: number, role: string, imgUser: string, lastLogin: string, badge: string) {
     this.userId = userId;
     this.username = username;
     this.firstName = firstName;
@@ -29,8 +24,5 @@ export class User {
     this.imgUser = imgUser;
     this.lastLogin = lastLogin;
     this.badge = badge;
-    this.ownedHousing = ownedHousing;
-    this.rentedHousing = rentedHousing;
-
   }
   }
