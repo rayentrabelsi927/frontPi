@@ -84,7 +84,7 @@ export class TransactionComponent {
     this.transactionService.getTransactionById(this.userconnnecté.userId).subscribe(
       (data: Transaction[]) => {
         this.transactions = data;
-
+console.log(data);
         // Initialiser la map feedbackposts avec des objets vides pour chaque transaction
         this.transactions.forEach(transaction => {
           this.feedbackposts[transaction.transactionId] = { commentaire: '', rating: 0 };
