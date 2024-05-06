@@ -1,0 +1,34 @@
+<p>housing-list</p>
+<h2> Housing list </h2>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th> idHousing</th>
+            <th>typeHousing</th>
+            <th> descriptionHousing</th>
+            <th>locationHousing</th>
+            <th> availabilityHousing</th>
+            <th>images</th>
+            <th> priceHousing</th>
+            <th>owner</th>
+            <th> renters</th>
+            <th>transaction</th>
+
+        </tr>
+    </thead>
+    <tbody>
+        <tr *ngFor="let housing of housings">
+            <td>{{ housing.housingID }}</td>
+            <td>{{ housing.typeHousing }}</td>
+            <td>{{ housing.descriptionHousing }}</td>
+            <td>{{ housing.locationHousing }}</td>
+            <td>{{ housing.availabilityHousing }}</td>
+            <td>{{ housing.images }}</td>
+            <td>{{ housing.priceHousing }}</td>
+            <td>{{ housing.owner}}</td>
+            <td>{{ housing.renters }}</td>
+            <td>{{ housing.transaction }}</td> transaction
+        </tr>
+    </tbody>
+</table>
+

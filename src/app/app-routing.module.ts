@@ -70,6 +70,17 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { FileComponent } from './admin/file/file.component';
+import { HousingListComponent } from './housing-list/housing-list.component';
+import { HousingAddComponent } from './housing-add/housing-add.component';
+import { HousingDetailsComponent } from './housing-details/housing-details.component';
+import { HousingUpdateComponent } from './housing-update/housing-update.component';
+import { HousingRecComponent } from './housing-rec/housing-rec.component';
+import { HousingATSComponent } from './housing-ats/housing-ats.component';
+import { AtsListComponent } from './ats-list/ats-list.component';
+import { VisitListComponent } from './visit-list/visit-list.component';
+import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
+import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
+import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 
 
 
@@ -119,6 +130,16 @@ const routes: Routes = [
   { path: 'add-reservation', component: AddReservationComponent },
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
 
+  { path: 'housing-list', component: HousingListComponent },
+  { path: 'housing-add', component: HousingAddComponent },
+  { path: 'housing-list/housing-byId/:id', component: HousingDetailsComponent },
+  
+  { path: 'housing-rec', component: HousingRecComponent },
+  { path: 'housing-ats-add/:housingId', component: HousingATSComponent },
+  { path: 'housing-ats-list/:id', component: AtsListComponent },
+  { path: 'housing-visit-list/:id', component: VisitListComponent },
+  { path: 'housing-ATSdispo/:id', component: HousingAvailabilityComponent }, 
+  
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'internships', component: InternshipComponent },
@@ -134,6 +155,10 @@ const routes: Routes = [
   {path: 'admin/charts', component: AdminChartsComponent},
   {path: 'admin/adminItems', component:ArticlesManagementComponent},
   {path: 'admin/adminActions', component:AdminActionsComponent},
+  { path: 'admin/housing-Owner/:id', component: HousingOwnerComponent },
+  { path: 'admin/housing-Owner-details/:id', component: HousingOwnerDetailsComponent },
+  { path: 'admin/housing-update/:id', component: HousingUpdateComponent },
+
   
 
   { path: 'admin/banned', component: BannedUserComponent },

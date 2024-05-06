@@ -90,6 +90,17 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FileComponent } from './admin/file/file.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { HousingListComponent } from './housing-list/housing-list.component';
+import { HousingAddComponent } from './housing-add/housing-add.component';
+import { HousingDetailsComponent } from './housing-details/housing-details.component';
+import { HousingUpdateComponent } from './housing-update/housing-update.component';
+import { HousingRecComponent } from './housing-rec/housing-rec.component';
+import { HousingATSComponent } from './housing-ats/housing-ats.component';
+import { AtsListComponent } from './ats-list/ats-list.component';
+import { VisitListComponent } from './visit-list/visit-list.component';
+import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
+import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
+import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 
 
 @NgModule({
@@ -171,6 +182,18 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UpdateFreelanceJobComponent,
     InternshipRoomComponent,
     FileComponent,
+    HousingListComponent,
+    HousingAddComponent,
+    HousingDetailsComponent,
+    HousingUpdateComponent,
+    HousingRecComponent,
+    HousingATSComponent,
+    AtsListComponent,
+    VisitListComponent,
+    HousingOwnerComponent,
+    HousingOwnerDetailsComponent,
+    HousingAvailabilityComponent,
+    
   ],
   imports: [
     BrowserModule,
@@ -196,6 +219,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatTableModule,
     MatPaginatorModule,
     NgxPaginationModule,
+    FormsModule, // Add this line
+    HttpClientModule,
 
   ],
   providers: [

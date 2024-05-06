@@ -1,0 +1,63 @@
+<div class="container mt-4">
+    <div class="card">
+        <div class="card-header bg-primary text-white">
+            General Information
+        </div>
+        <div class="card-body">
+            <form (ngSubmit)="onSubmit()" enctype="multipart/form-data">
+                <div class="form-group">
+                    <label for="housingType">Housing Type</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="shared" [(ngModel)]="housing.typeHousing" name="typeHousing" value="Shared">
+                        <label class="form-check-label" for="shared">Shared housing</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="single" [(ngModel)]="housing.typeHousing" name="typeHousing" value="SinglePerson">
+                        <label class="form-check-label" for="single">House rental</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="descriptionHousing">Description Housing</label>
+                    <input type="text" class="form-control" id="descriptionHousing" [(ngModel)]="housing.descriptionHousing" name="descriptionHousing">
+                </div>
+                <div class="form-group">
+                    <label for="imageUpload">Upload New Photo</label>
+                    <input type="file" class="form-control-file" id="imageUpload" (change)="onFileSelected($event)">
+                    <small class="form-text text-muted">Allowed formats: JPG, GIF, PNG. Maximum size: 800K</small>
+                </div>
+                <div class="form-group">
+                    <label for="locationHousing">Location Housing (Address)</label>
+                    <input type="text" class="form-control" id="locationHousing" [(ngModel)]="housing.locationHousing" name="locationHousing">
+                    <small class="form-text text-muted">Please enter a valid address.</small>
+                </div>
+                <div class="form-group">
+                    <label for="availability">Availability</label><br>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="available" [(ngModel)]="housing.availabilityHousing" name="availabilityHousing" value="true">
+                        <label class="form-check-label" for="available">Available</label>
+                    </div>
+                    <div class="form-check form-check-inline">
+                        <input class="form-check-input" type="radio" id="notAvailable" [(ngModel)]="housing.availabilityHousing" name="availabilityHousing" value="false">
+                        <label class="form-check-label" for="notAvailable">Not available</label>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <label for="priceHousing">{{ (housing.typeHousing.toString() === 'shared') ? 'Price per person' : 'Rental price' }}</label>
+                    <input type="number" class="form-control" id="priceHousing" [(ngModel)]="housing.priceHousing" name="priceHousing">
+                </div>
+                <div class="form-group" *ngIf="housing.typeHousing === 'Shared'">
+                    <label for="renters">Renters</label>
+                    <input type="text" class="form-control" id="renters" name="renters">
+                </div>
+                <div class="form-group">
+                    <label for="owner">Owner</label>
+                    <input type="text" class="form-control" id="owner" [(ngModel)]="currentUser" name="owner" disabled>
+                </div>
+                <div class="text-center">
+                    <button type="submit" class="btn btn-success mr-2">Add</button>
+                    <button type="button" class="btn btn-secondary">Cancel</button>
+                </div>
+            </form>
+        </div>
+    </div>
+</div>
