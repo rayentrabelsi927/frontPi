@@ -1,0 +1,47 @@
+<section id="explore" class="explore">
+    <div class="container">
+        <div class="section-header">
+            <h2>Explore</h2>
+            <p>Explore new places, food, culture around the world and much more</p>
+            <button class="btn btn-primary" [routerLink]="['/housing-rec']">Recommandations</button>
+        </div><!--/.section-header-->
+        <div class="row">
+            <div class="col-md-4 col-sm-6" *ngFor="let housing of housings">
+                <a [routerLink]="['housing-byId', housing.housingID]">
+                    <div class="explore-content">
+                        <div class="single-explore-item">
+                            <div class="single-explore-img">
+                                <img class="img-fluid mb-2" [src]="'http://localhost:8080/images/' + housing.images" alt="Housing Image" width="400" height="200"> <!-- Utilisez les attributs width et height pour ajuster la taille -->
+                                <div class="single-explore-img-info">
+                                    <h5 class="card-title">
+                                        <span class="badge bg-danger">{{ housing.typeHousing === 'SinglePerson' ? 'Location' : 'Colocation' }}</span>
+                                    </h5>
+                                
+                                </div>
+                            </div>
+                            <div class="single-explore-txt bg-theme-1">
+                                <h2><a href="#">{{housing.locationHousing}}</a></h2>
+                                <p class="explore-rating-price">
+                                    <span class="explore-rating">Prix:</span>
+                                    <span class="explore-price">
+                                        {{ housing.typeHousing === 'Shared' ? housing.priceHousing + ' DT / personne' : housing.priceHousing + ' DT' }}
+                                    </span>
+                                </p>
+                                <div class="explore-person">
+                                    <div class="row">
+                                        <div class="col-sm-12">
+                                            <span class="explore-price">Description:</span>
+                                            <p class="card-text fs-5">{{ housing.descriptionHousing }}</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                
+                              
+                            </div>
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+    </div><!--/.container-->
+</section>

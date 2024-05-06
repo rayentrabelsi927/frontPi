@@ -26,9 +26,18 @@ import { FormsModule } from '@angular/forms';
 import { AllComponent } from './admin/all/all.component';
 import { HeaderComponent } from './shared/header/header.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { HousingListComponent } from './Client/housing-list/housing-list.component';
+import { HousingListComponent } from './housing-list/housing-list.component';
 import { HttpClientModule } from '@angular/common/http';
 import { HousingAddComponent } from './housing-add/housing-add.component';
+import { HousingDetailsComponent } from './housing-details/housing-details.component';
+import { HousingUpdateComponent } from './housing-update/housing-update.component';
+import { HousingRecComponent } from './housing-rec/housing-rec.component';
+import { HousingATSComponent } from './housing-ats/housing-ats.component';
+import { AtsListComponent } from './ats-list/ats-list.component';
+import { VisitListComponent } from './visit-list/visit-list.component';
+import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
+import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
+import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 
 
 @NgModule({
@@ -57,6 +66,15 @@ import { HousingAddComponent } from './housing-add/housing-add.component';
     SidebarComponent,
     HousingListComponent,
     HousingAddComponent,
+    HousingDetailsComponent,
+    HousingUpdateComponent,
+    HousingRecComponent,
+    HousingATSComponent,
+    AtsListComponent,
+    VisitListComponent,
+    HousingOwnerComponent,
+    HousingOwnerDetailsComponent,
+    HousingAvailabilityComponent,
     
   ],
   imports: [

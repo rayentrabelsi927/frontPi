@@ -17,8 +17,17 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
-import { HousingListComponent } from './Client/housing-list/housing-list.component';
+import { HousingListComponent } from './housing-list/housing-list.component';
 import { HousingAddComponent } from './housing-add/housing-add.component';
+import { HousingDetailsComponent } from './housing-details/housing-details.component';
+import { HousingUpdateComponent } from './housing-update/housing-update.component';
+import { HousingRecComponent } from './housing-rec/housing-rec.component';
+import { HousingATSComponent } from './housing-ats/housing-ats.component';
+import { AtsListComponent } from './ats-list/ats-list.component';
+import { VisitListComponent } from './visit-list/visit-list.component';
+import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
+import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
+import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 
 
 
@@ -43,12 +52,23 @@ const routes: Routes = [
   { path: 'login', component: LoginComponent },
   { path: 'housing-list', component: HousingListComponent },
   { path: 'housing-add', component: HousingAddComponent },
+  { path: 'housing-list/housing-byId/:id', component: HousingDetailsComponent },
+  
+  { path: 'housing-rec', component: HousingRecComponent },
+  { path: 'housing-ats-add/:housingId', component: HousingATSComponent },
+  { path: 'housing-ats-list/:id', component: AtsListComponent },
+  { path: 'housing-visit-list/:id', component: VisitListComponent },
+  { path: 'housing-ATSdispo/:id', component: HousingAvailabilityComponent }, 
+  
 
   /* admin lezm el path yabda b kelmet admin */
   { path: 'admin/all', component: AllComponent },
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/housing-Owner/:id', component: HousingOwnerComponent },
+  { path: 'admin/housing-Owner-details/:id', component: HousingOwnerDetailsComponent },
+  { path: 'admin/housing-update/:id', component: HousingUpdateComponent },
 
   
   // Ajoutez d'autres routes au besoin
