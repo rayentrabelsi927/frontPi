@@ -18,6 +18,7 @@ export class DetailsTeamComponent implements OnInit {
   usersWithParticipation: any[] = [];
   usersWithoutParticipation: any[] = [];
   userId!:any;
+  userWithMostReservations!:any;
 
   currentPage1: number = 1;
   itemsPerPage1: number = 3;
@@ -31,7 +32,6 @@ export class DetailsTeamComponent implements OnInit {
       private userTok: TokenService
     ) {}
 
-     // Pagination for users with participation
   get pagedUsersWithParticipation(): any[] {
     const startIndex = (this.currentPage1 - 1) * this.itemsPerPage1;
     return this.usersWithParticipation.slice(startIndex, startIndex + this.itemsPerPage1);
@@ -46,7 +46,6 @@ export class DetailsTeamComponent implements OnInit {
     this.currentPage1 = page;
   }
 
-  // Pagination for users without participation
   get pagedUsersWithoutParticipation(): any[] {
     const startIndex = (this.currentPage2 - 1) * this.itemsPerPage2;
     return this.usersWithoutParticipation.slice(startIndex, startIndex + this.itemsPerPage2);
@@ -61,20 +60,57 @@ export class DetailsTeamComponent implements OnInit {
     this.currentPage2 = page;
   }
 
-    fetchUsersForSportTeam(teamId: number): void {
-      this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-        (data: any[]) => {
-          this.usersWithParticipation = data.filter(user => user.participationTeam === true);
-          console.log('Users with participation:', this.usersWithParticipation);
-          this.usersWithoutParticipation = data.filter(user => user.participationTeam === false);
-          console.log('Users without participation:', this.usersWithoutParticipation);
+    // fetchUsersForSportTeam(teamId: number): void {
+    //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
+    //     (data: any[]) => {
+    //       this.usersWithParticipation = data.filter(user => user.participationTeam === true);
+    //       console.log('Users with participation:', this.usersWithParticipation);
+    //       this.usersWithoutParticipation = data.filter(user => user.participationTeam === false);
+    //       console.log('Users without participation:', this.usersWithoutParticipation);
+    //     },
+    //     (error: any) => {
+    //       console.error('Error fetching users for sport team:', error);
+    //     }
+    //   );
+    // }
+    
+   
+  fetchUsersForSportTeam(teamId: number): void {
+    this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
+      (data: any[]) => {
+        this.usersWithParticipation = data.filter(user => user.participationTeam === true);
+        this.usersWithoutParticipation = data.filter(user => user.participationTeam === false);
+  
+        this.usersWithoutParticipation.sort((a, b) => b.reservationCount - a.reservationCount);
+  
+        this.userWithMostReservations = this.usersWithoutParticipation[0];
+        console.log('user with most Reservations',this.userWithMostReservations)
+      },
+      (error: any) => {
+        console.error('Error fetching users for sport team:', error);
+      }
+    );
+  }
+
+  ngOnInit(): void {
+    this.userId = this.userTok.currentUser();
+    this.route.paramMap.subscribe(params => {
+      this.sportTeamId = +params.get('id')!;
+      console.log('Sport Team ID:', this.sportTeamId);
+      this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
+        (data: any) => {
+          console.log('API Response:', data); 
+          this.sportTeam.nameTeam = data.nameTeam; 
+          this.sportTeam.logoTeam = data.logoTeam;
+          this.fetchUsersForSportTeam(this.sportTeamId);
+          console.log('Sport Team:', this.sportTeam); 
         },
-        (error: any) => {
-          console.error('Error fetching users for sport team:', error);
+        error => {
+          console.error('Error fetching sport team:', error);
         }
       );
-    }
-    
+    });
+  }
     private createUserFromApiResponse(userData: any): User {
       return new User(
         userData.userId,
@@ -91,26 +127,7 @@ export class DetailsTeamComponent implements OnInit {
       );
     }
     
-  
-    ngOnInit(): void {
-      this.userId = this.userTok.currentUser();
-      this.route.paramMap.subscribe(params => {
-        this.sportTeamId = +params.get('id')!;
-        console.log('Sport Team ID:', this.sportTeamId);
-        this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
-          (data: any) => {
-            console.log('API Response:', data); 
-            this.sportTeam.nameTeam = data.nameTeam; 
-            this.sportTeam.logoTeam = data.logoTeam;
-            this.fetchUsersForSportTeam(this.sportTeamId);
-            console.log('Sport Team:', this.sportTeam); 
-          },
-          error => {
-            console.error('Error fetching sport team:', error);
-          }
-        );
-      });
-    }
+ 
 
     addUserToTeam(): void {
       if (this.userEmail) {

@@ -151,5 +151,16 @@ export class AllReservationsComponent implements OnInit {
     });
   }
 
+  formatDate(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toDateString(); // Displays date without time
+  }
+  
+  formatTime(dateString: string): string {
+    const date = new Date(dateString);
+    return date.toLocaleTimeString(); // Displays time
+  }
+  
+  
 
 }

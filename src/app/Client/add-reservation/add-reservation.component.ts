@@ -1,3 +1,4 @@
+import { formatDate } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
@@ -132,29 +133,6 @@ getSportTeamIdByCaptainId(captainId: number): void {
   );
 }
 
-// onSubmit() {
-//   if (this.addReservationForm.invalid) {
-//     return;
-//   }
-
-//   const { selectedDate, startTime, endTime, resStatus, resType, field, joinType } = this.addReservationForm.value;
-//   const fieldId = field.fieldId;
-
-//   const startDate = new Date(selectedDate + 'T' + startTime);
-//   const endDate = new Date(selectedDate + 'T' + endTime);
-
-//   if (joinType === 'alone') {
-//     this.makeReservationForUser(startDate, endDate, resStatus, resType, fieldId);
-//   } else if (joinType === 'team') {
-//     if (this.sportTeamId !== null) {
-//       this.makeTeamReservation(startDate, endDate, resStatus, resType, fieldId, this.sportTeamId);
-//     } else {
-//       console.error('Sport team ID is null');
-      
-//     }
-//   }
-// }
-
 onSubmit() {
   console.log('Form value:', this.addReservationForm.value);
 
@@ -168,22 +146,30 @@ onSubmit() {
   const { selectedDate, startTime, endTime, resStatus, resType, field, joinType } = this.addReservationForm.value;
   const fieldId = field.fieldId;
 
-  console.log(new Date(selectedDate + 'T' + startTime))
-  const startDate = new Date(selectedDate + 'T' + startTime);
-  const endDate = new Date(selectedDate + 'T' + endTime);
+  const startDateString = selectedDate + 'T' + startTime; 
+  const endDateString = selectedDate + 'T' + endTime;
+ 
+  const startDateUTC = new Date(startDateString);
+  const endDateUTC = new Date(endDateString);
 
-  console.log('Making reservation with:', startDate, endDate, resStatus, resType, fieldId);
+  const timezoneOffset = startDateUTC.getTimezoneOffset();
+ 
+  const startDateAdjusted = new Date(startDateUTC.getTime() - timezoneOffset * 60000); 
+  const endDateAdjusted = new Date(endDateUTC.getTime() - timezoneOffset * 60000); 
+
+  console.log('Making reservation with adjusted time:', startDateAdjusted, endDateAdjusted, resStatus, resType, fieldId);
 
   if (joinType === 'alone') {
-    this.makeReservationForUser(startDate, endDate, resStatus, resType, fieldId);
+    this.makeReservationForUser(startDateAdjusted, endDateAdjusted, resStatus, resType, fieldId); 
   } else if (joinType === 'team') {
     if (this.sportTeamId !== null) {
-      this.makeTeamReservation(startDate, endDate, resStatus, resType, fieldId, this.sportTeamId);
+      this.makeTeamReservation(startDateAdjusted, endDateAdjusted, resStatus, resType, fieldId, this.sportTeamId);
     } else {
       console.error('Sport team ID is null');
     }
   }
 }
+
 
 makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: string, fieldId: number, sportTeamId: number): void {
   const reservation = { startDate, endDate, resStatus, resType };
@@ -225,11 +211,6 @@ onDateSelectionChange(): void {
   }
 }
 
-// filterWeatherForecast(selectedDate: string): void {
-//   this.weatherForecast.list = this.weatherForecast.list.filter((forecast: any) => {
-//     return forecast.dt_txt.includes(selectedDate);
-//   });
-// }
 filterWeatherForecast(selectedDate: string): void {
  
   const filteredForecasts = this.weatherForecast.list.filter((forecast: any) => {
@@ -291,8 +272,6 @@ getWeatherIconUrl(description: string): string {
       return ''; 
   }
 }
-
-
 
 
 

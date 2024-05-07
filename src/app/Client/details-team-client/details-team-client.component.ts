@@ -163,26 +163,13 @@ export class DetailsTeamClientComponent implements OnInit {
     );
   }
 
-  // leaveTeam(): void {
-  //   this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
-  //     response => {
-  //       console.log('Left team successfully:', response);
-  //       this.fetchUsersForSportTeam(this.sportTeamId);
-  //       this.participateSportTeamCheckAndRefreshButton(); // Refresh button after leaving
-  //     },
-  //     error => {
-  //       console.error('Error leaving team:', error);
-  //       this.fetchUsersForSportTeam(this.sportTeamId);
-  //       this.participateSportTeamCheckAndRefreshButton();
-  //     }
-  //   );
-  // }
+  
   leaveTeam(): void {
     this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
       response => {
         console.log('Left team successfully:', response);
         this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton(); // Refresh button after leaving
+        this.participateSportTeamCheckAndRefreshButton(); 
       },
       error => {
         console.error('Error leaving team:', error);
@@ -198,7 +185,7 @@ export class DetailsTeamClientComponent implements OnInit {
       response => {
         console.log('Canceled application successfully:', response);
         this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton(); // Refresh button after canceling application
+        this.participateSportTeamCheckAndRefreshButton();
       },
       error => {
         console.error('Error canceling application:', error);
@@ -208,77 +195,6 @@ export class DetailsTeamClientComponent implements OnInit {
     );
   }
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // sportTeamId: number = 0;
-  // sportTeam: any = { nameTeam: '', logoTeam: '' };
-  // users: any[] = [];
-  // pagedUsers: any[] = [];
-  // totalItems: number = 0;
-  // pageSize: number = 3; // Change this value based on your requirement
-  // currentPage: number = 1;
-  // totalPages: number = 0;
-  // pagesArray: number[] = [];
-
-  // constructor(
-  //   private sportTeamService: SportTeamService,
-  //   private route: ActivatedRoute
-  // ) {}
-
-  // ngOnInit(): void {
-  //   this.route.paramMap.subscribe(params => {
-  //     this.sportTeamId = +params.get('id')!;
-  //     console.log('Sport Team ID:', this.sportTeamId);
-  //     this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
-  //       (data: any) => {
-  //         console.log('API Response:', data);
-  //         this.sportTeam.nameTeam = data.nameTeam;
-  //         this.sportTeam.logoTeam = data.logoTeam;
-  //         this.fetchUsersForSportTeam(this.sportTeamId);
-  //         console.log('Sport Team:', this.sportTeam);
-  //       },
-  //       error => {
-  //         console.error('Error fetching sport team:', error);
-  //       }
-  //     );
-  //   });
-  // }
-
-  // fetchUsersForSportTeam(teamId: number): void {
-  //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-  //     (data: any[]) => {
-  //       this.users = data;
-  //       this.totalItems = this.users.length;
-  //       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  //       this.pagesArray = Array(this.totalPages).fill(0).map((x, i) => i + 1);
-  //       this.changePage(this.currentPage);
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching users for sport team:', error);
-  //     }
-  //   );
-  // }
-
-  
-  // paginate(array: any[], pageSize: number, pageNumber: number): any[] {
-  //   return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-  // }
-
-  // changePage(pageNumber: number) {
-  //   this.currentPage = pageNumber;
-  //   this.pagedUsers = this.paginate(this.users, this.pageSize, this.currentPage);
-  // }
 
   
 }

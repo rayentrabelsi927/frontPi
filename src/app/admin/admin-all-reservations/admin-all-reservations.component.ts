@@ -53,14 +53,15 @@ export class AdminAllReservationsComponent implements OnInit{
   }
 
   navigateToUpdate(reservation: any) {
-    // Navigate to update page with reservation ID or any other necessary data
-  }
+    this.router.navigateByUrl('admin/update-reservation/' + reservation.id);
+}
+
 
   cancelReservation(reservationId: number) {
-    // Call service method to cancel the reservation
+   
     this.reservationService.cancelReservation(reservationId).subscribe(
       (response) => {
-        // Refresh reservations after cancelation
+      
         this.fetchAllReservations();
       },
       (error) => {

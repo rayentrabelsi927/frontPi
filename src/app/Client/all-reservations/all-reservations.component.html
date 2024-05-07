@@ -42,8 +42,9 @@
         </div>
       </div>
       <div class="single-explore-txt">
-        <p class="reservation-details">Start Date: {{ reservation[0].startDate  }}</p>
-        <p class="reservation-details">End Date: {{ reservation[0].endDate  }}</p>
+        <p class="reservation-details">Date: {{ formatDate(reservation[0].startDate) }}</p>
+        <p class="reservation-details">Start Time: {{ formatTime(reservation[0].startDate) }}</p>
+        <p class="reservation-details">End Time: {{ formatTime(reservation[0].endDate) }}</p>
         <p class="reservation-details">Number of Players: {{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</p>
        
         <div class="image-container">
