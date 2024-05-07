@@ -82,6 +82,11 @@ import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.compo
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 import { TransactionhousingComponent } from './Client/transactionhousing/transactionhousing.component';
+import { EventadminComponent } from './admin/eventadmin/eventadmin.component';
+import { AddeventComponent } from './admin/addevent/addevent.component';
+import { EventclientComponent } from './Client/eventclient/eventclient.component';
+import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
+
 
 
 
@@ -161,6 +166,16 @@ const routes: Routes = [
   { path: 'admin/housing-Owner/:id', component: HousingOwnerComponent },
   { path: 'admin/housing-Owner-details/:id', component: HousingOwnerDetailsComponent },
   { path: 'admin/housing-update/:id', component: HousingUpdateComponent },
+  { path: 'admin/events', component: EventadminComponent },
+  { path: 'admin/addevent', component: AddeventComponent },
+  { path: 'client/events', component: EventclientComponent },
+  { path: 'admin/update-event/:eventId', component: UpdateeventComponent },
+
+
+
+
+
+
 
   
 

@@ -187,7 +187,7 @@
   
   .contact-image {
     position: relative;
-    background-image: url(../../../assets/img/contact-image.jpg);
+    /* background-image: url(../../../assets/img/contact-image.jpg); */
     background-position: center center;
     background-size: cover;
     background-repeat: no-repeat;

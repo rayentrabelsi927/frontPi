@@ -22,11 +22,14 @@
             "tsConfig": "tsconfig.app.json",
             "assets": [
               "src/favicon.ico",
-              "src/assets"
+              "src/assets",
+              "src/assetsAdmin"
             ],
             "styles": [
           
               "src/styles.css",
+              "src/assetsAdmin/css/demo.css",
+             
               "node_modules/bootstrap/dist/css/bootstrap.min.css"
             ],
             "scripts": [

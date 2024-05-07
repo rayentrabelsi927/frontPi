@@ -38,7 +38,7 @@ import { AdminChartsComponent } from './admin/admin-charts/admin-charts.componen
 import { ArticlesManagementComponent } from './admin/articles-management/articles-management.component';
 import { AdminActionsComponent } from './admin/admin-actions/admin-actions.component';
 //import { MatPaginatorModule } from '@angular/material/paginator';
-import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { HTTP_INTERCEPTORS, HttpClient } from '@angular/common/http';
 import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
@@ -102,6 +102,14 @@ import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.compo
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
 import { TransactionhousingComponent } from './Client/transactionhousing/transactionhousing.component';
+import { TestComponent } from './test/test.component';
+import { EventadminComponent } from './admin/eventadmin/eventadmin.component';
+import { HttpClientModule } from '@angular/common/http';
+import { EventService } from './services/event-service.service';
+import { AddeventComponent } from './admin/addevent/addevent.component';
+import { EventclientComponent } from './Client/eventclient/eventclient.component';
+import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
+
 
 
 @NgModule({
@@ -196,6 +204,13 @@ import { TransactionhousingComponent } from './Client/transactionhousing/transac
     HousingAvailabilityComponent,
     TransactionhousingComponent,
     
+    TestComponent,
+    EventadminComponent,
+    AddeventComponent,
+    EventclientComponent,
+    UpdateeventComponent,
+    
+   
   ],
   imports: [
     BrowserModule,
@@ -232,6 +247,7 @@ import { TransactionhousingComponent } from './Client/transactionhousing/transac
     ReactiveFormsModule,
     AppRoutingModule,
     QRCodeModule,
+    EventService
   ],
 
   
