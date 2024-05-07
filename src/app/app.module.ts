@@ -101,6 +101,7 @@ import { VisitListComponent } from './visit-list/visit-list.component';
 import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
+import { TransactionhousingComponent } from './Client/transactionhousing/transactionhousing.component';
 
 
 @NgModule({
@@ -193,6 +194,7 @@ import { HousingAvailabilityComponent } from './housing-availability/housing-ava
     HousingOwnerComponent,
     HousingOwnerDetailsComponent,
     HousingAvailabilityComponent,
+    TransactionhousingComponent,
     
   ],
   imports: [

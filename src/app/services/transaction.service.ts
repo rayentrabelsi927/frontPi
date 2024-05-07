@@ -1,10 +1,10 @@
 import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
-import { Transaction } from '../models/Transaction';
 import { statisticsFeedback } from '../models/statisticsFeedback';
 import { transaction_ban } from '../models/transaction_ban';
 import { statisticstransaction } from '../models/statisticsTransaction';
+import { Transaction } from '../models/Transaction';
 
 @Injectable({
   providedIn: 'root'
@@ -30,7 +30,8 @@ export class TransactionService {
     return this.httpClient.get<Transaction[]>(this.baseURL + 'all');
   }
   
-  getTransactionById(id: String): Observable<Transaction[]> {
+  getTransactionById(id: any): Observable<Transaction[]> {
+    console.log(id)
     return this.httpClient.get<Transaction[]>(`${this.baseURL}transactionbyIdUser/${id}`);
   }
 

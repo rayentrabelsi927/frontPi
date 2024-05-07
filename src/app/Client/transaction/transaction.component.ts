@@ -5,6 +5,8 @@ import { Transaction } from 'src/app/models/Transaction';
 import { FeedbackService } from 'src/app/services/feedback.service';
 import { TransactionService } from 'src/app/services/transaction.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
+import Swal from 'sweetalert2';
+import { TokenService } from 'src/app/services/token.service';
 declare var require: any;
 
 @Component({
@@ -13,23 +15,24 @@ declare var require: any;
   styleUrls: ['./transaction.component.css']
 })
 export class TransactionComponent {
-  userconnnecté:any={
-    "userId": 8,
-    "username": "rayen"};
+  
   errorMessage = '';
   mapUrl: SafeResourceUrl = '';
   feedbackposts: { [key: number]: { commentaire: string, rating: number } } = {}; // Map pour stocker les commentaires et les notations par transaction
   transactions: Transaction[] = [];
+  userId!:any;
  
-  constructor(private transactionService: TransactionService, private sanitizer: DomSanitizer,private feedbackService: FeedbackService, private router: Router) { }
+  constructor(private transactionService: TransactionService, private usertoken :TokenService,private sanitizer: DomSanitizer,private feedbackService: FeedbackService, private router: Router) { }
   
   transform(value: any, ...args: any[]) {
     throw new Error('Method not implemented.');
   }
 
   ngOnInit(): void {
+    this.userId=this.usertoken.currentUser();
+    console.log(this.userId)
     this.getAllTransactions();
-   
+ 
 
  
   }
@@ -81,7 +84,8 @@ export class TransactionComponent {
 
 
   getAllTransactions(): void {
-    this.transactionService.getTransactionById(this.userconnnecté.userId).subscribe(
+    this.transactionService.getTransactionById(    this.userId
+).subscribe(
       (data: Transaction[]) => {
         this.transactions = data;
 console.log(data);
@@ -107,7 +111,16 @@ console.log(data);
 
     // Vérifier si le commentaire ou le rating est vide
     if (!comment || !rating) {
-      alert('Veuillez remplir tous les champs avant de poster le feedback.');
+
+      
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'Veuillez remplir tous les champs avant de poster le feedback.',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
+      
       return; // Sortir de la fonction si les champs ne sont pas remplis
     }
 

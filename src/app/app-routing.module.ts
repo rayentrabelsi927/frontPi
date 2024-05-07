@@ -81,6 +81,7 @@ import { VisitListComponent } from './visit-list/visit-list.component';
 import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
+import { TransactionhousingComponent } from './Client/transactionhousing/transactionhousing.component';
 
 
 
@@ -128,6 +129,8 @@ const routes: Routes = [
   { path: 'details-team-client/:id', component: DetailsTeamClientComponent },
   { path: 'all-reservations', component: AllReservationsComponent },
   { path: 'add-reservation', component: AddReservationComponent },
+  { path: 'paimenthousing', component: TransactionhousingComponent },
+
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
 
   { path: 'housing-list', component: HousingListComponent },
