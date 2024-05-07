@@ -24,7 +24,7 @@ export class TransactionhousingComponent {
     "userId": 1,
     "username": "rayen"};*/
 
-    userId!:any;
+userId!:any;
 
   productPrice: number = 50;
   articleList: any[] =  [{"articleId":7,"categoryArticle":"Technology","conditionArticle":"Fair","descriptionArticle":"123"}];
@@ -50,7 +50,7 @@ constructor(private paiementService: PaiementService,private transactionservice 
       amountTransaction: productPrice * 100,
       "feedbacks": [],
       "articles":[],
-      "users":null ,
+      "users":{"userId":this.userId} ,
       
     "housing":{
       "housingID": 1,
