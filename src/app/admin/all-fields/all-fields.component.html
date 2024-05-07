@@ -22,8 +22,8 @@
           <td>{{ field.capacityField }}</td>
           <td>{{ field.typeField }}</td>
           <td class="text-center">
-            <button class="btn btn-primary update-button" [routerLink]="['/admin/update-field', field.fieldId]">Update Field</button>
-            <button class="btn btn-danger" (click)="deleteField(field.fieldId)">Delete Field</button>
+            <button class="btn btn-primary update-button" [routerLink]="['/admin/update-field', field.fieldId]" >Update</button>
+            <button class="btn btn-danger" (click)="deleteField(field.fieldId)"> <i class="fa fa-trash" aria-hidden="true"></i> Delete</button>
           </td>
         </tr>
       </tbody>

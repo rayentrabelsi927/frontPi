@@ -3,6 +3,7 @@ import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-details-team-client',
@@ -101,11 +102,22 @@ export class DetailsTeamClientComponent implements OnInit {
     this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
       response => {
         console.log(response); 
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You Are already in a Team!!',
+        });
+        
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       },
       error => {
         console.error('Error joining team:', error); 
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Your application to the sport team has been sent. Please wait for the decision.',
+        });
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       }
@@ -164,36 +176,119 @@ export class DetailsTeamClientComponent implements OnInit {
   }
 
   
+  // leaveTeam(): void {
+  //   this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+  //     response => {
+  //       console.log('Left team successfully:', response);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton(); 
+  //     },
+  //     error => {
+  //       console.error('Error leaving team:', error);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
+  //     }
+  //   );
+  // }
   leaveTeam(): void {
-    this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
-      response => {
-        console.log('Left team successfully:', response);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton(); 
-      },
-      error => {
-        console.error('Error leaving team:', error);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton();
+    // Display confirmation alert
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to leave the team.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, leave it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+          response => {
+            console.log('Left team successfully:', response);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton(); 
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Failed to leave the team. Please try again later.',
+            });
+            // Display success alert
+            
+          },
+          error => {
+            console.error('Error leaving team:', error);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+            // Display error alert
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'You have left the team successfully.',
+            });
+          }
+        );
       }
-    );
+    });
   }
   
-
   cancelApplication(): void {
-    this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
-      response => {
-        console.log('Canceled application successfully:', response);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton();
-      },
-      error => {
-        console.error('Error canceling application:', error);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton();
+    // Display confirmation alert
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to cancel your application to join the team.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+          response => {
+            console.log('Canceled application successfully:', response);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Failed to cancel your application. Please try again later.',
+            });
+            // Display success alert
+            
+          },
+          error => {
+            console.error('Error canceling application:', error);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+            // Display error alert
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Your application has been canceled successfully.',
+            });
+          }
+        );
       }
-    );
+    });
   }
+
+  // cancelApplication(): void {
+  //   this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+  //     response => {
+  //       console.log('Canceled application successfully:', response);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
+  //     },
+  //     error => {
+  //       console.error('Error canceling application:', error);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
+  //     }
+  //   );
+  // }
 
 
   

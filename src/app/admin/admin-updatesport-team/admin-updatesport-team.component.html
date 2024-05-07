@@ -19,7 +19,7 @@
                             <label class="custom-file-label" for="logo">{{ selectedFile?.name || '' }}</label>
                         </div>
                     </div>
-                    <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail mt-2" [src]="'http://localhost:8089/projectARCTIC3/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="max-width: 400px;">
+                    <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail mt-2" [src]="'http://localhost:8089/projectARCTIC3/static/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="max-width: 400px;">
                 </div>
                 <button type="submit" class="btn btn-primary btn-block">Update Team</button>
             </form>

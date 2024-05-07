@@ -11,7 +11,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 import { TokenService } from 'src/app/services/token.service';
 import { WeatherService } from 'src/app/services/weather.service';
-
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-add-reservation',
@@ -56,7 +56,7 @@ ngOnInit() {
     startTime: ['', Validators.required],
     endTime: ['', Validators.required],
     resStatus: ['pending'],
-    resType: ['', Validators.required],
+    resType: ['FreeForAll', Validators.required],
     field: ['', Validators.required], 
     joinType: ['alone']
   }, { validators: this.timeRangeValidator });
@@ -81,17 +81,45 @@ ngOnInit() {
 }
 
 timeRangeValidator(group: FormGroup) {
-  const start = group.controls['startTime'].value;
-  const end = group.controls['endTime'].value;
-  const startHour = parseInt(start.split(':')[0], 10);
-  const endHour = parseInt(end.split(':')[0], 10);
-  const startMinute = parseInt(start.split(':')[1], 10);
-  const endMinute = parseInt(end.split(':')[1], 10);
-  const startMinutes = startHour * 60 + startMinute;
-  const endMinutes = endHour * 60 + endMinute;
-  const duration = endMinutes - startMinutes;
-  return duration <= 120 ? null : { timeRangeExceeded: true };
+  const startDate = group.get('selectedDate')?.value;
+  const startTime = group.get('startTime')?.value;
+  const endTime = group.get('endTime')?.value;
+
+  // Convert date and time strings to Date objects
+  const startDateTime = new Date(`${startDate}T${startTime}`);
+  const endDateTime = new Date(`${startDate}T${endTime}`);
+
+  // Current date/time
+  const currentDate = new Date();
+
+  // Check if start date is greater than current date
+  const isStartDateValid = startDateTime > currentDate;
+
+  // Check if end time is greater than start time
+  const isTimeRangeValid = startDateTime < endDateTime;
+
+  // Calculate duration in minutes
+  const durationMinutes = (endDateTime.getTime() - startDateTime.getTime()) / (1000 * 60);
+
+  // Check if duration is within allowed range (2 hours)
+  const isDurationValid = durationMinutes <= 120;
+
+  // Return validation result
+  return isStartDateValid && isTimeRangeValid && isDurationValid ? null : { invalidDateTimeRange: true };
 }
+
+// timeRangeValidator(group: FormGroup) {
+//   const start = group.controls['startTime'].value;
+//   const end = group.controls['endTime'].value;
+//   const startHour = parseInt(start.split(':')[0], 10);
+//   const endHour = parseInt(end.split(':')[0], 10);
+//   const startMinute = parseInt(start.split(':')[1], 10);
+//   const endMinute = parseInt(end.split(':')[1], 10);
+//   const startMinutes = startHour * 60 + startMinute;
+//   const endMinutes = endHour * 60 + endMinute;
+//   const duration = endMinutes - startMinutes;
+//   return duration <= 120 ? null : { timeRangeExceeded: true };
+// }
 
 // timeRangeValidator(group: FormGroup) {
 //   const start = new Date(group.controls['startTime'].value);
@@ -140,6 +168,13 @@ onSubmit() {
     console.log('Form is invalid');
     console.log('Form errors:', this.addReservationForm.errors);
     console.log('Form controls validity:', this.addReservationForm.controls);
+
+    Swal.fire({
+      title: 'Error!',
+      text: 'Please fill the Date Correctly.',
+      icon: 'error',
+      confirmButtonText: 'OK'
+    });
     return;
   }
 
@@ -168,6 +203,7 @@ onSubmit() {
       console.error('Sport team ID is null');
     }
   }
+  
 }
 
 
@@ -176,33 +212,58 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
   const captainId = this.userId;
   this.sportTeamService.makeTeamReservation(sportTeamId, captainId, fieldId, reservation).subscribe(
     (response) => {
-      
-      this.router.navigateByUrl('/all-reservations');
+      // Success: Reservation submitted
+      Swal.fire({
+        title: 'Reservation Submitted!',
+        text: 'Your reservation has been submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          // Redirect the user to all-reservations page
+          this.router.navigateByUrl('/all-reservations');
+        }
+      });
     },
     (error) => {
-     
-      console.error('Error creating team reservation:', error);
-      this.router.navigateByUrl('/all-reservations');
+      // Error: Reservation failed
+      Swal.fire({
+        title: 'Error!',
+        text: 'There is already a reservation on the selected date. Please choose another date.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   );
 }
 
 makeReservationForUser(startDate: Date, endDate: Date, resStatus: string, resType: string, fieldId: number): void {
   const reservation = { startDate, endDate, resStatus, resType };
-  
   this.reservationService.makeReservationForUser(this.userId, fieldId, reservation).subscribe(
     (response) => {
-     
-      this.router.navigateByUrl('/all-reservations');
+      Swal.fire({
+        title: 'Reservation Submitted!',
+        text: 'Your reservation has been submitted successfully.',
+        icon: 'success',
+        confirmButtonText: 'OK'
+      }).then((result) => {
+        if (result.isConfirmed) {
+    
+          this.router.navigateByUrl('/all-reservations');
+        }
+      });
     },
     (error) => {
-  
-      console.error('Error creating reservation:', error);
-      this.router.navigateByUrl('/all-reservations');
+    
+      Swal.fire({
+        title: 'Error!',
+        text: 'There is already a reservation on the selected date. Please choose another date.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
     }
   );
 }
-
 
 onDateSelectionChange(): void {
   const selectedDate = this.addReservationForm.get('selectedDate')?.value;

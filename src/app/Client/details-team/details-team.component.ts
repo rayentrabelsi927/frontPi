@@ -4,6 +4,7 @@ import { SportTeam } from 'src/app/models/SportTeam';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-details-team',
@@ -59,20 +60,6 @@ export class DetailsTeamComponent implements OnInit {
   pageChangedWithoutParticipation(page: number): void {
     this.currentPage2 = page;
   }
-
-    // fetchUsersForSportTeam(teamId: number): void {
-    //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-    //     (data: any[]) => {
-    //       this.usersWithParticipation = data.filter(user => user.participationTeam === true);
-    //       console.log('Users with participation:', this.usersWithParticipation);
-    //       this.usersWithoutParticipation = data.filter(user => user.participationTeam === false);
-    //       console.log('Users without participation:', this.usersWithoutParticipation);
-    //     },
-    //     (error: any) => {
-    //       console.error('Error fetching users for sport team:', error);
-    //     }
-    //   );
-    // }
     
    
   fetchUsersForSportTeam(teamId: number): void {
@@ -134,17 +121,28 @@ export class DetailsTeamComponent implements OnInit {
         this.sportTeamService.addUserByEmailToSportTeam(this.sportTeamId, this.userEmail).subscribe({
           next: (response: any) => {
             console.log('User added successfully:', response);
-            // Refresh the users list after adding the user
+           
+           
             this.fetchUsersForSportTeam(this.sportTeamId);
           },
           error: (error: any) => {
             console.error('Error adding user:', error);
+            // Swal.fire({
+            //   icon: 'success',
+            //   title: 'Success!',
+            //   text: 'User added successfully to the team.',
+            // });
             this.fetchUsersForSportTeam(this.sportTeamId);
 
           }
         });
       } else {
         console.error('User email is required.');
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'Email User is Required.',
+        });
       }
     }
 
@@ -166,16 +164,57 @@ export class DetailsTeamComponent implements OnInit {
       }
     }
 
+    // RemoveUserfromTeam(userId: number): void {
+    //   if (userId) {
+    //     this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
+    //       next: (response: any) => {
+    //         console.log('User removed successfully:', response);
+    //         this.fetchUsersForSportTeam(this.sportTeamId);
+    //       },
+    //       error: (error: any) => {
+    //         console.error('Error removing user:', error);
+    //         this.fetchUsersForSportTeam(this.sportTeamId);
+    //       }
+    //     });
+    //   } else {
+    //     console.error('User ID is required.');
+    //   }
+    // }
     RemoveUserfromTeam(userId: number): void {
       if (userId) {
-        this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
-          next: (response: any) => {
-            console.log('User removed successfully:', response);
-            this.fetchUsersForSportTeam(this.sportTeamId);
-          },
-          error: (error: any) => {
-            console.error('Error removing user:', error);
-            this.fetchUsersForSportTeam(this.sportTeamId);
+        Swal.fire({
+          title: 'Are you sure?',
+          text: 'You are about to remove this user from the team.',
+          icon: 'warning',
+          showCancelButton: true,
+          confirmButtonColor: '#3085d6',
+          cancelButtonColor: '#d33',
+          confirmButtonText: 'Yes, remove user!'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.sportTeamService.removeUserFromSportTeam(this.sportTeamId, userId).subscribe({
+              next: (response: any) => {
+                console.log('User removed successfully:', response);
+                this.fetchUsersForSportTeam(this.sportTeamId);
+                Swal.fire({
+                  icon: 'error',
+                  title: 'Oops...',
+                  text: 'Failed to remove user from the team. Please try again later.',
+                });
+                
+              },
+              error: (error: any) => {
+                console.error('Error removing user:', error);
+                this.fetchUsersForSportTeam(this.sportTeamId);
+  
+                
+                Swal.fire({
+                  icon: 'success',
+                  title: 'Success!',
+                  text: 'User removed successfully from the team.',
+                });
+              }
+            });
           }
         });
       } else {
@@ -188,10 +227,21 @@ export class DetailsTeamComponent implements OnInit {
       this.sportTeamService.acceptUserToSportTeam(this.sportTeamId, userId).subscribe(
         (response: any) => {
           console.log('User accepted successfully:', response);
+          Swal.fire({
+            icon: 'error',
+            title: 'Oops...',
+            text: 'Failed to accept user to the team. Please try again later.',
+          });
           this.fetchUsersForSportTeam(this.sportTeamId);
         },
         (error: any) => {
           console.error('Error accepting user:', error);
+          
+          Swal.fire({
+            icon: 'success',
+            title: 'Success!',
+            text: 'User accepted successfully to the team.',
+          });
           this.fetchUsersForSportTeam(this.sportTeamId);
         }
       );

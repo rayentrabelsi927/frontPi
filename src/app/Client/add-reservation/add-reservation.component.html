@@ -12,20 +12,26 @@
           
 
         </div>
-
-       
-
-        
-
         <div class="form-group">
           <label for="startTime">Start Time</label>
-          <input type="time" class="form-control" formControlName="startTime" id="startTime">
+          <input type="time" class="form-control" formControlName="startTime" id="startTime"
+                 [ngClass]="{ 'is-invalid': addReservationForm.get('startTime')?.invalid && (addReservationForm.get('startTime')?.dirty || addReservationForm.get('startTime')?.touched) }">
+          <div *ngIf="addReservationForm.get('startTime')?.invalid && (addReservationForm.get('startTime')?.dirty || addReservationForm.get('startTime')?.touched)"
+               class="invalid-feedback">
+            Start time must be a valid time.
+          </div>
         </div>
-
+      
         <div class="form-group">
           <label for="endTime">End Time</label>
-          <input type="time" class="form-control" formControlName="endTime" id="endTime">
+          <input type="time" class="form-control" formControlName="endTime" id="endTime"
+                 [ngClass]="{ 'is-invalid': addReservationForm.get('endTime')?.invalid && (addReservationForm.get('endTime')?.dirty || addReservationForm.get('endTime')?.touched) }">
+          <div *ngIf="addReservationForm.get('endTime')?.invalid && (addReservationForm.get('endTime')?.dirty || addReservationForm.get('endTime')?.touched)"
+               class="invalid-feedback">
+            End time must be a valid time.
+          </div>
         </div>
+       
 
         <div class="form-group">
           <label for="field">Select Field</label>
@@ -35,13 +41,13 @@
           </select>
         </div>
 
-        <div class="form-group">
+        <!-- <div class="form-group">
           <label for="resType">Reservation Type</label>
           <select class="form-control" formControlName="resType" id="resType">
             <option value="" disabled selected>Select Reservation Type</option>
             <option *ngFor="let type of reservationTypes" [value]="type">{{ type }}</option>
           </select>
-        </div>
+        </div> -->
 
         
         <div class="form-group">

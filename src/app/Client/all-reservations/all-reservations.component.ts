@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-all-reservations',
@@ -90,32 +91,109 @@ export class AllReservationsComponent implements OnInit {
       this.joinReservation(reservationId, this.userId);
     }
   }
-
   cancelReservation(reservationId: number): void {
-    this.reservationService.cancelUserReservation(this.userId, reservationId).subscribe(
-      response => {
-        console.log(response);
-        this.fetchAllReservations(); 
-      },
-      error => {
-        console.error(error);
-        this.fetchAllReservations(); 
+    // Display confirmation alert before cancelling reservation
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'Are you sure you want to cancel this reservation?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+      
+        this.reservationService.cancelUserReservation(this.userId, reservationId).subscribe(
+          response => {
+            console.log(response);
+          
+            Swal.fire({
+              title: 'Success!',
+              text: 'You have successfully cancelled the reservation.',
+              icon: 'success',
+              confirmButtonText: 'OK'
+            }).then(() => {
+             
+              this.fetchAllReservations(); 
+            });
+          },
+          error => {
+            console.error(error);
+           
+            Swal.fire({
+              title: 'Error!',
+              text: 'Failed to cancel the reservation. Please try again later.',
+              icon: 'error',
+              confirmButtonText: 'OK'
+            });
+           
+            this.fetchAllReservations(); 
+          }
+        );
       }
-    );
+    });
   }
   
   joinReservation(reservationId: number, userId: number): void {
+   
     this.reservationService.joinReservation(reservationId, userId).subscribe(
       response => {
         console.log(response);
-        this.fetchAllReservations();
+        
+        Swal.fire({
+          title: 'Error!',
+          text: 'Failed to join the reservation. Please try again later.',
+          icon: 'error',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          
+          this.fetchAllReservations(); 
+        });
       },
       error => {
         console.error(error);
-        this.fetchAllReservations(); 
+        Swal.fire({
+          title: 'Success!',
+          text: 'You have successfully joined the reservation.',
+          icon: 'success',
+          confirmButtonText: 'OK'
+        }).then(() => {
+          
+          this.fetchAllReservations(); 
+        });
       }
+     
+       
     );
   }
+
+
+  // cancelReservation(reservationId: number): void {
+  //   this.reservationService.cancelUserReservation(this.userId, reservationId).subscribe(
+  //     response => {
+  //       console.log(response);
+  //       this.fetchAllReservations(); 
+  //     },
+  //     error => {
+  //       console.error(error);
+  //       this.fetchAllReservations(); 
+  //     }
+  //   );
+  // }
+  
+  // joinReservation(reservationId: number, userId: number): void {
+  //   this.reservationService.joinReservation(reservationId, userId).subscribe(
+  //     response => {
+  //       console.log(response);
+  //       this.fetchAllReservations();
+  //     },
+  //     error => {
+  //       console.error(error);
+  //       this.fetchAllReservations(); 
+  //     }
+  //   );
+  // }
 
   fetchJoinedReservations(): void {
     this.hasJoinedReservations = []; 

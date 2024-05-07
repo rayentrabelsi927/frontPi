@@ -23,6 +23,7 @@ export class AddFieldComponent implements OnInit {
   constructor(private fieldService: FieldService,private router: Router,private userTok: TokenService) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(): void {
