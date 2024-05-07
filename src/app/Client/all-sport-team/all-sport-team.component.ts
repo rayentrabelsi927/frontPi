@@ -4,6 +4,7 @@ import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-all-sport-team',
@@ -15,11 +16,12 @@ export class AllSportTeamComponent {
   errorMessage: any;
   valeurInput: string = '';
   sportTeam:any[]=[];
+  userId!:any;
 
   currentPage: number = 1;
   itemsPerPage: number = 3
 
-  constructor(private sportTeamService: SportTeamService,private router: Router) { }
+  constructor(private sportTeamService: SportTeamService,private router: Router,private userTok: TokenService) { }
 
   get pagedSportTeams(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -37,6 +39,7 @@ export class AllSportTeamComponent {
 
   ngOnInit(): void {
     this.getAllSportTeam();
+    this.userId = this.userTok.currentUser();
 
 
   }
@@ -45,6 +48,7 @@ export class AllSportTeamComponent {
     this.sportTeamService.getAll().subscribe(
       (data: any[]) => {
         data.forEach(team => {
+          console.log("team logo:", team.logoTeam); 
           this.sportTeamService.countUsersJoinedInSportTeam(team.teamId).subscribe(
             userCount => {
               this.sportTeam.push({ ...team, userCount });
@@ -56,6 +60,7 @@ export class AllSportTeamComponent {
         });
       }
     );
+    
   }
 
   navigateToAddTeam(): void {
@@ -72,8 +77,8 @@ export class AllSportTeamComponent {
   
 
   navigateToDetails(teamId: number): void {
-    const userId = 10; // Hardcoded user ID (replace with actual user ID)
-    this.sportTeamService.isUserCaptainTeam(teamId, userId).subscribe(
+    
+    this.sportTeamService.isUserCaptainTeam(teamId, this.userId).subscribe(
       isCaptain => {
         console.log("Is captain:", isCaptain); 
         if (isCaptain) {

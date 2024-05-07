@@ -1,11 +1,12 @@
 import { Component, OnInit } from '@angular/core';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { AbstractControl, FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { Field } from 'src/app/models/Field';
 import { TypeR } from 'src/app/models/Reservation';
 import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-add-reservation',
@@ -14,27 +15,39 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class AdminAddReservationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private reservationService: ReservationService,
-    private fieldService: FieldService
+    private fieldService: FieldService,private userTok: TokenService
   ) { }
   addReservationForm!: FormGroup;
   reservationTypes: string[] = Object.values(TypeR);
   startDate!: Date;
   endDate!: Date;  
   fieldTypes: string[] = Object.values(TypeF);
-  fields: Field[] = []; // Assuming you fetch fields from somewhere
+  fields: Field[] = []; 
   
   ngOnInit() {
     this.addReservationForm = this.formBuilder.group({
       startDate: ['', Validators.required],
-      endDate: ['', Validators.required],
+      endDate: ['', [Validators.required, this.endDateValidator]], // Attach custom validator
       resStatus: ['pending'],
-      resType: ['', Validators.required],
-      field: ['', Validators.required] // Use the same property name 'field'
+      resType: ['FreeForAll'],
+      field: ['', Validators.required]
     });
     this.fieldService.getAllFields().subscribe(fields => {
       this.fields = fields;
     });
   }
+
+  // Custom validator function to check if endDate > startDate
+endDateValidator(control: AbstractControl): { [key: string]: boolean } | null {
+  const startDate = control.root.get('startDate')?.value;
+  const endDate = control.value;
+  if (startDate && endDate && new Date(startDate) > new Date(endDate)) {
+    return { endDateInvalid: true };
+  }
+  return null;
+}
+
+
 
   onSubmit() {
     if (this.addReservationForm.invalid) {

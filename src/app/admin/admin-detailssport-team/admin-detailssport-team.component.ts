@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-detailssport-team',
@@ -17,7 +18,8 @@ export class AdminDetailssportTeamComponent implements OnInit{
   
     constructor(
       private sportTeamService: SportTeamService,
-      private route: ActivatedRoute
+      private route: ActivatedRoute,
+      private userTok: TokenService
     
     ) {}
 

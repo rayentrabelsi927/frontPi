@@ -79,23 +79,21 @@ removeUserFromSportTeam(sportTeamId: number, userId: number): Observable<any> {
   }
   
 
-
   participateSportTeam(sportTeamId: number, userId: number): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseURL}participateSportTeam/${sportTeamId}`, null, {
-      headers: {
-        userId: userId.toString()
-      }
-    });
+    return this.httpClient.post<any>(`${this.baseURL}participateSportTeam/${sportTeamId}/${userId}`, null);
   }
-
+  
+  // cancelParticipationSportTeam(sportTeamId: number, userId: number): Observable<any> {
+  //   return this.httpClient.post<any>(`${this.baseURL}cancelParticipateSportTeam/${sportTeamId}`, null, {
+  //     headers: {
+  //       userId: userId.toString()
+  //     }
+  //   });
+  // }
   cancelParticipationSportTeam(sportTeamId: number, userId: number): Observable<any> {
-    return this.httpClient.post<any>(`${this.baseURL}cancelParticipateSportTeam/${sportTeamId}`, null, {
-      headers: {
-        userId: userId.toString()
-      }
-    });
+    return this.httpClient.post<any>(`${this.baseURL}cancelParticipateSportTeam/${sportTeamId}/${userId}`, null);
   }
-
+  
   countUsersJoinedInSportTeam(sportTeamId: number): Observable<number> {
     return this.httpClient.get<number>(`${this.baseURL}${sportTeamId}/user-count`);
   }

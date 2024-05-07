@@ -1,205 +1,9 @@
-// import { Component, OnInit } from '@angular/core';
-// import { NgxPaginationModule } from 'ngx-pagination';
-// import { ActivatedRoute } from '@angular/router';
-// import { User } from 'src/app/models/User';
-// import { SportTeamService } from 'src/app/services/sport-team.service';
-
-// @Component({
-//   selector: 'app-details-team-client',
-//   templateUrl: './details-team-client.component.html',
-//   styleUrls: ['./details-team-client.component.css']
-// })
-// export class DetailsTeamClientComponent implements OnInit {
-  // currentPage = 1;
-  // itemsPerPage = 3;
-  // userEmail: string = ''; 
-  // sportTeamId: number =0;
-  // sportTeam: any = { nameTeam: '', logoTeam: '' };
-  // users: any[] = [];
-  // userId: number = 5; 
-  
-  //   constructor(
-  //     private sportTeamService: SportTeamService,
-  //     private route: ActivatedRoute
-    
-  //   ) {}
-
-   
-
-  //   fetchUsersForSportTeam(teamId: number): void {
-  //     this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-  //       (data: any[]) => {
-  //         this.users = data.map(user => this.createUserFromApiResponse(user));
-  //       },
-  //       (error: any) => {
-  //         console.error('Error fetching users for sport team:', error);
-  //       }
-  //     );
-  //   }
-    
-   
-  //   private createUserFromApiResponse(userData: any): User {
-  //     return new User(
-  //       userData.userId,
-  //       userData.username,
-  //       userData.firstName,
-  //       userData.lastName,
-  //       userData.email,
-  //       userData.password,
-  //       userData.phone,
-  //       userData.role,
-  //       userData.imgUser,
-  //       userData.lastLogin,
-  //       userData.badge
-  //     );
-  //   }
-    
-  
-  //   ngOnInit(): void {
-  //     this.route.paramMap.subscribe(params => {
-  //       this.sportTeamId = +params.get('id')!;
-  //       console.log('Sport Team ID:', this.sportTeamId);
-  //       this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
-  //         (data: any) => {
-  //           console.log('API Response:', data); 
-  //           this.sportTeam.nameTeam = data.nameTeam; 
-  //           this.sportTeam.logoTeam = data.logoTeam;
-  //           this.fetchUsersForSportTeam(this.sportTeamId);
-  //           console.log('Sport Team:', this.sportTeam);
-  //         },
-  //         error => {
-  //           console.error('Error fetching sport team:', error);
-  //         }
-  //       );
-  //     });
-  //   }
-
-  //   participateSportTeam(): void {
-      
-  //     this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
-  //       response => {
-  //         console.log(response); 
-  //         this.fetchUsersForSportTeam(this.sportTeamId);
-  //       },
-  //       error => {
-  //         console.error('Error joining team:', error); 
-          
-  //         this.fetchUsersForSportTeam(this.sportTeamId);
-  //       }
-  //     );
-  //   }
-  //   get pagedUsers(): User[] {
-  //     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
-  //     return this.users.slice(startIndex, startIndex + this.itemsPerPage);
-  //   }
-
-  // userEmail: string = ''; 
-  // sportTeamId: number = 0;
-  // sportTeam: any = { nameTeam: '', logoTeam: '' };
-  // users: any[] = [];
-  // userId: number = 5; 
-  // pagedUsers: any[] = [];
-  // itemsPerPage: number = 3;
-  // pageSize: number = 3; // Change this value based on your requirement
-
-  // constructor(
-  //   private sportTeamService: SportTeamService,
-  //   private route: ActivatedRoute
-  // ) {}
-
-  // fetchUsersForSportTeam(teamId: number): void {
-  //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-  //     (data: any[]) => {
-  //       this.users = data.map(user => this.createUserFromApiResponse(user));
-  //       this.pageChanged(1);  // Call pageChanged method to initialize pagination
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching users for sport team:', error);
-  //     }
-  //   );
-  // }
-
-  // createUserFromApiResponse(userData: any): User {
-  //   return new User(
-  //     userData.userId,
-  //     userData.username,
-  //     userData.firstName,
-  //     userData.lastName,
-  //     userData.email,
-  //     userData.password,
-  //     userData.phone,
-  //     userData.role,
-  //     userData.imgUser,
-  //     userData.lastLogin,
-  //     userData.badge
-  //   );
-  // }
-
-  // ngOnInit(): void {
-  //   this.route.paramMap.subscribe(params => {
-  //     this.sportTeamId = +params.get('id')!;
-  //     console.log('Sport Team ID:', this.sportTeamId);
-  //     this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
-  //       (data: any) => {
-  //         console.log('API Response:', data); 
-  //         this.sportTeam.nameTeam = data.nameTeam; 
-  //         this.sportTeam.logoTeam = data.logoTeam;
-  //         this.fetchUsersForSportTeam(this.sportTeamId);
-  //         console.log('Sport Team:', this.sportTeam);
-  //       },
-  //       error => {
-  //         console.error('Error fetching sport team:', error);
-  //       }
-  //     );
-  //   });
-  // }
-
-  // participateSportTeam(): void {
-  //   this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
-  //     response => {
-  //       console.log(response); 
-  //       this.fetchUsersForSportTeam(this.sportTeamId);
-  //     },
-  //     error => {
-  //       console.error('Error joining team:', error); 
-  //       this.fetchUsersForSportTeam(this.sportTeamId);
-  //     }
-  //   );
-  // }
-
-  // pageChanged(page: number): void {
-  //   const startIndex = (page - 1) * this.itemsPerPage;
-  //   const endIndex = Math.min(startIndex + this.itemsPerPage, this.users.length);
-  //   this.pagedUsers = this.users.slice(startIndex, endIndex);
-  // }
-// }
-
-
-
-
-
-
-
-  // fetchUsersForSportTeam(teamId: number): void {
-  //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-  //     (data: any[]) => {
-  //       this.users = data.map(user => this.createUserFromApiResponse(user));
-  //       this.pageChanged(1); 
-  //     },
-  //     (error: any) => {
-  //       console.error('Error fetching users for sport team:', error);
-  //     }
-  //   );
-  // }
-
-
-
-
-
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-details-team-client',
@@ -216,21 +20,18 @@ export class DetailsTeamClientComponent implements OnInit {
   joinButtonText: string = 'Join Team';
   joinButtonAction: () => void = this.participateSportTeam;
   buttonColor: any = 'primary';
-  //User Id 
-  userId: number = 15;
 
+  userId!:any;
+  userIDD:number = 5;
   currentPage: number = 1;
   itemsPerPage: number = 3
 
-
-
+  
   constructor(
     private sportTeamService: SportTeamService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private userTok: TokenService
   ) {}
-
-
-  
  
   get pagedUsers(): any[] {
     const startIndex = (this.currentPage - 1) * this.itemsPerPage;
@@ -259,7 +60,6 @@ export class DetailsTeamClientComponent implements OnInit {
     );
   }
   
-
   createUserFromApiResponse(userData: any): User {
     return new User(
       userData.userId,
@@ -278,6 +78,7 @@ export class DetailsTeamClientComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.userId = this.userTok.currentUser();
     this.route.paramMap.subscribe(params => {
       this.sportTeamId = +params.get('id')!;
       console.log('Sport Team ID:', this.sportTeamId);
@@ -297,23 +98,33 @@ export class DetailsTeamClientComponent implements OnInit {
     this.participateSportTeamCheckAndRefreshButton();
   }
 
+ 
   participateSportTeam(): void {
     this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
       response => {
         console.log(response); 
+        Swal.fire({
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You Are already in a Team!!',
+        });
+        
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       },
       error => {
         console.error('Error joining team:', error); 
+        Swal.fire({
+          icon: 'success',
+          title: 'Success!',
+          text: 'Your application to the sport team has been sent. Please wait for the decision.',
+        });
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       }
     );
   }
-
-
- 
+  
   
   participateSportTeamCheckAndRefreshButton(): void {
     this.sportTeamService.getUsersForSportTeam(this.sportTeamId).subscribe(
@@ -321,16 +132,13 @@ export class DetailsTeamClientComponent implements OnInit {
         const user = data.find(user => user.userId === this.userId);
         if (user) {
           if (user.participationTeam) {
-            // User is already a member, so change button text to "Leave Team"
             this.joinButtonText = 'Leave Team';
             this.joinButtonAction = this.leaveTeam.bind(this);
           } else {
-            // User is an applicant, so change button text to "Cancel Application"
             this.joinButtonText = 'Cancel Application';
             this.joinButtonAction = this.cancelApplication.bind(this);
           }
         } else {
-          // User is not a member, so keep the button text as "Join Team" and set the action to participateSportTeam
           this.joinButtonText = 'Join Team';
           this.joinButtonAction = this.participateSportTeam.bind(this);
         }
@@ -339,13 +147,11 @@ export class DetailsTeamClientComponent implements OnInit {
         console.error('Error fetching users for sport team:', error);
       },
       () => {
-        // After checking user participation, update the button color based on the current action
         this.updateButtonColor();
       }
     );
   }
 
-  // Method to update button color based on current action
   updateButtonColor(): void {
     if (this.joinButtonText === 'Join Team') {
       this.buttonColor = 'primary';
@@ -370,107 +176,120 @@ export class DetailsTeamClientComponent implements OnInit {
     );
   }
 
-  leaveTeam(): void {
-    this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
-      response => {
-        console.log('Left team successfully:', response);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton(); // Refresh button after leaving
-      },
-      error => {
-        console.error('Error leaving team:', error);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton();
-      }
-    );
-  }
-
-  cancelApplication(): void {
-    this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
-      response => {
-        console.log('Canceled application successfully:', response);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton(); // Refresh button after canceling application
-      },
-      error => {
-        console.error('Error canceling application:', error);
-        this.fetchUsersForSportTeam(this.sportTeamId);
-        this.participateSportTeamCheckAndRefreshButton();
-      }
-    );
-  }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-  // sportTeamId: number = 0;
-  // sportTeam: any = { nameTeam: '', logoTeam: '' };
-  // users: any[] = [];
-  // pagedUsers: any[] = [];
-  // totalItems: number = 0;
-  // pageSize: number = 3; // Change this value based on your requirement
-  // currentPage: number = 1;
-  // totalPages: number = 0;
-  // pagesArray: number[] = [];
-
-  // constructor(
-  //   private sportTeamService: SportTeamService,
-  //   private route: ActivatedRoute
-  // ) {}
-
-  // ngOnInit(): void {
-  //   this.route.paramMap.subscribe(params => {
-  //     this.sportTeamId = +params.get('id')!;
-  //     console.log('Sport Team ID:', this.sportTeamId);
-  //     this.sportTeamService.getSportTeamById(this.sportTeamId.toString()).subscribe(
-  //       (data: any) => {
-  //         console.log('API Response:', data);
-  //         this.sportTeam.nameTeam = data.nameTeam;
-  //         this.sportTeam.logoTeam = data.logoTeam;
-  //         this.fetchUsersForSportTeam(this.sportTeamId);
-  //         console.log('Sport Team:', this.sportTeam);
-  //       },
-  //       error => {
-  //         console.error('Error fetching sport team:', error);
-  //       }
-  //     );
-  //   });
-  // }
-
-  // fetchUsersForSportTeam(teamId: number): void {
-  //   this.sportTeamService.getUsersForSportTeam(teamId).subscribe(
-  //     (data: any[]) => {
-  //       this.users = data;
-  //       this.totalItems = this.users.length;
-  //       this.totalPages = Math.ceil(this.totalItems / this.pageSize);
-  //       this.pagesArray = Array(this.totalPages).fill(0).map((x, i) => i + 1);
-  //       this.changePage(this.currentPage);
+  
+  // leaveTeam(): void {
+  //   this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+  //     response => {
+  //       console.log('Left team successfully:', response);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton(); 
   //     },
-  //     (error: any) => {
-  //       console.error('Error fetching users for sport team:', error);
+  //     error => {
+  //       console.error('Error leaving team:', error);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
+  //     }
+  //   );
+  // }
+  leaveTeam(): void {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to leave the team.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, leave it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+          response => {
+            console.log('Left team successfully:', response);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton(); 
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Failed to leave the team. Please try again later.',
+            });
+         
+            
+          },
+          error => {
+            console.error('Error leaving team:', error);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'You have left the team successfully.',
+            });
+          }
+        );
+      }
+    });
+  }
+  
+  cancelApplication(): void {
+    
+    Swal.fire({
+      title: 'Are you sure?',
+      text: 'You are about to cancel your application to join the team.',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, cancel it!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+          response => {
+            console.log('Canceled application successfully:', response);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+            Swal.fire({
+              icon: 'error',
+              title: 'Oops...',
+              text: 'Failed to cancel your application. Please try again later.',
+            });
+           
+            
+          },
+          error => {
+            console.error('Error canceling application:', error);
+            this.fetchUsersForSportTeam(this.sportTeamId);
+            this.participateSportTeamCheckAndRefreshButton();
+
+          
+            Swal.fire({
+              icon: 'success',
+              title: 'Success!',
+              text: 'Your application has been canceled successfully.',
+            });
+          }
+        );
+      }
+    });
+  }
+
+  // cancelApplication(): void {
+  //   this.sportTeamService.cancelParticipationSportTeam(this.sportTeamId, this.userId).subscribe(
+  //     response => {
+  //       console.log('Canceled application successfully:', response);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
+  //     },
+  //     error => {
+  //       console.error('Error canceling application:', error);
+  //       this.fetchUsersForSportTeam(this.sportTeamId);
+  //       this.participateSportTeamCheckAndRefreshButton();
   //     }
   //   );
   // }
 
-  
-  // paginate(array: any[], pageSize: number, pageNumber: number): any[] {
-  //   return array.slice((pageNumber - 1) * pageSize, pageNumber * pageSize);
-  // }
-
-  // changePage(pageNumber: number) {
-  //   this.currentPage = pageNumber;
-  //   this.pagedUsers = this.paginate(this.users, this.pageSize, this.currentPage);
-  // }
 
   
 }

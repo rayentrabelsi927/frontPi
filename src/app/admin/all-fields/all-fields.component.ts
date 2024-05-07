@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Field } from 'src/app/models/Field';
 import { FieldService } from 'src/app/services/field.service';
 import { Router } from '@angular/router';
+import { TokenService } from 'src/app/services/token.service';
 @Component({
   selector: 'app-all-fields',
   templateUrl: './all-fields.component.html',
@@ -29,7 +30,7 @@ export class AllFieldsComponent implements OnInit {
   }
 
 
-  constructor(private fieldService: FieldService,private router: Router) { }
+  constructor(private fieldService: FieldService,private router: Router,private userTok: TokenService) { }
 
   ngOnInit(): void {
     this.loadAllFields();
@@ -62,7 +63,6 @@ export class AllFieldsComponent implements OnInit {
     this.fieldService.deleteField(fieldId).subscribe(
       () => {
         console.log('Field deleted successfully.');
-        // Update the list of fields after deletion
         this.fetchAllFields();
       },
       (error: any) => {

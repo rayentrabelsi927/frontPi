@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { Field } from 'src/app/models/Field';
 import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-field',
@@ -16,19 +17,19 @@ export class AddFieldComponent implements OnInit {
     descriptionField: '',
     locationField: '',
     capacityField: 0,
-    typeField: TypeF.Football // Set default value
+    typeField: TypeF.Football 
   };
 
-  constructor(private fieldService: FieldService,private router: Router) { }
+  constructor(private fieldService: FieldService,private router: Router,private userTok: TokenService) { }
 
   ngOnInit(): void {
+    
   }
 
   onSubmit(): void {
     this.fieldService.addField(this.field).subscribe(
       response => {
         console.log('Field added successfully:', response);
-        // Reset the form fields after successful submission
         this.field = {
           fieldId: 0,
           nameField: '',

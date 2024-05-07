@@ -90,5 +90,8 @@ export class ReservationService {
     );
   }
 
+  countReservationsByUser(userId: number): Observable<number> {
+    return this.httpClient.get<number>(`${this.baseURL}/count/users/${userId}`);
+  }
 
 }

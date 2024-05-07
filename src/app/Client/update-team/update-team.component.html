@@ -17,7 +17,7 @@
      
       <input type="file" class="form-control" id="logo" (change)="onFileChange($event)">
     
-      <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="width: 500px; height: auto;">
+      <img *ngIf="updatedTeam.logoTeam" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/static/photos/' + updatedTeam.logoTeam" alt="Team Logo" style="width: 500px; height: auto;">
     </div>
     <button type="submit" class="btn btn-primary">Update Team</button>
   </form>
