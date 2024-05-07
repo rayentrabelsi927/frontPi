@@ -3,6 +3,7 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Field } from 'src/app/models/Field';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-update-reservation',
@@ -92,7 +93,8 @@ export class AdminUpdateReservationComponent implements OnInit {
     private route: ActivatedRoute,
     private router: Router,
     private formBuilder: FormBuilder,
-    private reservationService: ReservationService
+    private reservationService: ReservationService,
+    private userTok: TokenService
   ) { }
 
   ngOnInit(): void {

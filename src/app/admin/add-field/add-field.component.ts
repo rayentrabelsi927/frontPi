@@ -3,6 +3,7 @@ import { Route, Router } from '@angular/router';
 import { Field } from 'src/app/models/Field';
 import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-field',
@@ -19,7 +20,7 @@ export class AddFieldComponent implements OnInit {
     typeField: TypeF.Football // Set default value
   };
 
-  constructor(private fieldService: FieldService,private router: Router) { }
+  constructor(private fieldService: FieldService,private router: Router,private userTok: TokenService) { }
 
   ngOnInit(): void {
   }

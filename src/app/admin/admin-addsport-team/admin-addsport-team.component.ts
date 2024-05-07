@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-addsport-team',
@@ -14,7 +15,7 @@ export class AdminAddsportTeamComponent implements OnInit {
   teamName: string = '';
   selectedFile: File | undefined;
   userEmail: string = '';
-  constructor(private sportTeamService: SportTeamService, private router: Router) {}
+  constructor(private sportTeamService: SportTeamService, private router: Router,private userTok: TokenService) {}
 
   ngOnInit(): void {}
 

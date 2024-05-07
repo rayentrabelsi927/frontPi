@@ -203,8 +203,8 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
 
 makeReservationForUser(startDate: Date, endDate: Date, resStatus: string, resType: string, fieldId: number): void {
   const reservation = { startDate, endDate, resStatus, resType };
-  const userId = this.userId;
-  this.reservationService.makeReservationForUser(userId, fieldId, reservation).subscribe(
+  
+  this.reservationService.makeReservationForUser(this.userId, fieldId, reservation).subscribe(
     (response) => {
      
       this.router.navigateByUrl('/all-reservations');

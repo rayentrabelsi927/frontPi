@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-add-team',
@@ -8,14 +9,15 @@ import { SportTeamService } from 'src/app/services/sport-team.service';
   styleUrls: ['./add-team.component.css']
 })
 export class AddTeamComponent implements OnInit {
+  userId!:any;
   sportTeam: SportTeam[] = [];
   errorMessage: any;
   teamName: string = '';
   selectedFile: File | undefined;
   userEmail: string = '';
-  constructor(private sportTeamService: SportTeamService) {}
+  constructor(private sportTeamService: SportTeamService,private userTok: TokenService) {}
 
-  ngOnInit(): void {}
+  ngOnInit(): void { this.userId = this.userTok.currentUser();}
 
   addSportTeamCap(): void {
     if (!this.selectedFile) {
@@ -26,7 +28,7 @@ export class AddTeamComponent implements OnInit {
     console.log('Team Name:', this.teamName);
     console.log('Selected File:', this.selectedFile);
 
-    const captainId = 10;
+    const captainId = this.userId;
     this.sportTeamService.addSportTeam(this.teamName, captainId, this.selectedFile).subscribe(
       data => {
         console.log('Response:', data);

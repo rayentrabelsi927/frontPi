@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-updatesport-team',
@@ -18,7 +19,8 @@ selectedFile: File | undefined;
 constructor(
   private sportTeamService: SportTeamService,
   private route: ActivatedRoute,
-  private router: Router
+  private router: Router,
+  private userTok: TokenService
 ) {}
 
 ngOnInit(): void {

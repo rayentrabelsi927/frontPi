@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { User } from 'src/app/models/User';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-details-team',
@@ -16,7 +17,7 @@ export class DetailsTeamComponent implements OnInit {
   users: any[] = [];
   usersWithParticipation: any[] = [];
   usersWithoutParticipation: any[] = [];
-
+  userId!:any;
 
   currentPage1: number = 1;
   itemsPerPage1: number = 3;
@@ -26,7 +27,8 @@ export class DetailsTeamComponent implements OnInit {
     constructor(
       private sportTeamService: SportTeamService,
       private route: ActivatedRoute,
-      private router: Router
+      private router: Router,
+      private userTok: TokenService
     ) {}
 
      // Pagination for users with participation
@@ -91,6 +93,7 @@ export class DetailsTeamComponent implements OnInit {
     
   
     ngOnInit(): void {
+      this.userId = this.userTok.currentUser();
       this.route.paramMap.subscribe(params => {
         this.sportTeamId = +params.get('id')!;
         console.log('Sport Team ID:', this.sportTeamId);

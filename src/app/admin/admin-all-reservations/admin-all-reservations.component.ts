@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-all-reservations',
@@ -9,56 +10,6 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class AdminAllReservationsComponent implements OnInit{
 
-  // reservations: any[] = [];
-
-  // constructor(private reservationService: ReservationService,private router: Router) {}
-  
-  // ngOnInit(): void {
-  //   this.fetchAllReservations();
-  // }
-
-  // fetchAllReservations(): void {
-  //   this.reservationService.getAllReservationsWithField().subscribe(
-  //     (data: any[]) => {
-  //       this.reservations = data;
-  //     },
-  //     error => {
-  //       console.error('Error fetching reservations:', error);
-  //     }
-  //   );
-  // }
-
-  // navigateToAddReservation() {
-  //   this.router.navigateByUrl('admin/add-reservation');
-  // }
-  
-  // navigateToUpdate(reservation: any) {
-  //   const reservationId = reservation[0].reservationId; // Assuming reservationId is nested within the first object of the reservation array
-  //   if (reservationId) {
-  //     this.router.navigateByUrl(`admin/update-team/${reservationId}`);
-  //   } else {
-  //     console.error('Invalid reservation ID:', reservationId);
-  //   }
-  // }
-  
-  
-  
-  
-
-  // cancelReservation(reservationId: number) {
-  //   // Call service method to cancel the reservation
-  //   this.reservationService.cancelReservation(reservationId).subscribe(
-  //     (response) => {
-  //       // Refresh reservations after cancelation
-  //       this.fetchAllReservations();
-  //     },
-  //     (error) => {
-  //       console.error('Error canceling reservation:', error);
-  //     }
-  //   );
-  // }
-
-  
   reservations: any[] = [];
   items: any[] = [];
   pageSize: number = 5; // Change this value based on your requirement
@@ -67,7 +18,7 @@ export class AdminAllReservationsComponent implements OnInit{
   totalPages: number = 0;
   pagesArray: number[] = [];
 
-  constructor(private reservationService: ReservationService, private router: Router) {}
+  constructor(private reservationService: ReservationService, private router: Router,private userTok: TokenService) {}
   
   ngOnInit(): void {
     this.fetchAllReservations();

@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ReservationService } from 'src/app/services/reservation.service';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-all-reservations',
@@ -9,11 +10,11 @@ import { SportTeamService } from 'src/app/services/sport-team.service';
   styleUrls: ['./all-reservations.component.css']
 })
 export class AllReservationsComponent implements OnInit {
-
+  
   userIsCaptain: boolean = false;
   reservations: any[] = [];
   reservationsFiltered: any[] = [];
-  userId!: number;
+  userId!: any;
   hasJoinedReservations: boolean[] = [];
   startDate: string = ''; 
   status: string = '';
@@ -24,7 +25,7 @@ export class AllReservationsComponent implements OnInit {
 
 
 
-  constructor(private reservationService: ReservationService, private sportTeamService: SportTeamService, private router: Router) {}
+  constructor(private reservationService: ReservationService, private sportTeamService: SportTeamService, private router: Router,private userTok: TokenService) {}
 
 
  
@@ -46,9 +47,11 @@ export class AllReservationsComponent implements OnInit {
     this.currentPage = page;
   }
 
+  
+
 
   ngOnInit(): void {
-    this.userId = 2;
+    this.userId = this.userTok.currentUser();
     this.checkIfUserIsCaptain();
     this.fetchAllReservations();
   }

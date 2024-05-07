@@ -6,6 +6,7 @@ import { TypeR } from 'src/app/models/Reservation';
 import { TypeF } from 'src/app/models/TypeF';
 import { FieldService } from 'src/app/services/field.service';
 import { ReservationService } from 'src/app/services/reservation.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-add-reservation',
@@ -14,7 +15,7 @@ import { ReservationService } from 'src/app/services/reservation.service';
 })
 export class AdminAddReservationComponent implements OnInit {
   constructor(private formBuilder: FormBuilder, private router: Router, private reservationService: ReservationService,
-    private fieldService: FieldService
+    private fieldService: FieldService,private userTok: TokenService
   ) { }
   addReservationForm!: FormGroup;
   reservationTypes: string[] = Object.values(TypeR);

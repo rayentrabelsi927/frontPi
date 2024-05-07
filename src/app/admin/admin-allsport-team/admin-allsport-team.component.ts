@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { SportTeamService } from 'src/app/services/sport-team.service';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-admin-allsport-team',
@@ -16,7 +17,7 @@ export class AdminAllsportTeamComponent implements OnInit{
  currentPage: number = 1;
   itemsPerPage: number = 3;
 
- constructor(private sportTeamService: SportTeamService,private router: Router) { }
+ constructor(private sportTeamService: SportTeamService,private router: Router,private userTok: TokenService) { }
 
  ngOnInit(): void {
    this.getAllSportTeam();
