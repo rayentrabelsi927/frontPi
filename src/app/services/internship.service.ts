@@ -13,8 +13,8 @@ export class InternshipService {
 
   constructor(private httpClient: HttpClient) { }
 
-  createInternship(internship: Internship): Observable<Internship> {
-    return this.httpClient.post<Internship>(`${this.baseUrl}/createInternship`, internship);
+  createInternship(internship: Internship,userid:number ): Observable<Internship> {
+    return this.httpClient.post<Internship>(`${this.baseUrl}/createInternship/${userid}`, internship);
   }
 
   getAllInternships(): Observable<Internship[]> {
@@ -33,11 +33,11 @@ export class InternshipService {
     return this.httpClient.delete<void>(`${this.baseUrl}/deleteInternship/${internshipId}`);
   }
 
-  addFile(internshipId: number, file: File): Observable<any> {
+  addFile(internshipId: number, file: File,iduser: number): Observable<any> {
     const formData: FormData = new FormData();
     formData.append('file', file);
 
-    return this.httpClient.post<any>(`${this.baseUrl}/addFile/${internshipId}`, formData)
+    return this.httpClient.post<any>(`${this.baseUrl}/addFile/${internshipId}/${iduser}`, formData)
       .pipe(
         catchError(this.handleError)
       );
@@ -49,6 +49,13 @@ export class InternshipService {
 
   deleteFile(fileID: number): Observable<void> {
     return this.httpClient.delete<void>(`${this.baseUrl}/deleteFile/${fileID}`);
+  }
+
+  recommendation(id: number): Observable<Internship[]> {
+    return this.httpClient.get<Internship[]>(`${this.baseUrl}/test/${id}`)
+      .pipe(
+        catchError(this.handleError)
+      );
   }
 
   sendEmail(toEmail: string, subject: string, body: string): Observable<any> {

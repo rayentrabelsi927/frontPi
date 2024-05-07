@@ -29,12 +29,12 @@ userId!: any;
 addReservationForm!: FormGroup;
 reservationTypes: string[] = Object.values(TypeR);
 startDate!: Date;
-endDate!: Date;  
+endDate!: Date;
 fieldTypes: string[] = Object.values(TypeF);
 fields: Field[] = [];
 isUserCaptain: boolean = false;
-sportTeamId: number | null = null; 
-weatherForecast$: Observable<any> | undefined; 
+sportTeamId: number | null = null;
+weatherForecast$: Observable<any> | undefined;
 weatherForecast: any;
 maxDate!: Date;
 
@@ -45,7 +45,7 @@ fieldImages: { [key: string]: string } = {
   'Volleyball': 'assets/img/volleyball.jpg',
   'Tennis': 'assets/img/tennis.jpg'
 };
-selectedFieldImageUrl: string = ''; 
+selectedFieldImageUrl: string = '';
 
 ngOnInit() {
   this.weatherForecast$ = this.weatherService.getWeatherForecast();
@@ -56,12 +56,12 @@ ngOnInit() {
     endTime: ['', Validators.required],
     resStatus: ['pending'],
     resType: ['', Validators.required],
-    field: ['', Validators.required], 
+    field: ['', Validators.required],
     joinType: ['alone']
   }, { validators: this.timeRangeValidator });
   this.fieldService.getAllFields().subscribe(fields => {
     this.fields = fields;
-    
+
   });
 
   this.weatherService.getWeatherForecast().subscribe(
@@ -75,7 +75,7 @@ ngOnInit() {
 
   this.maxDate = new Date();
   this.maxDate.setDate(this.maxDate.getDate() + 5);
-  
+
   this.checkIfUserIsCaptain();
 }
 
@@ -109,7 +109,7 @@ checkIfUserIsCaptain(): void {
       if (!isCaptain) {
         this.addReservationForm.patchValue({ joinType: 'alone' });
       } else {
-       
+
         this.getSportTeamIdByCaptainId(this.userId);
       }
     },
@@ -149,7 +149,7 @@ getSportTeamIdByCaptainId(captainId: number): void {
 //       this.makeTeamReservation(startDate, endDate, resStatus, resType, fieldId, this.sportTeamId);
 //     } else {
 //       console.error('Sport team ID is null');
-      
+
 //     }
 //   }
 // }
@@ -188,11 +188,11 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
   const captainId = this.userId;
   this.sportTeamService.makeTeamReservation(sportTeamId, captainId, fieldId, reservation).subscribe(
     (response) => {
-      
+
       this.router.navigateByUrl('/all-reservations');
     },
     (error) => {
-     
+
       console.error('Error creating team reservation:', error);
       this.router.navigateByUrl('/all-reservations');
     }
@@ -204,11 +204,11 @@ makeReservationForUser(startDate: Date, endDate: Date, resStatus: string, resTyp
   const userId = this.userId;
   this.reservationService.makeReservationForUser(userId, fieldId, reservation).subscribe(
     (response) => {
-     
+
       this.router.navigateByUrl('/all-reservations');
     },
     (error) => {
-  
+
       console.error('Error creating reservation:', error);
       this.router.navigateByUrl('/all-reservations');
     }
@@ -229,7 +229,7 @@ onDateSelectionChange(): void {
 //   });
 // }
 filterWeatherForecast(selectedDate: string): void {
- 
+
   const filteredForecasts = this.weatherForecast.list.filter((forecast: any) => {
     return forecast.dt_txt.includes(selectedDate);
   });
@@ -255,7 +255,7 @@ hasForecastForSelectedDate(): boolean {
   console.log('selected date:', selectedDate);
   if (!selectedDate || !this.weatherForecast || !this.weatherForecast.list) {
     return false;
-    
+
   }
   return this.weatherForecast.list.some((forecast: any) => forecast.dt_txt.includes(selectedDate));
 }
@@ -286,7 +286,7 @@ getWeatherIconUrl(description: string): string {
       return 'assets/img/light-rain.png';
 
     default:
-      return ''; 
+      return '';
   }
 }
 

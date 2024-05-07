@@ -7,8 +7,7 @@ export class Internship {
   locationInternship!: string;
   skillsRequiredInternship!: string;
   responsibilitiesInternship!: string;
-  deadlineInternship: Date | null = null; // Corrected syntax
-
+  deadlineInternship!: string; // Corrected syntax
   showDetails: boolean = false;
 
   constructor() {

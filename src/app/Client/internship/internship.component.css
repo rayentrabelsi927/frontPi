@@ -10,19 +10,24 @@
 }
 
 .pagination li a {
-  color: #007bff;
+  color: #204f81;
   text-decoration: none;
   padding: 5px 10px;
-  border: 1px solid #007bff;
+  border: 1px solid #204f81;
   border-radius: 3px;
 }
 
 .pagination li.active a {
-  background-color: #007bff;
+  background-color: #204f81;
   color: #fff;
 }
 
 .pagination li.disabled a {
   pointer-events: none;
   opacity: 0.5;
+}
+
+.bg-primary {
+  --bs-bg-opacity: 1;
+  background-color: rgb(32 73 133) !important;
 }

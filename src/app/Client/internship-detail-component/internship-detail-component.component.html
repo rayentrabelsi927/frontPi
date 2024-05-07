@@ -1,7 +1,7 @@
 <div class="container py-5">
   <div class="row">
     <div class="col text-center">
-      <h2 class="display-4" style="color: red;">Détails du Stage</h2>
+      <h2 class="display-4" style="color: rgb(52, 59, 120);">Détails du Stage</h2>
       <hr class="my-4">
     </div>
   </div>
@@ -10,7 +10,7 @@
     <div class="col-lg-8">
       <div *ngIf="internship" class="card mb-4">
         <div class="card-body">
-          <h2 class="card-title text-danger">{{ internship.titleInternship }}</h2>
+          <h2 style="color: rgb(52, 59, 120);">{{ internship.titleInternship }}</h2>
           <p class="card-text"><strong>Company:</strong> <span class="text-dark">{{ internship.companyInternship }}</span></p>
           <p class="card-text"><strong>Description:</strong> <span class="text-dark">{{ internship.descriptionInternship }}</span></p>
           <p class="card-text"><strong>Duration:</strong> <span class="text-dark">{{ internship.durationInternship }}</span></p>
@@ -20,7 +20,7 @@
           <p class="card-text"><strong>Deadline:</strong> <span class="text-dark">{{ internship.deadlineInternship }}</span></p>
         </div>
         <div class="card-footer text-center">
-          <button (click)="goBack()" class="btn btn-primary">Retour</button>
+          <button (click)="goBack()" class="btn btn-secondary">Retour</button>
         </div>
       </div>
       <div *ngIf="!internship" class="text-center">
@@ -35,8 +35,8 @@
       <div class="text-center">
         <h4>Postuler ici</h4>
         <input type="file" (change)="onFileSelected($event)" #fileInput style="display: none" accept=".pdf, .doc, .docx">
-        <button class="btn btn-primary mt-3" (click)="fileInput.click()">Sélectionner un fichier</button>
-        <button class="btn btn-primary mt-3" (click)="addFile(); showAlert('Demande envoyée !'); redirectToInternships();" [disabled]="!selectedFile">Envoyer</button>
+        <button class="btn btn-secondary mt-3" (click)="fileInput.click()">Sélectionner un fichier</button>
+        <button class="btn btn-secondary mt-3" (click)="addFile(); showAlert('Demande envoyée !'); redirectToInternships();" [disabled]="!selectedFile">Envoyer</button>
       </div>
       <div class="text-center mt-3">
         <span *ngIf="selectedFile">Fichier sélectionné : {{ selectedFile.name }}</span>

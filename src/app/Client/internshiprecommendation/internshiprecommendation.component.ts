@@ -1,20 +1,24 @@
-import { Component, EventEmitter, OnInit, Output } from '@angular/core';
+import { Component, EventEmitter, Output, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+import { Location } from '@angular/common';
 import { Internship } from 'src/app/models/internship';
 import { InternshipService } from 'src/app/services/internship.service';
-import { Location } from '@angular/common';
 import { TokenService } from 'src/app/services/token.service';
+
 @Component({
-  selector: 'app-internship-detail-component',
-  templateUrl: './internship-detail-component.component.html',
-  styleUrls: ['./internship-detail-component.component.css']
+  selector: 'app-internshiprecommendation',
+  templateUrl: './internshiprecommendation.component.html',
+  styleUrls: ['./internshiprecommendation.component.css']
 })
-export class InternshipDetailComponentComponent implements OnInit {
+export class InternshiprecommendationComponent implements OnInit {
+
+  recommendedInternships: Internship[] = [];
+  userId: any;
+
   internship: Internship | null = null;
   selectedFile: File | null = null;
   messageSent: boolean = false;
-  internshipId!:number;
-  userId: any;
+  internshipId!: number;
 
   @Output() fileSelected: EventEmitter<File> = new EventEmitter<File>();
 
@@ -23,30 +27,44 @@ export class InternshipDetailComponentComponent implements OnInit {
     private internshipService: InternshipService,
     private router: Router,
     private location: Location,
-     private userTok:TokenService
-    ) {}
+    private userTok: TokenService
+  ) { }
 
-    ngOnInit() {
-      this.route.paramMap.subscribe(params => {
-        const internshipId = params.get('id');
-        if (internshipId) {
-          this.internshipId = parseInt(internshipId, 10);
-          this.internshipService.getInternshipById(this.internshipId).subscribe(
-            internship => {
-              this.internship = internship;
-            },
-            error => {
-              console.error(error);
-            }
-          );
-        }
-      });
-    }
+  ngOnInit(): void {
+    this.route.paramMap.subscribe(params => {
+      const internshipId = params.get('id');
+      if (internshipId) {
+        this.internshipId = parseInt(internshipId, 10);
+        this.internshipService.getInternshipById(this.internshipId).subscribe(
+          internship => {
+            this.internship = internship;
+          },
+          error => {
+            console.error(error);
+          }
+        );
+      }
+    });
+
+    this.userId = this.userTok.currentUser();
+    this.internshipService.recommendation(this.userId).subscribe(
+      (internships: Internship[]) => {
+        this.recommendedInternships = internships;
+      },
+      (error) => {
+        console.error('Une erreur est survenue lors de la récupération des recommandations de stage:', error);
+      }
+    );
+  }
 
   onFileSelected(event: any) {
     this.selectedFile = event.target.files[0];
   }
 
+  showAlert(message: string) {
+    window.alert(message);
+  }
+  
   addFile() {
     if (!this.selectedFile) {
       console.log('Aucun fichier sélectionné.');
@@ -60,9 +78,9 @@ export class InternshipDetailComponentComponent implements OnInit {
     }
 
     console.log('Fichier sélectionné :', this.selectedFile);
-    this.userId = this.userTok.currentUser();
 
-    this.internshipService.addFile(this.internshipId, this.selectedFile,this.userId).subscribe(      (response: any) => {
+    this.internshipService.addFile(this.internshipId, this.selectedFile, this.userId).subscribe(
+      (response: any) => {
         console.log('Fichier ajouté avec succès !', response);
         // Afficher une alerte
         alert('Demande envoyée !');
@@ -82,9 +100,5 @@ export class InternshipDetailComponentComponent implements OnInit {
 
   redirectToInternships() {
     this.router.navigate(['/internships']);
-  }
-
-  showAlert(message: string) {
-    window.alert(message);
   }
 }

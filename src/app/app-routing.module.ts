@@ -70,6 +70,7 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { FileComponent } from './admin/file/file.component';
+import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
 
 
 
@@ -77,7 +78,7 @@ import { FileComponent } from './admin/file/file.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'paiement', component: PaiementComponent },
@@ -118,6 +119,8 @@ const routes: Routes = [
   { path: 'all-reservations', component: AllReservationsComponent },
   { path: 'add-reservation', component: AddReservationComponent },
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
+  { path: 'recommendations', component: InternshiprecommendationComponent },
+
 
 
   /* admin lezm el path yabda b kelmet admin */
@@ -134,7 +137,7 @@ const routes: Routes = [
   {path: 'admin/charts', component: AdminChartsComponent},
   {path: 'admin/adminItems', component:ArticlesManagementComponent},
   {path: 'admin/adminActions', component:AdminActionsComponent},
-  
+
 
   { path: 'admin/banned', component: BannedUserComponent },
 

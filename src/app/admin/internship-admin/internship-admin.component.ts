@@ -28,6 +28,8 @@ export class InternshipAdminComponent implements OnInit {
   );
   }
 
+
+  /*
   createInternship(internship: Internship): void {
   this.internshipService.createInternship(internship).subscribe(
   (response: Internship) => {
@@ -38,6 +40,7 @@ export class InternshipAdminComponent implements OnInit {
   }
   );
   }
+  */
 
   getInternshipById(internshipId: number): void {
   this.internshipService.getInternshipById(internshipId).subscribe(

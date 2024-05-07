@@ -1,1 +1,45 @@
-<p>update-freelance-job works!</p>
+<form class="freelance-job-form" (ngSubmit)="updateFreelanceJob()">
+  <div class="form-group">
+    <label for="title">Titre</label>
+    <input type="text" [(ngModel)]="job.titleJob" name="title" id="title" class="form-control" placeholder="Titre">
+  </div>
+  <div class="form-group">
+    <label for="client">Client</label>
+    <input type="text" [(ngModel)]="job.clientJob" name="client" id="client" class="form-control" placeholder="Client">
+  </div>
+  <div class="form-group">
+    <label for="duration">Durée</label>
+    <input type="text" [(ngModel)]="job.durationJob" name="duration" id="duration" class="form-control" placeholder="Durée">
+  </div>
+  <div class="form-group">
+    <label for="location">Emplacement</label>
+    <input type="text" [(ngModel)]="job.locationJob" name="location" id="location" class="form-control" placeholder="Emplacement">
+  </div>
+  <div class="form-group">
+    <label for="skillsRequired">Compétences requises</label>
+    <input type="text" [(ngModel)]="job.skillsRequiredJob" name="skillsRequired" id="skillsRequired" class="form-control" placeholder="Compétences requises">
+  </div>
+  <div class="form-group">
+    <label for="description">Description</label>
+    <input type="text" [(ngModel)]="job.descriptionJob" name="description" id="description" class="form-control" placeholder="Description">
+  </div>
+  <div class="form-group">
+    <label for="budget">Budget</label>
+    <input type="number" [(ngModel)]="job.budgetJob" name="budget" id="budget" class="form-control" placeholder="Budget">
+  </div>
+  <div class="form-group">
+    <label for="deadline">Date limite</label>
+    <div class="col-12">
+      <div class="form-group">
+
+        <input  [(ngModel)]="job.deadlineJob" class="form-control" id="data" name="data">
+      </div>
+    </div>
+  </div>
+
+  <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+</form>
+<button (click)="goBack()" class="btn btn-secondary">Retour</button>
+<div *ngIf="job" class="text-center">
+  <!-- Contenu des détails du travail de freelance -->
+</div>

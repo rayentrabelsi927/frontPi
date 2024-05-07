@@ -83,13 +83,14 @@ import { NewInternshipComponent } from './admin/new-internship/new-internship.co
 import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
 import { NewJobComponent } from './admin/new-job/new-job.component';
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
-import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FileComponent } from './admin/file/file.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 
 
 @NgModule({
@@ -119,7 +120,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     RegisterComponent,
     ActivateAccountComponent,
     LogoutComponent,
-    
+
     SectionsmanagementComponent,
     FavoritesListComponent,
     ListArticlesComponent,
@@ -129,8 +130,8 @@ import { NgxPaginationModule } from 'ngx-pagination';
    AdminChartsComponent,
    ArticlesManagementComponent,
    AdminActionsComponent,
-    
-   
+
+
     TransactionComponent,
     PaiementComponent,
     SucessComponent,
@@ -168,9 +169,11 @@ import { NgxPaginationModule } from 'ngx-pagination';
     FreelanceAdminComponent,
     NewJobComponent,
     UpdateInternshipComponent,
-    UpdateFreelanceJobComponent,
-    InternshipRoomComponent,
     FileComponent,
+    InternshipRoomComponent,
+    InternshiprecommendationComponent,
+    UpdateFreelanceJobComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -188,7 +191,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    
+
     CommonModule,
     FormsModule,
     HttpClientModule,
@@ -200,14 +203,14 @@ import { NgxPaginationModule } from 'ngx-pagination';
   ],
   providers: [
     HttpClient,
-  
+
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
     QRCodeModule,
   ],
 
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }

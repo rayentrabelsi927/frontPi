@@ -29,7 +29,12 @@
   </div>
   <div class="form-group">
     <label for="deadline">Date limite</label>
-    <input type="date" [(ngModel)]="internship.deadlineInternship" name="deadline" id="deadline" class="form-control" placeholder="Date limite">
+    <div class="col-12">
+      <div class="form-group">
+
+        <input  [(ngModel)]="internship.deadlineInternship" class="form-control" id="data" name="data">
+      </div>
+    </div>
   </div>
 
   <button type="submit" class="btn btn-primary btn-block">Modifier</button>

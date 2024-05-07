@@ -1,5 +1,5 @@
-<div class="col-lg-6 col-md-12 mx-auto"> <!-- Utilisation de la classe mx-auto pour centrer horizontalement -->
-  <form class="card p-5">
+<div class="col-lg-6 col-md-12 mx-auto">
+  <form class="card p-5" (submit)="createInternship(internship)">
     <div class="row g-3">
       <div class="col-md-6">
         <div class="form-floating">
@@ -44,9 +44,9 @@
         </div>
       </div>
       <div class="col-12">
-        <div class="form-floating">
-          <input type="date" class="form-control" [(ngModel)]="internship.deadlineInternship" id="deadline" name="deadline" placeholder="Date limite">
-          <label for="deadline">Date limite</label>
+        <div class="form-group">
+         
+                    <input type="datetime-local" [(ngModel)]="internship.deadlineInternship" class="form-control" id="data" name="data">
         </div>
       </div>
       <div class="col-12">

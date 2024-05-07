@@ -5,7 +5,6 @@
         <th>ID du fichier</th>
         <th>Nom du fichier</th>
         <th>Type de contenu</th>
-        <th>ID de stage</th>
         <th>Actions</th> <!-- Nouvelle colonne pour les boutons -->
       </tr>
     </thead>
@@ -14,7 +13,6 @@
         <td>{{ file.fileID }}</td>
         <td>{{ file.filename }}</td>
         <td>{{ file.contentType }}</td>
-        <td>{{ file.internshipId }}</td>
          <td>
           <button class="action-button" (click)="deleteFile(file.fileID)">Supprimer</button>
           <!-- <button class="action-button" (click)="uploadFile()">Upload File</button> -->
