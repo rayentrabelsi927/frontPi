@@ -30,7 +30,7 @@ import { AdminActionsComponent } from './admin/admin-actions/admin-actions.compo
 import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
-//import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 import { TransactionComponent } from './Client/transaction/transaction.component';
 import { PaiementComponent } from './Client/paiement/paiement.component';
@@ -134,6 +134,7 @@ const routes: Routes = [
   {path: 'admin/charts', component: AdminChartsComponent},
   {path: 'admin/adminItems', component:ArticlesManagementComponent},
   {path: 'admin/adminActions', component:AdminActionsComponent},
+  {path: 'admin/all-users', component:AllUsersComponent},
   
 
   { path: 'admin/banned', component: BannedUserComponent },

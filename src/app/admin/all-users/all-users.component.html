@@ -1,30 +1,97 @@
-<table class="table user-list internship-table">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Nom</th>
-        <th>Location</th>
-        <th>Deadline</th>
-        <th>Duration</th>
-        <th>Skills Required</th>
-        <th>Responsibilities</th>
-        <th>Description</th>
-        <th>Actions</th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let user of user">
-        <td>{{ user.internshipId }}</td>
-        <td>{{ user.titleInternship }}</td>
-        <td>{{ user.locationInternship }}</td>
-        <td>{{ user.deadlineInternship }}</td>
-        <td>{{ user.durationInternship }}</td>
-        <td>{{ user.skillsRequiredInternship }}</td>
-        <td>{{ user.responsibilitiesInternship }}</td>
-        <td>{{ user.descriptionInternship }}</td>
-        <td>
-  
-        </td>
-      </tr>
-    </tbody>
-  </table>
+<!-- <div class="container">
+  <h2 class="text-center mb-4">Reservations</h2>
+  <div class="table-responsive">
+      <table class="table table-bordered table-hover">
+          <thead class="thead-dark">
+              <tr>
+                  <th scope="col">Start Date</th>
+                  <th scope="col">End Date</th>
+                  <th scope="col">Number of Players</th>
+                  <th scope="col">Status</th>
+     
+
+                  <th scope="col">Field Type</th>
+                  <th scope="col">Actions</th>
+              </tr>
+          </thead>
+          <tbody>
+              <tr *ngFor="let reservation of reservations">
+                  <td>{{ reservation[0].startDate | date:'medium' }}</td>
+                  <td>{{ reservation[0].endDate | date:'medium' }}</td>
+                  <td>{{ reservation[0].nbPlayers }} / {{ reservation[1].capacityField }}</td>
+                  <td>{{ reservation[0].resStatus }}</td>
+
+               
+                  <td>{{ reservation[1].typeField }}</td>
+                  <td>
+                      <button class="btn btn-primary" (click)="navigateToUpdate(reservation)">Update</button>
+
+                      <button class="btn btn-danger" (click)="cancelReservation(reservation.reservationId)">Cancel</button>
+                  </td>
+              </tr>
+          </tbody>
+      </table>
+      <ul class="pagination">
+        <li [class.disabled]="currentPage == 1">
+          <a (click)="changePage(currentPage - 1)" aria-label="Previous">
+            <span aria-hidden="true">&laquo;</span>
+          </a>
+        </li>
+        <li *ngFor="let page of pagesArray" [class.active]="currentPage === page">
+          <a (click)="changePage(page)">{{ page }}</a>
+        </li>
+        <li [class.disabled]="currentPage == totalPages">
+          <a (click)="changePage(currentPage + 1)" aria-label="Next">
+            <span aria-hidden="true">&raquo;</span>
+          </a>
+        </li>
+      </ul>
+  </div>
+  <div class="text-center">
+      <button class="btn btn-primary" (click)="navigateToAddReservation()">Add Reservation</button>
+  </div>
+</div> -->
+<div class="container">
+  <h2 class="text-center mb-4">Users</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered table-hover">
+      <thead class="thead-dark">
+        <tr>
+          <th scope="col">Username</th>
+          <th scope="col">First Name</th>
+          <th scope="col">Last Name</th>
+          <th scope="col">Email</th>
+          <th scope="col">Phone</th>
+          <th scope="col">Role</th>
+          <th scope="col">Badge</th>
+          <th scope="col">Creation date</th>
+          <th scope="col">Last Modification Date</th>
+          <th scope="col">Locked</th>
+          <th scope="col">Enabled</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let user of items">
+          <td>{{ user.username }}</td>
+          <td>{{ user.firstName }}</td>
+          <td>{{ user.lastName }}</td>
+          <td>{{ user.email }}</td>
+          <td>{{ user.phone }}</td>
+          <td>{{ user.role }}</td>
+          <td>{{ user.badge }}</td>
+          <td>{{ user.createdDate }}</td>
+          <td>{{ user.lastModifiedDate }}</td>
+          <td><button *ngIf="user.accountLocked" class="btn btn-success" (click)="toggleAccountLock(user)" >Unlock</button>
+            <button *ngIf="!user.accountLocked" class="btn btn-danger" (click)="toggleAccountLock(user)">Lock</button></td>
+          <td><button *ngIf="user.enabled" class="btn btn-success" (click)="toggleEnabled(user)" >Enable</button>
+            <button *ngIf="!user.enabled" class="btn btn-danger" (click)="toggleEnabled(user)">Disable</button></td>
+          <td>
+            <button class="btn btn-primary" >update?</button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+    
