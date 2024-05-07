@@ -92,7 +92,7 @@ export class AllReservationsComponent implements OnInit {
     }
   }
   cancelReservation(reservationId: number): void {
-    // Display confirmation alert before cancelling reservation
+    
     Swal.fire({
       title: 'Are you sure?',
       text: 'Are you sure you want to cancel this reservation?',
@@ -231,12 +231,12 @@ export class AllReservationsComponent implements OnInit {
 
   formatDate(dateString: string): string {
     const date = new Date(dateString);
-    return date.toDateString(); // Displays date without time
+    return date.toDateString(); 
   }
   
   formatTime(dateString: string): string {
     const date = new Date(dateString);
-    return date.toLocaleTimeString(); // Displays time
+    return date.toLocaleTimeString(); 
   }
   
   

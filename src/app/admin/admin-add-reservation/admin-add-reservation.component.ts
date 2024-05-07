@@ -14,7 +14,6 @@ import { TokenService } from 'src/app/services/token.service';
   styleUrls: ['./admin-add-reservation.component.css']
 })
 export class AdminAddReservationComponent implements OnInit {
-  addFieldForm: any;
   constructor(private formBuilder: FormBuilder, private router: Router, private reservationService: ReservationService,
     private fieldService: FieldService,private userTok: TokenService
   ) { }
@@ -26,13 +25,12 @@ export class AdminAddReservationComponent implements OnInit {
   fields: Field[] = []; 
   
   ngOnInit() {
-    this.addFieldForm = this.formBuilder.group({
-      nameField: ['', [Validators.required, Validators.minLength(2), Validators.maxLength(50)]],
-      descriptionField: ['', [Validators.required, Validators.minLength(5), Validators.maxLength(100)]],
-      locationField: ['', [Validators.required, Validators.minLength(4), Validators.maxLength(30)]],
-      capacityField: ['', [Validators.required, Validators.min(1)]],
-      typeField: ['Football', Validators.required]
-    
+    this.addReservationForm = this.formBuilder.group({
+      startDate: ['', Validators.required],
+      endDate: ['', [Validators.required, this.endDateValidator]], // Attach custom validator
+      resStatus: ['pending'],
+      resType: ['FreeForAll'],
+      field: ['', Validators.required]
     });
     this.fieldService.getAllFields().subscribe(fields => {
       this.fields = fields;

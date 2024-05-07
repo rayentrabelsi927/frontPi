@@ -191,7 +191,7 @@ export class DetailsTeamClientComponent implements OnInit {
   //   );
   // }
   leaveTeam(): void {
-    // Display confirmation alert
+    
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to leave the team.',
@@ -212,7 +212,7 @@ export class DetailsTeamClientComponent implements OnInit {
               title: 'Oops...',
               text: 'Failed to leave the team. Please try again later.',
             });
-            // Display success alert
+         
             
           },
           error => {
@@ -220,7 +220,6 @@ export class DetailsTeamClientComponent implements OnInit {
             this.fetchUsersForSportTeam(this.sportTeamId);
             this.participateSportTeamCheckAndRefreshButton();
 
-            // Display error alert
             Swal.fire({
               icon: 'success',
               title: 'Success!',
@@ -233,7 +232,7 @@ export class DetailsTeamClientComponent implements OnInit {
   }
   
   cancelApplication(): void {
-    // Display confirmation alert
+    
     Swal.fire({
       title: 'Are you sure?',
       text: 'You are about to cancel your application to join the team.',
@@ -255,7 +254,7 @@ export class DetailsTeamClientComponent implements OnInit {
               title: 'Oops...',
               text: 'Failed to cancel your application. Please try again later.',
             });
-            // Display success alert
+           
             
           },
           error => {
@@ -263,7 +262,7 @@ export class DetailsTeamClientComponent implements OnInit {
             this.fetchUsersForSportTeam(this.sportTeamId);
             this.participateSportTeamCheckAndRefreshButton();
 
-            // Display error alert
+          
             Swal.fire({
               icon: 'success',
               title: 'Success!',

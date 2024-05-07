@@ -62,8 +62,7 @@ export class UpdateFieldComponent implements OnInit {
     this.fieldService.updateField(this.field).subscribe(
       response => {
         console.log('Field updated successfully:', response);
-        // Redirect to the all-fields component after successful update
-        // You can implement this similar to the AddFieldComponent
+        
         this.router.navigate(['/admin/all-fields']);
       },
       error => {

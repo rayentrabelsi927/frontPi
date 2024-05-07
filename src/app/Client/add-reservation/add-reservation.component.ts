@@ -212,7 +212,7 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
   const captainId = this.userId;
   this.sportTeamService.makeTeamReservation(sportTeamId, captainId, fieldId, reservation).subscribe(
     (response) => {
-      // Success: Reservation submitted
+      
       Swal.fire({
         title: 'Reservation Submitted!',
         text: 'Your reservation has been submitted successfully.',
@@ -220,7 +220,7 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
         confirmButtonText: 'OK'
       }).then((result) => {
         if (result.isConfirmed) {
-          // Redirect the user to all-reservations page
+          
           this.router.navigateByUrl('/all-reservations');
         }
       });

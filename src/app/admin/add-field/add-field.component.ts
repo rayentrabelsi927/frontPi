@@ -17,7 +17,7 @@ export class AddFieldComponent implements OnInit {
     descriptionField: '',
     locationField: '',
     capacityField: 0,
-    typeField: TypeF.Football // Set default value
+    typeField: TypeF.Football 
   };
 
   constructor(private fieldService: FieldService,private router: Router,private userTok: TokenService) { }
@@ -30,7 +30,6 @@ export class AddFieldComponent implements OnInit {
     this.fieldService.addField(this.field).subscribe(
       response => {
         console.log('Field added successfully:', response);
-        // Reset the form fields after successful submission
         this.field = {
           fieldId: 0,
           nameField: '',
