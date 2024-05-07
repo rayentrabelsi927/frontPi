@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { SportTeam } from 'src/app/models/SportTeam';
 import { SportTeamService } from 'src/app/services/sport-team.service';
 import { TokenService } from 'src/app/services/token.service';
@@ -15,7 +16,7 @@ export class AddTeamComponent implements OnInit {
   teamName: string = '';
   selectedFile: File | undefined;
   userEmail: string = '';
-  constructor(private sportTeamService: SportTeamService,private userTok: TokenService) {}
+  constructor(private sportTeamService: SportTeamService,private userTok: TokenService,private router: Router) {}
 
   ngOnInit(): void { this.userId = this.userTok.currentUser();}
 
@@ -32,6 +33,7 @@ export class AddTeamComponent implements OnInit {
     this.sportTeamService.addSportTeam(this.teamName, captainId, this.selectedFile).subscribe(
       data => {
         console.log('Response:', data);
+        this.navigateToAllSportTeamPage();
       },
       err => {
         console.error('Error:', err);
@@ -54,6 +56,10 @@ export class AddTeamComponent implements OnInit {
         console.error('Error adding user:', error);
       }
     );
+  }
+  
+  navigateToAllSportTeamPage(): void {
+    this.router.navigate(['/allsportteam']);
   }
   
   
