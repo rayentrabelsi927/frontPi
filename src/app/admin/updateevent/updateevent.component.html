@@ -1,0 +1,32 @@
+<form class="event-form" (submit)="updateEvent(event)">
+    <div class="form-group">
+      <label for="titleEvent">Titre</label>
+      <input type="text" [(ngModel)]="event.titleEvent" name="titleEvent" id="titleEvent" class="form-control" placeholder="Titre">
+    </div>
+    <div class="form-group">
+      <label for="capacityEvent">Capacité</label>
+      <input type="number" [(ngModel)]="event.capacityEvent" name="capacityEvent" id="capacityEvent" class="form-control" placeholder="Capacité">
+    </div>
+    <div class="form-group">
+      <label for="descriptionEvent">Description</label>
+      <textarea [(ngModel)]="event.descriptionEvent" name="descriptionEvent" id="descriptionEvent" class="form-control" placeholder="Description"></textarea>
+    </div>
+    <div class="form-group">
+      <label for="locationEvent">Emplacement</label>
+      <input type="text" [(ngModel)]="event.locationEvent" name="locationEvent" id="locationEvent" class="form-control" placeholder="Emplacement">
+    </div>
+    <div class="form-group">
+        <label for="datetime">Date and Time:</label>
+        <input type="datetime-local" class="form-control" id="datetime" [(ngModel)]="event.dateEvent" name="dateEvent" required>
+      </div>
+    <div class="form-group">
+      <label for="categoryEvent">Catégorie</label>
+      <input type="text" [(ngModel)]="event.categoryEvent" name="categoryEvent" id="categoryEvent" class="form-control" placeholder="Catégorie">
+    </div>
+  
+    <button type="submit" class="btn btn-primary btn-block">Modifier</button>
+  </form>
+  <div *ngIf="event" class="text-center">
+    <!-- Contenu des détails de l'événement -->
+  </div>
+  

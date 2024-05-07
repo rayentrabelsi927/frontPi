@@ -1,0 +1,32 @@
+<form (ngSubmit)="addEvent()">
+  <div class="form-group">
+    <label for="titleEvent">Title:</label>
+    <input type="text" class="form-control" id="titleEvent" [(ngModel)]="event.titleEvent" name="titleEvent" required>
+  </div>
+  <div class="form-group">
+    <label for="capacityEvent">Capacity:</label>
+    <input type="number" class="form-control" id="capacityEvent" [(ngModel)]="event.capacityEvent" name="capacityEvent" required>
+  </div>
+  <div class="form-group">
+    <label for="descriptionEvent">Description:</label>
+    <textarea class="form-control" id="descriptionEvent" [(ngModel)]="event.descriptionEvent" name="descriptionEvent" required></textarea>
+  </div>
+  <div class="form-group">
+    <label for="locationEvent">Location:</label>
+    <input type="text" class="form-control" id="locationEvent" [(ngModel)]="event.locationEvent" name="locationEvent" required>
+  </div>
+  <div class="form-group">
+    <label for="categoryEvent">Category:</label>
+    <input type="text" class="form-control" id="categoryEvent" [(ngModel)]="event.categoryEvent" name="categoryEvent" required>
+</div>
+<div class="form-group">
+  <label for="datetime">Date and Time:</label>
+  <input type="datetime-local" class="form-control" id="datetime" [(ngModel)]="event.dateEvent" name="dateEvent" required>
+</div>
+
+  <div class="form-group">
+    <label for="image">Image:</label>
+    <input type="file" class="form-control" id="image" (change)="onFileSelected($event)" name="image" accept="image/*" required>
+  </div>
+  <button type="submit" class="btn btn-primary">Add Event</button>
+</form>

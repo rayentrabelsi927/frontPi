@@ -17,6 +17,11 @@ import { UpdateComponent } from './admin/update/update.component';
 import { AccountSeettingComponent } from './Client/account-seetting/account-seetting.component';
 import { AllComponent } from './admin/all/all.component';
 import { SidebarComponent } from './shared/sidebar/sidebar.component';
+import { EventadminComponent } from './admin/eventadmin/eventadmin.component';
+import { AddeventComponent } from './admin/addevent/addevent.component';
+import { EventclientComponent } from './Client/eventclient/eventclient.component';
+import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
+
 
 
 
@@ -45,6 +50,16 @@ const routes: Routes = [
   { path: 'admin/add', component: AddComponent },
   { path: 'admin/update', component: UpdateComponent },
   { path: 'admin/login', component: LoginComponent },
+  { path: 'admin/events', component: EventadminComponent },
+  { path: 'admin/addevent', component: AddeventComponent },
+  { path: 'client/events', component: EventclientComponent },
+  { path: 'admin/update-event/:eventId', component: UpdateeventComponent },
+
+
+
+
+
+
 
   
   // Ajoutez d'autres routes au besoin
