@@ -1,3 +1,5 @@
+import { User } from './User'; 
+
 export interface Article {
     articleId: number;
     nameArticle: string;
@@ -9,7 +11,8 @@ export interface Article {
     note: string;
     section?: string; 
     userName: string;
-  
    
-  }
+   
+}
+
   

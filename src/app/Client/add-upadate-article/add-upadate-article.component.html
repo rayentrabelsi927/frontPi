@@ -3,44 +3,77 @@
       <div class="col-md-8">
         <div class="card p-4">
           <div class="card-body">
-            <h1 class="text-center mb-4">Add Item</h1>
-            <form (ngSubmit)="onSubmit()">
-              <div class="form-group">
-                <label for="label">Label</label>
-            <input type="text" [(ngModel)]="label" name="label" id="label" class="form-control" placeholder="Label">
+            <h1>{{ mode === 'ajout' ? 'Add Item' : 'Edit Item' }}</h1>
+
+            <form (ngSubmit)="onSubmit()"[formGroup]="myForm">
+              <label for="label">Label</label>
+              <input class="form-control" type="text" [(ngModel)]="label" name="label" id="label" class="form-control" placeholder="Label" formControlName="label">
+          
+            <div class="alert alert-danger " *ngIf="this.myForm.controls['label'].invalid && this.myForm.get('label')?.touched">
+              <p *ngIf="this.myForm.controls['label'].hasError('required')">Label is required</p>
+              <p *ngIf="this.myForm.controls['label'].hasError('maxlength')">Label max length 10 </p>
           </div>
-              <div class="form-group">
-                <label for="description">Description</label>
-                <textarea [(ngModel)]="description" name="description" id="description" class="form-control" placeholder="Description de l'article"></textarea>
-              </div>
-              <div class="form-group">
-                <label for="category">Category</label>
-                <select [(ngModel)]="selectedCategory" name="category" id="category" class="form-control">
-                  <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="condition">Condition</label>
-                <select [(ngModel)]="selectedCondition" name="condition" id="condition" class="form-control">
-                  <option *ngFor="let cond of conditions" [value]="cond">{{ cond }}</option>
-                </select>
-              </div>
-              <div class="form-group">
-                <label for="price">Price</label>
-                <input type="text" [(ngModel)]="price" name="price" id="price" class="form-control" placeholder="Prix de l'article">
+          <div class="form-group">
+            <label for="description">Description</label>
+            <textarea class="form-control" [(ngModel)]="description" name="description" id="description" class="form-control" placeholder="Description" formControlName="description"></textarea>
+          </div>
+          <div class="alert alert-danger" *ngIf="this.myForm.controls['description'].invalid && this.myForm.controls['description'].touched">
+            Description is required
+        </div>
+        <div class="form-group">
+          <label for="category">Category</label>
+          <select class="form-control" [(ngModel)]="selectedCategory" name="category" id="category" class="form-control" formControlName="category">
+            <option *ngFor="let cat of categories" [value]="cat">{{ cat }}</option>
+          
+            <option value="" disabled selected>----------------------------------------------Category--------------------------------------------------------------------------------</option>
+          </select>
+          <div class="alert alert-danger" *ngIf="this.myForm.controls['category'].invalid && this.myForm.controls['category'].touched">
+            Category is required
+        </div>
+        </div>
+        <div class="form-group">
+          <label for="condition">Condition</label>
+          <select class="form-control" [(ngModel)]="selectedCondition" name="condition" id="condition" class="form-control" formControlName="condition">
+            <option *ngFor="let cond of conditions" [value]="cond">{{ cond }}</option>
+          
+          <option value="" disabled selected>----------------------------------------------Condition--------------------------------------------------------------------------------</option>
+        </select>
+          <div class="alert alert-danger" *ngIf="this.myForm.controls['condition'].invalid && this.myForm.controls['condition'].touched">
+            Condition is required
+        </div></div>
+        <div class="form-group">
+          <label for="price">Price</label>
+          <input class="form-control" type="text" [(ngModel)]="price" name="price" id="price" class="form-control" [placeholder]="article.priceArticle" formControlName="price">
+        </div>
+        <div class="alert alert-danger" *ngIf="this.myForm.controls['price'].invalid && this.myForm.controls['price'].touched">
+          <p *ngIf="this.myForm.controls['price'].hasError('required')">Price is required</p>
+          <p *ngIf="this.myForm.controls['price'].hasError('pattern')">Price must be a number </p>
+        </div>  
+              <div *ngIf="mode === 'modification'">
+                <label>Ancienne Image:</label>
+                <img *ngIf="article.imgArticle" class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/photos/' + article.imgArticle" alt="Article Image">
               </div>
               <div class="form-group">
                 <label for="imgArticle">Image</label><br>
-                <input type="file" (change)="onFileSelected($event)" name="imgArticle" id="imgArticle" accept="image/*" class="form-control">
+                <input class="form-control" type="file" [(ngModel)]="selectedFileName" (change)="onFileSelected($event)" name="imgArticle" id="imgArticle" accept="image/*" class="form-control" formControlName="image">
                 <img *ngIf="fileURL" class="img-thumbnail mt-2" [src]="fileURL" alt="Article Image">
               </div>
               <br>
               <div class="row">
                 <div class="col-6">
-                    <button type="submit" class="btn btn-md btn-danger w-100">{{ mode === 'ajout' ? 'Ajouter' : 'Modifier' }}</button>
+                    <button type="submit" class="btn btn-md btn-danger w-100"><i class="bi bi-pencil-square">
+                      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-pencil-square" viewBox="0 0 16 16">
+                        <path d="M15.502 1.94a.5.5 0 0 1 0 .706L14.459 3.69l-2-2L13.502.646a.5.5 0 0 1 .707 0l1.293 1.293zm-1.75 2.456-2-2L4.939 9.21a.5.5 0 0 0-.121.196l-.805 2.414a.25.25 0 0 0 .316.316l2.414-.805a.5.5 0 0 0 .196-.12l6.813-6.814z"/>
+                        <path fill-rule="evenodd" d="M1 13.5A1.5 1.5 0 0 0 2.5 15h11a1.5 1.5 0 0 0 1.5-1.5v-6a.5.5 0 0 0-1 0v6a.5.5 0 0 1-.5.5h-11a.5.5 0 0 1-.5-.5v-11a.5.5 0 0 1 .5-.5H9a.5.5 0 0 0 0-1H2.5A1.5 1.5 0 0 0 1 2.5z"/>
+                      </svg>
+                    </i>{{ mode === 'ajout' ? 'Ajouter' : 'Modifier' }}</button>
                   </div>
                   <div class="col-6 text-right">
-                    <button type="button" (click)="clearForm()" class="btn btn-md btn-danger w-100">Clear</button>
+                    <button type="button" (click)="clearForm()" class="btn btn-md btn-danger w-100">
+                      <i class="bi bi-trash"><svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-trash" viewBox="0 0 16 16">
+                        <path d="M5.5 5.5A.5.5 0 0 1 6 6v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m2.5 0a.5.5 0 0 1 .5.5v6a.5.5 0 0 1-1 0V6a.5.5 0 0 1 .5-.5m3 .5a.5.5 0 0 0-1 0v6a.5.5 0 0 0 1 0z"/>
+                        <path d="M14.5 3a1 1 0 0 1-1 1H13v9a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V4h-.5a1 1 0 0 1-1-1V2a1 1 0 0 1 1-1H6a1 1 0 0 1 1-1h2a1 1 0 0 1 1 1h3.5a1 1 0 0 1 1 1zM4.118 4 4 4.059V13a1 1 0 0 0 1 1h6a1 1 0 0 0 1-1V4.059L11.882 4zM2.5 3h11V2h-11z"/>
+                      </svg></i>Clear</button>
                   </div>                                  
               </div>
             </form>
@@ -49,4 +82,9 @@
       </div>
     </div>
   </div>
-  
+  <div class="small-popup "  *ngIf=" showPopupadd" (click)="closePopup()">
+    <p>Item added to cart successfully </p>    
+    </div>
+    <div class="small-popup "  *ngIf=" showPopupedit" (click)="closePopup()">
+      <p>Item edited successfully </p>    
+      </div>

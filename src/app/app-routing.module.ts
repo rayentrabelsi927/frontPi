@@ -70,6 +70,7 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { FileComponent } from './admin/file/file.component';
+import { UserArticlesComponent } from './Client/user-articles/user-articles.component';
 
 
 
@@ -118,6 +119,7 @@ const routes: Routes = [
   { path: 'all-reservations', component: AllReservationsComponent },
   { path: 'add-reservation', component: AddReservationComponent },
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
+  {path: 'myItems', component:UserArticlesComponent},
 
 
   /* admin lezm el path yabda b kelmet admin */

@@ -72,8 +72,8 @@ export class CartArticleComponent implements OnInit {
           this.articlesPerUser[userName].push(article);
         }
       });
-      //console.log('Total per user:', this.totalsPerUser);
-      //console.log('Articles per user:', this.articlesPerUser);
+      console.log('Total per user:', this.totalsPerUser);
+      console.log('Articles per user:', this.articlesPerUser);
     });
   }
   
@@ -86,7 +86,7 @@ export class CartArticleComponent implements OnInit {
 
   displayUserItems(user: string): void {
     
-    const parts = user.split(' ');
+    /*const parts = user.split(' ');
     const userId = parts.length > 2 ? parts[2] : ''; 
     const totalAmount = this.totalsPerUser[user];
     const userArticles = this.articlesPerUser[user];
@@ -104,7 +104,7 @@ console.log ( this.convertToArticle(article))
 
 }
 
-console.log(this.articleList)
+console.log(this.articleList)*/
 
 }
 

@@ -90,6 +90,8 @@ import { MatTableModule } from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
 import { FileComponent } from './admin/file/file.component';
 import { NgxPaginationModule } from 'ngx-pagination';
+import { UserArticlesComponent } from './Client/user-articles/user-articles.component';
+
 
 
 @NgModule({
@@ -171,6 +173,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     UpdateFreelanceJobComponent,
     InternshipRoomComponent,
     FileComponent,
+    UserArticlesComponent,
   ],
   imports: [
     BrowserModule,
@@ -196,6 +199,7 @@ import { NgxPaginationModule } from 'ngx-pagination';
     MatTableModule,
     MatPaginatorModule,
     NgxPaginationModule,
+    ReactiveFormsModule,
 
   ],
   providers: [

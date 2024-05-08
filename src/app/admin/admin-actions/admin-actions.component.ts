@@ -75,10 +75,13 @@ loadArticle(): void {
     this.articleService.getConditions()
       .subscribe(conditions => this.conditions = conditions);
   }
+  
+  selectedFileName: string | null = null;
   onFileSelected(event: any): void {
     if (event.target.files && event.target.files.length) {
       const file = event.target.files[0];
       this.file = file;
+      this.selectedFileName = file.name; 
       const reader = new FileReader();
       reader.onload = () => {
         if (reader.result) {
@@ -90,21 +93,23 @@ loadArticle(): void {
   }
   
   
+  
 
 
   updateArticle(): void {
     const updatedFields: any = {};
-    if (this.label !== this.article.nameArticle) {
-        updatedFields.nameArticle = this.label;
-    } else {
-        updatedFields.nameArticle = this.article.nameArticle;
-    }
+  
     if (this.description.trim() !== '') {
       updatedFields.description = this.description;
     } else {
       updatedFields.description = this.article.descriptionArticle;
     }
   
+    if (this.description.trim() !== '') {
+      updatedFields.label = this.label;
+    } else {
+      updatedFields.label = this.article.nameArticle;
+    }
     if (this.selectedCategory.trim() !== '') {
       updatedFields.category = this.selectedCategory;
     } else {
@@ -122,25 +127,36 @@ loadArticle(): void {
     } else {
       updatedFields.condition = this.article.conditionArticle;
     }
+    if (this.file !== null) {
+      updatedFields.file = this.file;
+    } else {
+      updatedFields.file = this.article.imgArticle;
+    }
   
-    updatedFields.file = this.file !== null ? this.file : this.article.imgArticle;
     this.articleService.updateArticle(
-        updatedFields.nameArticle,
-        updatedFields.description,
-        updatedFields.category,
-        updatedFields.price,
-        updatedFields.condition,
-        updatedFields.file,
-        this.id
+      updatedFields.label,
+      updatedFields.description,
+      updatedFields.category,
+      updatedFields.price,
+      updatedFields.condition,
+      this.id, 
+      this.file,
+     
+     
     ).subscribe((response: any) => {
-        console.log('Article mis à jour avec succès');
-
-        this.clearForm();
-
+      console.log('Article mis à jour avec succès');
+  
+      this.clearForm();
+  
     }, error => {
-        console.error('Erreur lors de la mise à jour de l\'article :', error);
+      console.error('Erreur lors de la mise à jour de l\'article :', error);
     });
-}
+  }
+
+
+
+
+
   onSubmit(): void {
    
       this.updateArticle();
@@ -156,7 +172,6 @@ loadArticle(): void {
     this.file = null;
     this.fileURL = null;
   
-    // Réinitialiser le champ de sélection de fichier
     const inputElement = document.getElementById('imgArticle') as HTMLInputElement;
     if (inputElement) {
       inputElement.value = '';

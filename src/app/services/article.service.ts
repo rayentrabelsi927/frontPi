@@ -13,9 +13,9 @@ export class ArticleService {
 
   constructor(private http: HttpClient ) { }
 
-
-  addArticle(label:string, description: string, category: string, price: number, condition: string, file: File): Observable<any> {
+  addArticle(userId: number, label: string, description: string, category: string, price: number, condition: string, file: File): Observable<any> {
     const formData = new FormData();
+    formData.append('userId', userId.toString());
     formData.append('nameArticle', label);
     formData.append('descriptionArticle', description);
     formData.append('category', category);
@@ -23,8 +23,12 @@ export class ArticleService {
     formData.append('conditionArticle', condition);
     formData.append('imgArticle', file, file.name);
     return this.http.post(`${this.baseUrl}/addArticle`, formData);
-  }
+}
 
+  
+getItemsPerUser(userId: number): Observable<Article[]> {
+  return this.http.get<Article[]>(`${this.baseUrl}/articlesByuser/${userId}`);
+}
   getCategories(): Observable<string[]> {
     return this.http.get<string[]>(`${this.baseUrl}/categories`);
   }
@@ -36,17 +40,28 @@ export class ArticleService {
   getArticles(): Observable<Article[]> {
     return this.http.get<Article[]>(`${this.baseUrl}/ar`);
   }
+  getArticlesf(userId: number): Observable<Article[]> {
+    return this.http.get<Article[]>(`${this.baseUrl}/a/${userId}`);
+  }
   
-  updateArticle(label: string, description: string, category: string, price: number, condition: string, file: File, articleId: number): Observable<any> {
+  
+  updateArticle(label: string, description: string, category: string, price: number, condition: string, articleId: number, file: File | null): Observable<any> {
     const formData = new FormData();
-    formData.append('nameArticle', label); // Mettre à jour le champ 'nameArticle' avec la valeur de 'label'
+    formData.append('nameArticle', label);
     formData.append('descriptionArticle', description);
     formData.append('category', category);
     formData.append('priceArticle', price.toString());
     formData.append('conditionArticle', condition);
-    formData.append('imgArticle', file, file.name);
+  
+    
+    if (file !== null) {
+        formData.append('imgArticle', file, file.name);
+    }
+  
     return this.http.put(`${this.baseUrl}/updateArticle/${articleId}`, formData);
-}
+  }
+  
+
 
 
   
