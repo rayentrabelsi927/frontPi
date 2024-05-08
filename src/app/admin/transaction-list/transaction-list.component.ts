@@ -82,7 +82,7 @@ console.log(this.transactions)
             // Recherche par nom d'utilisateur (username) ou rôle (role)
             const searchRole = trimmedQuery.toLowerCase();
             this.filteredTransactions = this.transactions.filter(transaction =>
-              transaction.users.username.toLowerCase().includes(searchRole) ||
+              transaction.users.email.toLowerCase().includes(searchRole) ||
               transaction.users.role.toLowerCase().includes(searchRole)
             );
           }
