@@ -189,8 +189,10 @@ onSubmit() {
 
   const timezoneOffset = startDateUTC.getTimezoneOffset();
  
-  const startDateAdjusted = new Date(startDateUTC.getTime() - timezoneOffset * 60000); 
-  const endDateAdjusted = new Date(endDateUTC.getTime() - timezoneOffset * 60000); 
+  // const startDateAdjusted = new Date(startDateUTC.getTime() - timezoneOffset * 60000); 
+  // const endDateAdjusted = new Date(endDateUTC.getTime() - timezoneOffset * 60000); 
+  const startDateAdjusted = new Date(startDateUTC.getTime()); 
+  const endDateAdjusted = new Date(endDateUTC.getTime()); 
 
   console.log('Making reservation with adjusted time:', startDateAdjusted, endDateAdjusted, resStatus, resType, fieldId);
 
@@ -212,7 +214,15 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
   const captainId = this.userId;
   this.sportTeamService.makeTeamReservation(sportTeamId, captainId, fieldId, reservation).subscribe(
     (response) => {
-      
+      Swal.fire({
+        title: 'Error!',
+        text: 'There is already a reservation on the selected date. Please choose another date.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+     
+    },
+    (error) => {
       Swal.fire({
         title: 'Reservation Submitted!',
         text: 'Your reservation has been submitted successfully.',
@@ -224,15 +234,8 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
           this.router.navigateByUrl('/all-reservations');
         }
       });
-    },
-    (error) => {
       // Error: Reservation failed
-      Swal.fire({
-        title: 'Error!',
-        text: 'There is already a reservation on the selected date. Please choose another date.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+      
     }
   );
 }
