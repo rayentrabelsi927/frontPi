@@ -111,6 +111,8 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
 
 import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
 import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
+import { UserArticlesComponent } from './Client/user-articles/user-articles.component';
+
 
 
 @NgModule({
@@ -214,6 +216,7 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
     InternshiprecommendationComponent,
     UpdateFreelanceJobComponent,
 
+    UserArticlesComponent,
   ],
   imports: [
     BrowserModule,
@@ -241,6 +244,7 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
     NgxPaginationModule,
     FormsModule, // Add this line
     HttpClientModule,
+    ReactiveFormsModule,
 
   ],
   providers: [

@@ -8,6 +8,7 @@ import { FavoritesListService } from 'src/app/services/favorites-list.service';
   templateUrl: './navbar.component.html',
   styleUrls: ['./navbar.component.css']
 })
+
 export class NavbarComponent implements OnInit {
   cartItemCount: number = 0;
   favoritesCount: number = 0;

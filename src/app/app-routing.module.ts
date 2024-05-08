@@ -88,6 +88,7 @@ import { EventclientComponent } from './Client/eventclient/eventclient.component
 import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
 
 import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
+import { UserArticlesComponent } from './Client/user-articles/user-articles.component';
 
 
 
@@ -136,6 +137,8 @@ const routes: Routes = [
   { path: 'all-reservations', component: AllReservationsComponent },
   { path: 'add-reservation', component: AddReservationComponent },
   { path: 'paimenthousing', component: TransactionhousingComponent },
+  { path: 'update-reservation/:id', component: UpdateReservationComponent },
+  {path: 'myItems', component:UserArticlesComponent},
 
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
   { path: 'recommendations', component: InternshiprecommendationComponent },

@@ -7,7 +7,8 @@ import { RecommendationService } from 'src/app/services/recommendation.service';
 import { CartArticleComponent } from '../cart-article/cart-article.component';
 import { CartArticleService } from 'src/app/services/cart-article.service';
 import { HttpClient } from '@angular/common/http';
-//import { MatPaginator } from '@angular/material/paginator';
+import { MatPaginator, PageEvent } from '@angular/material/paginator';
+import { TokenService } from 'src/app/services/token.service';
 
 @Component({
   selector: 'app-list-articles',
@@ -15,7 +16,7 @@ import { HttpClient } from '@angular/common/http';
   styleUrls: ['./list-articles.component.css']
 })
 export class ListArticlesComponent implements OnInit {
-  //@ViewChild(MatPaginator) paginator!: MatPaginator;
+  @ViewChild(MatPaginator) paginator!: MatPaginator;
   articles: any[] = [];
   categories: string[] = [];
   conditions: string[] = [];
@@ -27,18 +28,23 @@ export class ListArticlesComponent implements OnInit {
   minPrice: number = 0;
   priceStep: number = 1;
   recommendedArticles: Article[] = [];
- 
+  showPopupCart: boolean = false;
+  showPopupFavorite: boolean = false;
   showPopupFlag: boolean = false;
   popupArticle: Article | null = null;
-  paginatedArticles: any[] = [];
+  articlesf: any[] = [];
+  userId!: any;
 
-
+  
+ 
   constructor(
     private articleService: ArticleService,
     private router: Router,
     private favoritesList: FavoritesListService,
     private recommendationService: RecommendationService,
-    private cartService: CartArticleService
+    private cartService: CartArticleService,
+    private userToken: TokenService
+   
     
    
   
@@ -52,10 +58,12 @@ export class ListArticlesComponent implements OnInit {
 
   closePopup(): void {
     this.showPopupFlag = false;
+    this.showPopupCart = false;
+    this.showPopupFavorite = false;
   }
 
   ngOnInit(): void {
-    this.loadArticles();
+   
     this.getCategories();
     this.getConditions();
   
@@ -68,19 +76,28 @@ export class ListArticlesComponent implements OnInit {
       });
     });
     this.getRecommendedArticles();
+    this.userId = this.userToken.currentUser();
+    if (this.userId) {
+      this.loadArticles();
+
+    }
+    this.filteredArticles = this.articles.slice(0, 6);
+
+    
+  }
   
-   /* this.paginator.page.subscribe((event) => {
-      this.paginateArticles(event);
-    });*/
-  }    
   loadArticles() {
-    this.articleService.getArticles().subscribe((data: any[]) => {
+    this.articleService.getArticlesf(this.userId).subscribe((data: any[]) => {
       this.articles = data;
       this.filteredArticles = data;
       console.log("il y'a", data);
-    });
-  }
+      
+    })}
+    
+   
 
+  
+    
 
   deleteArticle(articleId: number) {
     this.articleService.deleteArticle(articleId).subscribe(
@@ -100,6 +117,7 @@ export class ListArticlesComponent implements OnInit {
   addToFavoritesList(article: any): void {
     this.favoritesList.addToFavorites(article);
     console.log('Article ajouté à la liste :', article);
+    this.showPopupFavorite= true;
     
   }
 
@@ -117,7 +135,6 @@ export class ListArticlesComponent implements OnInit {
       .subscribe(conditions => this.conditions = conditions);
   }
 
-
   filterArticles(): void {
     let filteredArticles = this.articles;
     if (this.selectedCategory) {
@@ -130,7 +147,11 @@ export class ListArticlesComponent implements OnInit {
       filteredArticles = filteredArticles.filter(article => article.priceArticle <= this.selectedPrice);
     }
     this.filteredArticles = filteredArticles;
-  }
+   
+}
+    
+
+  
   
   
   
@@ -162,14 +183,14 @@ export class ListArticlesComponent implements OnInit {
   addToCart(article: any): void {
     this.cartService.addToCart(article);
     console.log('Article ajouté au panier :', article);
-}
- 
-
-paginateArticles(event: any): void {
-  const startIndex = event.pageIndex * event.pageSize;
-  const endIndex = startIndex + event.pageSize;
-  this.paginatedArticles = this.filteredArticles.slice(startIndex, endIndex);
+    this.showPopupCart= true;
 }
 
-  
+
+
+
+
+
+
+
 }

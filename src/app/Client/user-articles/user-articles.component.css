@@ -1,0 +1,42 @@
+/* Styling for the table */
+.article-table {
+    width: 80%;
+    margin: auto;
+    border-collapse: collapse;
+  }
+  
+  /* Styling for table headers */
+  .article-table th {
+    background-color: #f2f2f2;
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for table data cells */
+  .article-table td {
+    padding: 8px;
+    text-align: left;
+    border-bottom: 1px solid #ddd;
+  }
+  
+  /* Styling for alternate rows */
+  .article-table tbody tr:nth-child(even) {
+    background-color: #f2f2f2;
+  }
+  
+  /* Styling for images in the table */
+  .article-table img {
+    max-width: 100px; /* Adjust the maximum width of the image as needed */
+  }
+  
+  /* Centering the table title */
+  .table-title {
+    text-align: center;
+  }
+
+  h1{
+    color: rgba(177, 4, 4, 0.445);
+    font-weight: bold;
+   text-align: center;
+  }

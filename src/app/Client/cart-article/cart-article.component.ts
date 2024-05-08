@@ -81,8 +81,8 @@ export class CartArticleComponent implements OnInit {
           this.articlesPerUser[userName].push(article);
         }
       });
-      //console.log('Total per user:', this.totalsPerUser);
-      //console.log('Articles per user:', this.articlesPerUser);
+      console.log('Total per user:', this.totalsPerUser);
+      console.log('Articles per user:', this.articlesPerUser);
     });
   }
   

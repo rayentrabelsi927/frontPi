@@ -128,7 +128,7 @@
   font-size: 28px;
   margin-bottom: 20px;
   text-align: left;
-  color: #bd1708;
+  color: #160b0a;
 }
 
 .test {
@@ -281,5 +281,32 @@
 .popup-content .item-details .categoryArticle strong,
 .popup-content .item-details .conditionArticle strong,
 .popup-content .item-details .descriptionArticle strong {
-  color: #ff00ff; /* Couleur rose */
+  color: #ff00ff; 
 }
+
+
+.small-popup {
+  width: 100%; /* Set width to 100% to span the length of the page */
+  height: 50px;
+  padding: 10px;
+  position: fixed;
+  top: 0; /* Set top to 0 to align with the top of the page */
+  left: 0;
+  background-color: #f8f9fa;
+  color: #333;
+  border-radius: 0; /* Set border-radius to 0 for a rectangular shape */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  z-index: 9999;
+}
+
+
+.small-popup p {
+  font-size: 15px;
+  margin-bottom: 5px;
+  color: #000000;
+  text-align: center;
+
+}
+
+
+
