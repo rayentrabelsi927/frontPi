@@ -102,23 +102,14 @@ export class DetailsTeamClientComponent implements OnInit {
     this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
       response => {
         console.log(response); 
-        Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'Your application to the sport team has been sent. Please wait for the decision.',
-        });
-       
+        
         
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       },
       error => {
         console.error('Error joining team:', error); 
-        Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You Are already in a Team!!',
-        });
+        
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       }
@@ -165,11 +156,22 @@ export class DetailsTeamClientComponent implements OnInit {
     this.sportTeamService.participateSportTeam(this.sportTeamId, this.userId).subscribe(
       response => {
         console.log('Joined team successfully:', response);
+        // Swal.fire({
+        //   icon: 'success',
+        //   title: 'Success!',
+        //   text: 'Your application to the sport team has been sent. Please wait for the decision.',
+        // });
+       
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton(); // Refresh button after joining
       },
       error => {
         console.error('Error joining team:', error);
+        // Swal.fire({
+        //   icon: 'error',
+        //   title: 'Oops...',
+        //   text: 'You Are already in a Team!!',
+        // });
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
       }

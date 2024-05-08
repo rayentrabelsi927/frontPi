@@ -214,7 +214,15 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
   const captainId = this.userId;
   this.sportTeamService.makeTeamReservation(sportTeamId, captainId, fieldId, reservation).subscribe(
     (response) => {
-      
+      Swal.fire({
+        title: 'Error!',
+        text: 'There is already a reservation on the selected date. Please choose another date.',
+        icon: 'error',
+        confirmButtonText: 'OK'
+      });
+     
+    },
+    (error) => {
       Swal.fire({
         title: 'Reservation Submitted!',
         text: 'Your reservation has been submitted successfully.',
@@ -226,15 +234,8 @@ makeTeamReservation(startDate: Date, endDate: Date, resStatus: string, resType: 
           this.router.navigateByUrl('/all-reservations');
         }
       });
-    },
-    (error) => {
       // Error: Reservation failed
-      Swal.fire({
-        title: 'Error!',
-        text: 'There is already a reservation on the selected date. Please choose another date.',
-        icon: 'error',
-        confirmButtonText: 'OK'
-      });
+      
     }
   );
 }
