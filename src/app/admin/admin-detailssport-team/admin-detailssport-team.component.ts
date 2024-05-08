@@ -61,7 +61,8 @@ export class AdminDetailssportTeamComponent implements OnInit{
         userData.createdDate,
         userData.lastModifiedDate,
         userData.accountLocked,
-        userData.enabled
+        userData.enabled,
+        userData.adresse
       );
     }
     

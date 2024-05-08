@@ -58,14 +58,13 @@
       <thead class="thead-dark">
         <tr>
           <th scope="col">Username</th>
-          <th scope="col">First Name</th>
-          <th scope="col">Last Name</th>
+          <th scope="col">First-Name</th>
+          <th scope="col">Last-Name</th>
           <th scope="col">Email</th>
           <th scope="col">Phone</th>
           <th scope="col">Role</th>
-          <th scope="col">Badge</th>
           <th scope="col">Creation date</th>
-          <th scope="col">Last Modification Date</th>
+          <th scope="col">Last Modification</th>
           <th scope="col">Locked</th>
           <th scope="col">Enabled</th>
         </tr>
@@ -78,19 +77,30 @@
           <td>{{ user.email }}</td>
           <td>{{ user.phone }}</td>
           <td>{{ user.role }}</td>
-          <td>{{ user.badge }}</td>
           <td>{{ user.createdDate }}</td>
           <td>{{ user.lastModifiedDate }}</td>
           <td><button *ngIf="user.accountLocked" class="btn btn-success" (click)="toggleAccountLock(user)" >Unlock</button>
             <button *ngIf="!user.accountLocked" class="btn btn-danger" (click)="toggleAccountLock(user)">Lock</button></td>
-          <td><button *ngIf="user.enabled" class="btn btn-success" (click)="toggleEnabled(user)" >Enable</button>
-            <button *ngIf="!user.enabled" class="btn btn-danger" (click)="toggleEnabled(user)">Disable</button></td>
-          <td>
-            <button class="btn btn-primary" >update?</button>
-          </td>
+          <td><button *ngIf="user.enabled" class="btn btn-success" (click)="toggleAccountEnable(user)" >Enable</button>
+            <button *ngIf="!user.enabled" class="btn btn-danger" (click)="toggleAccountEnable(user)">Disable</button></td>
         </tr>
       </tbody>
     </table>
+    <ul class="pagination justify-content-center">
+      <li class="page-item" [class.disabled]="currentPage == 1">
+        <a class="page-link" (click)="changePage(currentPage - 1)" aria-label="Previous">
+          <span aria-hidden="true">&laquo;</span>
+        </a>
+      </li>
+      <li class="page-item" *ngFor="let page of pagesArray" [class.active]="currentPage === page">
+        <a class="page-link" (click)="changePage(page)">{{ page }}</a>
+      </li>
+      <li class="page-item" [class.disabled]="currentPage == totalPages">
+        <a class="page-link" (click)="changePage(currentPage + 1)" aria-label="Next">
+          <span aria-hidden="true">&raquo;</span>
+        </a>
+      </li>
+    </ul>
   </div>
 </div>
 

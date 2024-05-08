@@ -14,10 +14,11 @@ export class User {
   lastModifiedDate: Date;
   accountLocked: boolean;
   enabled: boolean;
+  adresse: string;
 
 
   constructor(userId: number, username: string, firstName: string, lastName: string, email: string,
-    password: string, phone: number, role: string, imgUser: string, lastLogin: string, badge: string, createdDate: Date, lastModifiedDate: Date, accountLocked: boolean, enabled: boolean) {
+    password: string, phone: number, role: string, imgUser: string, lastLogin: string, badge: string, createdDate: Date, lastModifiedDate: Date, accountLocked: boolean, enabled: boolean, adresse: string) {
 this.userId = userId;
 this.username = username;
 this.firstName = firstName;
@@ -33,6 +34,7 @@ this.createdDate = createdDate;
 this.lastModifiedDate = lastModifiedDate;
 this.accountLocked = accountLocked;
 this.enabled = enabled;
+this.adresse = adresse;
   
   }
 }

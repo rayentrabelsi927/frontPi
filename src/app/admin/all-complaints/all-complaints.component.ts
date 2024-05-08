@@ -1,16 +1,17 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { UserService } from 'src/app/services/user.service';
 import { User } from 'src/app/models/User';
-import { DatePipe } from '@angular/common';
+import { ComplaintService } from 'src/app/services/complaint.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
-  selector: 'app-all-users',
-  templateUrl: './all-users.component.html',
-  styleUrls: ['./all-users.component.css']
+  selector: 'app-complaint',
+  templateUrl: './all-complaints.component.html',
+  styleUrls: ['./all-complaints.component.css']
 })
-export class AllUsersComponent implements OnInit {
+export class AllComplaintsComponent implements OnInit {
 
+  complaints: any[] = [];
   users: User[] = [];
   items: User[] = [];
   pageSize: number = 5; // Change this value based on your requirement
@@ -21,14 +22,23 @@ export class AllUsersComponent implements OnInit {
   user!: User;
   userId!: number;
 
-  constructor(private userService: UserService, private router: Router) {}
 
-  
-  
+  constructor(private complaintService: ComplaintService,private userService: UserService, private router: Router) { }
+
   ngOnInit(): void {
     this.getAllUsers();
+    this.complaintService.getAll().subscribe(
+      (data: any[]) => {
+        this.complaints = data;
+        console.log('complaint',this.complaints)
+      },
+      error => {
+        console.error('Error fetching complaints:', error);
+      }
+    );
   }
 
+  
   getAllUsers(): void {
     this.userService.getAllUsers().subscribe(
       (data: User[]) => {
@@ -58,24 +68,18 @@ export class AllUsersComponent implements OnInit {
   getYesOrNo(value: boolean): string {
     return value ? 'Yes' : 'No';
   }
+  
 
-  toggleAccountEnable(user: User): void {
- 
-    this.userService.updateUserEnable(user.userId, user).subscribe(
-      updatedUser => { this.getAllUsers()
-        console.log('User account Enable status updated:', updatedUser);
-      },
-      error => {
-        console.error('Error updating user account lock status:', error);
-      }
-    );
-  }
-
-
-  toggleAccountLock(user: User): void {
- 
+  toggleAccountLock(email: string): void {
+    const user = this.users.find(u => u.email === email);
+    if (!user) {
+      console.error('User not found for email:', email);
+      return;
+    }
+    
     this.userService.updateUserLock(user.userId, user).subscribe(
-      updatedUser => { this.getAllUsers()
+      updatedUser => { 
+        this.complaintService.getAll();
         console.log('User account lock status updated:', updatedUser);
       },
       error => {
@@ -84,6 +88,4 @@ export class AllUsersComponent implements OnInit {
     );
   }
   
-
-
 }

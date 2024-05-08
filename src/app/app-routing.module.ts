@@ -70,6 +70,8 @@ import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { FileComponent } from './admin/file/file.component';
+import { AllComplaintsComponent } from './admin/all-complaints/all-complaints.component';
+import { UserDetailsComponent } from './Client/user-details/user-details.component';
 
 
 
@@ -81,7 +83,7 @@ const routes: Routes = [
   { path: 'home', component: HomeComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'paiement', component: PaiementComponent },
-
+  { path: 'user-details/:id', component: UserDetailsComponent},
   { path: 'cancel', component: CancelComponent },
   { path: 'success', component: SucessComponent },
   { path: 'home', component: HomeComponent },
@@ -135,6 +137,7 @@ const routes: Routes = [
   {path: 'admin/adminItems', component:ArticlesManagementComponent},
   {path: 'admin/adminActions', component:AdminActionsComponent},
   {path: 'admin/all-users', component:AllUsersComponent},
+  {path: 'admin/all-complaints', component:AllComplaintsComponent},
   
 
   { path: 'admin/banned', component: BannedUserComponent },
