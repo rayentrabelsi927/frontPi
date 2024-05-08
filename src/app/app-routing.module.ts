@@ -81,6 +81,9 @@ import { VisitListComponent } from './visit-list/visit-list.component';
 import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
+import { AtsListOwnerComponent } from './admin/ats-list-owner/ats-list-owner.component';
+import { AddVisitComponent } from './add-visit/add-visit.component';
+import { AddVisit2Component } from './add-visit2/add-visit2.component';
 
 
 
@@ -139,6 +142,8 @@ const routes: Routes = [
   { path: 'housing-ats-list/:id', component: AtsListComponent },
   { path: 'housing-visit-list/:id', component: VisitListComponent },
   { path: 'housing-ATSdispo/:id', component: HousingAvailabilityComponent }, 
+  { path: 'visit-add/:idATS/:housingId', component: AddVisitComponent }, 
+
   
 
   /* admin lezm el path yabda b kelmet admin */
@@ -158,6 +163,7 @@ const routes: Routes = [
   { path: 'admin/housing-Owner/:id', component: HousingOwnerComponent },
   { path: 'admin/housing-Owner-details/:id', component: HousingOwnerDetailsComponent },
   { path: 'admin/housing-update/:id', component: HousingUpdateComponent },
+  { path: 'admin/housing-atsList/:id', component: AtsListOwnerComponent },
 
   
 

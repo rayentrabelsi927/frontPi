@@ -3,6 +3,7 @@ import { ActivatedRoute, Router } from '@angular/router';
 import { HousingService } from '../services/housing.service';
 import { DomSanitizer, SafeResourceUrl } from '@angular/platform-browser';
 import { HttpClient } from '@angular/common/http';
+import { Housing } from '../models/Housing';
 
 @Component({
   selector: 'app-housing-details',
@@ -35,11 +36,30 @@ export class HousingDetailsComponent implements OnInit {
  
 
   navigateToListTimeSlot(): void {
-    this.router.navigate(['housing-ats-list', this.id]);
+    this.router.navigate(['housing-ATSdispo', this.id]);
   }
   navigateToListVisit(): void {
     this.router.navigate(['housing-visit-list', this.id]);
   }
+  navigateToTransaction(): void {
+    this.router.navigate(['housing-list/housing-byId', this.id])
+      .then(() => {
+        // Une fois la navigation réussie, vous pouvez récupérer le housing ici
+        const housingId = this.id;
+        this.housingService.getHousingById(housingId).subscribe(
+          (housing: Housing) => {
+            console.log('Housing returned:', housing);
+          },
+          error => {
+            console.error('Error fetching housing:', error);
+          }
+        );
+      })
+      .catch(error => {
+        console.error('Navigation failed:', error);
+      });
+  }
+  
   updateMapUrl(location: string) {
     const encodedValue = encodeURIComponent(location.trim());
     const url = `https://maps.google.com/maps?q=${encodedValue}&output=embed`;

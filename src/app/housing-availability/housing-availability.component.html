@@ -1,16 +1,18 @@
-<div *ngIf="ats.length > 0; else noTimeSlots">
-    <h2>Availability Time Slots</h2>
-    <ul>
-      <li *ngFor="let slot of ats">
-        {{ slot }} <!-- Afficher les valeurs du créneau horaire ici -->
-      </li>
-    </ul>
-     
+<div class="container d-flex justify-content-center align-items-center"> <!-- Utiliser des classes de Bootstrap pour centrer -->
+  <div *ngIf="ats.length > 0; else noTimeSlots" class="card-body">
+    <h2>Les dates disponibles pour faire une visite</h2>
+    <div class="button-container">
+      <button *ngFor="let slot of ats" (click)="navigateToAddVisit(slot.id)" class="btn btn-custom square-btn">
+        <div class="square-content">
+          <span>Start Time: {{ slot.startTime }}</span>
+          <span>End Time: {{ slot.endTime }}</span>
+        </div>
+      </button>
+    </div>
   </div>
-  
-  
+
   <ng-template #noTimeSlots>
     <p>Aucun créneau horaire disponible.</p>
   </ng-template>
-  
-  
+</div>
+

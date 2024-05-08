@@ -1,0 +1,20 @@
+<div *ngIf="ats && ats.length > 0; else noTimeSlots">
+    <h2>Availability Time Slots</h2>
+    <ul>
+      <li *ngFor="let slot of ats">
+        <div>
+          <h4>Start Time: {{ slot.startTime }}, End Time: {{ slot.endTime }}</h4>
+          <!-- Afficher les valeurs du créneau horaire ici -->
+        </div>
+      </li>
+    </ul>
+    
+  </div>
+  
+  <ng-template #noTimeSlots>
+    <p>Aucun créneau horaire disponible.</p>
+  </ng-template>
+  <button class="btn btn-primary" (click)="navigateToAddTimeSlot()">Ajouter une date de Disponibilité</button>
+  
+  
+  

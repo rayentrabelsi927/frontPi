@@ -6,8 +6,8 @@ export class Visit {
   description!: string;
   startDateTime: Date;
   endDateTime: Date;
-  visiteur!: User;
-  housing: Housing;
+  visiteur?: User;
+  housing?: Housing;
   constructor(id: number, startDateTime: Date, endDateTime: Date, housing: Housing) {
     this.visiteID = id;
     this.startDateTime = startDateTime;

@@ -1,0 +1,82 @@
+.card-body {
+    padding: 20px;
+  }
+  
+  .form-group {
+    margin-bottom: 20px;
+  }
+  
+  label {
+    font-weight: bold;
+  }
+  
+  textarea {
+    min-height: 100px;
+  }
+  
+  .img-thumbnail {
+    max-width: 100px;
+    max-height: 100px;
+  }
+  
+  .btn {
+    margin-top: 10px;
+  }
+  .small-popup {
+    width: 100%; /* Set width to 100% to span the length of the page /
+    height: 50px;
+    padding: 10px;
+    position: fixed;
+    top: 0; / Set top to 0 to align with the top of the page /
+    left: 0;
+    background-color: #f8f9fa;
+    color: #333;
+    border-radius: 0; / Set border-radius to 0 for a rectangular shape */
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+    z-index: 9999;
+  }
+  
+  .small-popup p {
+    font-size: 15px;
+    margin-bottom: 5px;
+    color: #000000;
+  
+  }
+  .btn-custom {
+    background-color: lightcoral; /* Changer la couleur en rouge clair */
+    color: white; /* Changer la couleur du texte en blanc pour une meilleure lisibilité */
+    padding: 10px 20px; /* Ajuster la taille du padding pour agrandir le bouton */
+    font-size: 16px; /* Augmenter la taille de la police */
+    border-radius: 5px; /* Ajouter un border-radius pour arrondir les coins */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Ajouter un curseur de pointage pour indiquer que le bouton est cliquable */
+  }
+  
+  .btn-custom:hover {
+    background-color: crimson; /* Changer la couleur au survol du bouton */
+  }
+  .square-btn {
+    width: 150px; /* Ajuster la largeur du bouton carré selon vos besoins */
+    height: 150px; /* Ajuster la hauteur du bouton carré selon vos besoins */
+    margin: 10px; /* Espacement entre les boutons */
+  }
+  
+  .square-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Remplir entièrement la hauteur du bouton */
+    text-align: center;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  .header-text {
+    background-color: crimson; /* Changer la couleur de fond en rouge clair */
+  }
+  
+  

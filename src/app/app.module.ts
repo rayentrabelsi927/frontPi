@@ -101,6 +101,9 @@ import { VisitListComponent } from './visit-list/visit-list.component';
 import { HousingOwnerComponent } from './admin/housing-owner/housing-owner.component';
 import { HousingOwnerDetailsComponent } from './admin/housing-owner-details/housing-owner-details.component';
 import { HousingAvailabilityComponent } from './housing-availability/housing-availability.component';
+import { AtsListOwnerComponent } from './admin/ats-list-owner/ats-list-owner.component';
+import { AddVisitComponent } from './add-visit/add-visit.component';
+import { AddVisit2Component } from './add-visit2/add-visit2.component';
 
 
 @NgModule({
@@ -193,6 +196,9 @@ import { HousingAvailabilityComponent } from './housing-availability/housing-ava
     HousingOwnerComponent,
     HousingOwnerDetailsComponent,
     HousingAvailabilityComponent,
+    AtsListOwnerComponent,
+    AddVisitComponent,
+    AddVisit2Component,
     
   ],
   imports: [

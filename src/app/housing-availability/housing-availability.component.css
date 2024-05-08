@@ -1,0 +1,35 @@
+.btn-custom {
+    background-color: lightcoral; /* Changer la couleur en rouge clair */
+    color: white; /* Changer la couleur du texte en blanc pour une meilleure lisibilité */
+    padding: 10px 20px; /* Ajuster la taille du padding pour agrandir le bouton */
+    font-size: 16px; /* Augmenter la taille de la police */
+    border-radius: 5px; /* Ajouter un border-radius pour arrondir les coins */
+    border: none; /* Supprimer la bordure */
+    cursor: pointer; /* Ajouter un curseur de pointage pour indiquer que le bouton est cliquable */
+  }
+  
+  .btn-custom:hover {
+    background-color: crimson; /* Changer la couleur au survol du bouton */
+  }
+  .square-btn {
+    width: 150px; /* Ajuster la largeur du bouton carré selon vos besoins */
+    height: 150px; /* Ajuster la hauteur du bouton carré selon vos besoins */
+    margin: 10px; /* Espacement entre les boutons */
+  }
+  
+  .square-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100%; /* Remplir entièrement la hauteur du bouton */
+    text-align: center;
+  }
+  
+  .button-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+  
+  

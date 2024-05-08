@@ -2,6 +2,7 @@ import { Component, ElementRef, OnInit } from '@angular/core';
 import { AvailabilityTimeSlot } from '../models/availability-time-slot';
 import { HousingService } from '../services/housing.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { DatePipe, formatDate } from '@angular/common';
 
 @Component({
   selector: 'app-housing-availability',
@@ -30,5 +31,16 @@ export class HousingAvailabilityComponent  implements OnInit {
       }
     );
   }
+
+  navigateToAddTimeSlot(): void {
+    this.router.navigate(['housing-ats-add',this.id]);
+  }
+
+  
+      navigateToAddVisit(idATS:number): void {
+        console.info(idATS)
+       
+        this.router.navigate(['visit-add', idATS,this.id]);
+}
 
 }

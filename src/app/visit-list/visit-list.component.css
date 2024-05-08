@@ -1,0 +1,35 @@
+/* Style du conteneur du tableau */
+.table-container {
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    overflow: auto; /* Ajouter une barre de défilement si nécessaire */
+    max-width: 600px; /* Limiter la largeur du tableau */
+  }
+  
+  /* Style du tableau */
+  .table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 14px; /* Taille de la police de caractères */
+  }
+  
+  /* Style des cellules du tableau */
+  .table th,
+  .table td {
+    border: 1px solid #ccc;
+    padding: 6px; /* Réduire le rembourrage */
+    text-align: left;
+  }
+  
+  /* Style des en-têtes du tableau */
+  .table th {
+    background-color: #f2f2f2;
+    font-weight: bold; /* Mettre en gras */
+  }
+  
+  /* Style du message s'il n'y a pas de visites disponibles */
+  .no-visits-message {
+    font-style: italic;
+    color: #888;
+  }
+  

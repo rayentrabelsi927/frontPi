@@ -5,6 +5,7 @@ import { HousingService } from '../services/housing.service';
 import { Router } from '@angular/router';
 import { TypeH } from '../models/TypeH';
 import { Subscription } from 'rxjs';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-housing-add',
@@ -18,17 +19,18 @@ export class HousingAddComponent implements OnInit{
     descriptionHousing: '',
     locationHousing: '',
     availabilityHousing: true,
-    priceHousing: 0
+    priceHousing: 0,
+  
   };
   
   previewImageUrl: string | ArrayBuffer;
-  currentUser: number = 1;
+  currentUser: any ;
   selectedFiles: File[] = [];
   subscription: Subscription= new Subscription();
   //this.currentUser = this.authService.getCurrentUser().id;
   selectedRenters: User[] = [];
   //housing: Housing=new Housing();
-  constructor(private housingService: HousingService,private router: Router) { 
+  constructor(private housingService: HousingService,private router: Router,private userToken: TokenService) { 
     this.previewImageUrl = '';
     
   }
@@ -48,6 +50,7 @@ export class HousingAddComponent implements OnInit{
 
   saveHousing(): void {
     this.subscription = this.housingService.addHousingWithImages(
+      this.currentUser,
       this.housing.typeHousing,
       this.housing.descriptionHousing,
       this.housing.locationHousing,
@@ -88,6 +91,10 @@ export class HousingAddComponent implements OnInit{
 
   }
   ngOnInit(): void {
+    this.currentUser=this.userToken.currentUser();
+    if(this.currentUser){
+      this.saveHousing();
+    }
     console.log('Le composant HousingAddComponent a été initialisé.');
   }
   onSubmit(){

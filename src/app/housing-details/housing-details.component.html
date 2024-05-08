@@ -1,43 +1,43 @@
 <div class="container mt-4">
-    <div class="card">
-      <div class="card-header bg-primary text-white">
-        <h5>Housing Details</h5>
-      </div>
-      <div class="card-body">
-        <ng-container *ngIf="housing; else loadingTemplate">
-          <div class="row">
-            <div class="col-md-6">    
-              <h5 class="card-title">{{ housing.typeHousing }}</h5>
-              <p class="card-text">Description: {{ housing.descriptionHousing }}</p>
-              <p class="card-text">Location: {{ housing.locationHousing }}</p>
-              <p class="card-text">Availability: {{ housing.availabilityHousing }}</p>
-              <p class="card-text">Price: {{ housing.priceHousing }}</p>
-              
-            
-              <button class="btn btn-primary" (click)="navigateToListTimeSlot()">Reserver une visite</button>
-            </div>
-            <div class="col-md-6">
-              <iframe [src]="mapUrl" width="100%" height="300" frameborder="0"></iframe>
-            </div>
+  <div class="card">
+  
+    <div class="card-body">
+      <ng-container *ngIf="housing; else loadingTemplate">
+        <div class="row">
+          <div class="col-md-6">    
+          
+            <h5 class="card-title">
+              {{ housing.typeHousing === 'SinglePerson' ? 'Location' : 'Colocation' }}
+            </h5>
+            <p class="card-text description">Description: {{ housing.descriptionHousing }}</p>
+            <p class="card-text location">Location: {{ housing.locationHousing }}</p>
+            <p class="card-text availability">Availability: {{ housing.availabilityHousing }}</p>
+            <p class="card-text price">Price: {{ housing.priceHousing }} DT</p>
+          
+            <button class="btn btn-custom" (click)="navigateToListTimeSlot()">Reserver une visite</button>
           </div>
-          <div class="row mt-3">
-            <div class="col">
-              <h5>Images</h5>
-              <div class="row d-flex justify-content-between">
-                <div class="col-md-3 mb-3" *ngFor="let image of housing.images">
-                  <a data-toggle="modal" [attr.data-target]="'#imageModal' + image">
-                    <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image" style="height: 200px;">
-                  </a>
-                  <!-- Modal -->
-                  <div class="modal fade" [id]="'imageModal' + image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                    <div class="modal-dialog modal-xl" role="document">
-                      <div class="modal-content">
-                        <div class="modal-body">
-                          <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image">
-                        </div>
-                        <div class="modal-footer">
-                          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        </div>
+          <div class="col-md-6">
+            <iframe [src]="mapUrl" width="100%" height="300" frameborder="0"></iframe>
+          </div>
+        </div>
+        <div class="row mt-3">
+          <div class="col">
+            <h5>Images</h5>
+            <div class="row d-flex justify-content-between">
+              <div class="col-md-3 mb-3" *ngFor="let image of housing.images">
+                <a data-toggle="modal" [attr.data-target]="'#imageModal' + image">
+                  <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image" style="height: 200px;">
+                </a>
+                <button class="btn btn-custom" (click)="navigateToTransaction()">Effectuer une transaction</button>
+                <!-- Modal -->
+                <div class="modal fade" [id]="'imageModal' + image" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                  <div class="modal-dialog modal-xl" role="document">
+                    <div class="modal-content">
+                      <div class="modal-body">
+                        <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image">
+                      </div>
+                      <div class="modal-footer">
+                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
                       </div>
                     </div>
                   </div>
@@ -45,13 +45,13 @@
               </div>
             </div>
           </div>
-          <!-- Affichage des créneaux horaires disponibles -->
-          
-        </ng-container>
-        <ng-template #loadingTemplate>
-          <p>Loading...</p>
-        </ng-template>
-      </div>
+        </div>
+        <!-- Affichage des créneaux horaires disponibles -->
+        
+      </ng-container>
+      <ng-template #loadingTemplate>
+        <p>Loading...</p>
+      </ng-template>
     </div>
   </div>
-  
+</div>
