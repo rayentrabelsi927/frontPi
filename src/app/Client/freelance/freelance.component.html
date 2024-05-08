@@ -1,24 +1,24 @@
 <div class="container">
   <div class="row">
     <div class="col text-center">
-      <h2 class="display-5 text-primary">Freelance</h2>
-      <div class="border-bottom border-primary mb-5"></div>
+      <h2 class="display-5" style="color: #204f81;">Freelance</h2>
+      <div class="border-bottom" style="border-color: #204f81;"></div>
     </div>
   </div>
   <div class="works-content">
     <div class="row g-4">
       <div class="col-lg-4 col-md-6 col-sm-12" *ngFor="let freelanceJob of items">
-        <div class="position-relative border border-primary rounded">
-          <div class="bg-primary text-center pt-4 pb-3">
+        <div class="position-relative border rounded" style="border-color: #204f81;">
+          <div class="bg-primary text-center pt-4 pb-3" style="background-color: #204f81;">
             <i class="lni lni-briefcase text-white" style="font-size: 48px;"></i>
           </div>
           <div class="p-4">
             <div class="text-center">
-              <h2 class="h4 text-primary">{{ freelanceJob.titleJob }}</h2>
+              <h2 class="h4" style="color: #204f81;">{{ freelanceJob.titleJob }}</h2>
             </div>
             <p class="text-center">{{ freelanceJob.descriptionJob }}</p>
             <div class="text-center">
-              <button class="btn btn-primary py-2 px-4 #004080" (click)="showDetails(freelanceJob)">Show Details</button>
+              <button class="btn" style="background-color: #204f81; color: #fff; border-color: #204f81;" (click)="showDetails(freelanceJob)">Show Details</button>
             </div>
           </div>
         </div>

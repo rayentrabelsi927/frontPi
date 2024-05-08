@@ -27,16 +27,13 @@
       <td>{{ job.skillsRequiredJob }}</td>
       <td class="description-column">{{ job.descriptionJob }}</td>
       <td>{{ job.budgetJob }}</td>
-      <td>{{ job.deadlineJob }}</td>
+      <td>{{ job.deadlineJob | date:'yyyy-MM-dd HH:mm:ss' }}</td>
       <td>
-        <button class="action-button text-info" (click)="deleteFreelanceJob(job.jobId)">
-          <span class="fa-stack">
-            <i class="fa fa-square fa-stack-2x"></i>
-            <i class="fa fa-trash-o fa-stack-1x fa-inverse"></i>
-          </span>
-          Supprimer <!-- Ajout du texte "Supprimer" ici -->
+        <button class="action-button" (click)="deleteFreelanceJob(job.jobId)">
+          
+          Supprimer
         </button>
-        <button class="create-button" routerLink="/admin/updateFreelanceJob"></button>
+        <button class="action-button" [routerLink]="['/admin/updateFreelanceJob', job.jobId]" (click)="updateFreelanceJob(job.jobId)">Modifier</button>
         <button class="create-button" routerLink="/admin/newFreelanceJob">Créer un job</button>
       </td>
     </tr>

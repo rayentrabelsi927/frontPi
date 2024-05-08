@@ -1,3 +1,4 @@
+import { User } from "./User";
 
 export class FreelanceJob {
   jobId!: number;
@@ -9,4 +10,5 @@ export class FreelanceJob {
   descriptionJob!: string;
   budgetJob!: number;
   deadlineJob!: string;
+  users!:User;
 }

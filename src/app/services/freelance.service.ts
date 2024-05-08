@@ -3,6 +3,8 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FreelanceJob } from 'src/app/models/freelance';
+import { User } from '../models/User';
+
 
 @Injectable({
   providedIn: 'root'
@@ -17,8 +19,8 @@ export class FreelanceService {
 ////////////////////////Freelance///////////////////////
 
 // Ajouter un emploi freelance
-addFreelanceJob(freelanceJob: FreelanceJob): Observable<FreelanceJob> {
-  return this.httpClient.post<FreelanceJob>(`${this.baseUrl}/addfreelance`, freelanceJob);
+addFreelanceJob(freelanceJob: FreelanceJob, userId:number): Observable<FreelanceJob> {
+  return this.httpClient.post<FreelanceJob>(`${this.baseUrl}/addfreelance/${userId}`, freelanceJob);
 }
 
 // Mettre à jour un emploi freelance
@@ -40,7 +42,6 @@ deleteFreelanceJob(jobId: number): Observable<void> {
 getAllFreelanceJobs(): Observable<FreelanceJob[]> {
   return this.httpClient.get<FreelanceJob[]>(`${this.baseUrl}/allfreelance`);
 }
-
 
 
 }

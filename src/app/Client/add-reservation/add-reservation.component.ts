@@ -30,12 +30,12 @@ userId!: any;
 addReservationForm!: FormGroup;
 reservationTypes: string[] = Object.values(TypeR);
 startDate!: Date;
-endDate!: Date;  
+endDate!: Date;
 fieldTypes: string[] = Object.values(TypeF);
 fields: Field[] = [];
 isUserCaptain: boolean = false;
-sportTeamId: number | null = null; 
-weatherForecast$: Observable<any> | undefined; 
+sportTeamId: number | null = null;
+weatherForecast$: Observable<any> | undefined;
 weatherForecast: any;
 maxDate!: Date;
 
@@ -46,7 +46,7 @@ fieldImages: { [key: string]: string } = {
   'Volleyball': 'assets/img/volleyball.jpg',
   'Tennis': 'assets/img/tennis.jpg'
 };
-selectedFieldImageUrl: string = ''; 
+selectedFieldImageUrl: string = '';
 
 ngOnInit() {
   this.weatherForecast$ = this.weatherService.getWeatherForecast();
@@ -62,7 +62,7 @@ ngOnInit() {
   }, { validators: this.timeRangeValidator });
   this.fieldService.getAllFields().subscribe(fields => {
     this.fields = fields;
-    
+
   });
 
   this.weatherService.getWeatherForecast().subscribe(
@@ -76,7 +76,7 @@ ngOnInit() {
 
   this.maxDate = new Date();
   this.maxDate.setDate(this.maxDate.getDate() + 5);
-  
+
   this.checkIfUserIsCaptain();
 }
 
@@ -139,7 +139,7 @@ checkIfUserIsCaptain(): void {
       if (!isCaptain) {
         this.addReservationForm.patchValue({ joinType: 'alone' });
       } else {
-       
+
         this.getSportTeamIdByCaptainId(this.userId);
       }
     },
@@ -273,7 +273,7 @@ onDateSelectionChange(): void {
 }
 
 filterWeatherForecast(selectedDate: string): void {
- 
+
   const filteredForecasts = this.weatherForecast.list.filter((forecast: any) => {
     return forecast.dt_txt.includes(selectedDate);
   });
@@ -299,7 +299,7 @@ hasForecastForSelectedDate(): boolean {
   console.log('selected date:', selectedDate);
   if (!selectedDate || !this.weatherForecast || !this.weatherForecast.list) {
     return false;
-    
+
   }
   return this.weatherForecast.list.some((forecast: any) => forecast.dt_txt.includes(selectedDate));
 }
@@ -330,7 +330,7 @@ getWeatherIconUrl(description: string): string {
       return 'assets/img/light-rain.png';
 
     default:
-      return ''; 
+      return '';
   }
 }
 

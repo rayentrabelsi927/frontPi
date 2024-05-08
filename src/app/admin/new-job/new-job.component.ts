@@ -1,8 +1,10 @@
+import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { FreelanceJob } from 'src/app/models/freelance';
 import { FreelanceService } from 'src/app/services/freelance.service';
+import { TokenService } from 'src/app/services/token.service';
 import Swal from 'sweetalert2';
 
 
@@ -13,13 +15,19 @@ import Swal from 'sweetalert2';
 })
 export class NewJobComponent {
   job: FreelanceJob = new FreelanceJob(); // Déclarez et initialisez la propriété job avec une instance de la classe Freelance
+  userId!:any;
+  constructor(private freelanceService: FreelanceService,private router: Router,    private userTok:TokenService) {
+  }
 
-  constructor(private freelanceService: FreelanceService,private router: Router ) {}
+
+
 
   createFreelance(job: FreelanceJob) {
-    this.freelanceService.addFreelanceJob(job)
-      .subscribe(response => {
-        // Assuming response contains information about the success of the operation
+    const deadlineString = formatDate(this.job.deadlineJob, 'yyyy-MM-ddTHH:mm:ss', 'en-US');
+    this.job.deadlineJob=deadlineString;
+    this.userId = this.userTok.currentUser();
+    this.freelanceService.addFreelanceJob(job, this.userId)
+    .subscribe(response => {
         if (response) {
           Swal.fire({
             icon: 'success',
@@ -41,6 +49,14 @@ export class NewJobComponent {
             confirmButtonText: 'OK'
           });
         }
+      }, (error: HttpErrorResponse) => {
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An error occurred while creating the freelance job',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
       });
   }
 

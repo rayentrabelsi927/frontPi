@@ -43,15 +43,23 @@
           <label for="budget">Budget</label>
         </div>
       </div>
-      <div class="col-12">
-        <div class="form-floating">
-          <input type="date" class="form-control" [(ngModel)]="job.deadlineJob" id="deadline" name="deadline" placeholder="Date limite">
-          <label for="deadline">Date limite</label>
+      <div class="form-group">
+        <label for="deadline">Date limite</label>
+        <div class="col-12">
+        <div class="form-group">
+
+                    <input type="datetime-local" [(ngModel)]="job.deadlineJob" class="form-control" id="data" name="data">
         </div>
       </div>
-      <div class="col-12">
-        <button class="btn btn-primary w-100 py-3" type="submit">Créer</button>
       </div>
-    </div>
-  </form>
+      <div class="col-lg-4 col-md-12 wow fadeInUp" data-wow-delay="0.5s">
+        <form (ngSubmit)="createFreelance(job)">
+          <div class="row g-3">
+            <!-- Vos champs de formulaire -->
+            <div class="col-12">
+              <button class="btn btn-primary w-100 py-3" type="submit">Créer</button>
+            </div>
+          </div>
+        </form>
+      </div>
 </div>

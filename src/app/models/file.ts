@@ -6,4 +6,5 @@ data!:any;
 internshipId!:number
 size!: number;
 
+
 }

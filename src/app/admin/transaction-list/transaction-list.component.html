@@ -36,6 +36,9 @@
   </div>
 
   <br>  <br>
+  <div *ngIf="filteredTransactions.length === 0" class="alert alert-info mt-4" role="alert">
+    Aucune transaction  pour le moment.
+  </div>
 
   <div class="card">
     <div class="card-header blue">

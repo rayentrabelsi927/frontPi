@@ -87,6 +87,7 @@ import { AddeventComponent } from './admin/addevent/addevent.component';
 import { EventclientComponent } from './Client/eventclient/eventclient.component';
 import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
 
+import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
 
 
 
@@ -94,7 +95,7 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' }, 
+  { path: '', redirectTo: '/home', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'paiement', component: PaiementComponent },
@@ -137,6 +138,8 @@ const routes: Routes = [
   { path: 'paimenthousing', component: TransactionhousingComponent },
 
   { path: 'update-reservation/:id', component: UpdateReservationComponent },
+  { path: 'recommendations', component: InternshiprecommendationComponent },
+
 
   { path: 'housing-list', component: HousingListComponent },
   { path: 'housing-add', component: HousingAddComponent },

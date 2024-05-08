@@ -1,8 +1,10 @@
+import { formatDate } from '@angular/common';
 import { HttpErrorResponse } from '@angular/common/http';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Internship } from 'src/app/models/internship';
 import { InternshipService } from 'src/app/services/internship.service';
+import Swal from 'sweetalert2';
 
 @Component({
   selector: 'app-update-internship',
@@ -27,12 +29,29 @@ export class UpdateInternshipComponent implements OnInit {
   }
 
   updateInternship(internship: Internship): void {
+    const deadlineString = formatDate(internship.deadlineInternship, 'yyyy-MM-ddTHH:mm:ss', 'en-US');
     this.internshipService.updateInternship(this.internshipId, internship).subscribe(
       (response: Internship) => {
-        // Gérer la réponse de la mise à jour du stage si nécessaire
+        Swal.fire({
+          icon: 'success',
+          title: 'Success',
+          text: 'Internship updated successfully!',
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        }).then((result) => {
+          if (result.isConfirmed) {
+            this.router.navigate(['/admin/internship']);
+          }
+        });
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An error occurred while updating the internship: ' + error.message,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
       }
     );
   }
@@ -43,7 +62,13 @@ export class UpdateInternshipComponent implements OnInit {
         this.internship = response;
       },
       (error: HttpErrorResponse) => {
-        alert(error.message);
+        Swal.fire({
+          icon: 'error',
+          title: 'Error',
+          text: 'An error occurred while fetching the internship: ' + error.message,
+          confirmButtonColor: '#3085d6',
+          confirmButtonText: 'OK'
+        });
       }
     );
   }

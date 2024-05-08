@@ -83,7 +83,6 @@ import { NewInternshipComponent } from './admin/new-internship/new-internship.co
 import { FreelanceAdminComponent } from './admin/freelance-admin/freelance-admin.component';
 import { NewJobComponent } from './admin/new-job/new-job.component';
 import { UpdateInternshipComponent } from './admin/update-internship/update-internship.component';
-import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 import { InternshipRoomComponent } from './Client/internship-room/internship-room.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { MatTableModule } from '@angular/material/table';
@@ -110,6 +109,8 @@ import { AddeventComponent } from './admin/addevent/addevent.component';
 import { EventclientComponent } from './Client/eventclient/eventclient.component';
 import { UpdateeventComponent } from './admin/updateevent/updateevent.component';
 
+import { InternshiprecommendationComponent } from './Client/internshiprecommendation/internshiprecommendation.component';
+import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 
 
 @NgModule({
@@ -139,7 +140,7 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
     RegisterComponent,
     ActivateAccountComponent,
     LogoutComponent,
-    
+
     SectionsmanagementComponent,
     FavoritesListComponent,
     ListArticlesComponent,
@@ -149,8 +150,8 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
    AdminChartsComponent,
    ArticlesManagementComponent,
    AdminActionsComponent,
-    
-   
+
+
     TransactionComponent,
     PaiementComponent,
     SucessComponent,
@@ -188,8 +189,6 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
     FreelanceAdminComponent,
     NewJobComponent,
     UpdateInternshipComponent,
-    UpdateFreelanceJobComponent,
-    InternshipRoomComponent,
     FileComponent,
     HousingListComponent,
     HousingAddComponent,
@@ -211,6 +210,10 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
     UpdateeventComponent,
     
    
+    InternshipRoomComponent,
+    InternshiprecommendationComponent,
+    UpdateFreelanceJobComponent,
+
   ],
   imports: [
     BrowserModule,
@@ -228,7 +231,7 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
     AppRoutingModule,
     HttpClientModule,
     NgxPaginationModule,
-    
+
     CommonModule,
     FormsModule,
     HttpClientModule,
@@ -242,7 +245,7 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
   ],
   providers: [
     HttpClient,
-  
+
     FormsModule,
     ReactiveFormsModule,
     AppRoutingModule,
@@ -250,7 +253,7 @@ import { UpdateeventComponent } from './admin/updateevent/updateevent.component'
     EventService
   ],
 
-  
+
   bootstrap: [AppComponent]
 })
 export class AppModule { }
