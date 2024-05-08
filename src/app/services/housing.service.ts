@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient,HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, tap } from 'rxjs';
 
@@ -15,12 +15,14 @@ export class HousingService {
   private getByIdURL="http://localhost:8089/projectARCTIC3/Housing/get";
   private deleteURL="http://localhost:8089/projectARCTIC3/Housing/delete";
   private updateURL="http://localhost:8089/projectARCTIC3/Housing/updateHousing";
-   private recURL="http://localhost:8089/projectARCTIC3/Housing/recommend-houses?userAddress=Esprit el ghazela tunis";
+   private recURL="http://localhost:8089/projectARCTIC3/Housing/recommend-houses";
    private addTimeSlot ="http://localhost:8089/projectARCTIC3/Housing/housing/addTimeSlot";
  private getALLATSURL="http://localhost:8089/projectARCTIC3/Housing/availableTimeSlots";
  private getALLVisitsURL="http://localhost:8089/projectARCTIC3/Housing/visits";
  private getHousingOwner="http://localhost:8089/projectARCTIC3/Housing/housingsByOwner";
  private getATSdispoURL="http://localhost:8089/projectARCTIC3/Visit/getAvailableTimeSlotsWithoutVisitOverlap";
+ private addVisitUrl="http://localhost:8089/projectARCTIC3/Visit/create";
+ private getAdress="http://localhost:8089/projectARCTIC3/User/users";
   
 
   constructor(private httpClient: HttpClient) { }
@@ -30,6 +32,11 @@ export class HousingService {
   public getHousingsOwner(id:number): Observable<Housing[]> {
     return this.httpClient.get<Housing[]>(`${this.getHousingOwner}/${id}`);
   }
+ 
+  getAddress(id: number): Observable<string> {
+    return this.httpClient.get(`${this.getAdress}/${id}`, { responseType: 'text' });
+  }
+  
 
   public getATS(id:number): Observable<AvailabilityTimeSlot[]> {
     return this.httpClient.get<AvailabilityTimeSlot[]>(`${this.getALLATSURL}/${id}`).pipe(
@@ -49,6 +56,7 @@ export class HousingService {
 
 
   addHousingWithImages(
+    userId:number,
     typeHousing: string,
     descriptionHousing: string,
     locationHousing: string,
@@ -57,6 +65,7 @@ export class HousingService {
     files: File[]
   ): Observable<any> {
     const formData: FormData = new FormData();
+    formData.append('userId', userId.toString());
     formData.append('typeHousing', typeHousing);
     formData.append('descriptionHousing', descriptionHousing);
     formData.append('locationHousing', locationHousing);
@@ -80,13 +89,25 @@ export class HousingService {
   }
  
   
-  public  recHousing(): Observable<Housing[]> {
-    return this.httpClient.get<Housing[]>(`${this.recURL}`);
+  recHousing(adresse: string) {
+    // Construire les paramètres de la requête
+    const params = new HttpParams().set('userAddress', adresse);
+
+    // Envoyer la requête HTTP GET avec les paramètres
+    return this.httpClient.get<any[]>(this.recURL, { params });
   }
 
  public  addAvailabilityTimeSlotToHousing(housingId: number, timeSlot: AvailabilityTimeSlot): Observable<any> {
    
     return this.httpClient.post<any>(`${this.addTimeSlot}/${housingId}`, timeSlot);
   }
+  public addVisit(housingId: any, idATS: any): Observable<any> {
+   
+      // Construire l'URL avec les paramètres requis
+      const url = `http://localhost:8089/projectARCTIC3/Visit/create/${idATS}/${housingId}`;
+  
+      // Envoyer une requête POST vers l'URL construite
+      return this.httpClient.post<any>(url, null);
+    }
  
 }

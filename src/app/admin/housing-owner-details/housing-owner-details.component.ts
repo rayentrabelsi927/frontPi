@@ -35,7 +35,7 @@ export class HousingOwnerDetailsComponent implements OnInit {
  
 
   navigateToListTimeSlot(): void {
-    this.router.navigate(['housing-ats-list', this.id]);
+    this.router.navigate(['admin/housing-atsList', this.id]);
   }
   navigateToListVisit(): void {
     this.router.navigate(['housing-visit-list', this.id]);

@@ -1,14 +1,14 @@
 import { Component, ElementRef, OnInit } from '@angular/core';
-import { AvailabilityTimeSlot } from '../models/availability-time-slot';
-import { HousingService } from '../services/housing.service';
 import { ActivatedRoute, Router } from '@angular/router';
+import { AvailabilityTimeSlot } from 'src/app/models/availability-time-slot';
+import { HousingService } from 'src/app/services/housing.service';
 
 @Component({
-  selector: 'app-ats-list',
-  templateUrl: './ats-list.component.html',
-  styleUrls: ['./ats-list.component.css']
+  selector: 'app-ats-list-owner',
+  templateUrl: './ats-list-owner.component.html',
+  styleUrls: ['./ats-list-owner.component.css']
 })
-export class AtsListComponent implements OnInit {
+export class AtsListOwnerComponent implements OnInit {
   id: number = 0;
   ats: AvailabilityTimeSlot[] = [];
  
@@ -34,5 +34,5 @@ export class AtsListComponent implements OnInit {
     this.router.navigate(['housing-ats-add', this.id]);
   }
   
-  
+
 }

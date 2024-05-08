@@ -113,6 +113,9 @@ import { InternshiprecommendationComponent } from './Client/internshiprecommenda
 import { UpdateFreelanceJobComponent } from './admin/update-freelance-job/update-freelance-job.component';
 import { UserArticlesComponent } from './Client/user-articles/user-articles.component';
 
+import { AtsListOwnerComponent } from './admin/ats-list-owner/ats-list-owner.component';
+import { AddVisitComponent } from './add-visit/add-visit.component';
+import { AddVisit2Component } from './add-visit2/add-visit2.component';
 
 
 @NgModule({
@@ -204,6 +207,9 @@ import { UserArticlesComponent } from './Client/user-articles/user-articles.comp
     HousingOwnerDetailsComponent,
     HousingAvailabilityComponent,
     TransactionhousingComponent,
+    AtsListOwnerComponent,
+    AddVisitComponent,
+    AddVisit2Component,
     
     TestComponent,
     EventadminComponent,

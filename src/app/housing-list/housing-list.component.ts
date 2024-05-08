@@ -10,7 +10,7 @@ import { Housing } from '../models/Housing';
 export class HousingListComponent implements OnInit, AfterViewInit{
   isSidebarExpanded: boolean = true;
 
-  housings: Housing[]=[];
+  housings: any[]=[];
   constructor(private housingService: HousingService, private elementRef: ElementRef){ }
   ngOnInit(): void {
     this.getHousings();
