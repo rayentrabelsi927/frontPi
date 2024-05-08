@@ -103,10 +103,11 @@ export class DetailsTeamClientComponent implements OnInit {
       response => {
         console.log(response); 
         Swal.fire({
-          icon: 'error',
-          title: 'Oops...',
-          text: 'You Are already in a Team!!',
+          icon: 'success',
+          title: 'Success!',
+          text: 'Your application to the sport team has been sent. Please wait for the decision.',
         });
+       
         
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
@@ -114,9 +115,9 @@ export class DetailsTeamClientComponent implements OnInit {
       error => {
         console.error('Error joining team:', error); 
         Swal.fire({
-          icon: 'success',
-          title: 'Success!',
-          text: 'Your application to the sport team has been sent. Please wait for the decision.',
+          icon: 'error',
+          title: 'Oops...',
+          text: 'You Are already in a Team!!',
         });
         this.fetchUsersForSportTeam(this.sportTeamId);
         this.participateSportTeamCheckAndRefreshButton();
