@@ -189,8 +189,10 @@ onSubmit() {
 
   const timezoneOffset = startDateUTC.getTimezoneOffset();
  
-  const startDateAdjusted = new Date(startDateUTC.getTime() - timezoneOffset * 60000); 
-  const endDateAdjusted = new Date(endDateUTC.getTime() - timezoneOffset * 60000); 
+  // const startDateAdjusted = new Date(startDateUTC.getTime() - timezoneOffset * 60000); 
+  // const endDateAdjusted = new Date(endDateUTC.getTime() - timezoneOffset * 60000); 
+  const startDateAdjusted = new Date(startDateUTC.getTime()); 
+  const endDateAdjusted = new Date(endDateUTC.getTime()); 
 
   console.log('Making reservation with adjusted time:', startDateAdjusted, endDateAdjusted, resStatus, resType, fieldId);
 
