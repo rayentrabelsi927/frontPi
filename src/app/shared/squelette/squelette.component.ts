@@ -14,4 +14,8 @@ export class SqueletteComponent {
     return this.router.url.startsWith('/admin');
   }
 
+  getCurrentRoute(): string {
+    return this.router.url;
+  }
+
 }

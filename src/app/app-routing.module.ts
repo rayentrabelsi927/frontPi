@@ -30,7 +30,7 @@ import { AdminActionsComponent } from './admin/admin-actions/admin-actions.compo
 import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
-//import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 import { TransactionComponent } from './Client/transaction/transaction.component';
 import { PaiementComponent } from './Client/paiement/paiement.component';
@@ -92,6 +92,8 @@ import { UserArticlesComponent } from './Client/user-articles/user-articles.comp
 import { AtsListOwnerComponent } from './admin/ats-list-owner/ats-list-owner.component';
 import { AddVisitComponent } from './add-visit/add-visit.component';
 import { AddVisit2Component } from './add-visit2/add-visit2.component';
+import { AllComplaintsComponent } from './admin/all-complaints/all-complaints.component';
+import { UserDetailsComponent } from './Client/user-details/user-details.component';
 
 
 
@@ -99,11 +101,11 @@ import { AddVisit2Component } from './add-visit2/add-visit2.component';
 
 
 const routes: Routes = [
-  { path: '', redirectTo: '/home', pathMatch: 'full' },
+  { path: '', redirectTo: '/login', pathMatch: 'full' },
   { path: 'home', component: HomeComponent },
   { path: 'transaction', component: TransactionComponent },
   { path: 'paiement', component: PaiementComponent },
-
+  { path: 'user-details/:id', component: UserDetailsComponent},
   { path: 'cancel', component: CancelComponent },
   { path: 'success', component: SucessComponent },
   { path: 'home', component: HomeComponent },
@@ -189,6 +191,8 @@ const routes: Routes = [
 
   { path: 'admin/housing-atsList/:id', component: AtsListOwnerComponent },
 
+  {path: 'admin/all-users', component:AllUsersComponent},
+  {path: 'admin/all-complaints', component:AllComplaintsComponent},
   
 
   { path: 'admin/banned', component: BannedUserComponent },

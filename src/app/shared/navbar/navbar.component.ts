@@ -1,7 +1,10 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { User } from 'src/app/models/User';
 import { CartArticleService } from 'src/app/services/cart-article.service';
 import { FavoritesListService } from 'src/app/services/favorites-list.service';
+import { TokenService } from 'src/app/services/token.service';
+import { UserService } from 'src/app/services/user.service';
 
 @Component({
   selector: 'app-navbar',
@@ -14,15 +17,29 @@ export class NavbarComponent implements OnInit {
   favoritesCount: number = 0;
   private cartSubscription: any;
   private listSubscription: any;
+  userId:any;
+  user:any;
   constructor(
    
     private cartService: CartArticleService,
     private favoritesList: FavoritesListService,
-    private router: Router,
+    private router: Router,private users :UserService,
+    private token:TokenService
   ) { }
 
   
   ngOnInit(): void {
+
+    this.userId =this.token.currentUser();
+    console.log("aaaaaaaaaa"+this.userId)
+
+    this.user=this.users.getUserById(this.userId);
+
+console.log(this.user);
+
+
+
+
     this.favoritesCount = this.favoritesList.countFavorites();
     this.cartItemCount = this.cartService.countArticles();
 

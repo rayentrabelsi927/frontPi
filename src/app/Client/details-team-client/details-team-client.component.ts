@@ -72,8 +72,14 @@ export class DetailsTeamClientComponent implements OnInit {
       userData.role,
       userData.imgUser,
       userData.lastLogin,
-      userData.badge,   userData.ownedHousing,
+      userData.badge,   
+      userData.ownedHousing,
       userData.rentedHousing,
+      userData.createdDate,
+      userData.lastModifiedDate,
+      userData.accountLocked,
+      userData.enabled,
+      userData.adresse
     );
   }
 

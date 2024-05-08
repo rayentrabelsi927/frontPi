@@ -5,17 +5,16 @@
   <app-sidebar></app-sidebar>
 </ng-template>
 
-
 <ng-template #defaultContent>
   <!-- App Header Component -->
-<app-header></app-header>
-  <!-- App Navbar Component -->
-  <app-navbar></app-navbar>
+  <app-header *ngIf="getCurrentRoute() !== '/login'&& getCurrentRoute() !== '/register';"></app-header>
+
+  <!-- Affiche le Navbar sauf si la route est /login -->
+  <app-navbar *ngIf="getCurrentRoute() !== '/login'&& getCurrentRoute() !== '/register';"></app-navbar>
   <br>
 
   <!-- Router Outlet pour charger les composants dynamiquement -->
   <router-outlet></router-outlet>
-  
-  <app-footer></app-footer>
-</ng-template>
 
+  <app-footer *ngIf="getCurrentRoute() !== '/login'&& getCurrentRoute() !== '/register';"></app-footer>
+</ng-template>

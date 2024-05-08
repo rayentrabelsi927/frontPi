@@ -238,7 +238,7 @@ nav.navbar.bootsnav ul.nav > li.dropdown span {
 --------------------------------------*/
 .welcome-hero {
     position: relative;
-    background:url(assets/images/welcome-hero/banner.jpg)no-repeat;
+    background:url(assets/images/welcome-hero/odd.jpg)no-repeat;
     background-position:center;
     background-size:cover;
     text-align: center;

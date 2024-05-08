@@ -1,0 +1,25 @@
+<div class="container">
+  <h2 class="text-center">Complaints</h2>
+  <div class="table-responsive">
+    <table class="table table-bordered">
+      <thead>
+        <tr>
+          <th>Email</th>
+          <th>Description</th>
+          <th>Actions</th>
+        </tr>
+      </thead>
+      <tbody>
+        <tr *ngFor="let complaint of complaints">
+          <td>{{ complaint.email }}</td>
+          <td>{{ complaint.descriptionComplaint }}</td>
+          <td>
+            <button class="btn" [ngClass]="complaint.locked ? 'btn-success' : 'btn-danger'" (click)="toggleAccountLock(complaint.email)">
+              {{ complaint.locked ? 'Unlock' : 'Lock' }}
+            </button>
+          </td>
+        </tr>
+      </tbody>
+    </table>
+  </div>
+</div>

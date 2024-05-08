@@ -113,6 +113,12 @@ export class DetailsTeamComponent implements OnInit {
         userData.badge, 
           userData.ownedHousing,
         userData.rentedHousing,
+        
+        userData.createdDate,
+        userData.lastModifiedDate,
+        userData.accountLocked,
+        userData.enabled,
+        userData.adresse
       );
     }
     

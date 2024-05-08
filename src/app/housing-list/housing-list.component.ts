@@ -1,6 +1,8 @@
 import { AfterViewInit, Component, ElementRef, OnInit } from '@angular/core';
 import { HousingService } from 'src/app/services/housing.service';
 import { Housing } from '../models/Housing';
+import { Router } from '@angular/router';
+import { TokenService } from '../services/token.service';
 
 @Component({
   selector: 'app-housing-list',
@@ -9,16 +11,23 @@ import { Housing } from '../models/Housing';
 })
 export class HousingListComponent implements OnInit, AfterViewInit{
   isSidebarExpanded: boolean = true;
-
+  userId:any;
   housings: any[]=[];
-  constructor(private housingService: HousingService, private elementRef: ElementRef){ }
+  constructor(private housingService: HousingService, private elementRef: ElementRef, private router: Router, private token : TokenService){ }
   ngOnInit(): void {
+
+    this.userId=this.token.currentUser();
     this.getHousings();
   }
   private getHousings(){
     this.housingService.getHousings().subscribe(data => {
       this.housings = data;
     })
+  }
+
+
+  navigateowner(): void {
+    this.router.navigate(['admin/housing-Owner/', this.userId]);
   }
 
   

@@ -43,7 +43,7 @@ import { LoginComponent } from './Client/login/login.component';
 import { RegisterComponent } from './Client/register/register.component';
 import { ActivateAccountComponent } from './Client/activate-account/activate-account.component';
 import { LogoutComponent } from './Client/logout/logout.component';
-//import { AllUsersComponent } from './admin/all-users/all-users.component';
+import { AllUsersComponent } from './admin/all-users/all-users.component';
 
 import { CodeInputComponent, CodeInputModule } from 'angular-code-input';
 import { TransactionComponent } from './Client/transaction/transaction.component';
@@ -116,6 +116,8 @@ import { UserArticlesComponent } from './Client/user-articles/user-articles.comp
 import { AtsListOwnerComponent } from './admin/ats-list-owner/ats-list-owner.component';
 import { AddVisitComponent } from './add-visit/add-visit.component';
 import { AddVisit2Component } from './add-visit2/add-visit2.component';
+import { AllComplaintsComponent } from './admin/all-complaints/all-complaints.component';
+import { UserDetailsComponent } from './Client/user-details/user-details.component';
 
 
 @NgModule({
@@ -146,6 +148,8 @@ import { AddVisit2Component } from './add-visit2/add-visit2.component';
     ActivateAccountComponent,
     LogoutComponent,
 
+    AllUsersComponent,
+    
     SectionsmanagementComponent,
     FavoritesListComponent,
     ListArticlesComponent,
@@ -223,6 +227,8 @@ import { AddVisit2Component } from './add-visit2/add-visit2.component';
     UpdateFreelanceJobComponent,
 
     UserArticlesComponent,
+    AllComplaintsComponent,
+    UserDetailsComponent,
   ],
   imports: [
     BrowserModule,

@@ -63,6 +63,11 @@ export class AdminDetailssportTeamComponent implements OnInit{
         userData.ownedHousing,
         userData.rentedHousing,
 
+        userData.createdDate,
+        userData.lastModifiedDate,
+        userData.accountLocked,
+        userData.enabled,
+        userData.adresse
       );
     }
     
