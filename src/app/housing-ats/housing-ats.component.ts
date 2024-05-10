@@ -3,6 +3,7 @@ import { HousingService } from '../services/housing.service';
 import { AvailabilityTimeSlot } from '../models/availability-time-slot';
 import { Housing } from '../models/Housing';
 import { ActivatedRoute } from '@angular/router';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-housing-ats',
@@ -10,15 +11,15 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./housing-ats.component.css']
 })
 export class HousingATSComponent  implements OnInit {
-  newTimeSlot: AvailabilityTimeSlot = {
+  newTimeSlot  ={
     startTime: new Date(),
     endTime: new Date(),
-    id: 0,
-    housing: new Housing()
+   
+   
   };
   housingId: number = 0; // Initialisation à 0 par défaut
 
-  constructor(private housingService: HousingService, private route: ActivatedRoute) { }
+  constructor(private housingService: HousingService, private route: ActivatedRoute,private router: Router) { }
 
   ngOnInit(): void {
     // Souscrire aux changements des paramètres de l'URL
@@ -29,9 +30,13 @@ export class HousingATSComponent  implements OnInit {
   }
 
   addTimeSlot(): void {
-    this.housingService.addAvailabilityTimeSlotToHousing(this.housingId, this.newTimeSlot)
+
+    console.log(this.newTimeSlot)
+    this.housingService.addAvailabilityTimeSlotToHousing(this.housingId, [this.newTimeSlot])
       .subscribe(
         () => {
+             this.router.navigate(['housing-ATSdispo/'+this.housingId]);
+
           console.log('Time slot added successfully');
           // Traitez la réponse ou les cas d'erreur ici
         },

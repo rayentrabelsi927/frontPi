@@ -12,7 +12,7 @@ export class HousingOwnerComponent implements OnInit, AfterViewInit{
  
   isSidebarExpanded: boolean = true;
   id: number = 0;
-  housings: Housing []= [];
+  housings: any[]=[];
   housing !:Housing;
   
  
@@ -29,6 +29,9 @@ export class HousingOwnerComponent implements OnInit, AfterViewInit{
       this.housings = data;
     })
   }
+
+
+ 
   redirectToHousingDetail(id:number){
     this.housingService.getHousingById(id).subscribe(data => {
       this.housing = data;})

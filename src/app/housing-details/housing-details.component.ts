@@ -206,6 +206,7 @@ userId!:any;
     if (!isNaN(housingId)) {
       this.housingService.getHousingById(housingId).subscribe((data: any) => {
         this.housing = data;
+        console.log(this.housing.images[0])
         this.updateMapUrl(this.housing.locationHousing);
       });
     } else {

@@ -10,7 +10,7 @@ import { TokenService } from '../services/token.service';
 })
 export class HousingRecComponent implements OnInit, AfterViewInit {
   isSidebarExpanded: boolean = true;
-  housings: Housing[] = [];
+  housings: any[] = [];
   currentUser: any;
 
   constructor(private housingService: HousingService, private elementRef: ElementRef, private userToken: TokenService) { }

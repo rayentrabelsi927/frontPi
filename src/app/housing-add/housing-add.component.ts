@@ -59,18 +59,14 @@ export class HousingAddComponent implements OnInit{
       this.selectedFiles
     ).subscribe({
       next: data => {
-        this.router.navigateByUrl('/housing-list'),
         console.log('Housing added successfully:', data);
         // Réinitialiser les données du formulaire ou effectuer d'autres actions nécessaires
       },
       
-      error: error => {
-        console.error('Error adding housing:', error);
-        // Gérer l'erreur d'ajout de logement
-      }
     });
+    this.router.navigateByUrl('/housing-list');
+
   }
-  
 
   onFileSelected(event: any) {
     this.selectedFiles = event.target.files;
@@ -93,7 +89,6 @@ export class HousingAddComponent implements OnInit{
   ngOnInit(): void {
     this.currentUser=this.userToken.currentUser();
     if(this.currentUser){
-      this.saveHousing();
     }
     console.log('Le composant HousingAddComponent a été initialisé.');
   }

@@ -97,7 +97,7 @@ export class HousingService {
     return this.httpClient.get<any[]>(this.recURL, { params });
   }
 
- public  addAvailabilityTimeSlotToHousing(housingId: number, timeSlot: AvailabilityTimeSlot): Observable<any> {
+ public  addAvailabilityTimeSlotToHousing(housingId: number, timeSlot: any): Observable<any> {
    
     return this.httpClient.post<any>(`${this.addTimeSlot}/${housingId}`, timeSlot);
   }

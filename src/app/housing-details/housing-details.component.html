@@ -24,9 +24,13 @@
           <div class="col">
             <h5>Images</h5>
             <div class="row d-flex justify-content-between">
+              <div class="card" style="width: 450px;">
+                <img class="card-img-top" [src]="'data:image/jpeg;base64,' + housing.images[0]" alt="Housing Image">
+               
+              </div>
+              
               <div class="col-md-3 mb-3" *ngFor="let image of housing.images">
                 <a data-toggle="modal" [attr.data-target]="'#imageModal' + image">
-                  <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image" style="height: 200px;">
                 </a>
 
 
@@ -108,7 +112,9 @@
                   <div class="modal-dialog modal-xl" role="document">
                     <div class="modal-content">
                       <div class="modal-body">
-                        <img class="img-fluid" [src]="'http://localhost:8089/projectARCTIC3/images/' + image" alt="Housing Image">
+                        <img class="img-fluid mb-2" [src]="'data:image/jpeg;base64,' + housing.images" alt="Housing Image" width="200" height="200"> <!-- Utilisez les attributs width et height pour ajuster la taille -->
+                        <img class="img-fluid mb-2" [src]="'data:image/jpeg;base64,' + image" alt="Housing Image" width="200" height="200"> <!-- Utilisez les attributs width et height pour ajuster la taille -->
+
                       </div>
                       <div class="modal-footer">
                         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
