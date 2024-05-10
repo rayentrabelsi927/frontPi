@@ -11,6 +11,7 @@ import { TokenService } from 'src/app/services/token.service';
 })
 export class LoginComponent {
 
+
   authRequest: AuthenticationRequest = {email: '', password: ''};
   errorMsg: Array<string> = [];
 
@@ -28,7 +29,15 @@ export class LoginComponent {
     }).subscribe({
       next: (res) => {
         this.tokenService.token = res.token as string;
+        if(this.tokenService.currentUserrole()[0]=="ROLE_ADMIN"){
+          this.router.navigate(['admin/all-users']);
+
+
+        }
+        else 
         this.router.navigate(['home']);
+
+
       },
       error: (err) => {
         console.log(err);

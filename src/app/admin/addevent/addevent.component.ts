@@ -35,6 +35,7 @@ export class AddeventComponent {
     formData.append('dateEvent', this.event.dateEvent);
     formData.append('images', this.selectedFile); 
     formData.append('categoryEvent', this.event.categoryEvent);
+    console.log('Event added successfully:', formData);
 
   
     this.subscription = this.eventService.addEvent(formData).subscribe({
