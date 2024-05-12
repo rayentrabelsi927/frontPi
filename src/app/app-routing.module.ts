@@ -94,6 +94,7 @@ import { AddVisitComponent } from './add-visit/add-visit.component';
 import { AddVisit2Component } from './add-visit2/add-visit2.component';
 import { AllComplaintsComponent } from './admin/all-complaints/all-complaints.component';
 import { UserDetailsComponent } from './Client/user-details/user-details.component';
+import { RoomComponent } from './Client/room/room.component';
 
 
 
@@ -129,6 +130,7 @@ const routes: Routes = [
   { path: 'articleDetails/:articleId', component: ArticleDetailsComponent },
   { path: 'register', component: RegisterComponent},
   { path: 'activate-account', component: ActivateAccountComponent},
+  { path: 'room', component: RoomComponent},
 
 
   { path: 'chatbot', component: ChatbotComponent },

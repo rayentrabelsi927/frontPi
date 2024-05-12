@@ -118,6 +118,7 @@ import { AddVisitComponent } from './add-visit/add-visit.component';
 import { AddVisit2Component } from './add-visit2/add-visit2.component';
 import { AllComplaintsComponent } from './admin/all-complaints/all-complaints.component';
 import { UserDetailsComponent } from './Client/user-details/user-details.component';
+import { RoomComponent } from './Client/room/room.component';
 
 
 @NgModule({
@@ -229,6 +230,7 @@ import { UserDetailsComponent } from './Client/user-details/user-details.compone
     UserArticlesComponent,
     AllComplaintsComponent,
     UserDetailsComponent,
+    RoomComponent,
   ],
   imports: [
     BrowserModule,

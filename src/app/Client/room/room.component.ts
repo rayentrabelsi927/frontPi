@@ -2,13 +2,12 @@ import { AfterViewInit, Component, ElementRef, OnInit, ViewChild } from '@angula
 import { Router, ActivatedRoute } from '@angular/router';
 import { ZegoUIKitPrebuilt } from '@zegocloud/zego-uikit-prebuilt';
 import { TokenService } from 'src/app/services/token.service';
-
 @Component({
-  selector: 'app-internship-room',
-  templateUrl: './internship-room.component.html',
-  styleUrls: ['./internship-room.component.css']
+  selector: 'app-room',
+  templateUrl: './room.component.html',
+  styleUrls: ['./room.component.css']
 })
-export class InternshipRoomComponent implements OnInit, AfterViewInit {
+export class RoomComponent {
   roomId: string = "";
   userId: number = 0; // Initialize userId to a default value
   @ViewChild('root')
