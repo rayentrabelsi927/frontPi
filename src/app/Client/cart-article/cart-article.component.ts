@@ -123,7 +123,7 @@ let result = abc.valueOf() * 100;
 
   // Création de l'objet payment
   const payment = {
-    name: "bureau",
+    name: "article",
     currency: 'usd',
     amount: result, // convertir dollars en cents
     quantity: '1',

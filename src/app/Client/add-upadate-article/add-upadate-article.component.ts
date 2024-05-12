@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { ArticleService } from 'src/app/services/article.service';
 import { Article } from 'src/app/models/article';
 import { TokenService } from 'src/app/services/token.service';
@@ -40,7 +40,7 @@ fileURL: string | ArrayBuffer | null = null;
     
   };
   id!:number;
-  constructor(private articleService: ArticleService, private route:ActivatedRoute, private userToken: TokenService) { }
+  constructor(private articleService: ArticleService, private router: Router,private route:ActivatedRoute, private userToken: TokenService) { }
 
   
   myForm = new FormGroup({
@@ -134,6 +134,8 @@ loadArticle(): void {
             }
         );
         this.showPopupadd= true;
+        this.router.navigate(['/myItems']);
+
 }
 
 

@@ -100,7 +100,12 @@
 
        
 
-
+        <li class="sidebar-item">
+            <a routerLink="admin/add-field" class="sidebar-link">
+                <i class="lni lni-agenda"></i>
+                <span>add field </span>
+            </a>
+        </li>
         
       
 
@@ -130,9 +135,9 @@
                 <span>list housing </span>
             </a>
         </li>
+      
 
-
-     
+        
 
         <li class="sidebar-item">
             <a routerLink="/home" class="sidebar-link">
@@ -256,7 +261,7 @@
             -->
         </ul>
         <div class="sidebar-footer">
-            <a href="#" class="sidebar-link">
+            <a href="#" class="sidebar-link" (click)="logout()">
                 <i class="lni lni-exit"></i>
                 <span>Logout</span>
             </a>
