@@ -70,9 +70,7 @@
              <li>
                 <a routerLink="/transaction" routerLinkActive="uk-active">transaction</a>
             </li>
-            <li>
-                <a routerLink="/paiement" routerLinkActive="uk-active">paiement</a>
-            </li>
+          
             <li>
               <a routerLink="/allsportteam" routerLinkActive="uk-active">SportTeams</a>
           </li>
@@ -101,7 +99,7 @@
         </li>
 
         <li>
-            <a routerLink="/addItems" routerLinkActive="uk-active">add items</a>
+            <a routerLink="/addItem" routerLinkActive="uk-active">add items</a>
         </li>
         
         <li>
@@ -115,9 +113,13 @@
 
             
 
-                <li>
-                    <a routerLink="/admin/statistics" routerLinkActive="uk-active">admin</a>
-                </li>
+            <li *ngIf="role === 'admin'">
+                <a routerLink="/admin/statistics" routerLinkActive="uk-active">Admin</a>
+            </li>
+            
+
+
+
                 <li (click)="redirectToCart()">
                     <i class="bi bi-basket2"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
                         <path d="M4 10a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 0 1 2 0v2a1 1 0 0 1-2 0zm3 0a1 1 0 1 1 2 0v2a1 1 0 0 1-2 0z"/>

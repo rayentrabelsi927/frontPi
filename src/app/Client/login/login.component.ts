@@ -18,7 +18,8 @@ export class LoginComponent {
   constructor(
     private router: Router,
     private authService: AuthenticationService,
-    private tokenService: TokenService
+    private tokenService: TokenService,
+    
   ) {
   }
 
@@ -29,14 +30,17 @@ export class LoginComponent {
     }).subscribe({
       next: (res) => {
         this.tokenService.token = res.token as string;
+
         if(this.tokenService.currentUserrole()[0]=="ROLE_ADMIN"){
           this.router.navigate(['admin/all-users']);
+          sessionStorage.setItem("role", "admin");
 
 
         }
-        else 
+        else {
         this.router.navigate(['home']);
-
+        sessionStorage.setItem("role", "etudiant");
+      }
 
       },
       error: (err) => {

@@ -19,6 +19,7 @@ export class NavbarComponent implements OnInit {
   private listSubscription: any;
   userId:any;
   user:any;
+  role:any;
   constructor(
    
     private cartService: CartArticleService,
@@ -29,6 +30,7 @@ export class NavbarComponent implements OnInit {
 
   
   ngOnInit(): void {
+   this.role=sessionStorage.getItem("role");
 
     this.userId =this.token.currentUser();
     console.log("aaaaaaaaaa"+this.userId)
@@ -36,6 +38,7 @@ export class NavbarComponent implements OnInit {
     this.user=this.users.getUserById(this.userId);
 
 console.log(this.user);
+
 
 
 

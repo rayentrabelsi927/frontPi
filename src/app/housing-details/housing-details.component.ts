@@ -26,7 +26,7 @@ export class HousingDetailsComponent implements OnInit {
   possible: transaction_ban | undefined ;
 
   stripePromise = loadStripe(environment.stripe);
-  productName: string = 'Iphone X';
+  productName: string = 'housing';
   productPrice: number = 50;
 
   /*userconnnecté:any={
@@ -103,7 +103,7 @@ userId!:any;
         
 
                 const transaction = {
-                  amountTransaction: productPrice * 100,
+                  amountTransaction: housing.priceHousing,
                   "feedbacks": [],
                   "articles":[],
                   "users":{"userId":this.userId} ,
@@ -118,9 +118,9 @@ userId!:any;
             
                 // Création de l'objet payment
                 const payment = {
-                  name: "bureau",
+                  name: "Housing",
                   currency: 'usd',
-                  amount: productPrice * 100, // convertir dollars en cents
+                  amount:  housing.priceHousing*100, // convertir dollars en cents
                   quantity: '1',
                   cancelUrl: 'http://localhost:4200/cancel',
                   successUrl: 'http://localhost:4200/success',

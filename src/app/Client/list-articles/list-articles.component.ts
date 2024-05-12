@@ -118,6 +118,8 @@ export class ListArticlesComponent implements OnInit {
     this.favoritesList.addToFavorites(article);
     console.log('Article ajouté à la liste :', article);
     this.showPopupFavorite= true;
+    this.router.navigate(['/myItems']);
+
     
   }
 
