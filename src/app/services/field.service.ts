@@ -2,15 +2,16 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Field } from '../models/Field';
 import { Observable } from 'rxjs';
-
+import { ApiConfiguration } from './api-configuration';
+import { environment } from 'src/environments/environment';
 @Injectable({
   providedIn: 'root'
 })
 export class FieldService {
+  
+  private baseURL = environment.apiUrl+'/Field';
 
-  private baseURL = 'http://localhost:8089/projectARCTIC3/Field';
-
-  constructor(private httpClient: HttpClient) { }
+  constructor(private httpClient: HttpClient, ) { }
 
   addField(field: Field): Observable<Field> {
     return this.httpClient.post<Field>(`${this.baseURL}/add`, field);

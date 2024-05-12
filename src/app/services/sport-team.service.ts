@@ -2,12 +2,13 @@ import { Injectable } from '@angular/core';
 import { SportTeam } from '../models/SportTeam';
 import { Observable } from 'rxjs';
 import { HttpClient } from '@angular/common/http';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class SportTeamService {
-  private baseURL = "http://localhost:8089/projectARCTIC3/SportTeam/";
+  private baseURL = environment.apiUrl+"/SportTeam/";
 
   constructor(private httpClient: HttpClient) { }
 
