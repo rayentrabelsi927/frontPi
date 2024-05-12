@@ -5,24 +5,25 @@ import { Observable, tap } from 'rxjs';
 import { AvailabilityTimeSlot } from '../models/availability-time-slot';
 import { Visit } from '../models/visit';
 import { Housing } from '../models/Housing';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class HousingService {
-  private addURL="http://localhost:8089/projectARCTIC3/Housing/add";
-  private getALLURL="http://localhost:8089/projectARCTIC3/Housing/all";
-  private getByIdURL="http://localhost:8089/projectARCTIC3/Housing/get";
-  private deleteURL="http://localhost:8089/projectARCTIC3/Housing/delete";
-  private updateURL="http://localhost:8089/projectARCTIC3/Housing/updateHousing";
-   private recURL="http://localhost:8089/projectARCTIC3/Housing/recommend-houses";
-   private addTimeSlot ="http://localhost:8089/projectARCTIC3/Housing/housing/addTimeSlot";
- private getALLATSURL="http://localhost:8089/projectARCTIC3/Housing/availableTimeSlots";
- private getALLVisitsURL="http://localhost:8089/projectARCTIC3/Housing/visits";
- private getHousingOwner="http://localhost:8089/projectARCTIC3/Housing/housingsByOwner";
- private getATSdispoURL="http://localhost:8089/projectARCTIC3/Visit/getAvailableTimeSlotsWithoutVisitOverlap";
- private addVisitUrl="http://localhost:8089/projectARCTIC3/Visit/create";
- private getAdress="http://localhost:8089/projectARCTIC3/User/users";
+  private addURL=environment.apiUrl+"/Housing/add";
+  private getALLURL=environment.apiUrl+"/Housing/all";
+  private getByIdURL=environment.apiUrl+"/Housing/get";
+  private deleteURL=environment.apiUrl+"/Housing/delete";
+  private updateURL=environment.apiUrl+"/Housing/updateHousing";
+   private recURL=environment.apiUrl+"/Housing/recommend-houses";
+   private addTimeSlot =environment.apiUrl+"/Housing/housing/addTimeSlot";
+ private getALLATSURL=environment.apiUrl+"/Housing/availableTimeSlots";
+ private getALLVisitsURL=environment.apiUrl+"/Housing/visits";
+ private getHousingOwner=environment.apiUrl+"/Housing/housingsByOwner";
+ private getATSdispoURL=environment.apiUrl+"/Visit/getAvailableTimeSlotsWithoutVisitOverlap";
+ private addVisitUrl=environment.apiUrl+"/Visit/create";
+ private getAdress=environment.apiUrl+"/User/users";
   
 
   constructor(private httpClient: HttpClient) { }
@@ -104,7 +105,7 @@ export class HousingService {
   public addVisit(housingId: any, idATS: any): Observable<any> {
    
       // Construire l'URL avec les paramètres requis
-      const url = `http://localhost:8089/projectARCTIC3/Visit/create/${idATS}/${housingId}`;
+      const url = `http://localhost:8080/projectARCTIC3/Visit/create/${idATS}/${housingId}`;
   
       // Envoyer une requête POST vers l'URL construite
       return this.httpClient.post<any>(url, null);

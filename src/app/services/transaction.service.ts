@@ -5,13 +5,14 @@ import { statisticsFeedback } from '../models/statisticsFeedback';
 import { transaction_ban } from '../models/transaction_ban';
 import { statisticstransaction } from '../models/statisticsTransaction';
 import { Transaction } from '../models/Transaction';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class TransactionService {
 
-  private baseURL = "http://localhost:8089/projectARCTIC3/Transaction/";
+  private baseURL = environment.apiUrl+"/Transaction/";
 
   constructor(private httpClient: HttpClient) { }
   
@@ -23,7 +24,7 @@ export class TransactionService {
 
   findbyID(id: number): Observable<any> {
     console.log(id)
-    return this.httpClient.get<any>(`http://localhost:8089/projectARCTIC3/User/${id}`);
+    return this.httpClient.get<any>(`http://localhost:8080/projectARCTIC3/User/${id}`);
   }
 
   getAll(): Observable<Transaction[]> {

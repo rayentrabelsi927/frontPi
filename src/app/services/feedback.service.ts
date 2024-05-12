@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http'
 import { Observable } from 'rxjs';
 import { bannedUser } from '../models/bannedUser';
+import { environment } from 'src/environments/environment';
 
 
   const httpOptions = {
@@ -14,7 +15,7 @@ import { bannedUser } from '../models/bannedUser';
 })
 export class FeedbackService {
   
-  private baseURL = "http://localhost:8089/projectARCTIC3/feedBack/";
+  private baseURL = environment.apiUrl+'/feedBack/';
 
   constructor(private httpClient: HttpClient) { }
   

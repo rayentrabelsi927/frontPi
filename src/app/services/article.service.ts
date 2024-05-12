@@ -2,6 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient } from '@angular/common/http';
 import { Observable, map } from 'rxjs';
 import { Article } from '../models/article';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
@@ -9,7 +10,7 @@ import { Article } from '../models/article';
 export class ArticleService {
 
 
-  private baseUrl = 'http://localhost:8089/projectARCTIC3/Articles'; 
+  private baseUrl = environment.apiUrl+'/Articles'; 
 
   constructor(private http: HttpClient ) { }
 

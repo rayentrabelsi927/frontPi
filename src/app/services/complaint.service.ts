@@ -2,13 +2,14 @@ import { HttpClient } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { Complaint } from '../models/Complaint';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class ComplaintService {
 
-  private baseURL = 'http://localhost:8089/projectARCTIC3/Complaint';
+  private baseURL = environment.apiUrl+'/Complaint';
 
   constructor(private httpClient: HttpClient) { }
 

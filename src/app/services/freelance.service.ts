@@ -4,6 +4,7 @@ import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { FreelanceJob } from 'src/app/models/freelance';
 import { User } from '../models/User';
+import { environment } from 'src/environments/environment';
 
 
 @Injectable({
@@ -11,7 +12,7 @@ import { User } from '../models/User';
 })
 export class FreelanceService {
 
-  private baseUrl = "http://localhost:8089/projectARCTIC3/freelance";
+  private baseUrl = environment.apiUrl+"/freelance";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -3,13 +3,14 @@ import { HttpClient } from '@angular/common/http';
 import { Observable, throwError } from 'rxjs';
 import { catchError } from 'rxjs/operators';
 import { Internship } from 'src/app/models/internship';
+import { environment } from 'src/environments/environment';
 
 @Injectable({
   providedIn: 'root'
 })
 export class InternshipService {
 
-  private baseUrl = "http://localhost:8089/projectARCTIC3/internships";
+  private baseUrl = environment.apiUrl+"/internships";
 
   constructor(private httpClient: HttpClient) { }
 

@@ -5,7 +5,6 @@
         <h2>{{ sportTeam.nameTeam }}</h2>
       </div>
     </div>
-    <!-- Add player section -->
     <div class="row mt-4">
       <div class="col-md-4">
         <div class="container">
@@ -17,17 +16,16 @@
           <button class="btn btn-primary btn-block" (click)="addUserToTeam()">Add Player</button>
         </div>
       </div>
-      <!-- Team logo section -->
       <div class="col-md-1"></div>
       <div class="col-md-6">
         <div *ngIf="sportTeam.logoTeam" class="text-center">
-          <img class="img-thumbnail" [src]="'http://localhost:8089/projectARCTIC3/static/photos/' + sportTeam.logoTeam" alt="Team Logo" style="width: 300px; height: auto;">
+          <img class="img-thumbnail" [src]="'http://localhost:8080/projectARCTIC3/static/photos/' + sportTeam.logoTeam" alt="Team Logo" style="width: 300px; height: auto;">
         </div>
       </div>
     </div>
   </div>
   
-  <!-- Team members section -->
+  
   <div class="container mt-5">
     <h3>Team Members</h3>
     <div class="table-responsive">
@@ -62,8 +60,7 @@
         </tbody>
       </table>
     </div>
-    <!-- Pagination section -->
-    <!-- Pagination -->
+   
 <ul class="pagination justify-content-center">
   <li class="page-item" [class.disabled]="currentPage === 1">
     <button class="page-link" (click)="currentPage = currentPage - 1">Previous</button>
