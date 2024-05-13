@@ -31,7 +31,7 @@ export class CartArticleComponent implements OnInit {
  articlesPerUser: { [key: string]: Article[] } = {};
  cartItemsFormatted: any[] = [];
  userId!:any;
-  private baseUrl = 'http://localhost:8089/projectARCTIC3';
+  private baseUrl = 'http://localhost:8080/projectARCTIC3';
   possible: transaction_ban | undefined ;
   userget: any;
 

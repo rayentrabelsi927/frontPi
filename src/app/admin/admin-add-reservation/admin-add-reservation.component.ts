@@ -37,7 +37,6 @@ export class AdminAddReservationComponent implements OnInit {
     });
   }
 
-  // Custom validator function to check if endDate > startDate
 endDateValidator(control: AbstractControl): { [key: string]: boolean } | null {
   const startDate = control.root.get('startDate')?.value;
   const endDate = control.value;

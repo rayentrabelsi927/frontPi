@@ -9,8 +9,6 @@ RUN npm install
 # Copy project files into the Docker image
 COPY . .
 
-# Build the Angular application
-RUN npm run build -- --configuration production
 
 # Stage 2: Serve the application with Nginx
 FROM nginx:alpine

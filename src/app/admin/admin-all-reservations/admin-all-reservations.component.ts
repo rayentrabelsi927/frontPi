@@ -12,7 +12,7 @@ export class AdminAllReservationsComponent implements OnInit{
 
   reservations: any[] = [];
   items: any[] = [];
-  pageSize: number = 5; // Change this value based on your requirement
+  pageSize: number = 5; 
   currentPage: number = 1;
   totalItems: number = 0;
   totalPages: number = 0;
