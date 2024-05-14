@@ -9,10 +9,6 @@
                 </li>
 
 
-                <li class="uk-active">
-                    <a routerLink="/internshipRoom/1" uk-icon="icon: triangle-down">meet internship</a>
-
-                </li>
 
 
 
@@ -86,10 +82,12 @@
 
           </li>
 
-          <li>
+        <!--
+            <li>
             <a routerLink="/client/events" uk-icon="icon: triangle-down">events</a>
 
         </li>
+        -->  
           <li>
               <a routerLink="/internships" uk-icon="icon: triangle-down">Internships</a>
 
@@ -118,11 +116,13 @@
             
 
             <li *ngIf="role === 'admin'">
-                <a routerLink="/admin/statistics" routerLinkActive="uk-active">Admin</a>
+                <a routerLink="/internshipRoom/1" routerLinkActive="uk-active">meet</a>
             </li>
             
 
-
+            <li *ngIf="role === 'admin'">
+                <a routerLink="/admin/statistics" routerLinkActive="uk-active">Admin</a>
+            </li>
 
                 <li (click)="redirectToCart()">
                     <i class="bi bi-basket2"></i><svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-basket2" viewBox="0 0 16 16">
